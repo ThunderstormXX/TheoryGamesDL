@@ -1,6 +1,9 @@
 import numpy as np
 import torch
 import torch.nn as nn
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 import torch.nn.functional as F
 from typing import List, Tuple
 
@@ -15,6 +18,115 @@ class TensorGame:
     def get_payoffs(self, actions: List[int]) -> List[float]:
         """Get payoffs for pure action profile"""
         return [float(self.payoff_tensor[tuple(actions)][i]) for i in range(self.n_players)]
+
+
+class ProbabilisticTensorGame:
+    """N-player game where payoffs are sampled from stored distributions"""
+    
+    def __init__(self, mean_tensor: np.ndarray, std_tensor: np.ndarray):
+        self.mean_tensor = mean_tensor
+        self.std_tensor = std_tensor
+        self.n_players = len(mean_tensor.shape) - 1
+        self.n_actions = mean_tensor.shape[:-1]
+        
+    def get_payoffs(self, actions: List[int]) -> List[float]:
+        idx = tuple(actions)
+        return [
+            float(np.random.normal(loc=self.mean_tensor[idx][i], scale=self.std_tensor[idx][i]))
+            for i in range(self.n_players)
+        ]
+
+
+def create_probabilistic_game_with_lower_offdiag(
+    n_players: int,
+    n_actions: int,
+    base_values: list,
+    diag_variance=4.0,
+    off_diag_variance=1.0,
+    off_diag_base_upper_bound=None  # верхняя граница для uniform вне диагонали
+) -> ProbabilisticTensorGame:
+    shape = [n_actions] * n_players + [n_players]
+    mean_tensor = np.zeros(shape)
+    std_tensor = np.zeros(shape)
+
+    # Определим верхнюю границу для вне диагонали, если не передана
+    if off_diag_base_upper_bound is None:
+        off_diag_base_upper_bound = min(base_values) * 1  # например 80% от минимального диагонального выигрыша
+
+    # Заполняем диагональ
+    for i in range(n_actions):
+        diag_idx = tuple([i] * n_players)
+        for player in range(n_players):
+            mean_tensor[diag_idx][player] = base_values[i] if i < len(base_values) else 5
+            std_tensor[diag_idx][player] = diag_variance
+
+    # Заполняем вне диагонали случайным средним из uniform [0, off_diag_base_upper_bound]
+    for idx in np.ndindex(*shape[:-1]):
+        if len(set(idx)) > 1:
+            for player in range(n_players):
+                base_val = np.random.uniform(0, off_diag_base_upper_bound)
+                mean_tensor[idx][player] = base_val
+                std_tensor[idx][player] = off_diag_variance
+
+    return ProbabilisticTensorGame(mean_tensor, std_tensor)
+
+
+def collect_statistics(game: ProbabilisticTensorGame, n_samples: int = 1000):
+    records = []
+    n_players = game.n_players
+    n_actions = game.n_actions[0]
+
+    for state in np.ndindex((n_actions,) * n_players):
+        for _ in range(n_samples):
+            payoffs = game.get_payoffs(list(state))
+            for agent_id, payoff in enumerate(payoffs):
+                records.append({
+                    'state': state,
+                    'agent': f'Agent {agent_id+1}',
+                    'payoff': payoff
+                })
+
+    df = pd.DataFrame(records)
+    stats = df.groupby(['state', 'agent'])['payoff'].agg(['mean', 'std']).reset_index()
+    return stats
+
+
+
+def plot_stats_barplot(stats_df):
+    plt.figure(figsize=(18, 7))
+
+    # Средние выигрыши
+    plt.subplot(1, 2, 1)
+    sns.barplot(
+        data=stats_df,
+        x=stats_df['state'].astype(str),
+        y='mean',
+        hue='agent',
+        errorbar=None
+    )
+    plt.title("Средний выигрыш агентов по состояниям")
+    plt.xlabel("Состояния (действия)")
+    plt.ylabel("Средний выигрыш")
+    plt.xticks(rotation=90)
+
+    # Стандартное отклонение
+    plt.subplot(1, 2, 2)
+    sns.barplot(
+        data=stats_df,
+        x=stats_df['state'].astype(str),
+        y='std',
+        hue='agent',
+        errorbar=None
+    )
+    plt.title("Стандартное отклонение выигрыша агентов")
+    plt.xlabel("Состояния (действия)")
+    plt.ylabel("Стандартное отклонение")
+    plt.xticks(rotation=90)
+
+    plt.tight_layout()
+    plt.show()
+
+
 
 class MultiAgent:
     """Base class for multi-agent RL"""
@@ -152,3 +264,19 @@ def train_multi_agents(game: TensorGame, agents: List[MultiAgent], n_episodes: i
             print(f"Episode {episode}: Avg rewards {[f'{r:.3f}' for r in avg_rewards]}")
     
     return payoff_history
+
+def plot_training_history(payoff_history: List[List[float]], window_size: int = 100):
+    df = pd.DataFrame(payoff_history, columns=[f'Agent {i+1}' for i in range(len(payoff_history[0]))])
+    df_smooth = df.rolling(window=window_size).mean()
+
+    plt.figure(figsize=(12, 6))
+    for agent in df.columns:
+        plt.plot(df_smooth[agent], label=agent)
+    
+    plt.title(f"Среднее вознаграждение агентов (скользящее окно {window_size})")
+    plt.xlabel("Эпизод")
+    plt.ylabel("Сглаженное вознаграждение")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
