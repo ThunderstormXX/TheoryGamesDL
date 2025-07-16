@@ -4,7 +4,7 @@
 
 ## Описание
 
-TheoryGamesDL предоставляет инструменты для моделирования различных типов социальных дилемм и применения методов обучения с подкреплением (в частности, Q-обучения) для анализа стратегий агентов.
+TheoryGamesDL предоставляет инструменты для моделирования различных типов социальных дилемм и применения методов обучения с подкреплением (классическое Q-обучение и нейросетевые подходы) для анализа стратегий агентов.
 
 ## Установка
 
@@ -24,7 +24,8 @@ theorygamesdl/
 ├── models/
 │   └── social_dilemma.py  # Классы для моделирования социальных дилемм
 ├── agents/
-│   └── qlearning.py       # Реализация Q-обучения
+│   ├── qlearning.py       # Реализация классического Q-обучения
+│   └── neural_agent.py    # Реализация нейросетевых агентов (DQN, A2C)
 └── utils/
     ├── analysis.py        # Функции для анализа результатов
     ├── simulation.py      # Функции для запуска симуляций
@@ -41,7 +42,15 @@ theorygamesdl/
 - `sp`: Snowdrift Problem
 - `wmp`: War of Attrition
 
+## Поддерживаемые типы агентов
+
+- Классическое Q-обучение
+- Глубокое Q-обучение (DQN)
+- Advantage Actor-Critic (A2C)
+
 ## Пример использования
+
+### Классическое Q-обучение
 
 ```python
 from theorygamesdl.models import SocialDilemma
@@ -59,6 +68,30 @@ pol1_y1, pol2_y1, q1c, q1d, q2c, q2d, history, h_rew = simulate(
 )
 ```
 
+### Нейросетевые агенты
+
+```python
+from theorygamesdl.utils.simulation import simulate_neural
+
+# Запуск симуляции с DQN агентами
+coop_probs1, coop_probs2, history, rewards = simulate_neural(
+    dilemma_type="pd",
+    payoffs=[3, 1, 0, 4],
+    agent_type="dqn",
+    episodes=1000,
+    eval_episodes=100
+)
+
+# Запуск симуляции с A2C агентами
+coop_probs1, coop_probs2, history, rewards = simulate_neural(
+    dilemma_type="pd",
+    payoffs=[3, 1, 0, 4],
+    agent_type="a2c",
+    episodes=1000,
+    eval_episodes=100
+)
+```
+
 Более подробные примеры можно найти в файле `example_notebook.ipynb`.
 
 ## Требования
@@ -69,3 +102,4 @@ pol1_y1, pol2_y1, q1c, q1d, q2c, q2d, history, h_rew = simulate(
 - Pandas
 - StatsModels
 - tqdm
+- PyTorch >= 1.7.0

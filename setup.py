@@ -10,6 +10,7 @@ setup(
         "pandas",
         "statsmodels",
         "tqdm",
+        "torch>=1.7.0",
     ],
     author="TheoryGamesDL Team",
     author_email="example@example.com",

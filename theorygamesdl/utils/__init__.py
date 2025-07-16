@@ -3,5 +3,5 @@
 """
 
 from .analysis import *
-from .simulation import *
+from .simulation import simulate, simulate_neural
 from .encoders import *
