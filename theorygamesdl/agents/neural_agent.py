@@ -172,6 +172,169 @@ class CriticModel(nn.Module):
         return self.fc3(x)
 
 
+class HistoryDQNAgent:
+    """
+    DQN агент с буфером истории (знает свои действия и награды)
+    """
+    def __init__(self, state_size, action_size, history_size=5, memory_size=2000, gamma=0.95, 
+                 epsilon=1.0, epsilon_min=0.01, epsilon_decay=0.995, learning_rate=0.001):
+        self.state_size = state_size
+        self.action_size = action_size
+        self.history_size = history_size
+        self.memory = deque(maxlen=memory_size)
+        self.gamma = gamma
+        self.epsilon = epsilon
+        self.epsilon_min = epsilon_min
+        self.epsilon_decay = epsilon_decay
+        self.learning_rate = learning_rate
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        
+        # История: действия и награды
+        self.action_history = deque(maxlen=history_size)
+        self.reward_history = deque(maxlen=history_size)
+        
+        # Размер входа: базовое состояние + история действий + история наград
+        input_size = state_size + history_size * 2
+        self.model = DQNModel(input_size, action_size).to(self.device)
+        self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
+    
+    def _get_state_with_history(self, state):
+        """Объединяет текущее состояние с историей"""
+        # Дополняем историю нулями если недостаточно данных
+        actions = list(self.action_history) + [0] * (self.history_size - len(self.action_history))
+        rewards = list(self.reward_history) + [0.0] * (self.history_size - len(self.reward_history))
+        
+        full_state = np.concatenate([state.flatten(), actions, rewards])
+        return full_state.reshape(1, -1)
+    
+    def remember(self, state, action, reward, next_state, done):
+        state_with_hist = self._get_state_with_history(state)
+        next_state_with_hist = self._get_state_with_history(next_state)
+        self.memory.append((state_with_hist, action, reward, next_state_with_hist, done))
+        
+        # Обновляем историю
+        self.action_history.append(action)
+        self.reward_history.append(reward)
+    
+    def act(self, state):
+        if np.random.rand() <= self.epsilon:
+            return random.randrange(self.action_size)
+        
+        state_with_hist = self._get_state_with_history(state)
+        state_tensor = torch.FloatTensor(state_with_hist).to(self.device)
+        with torch.no_grad():
+            act_values = self.model(state_tensor)
+        return torch.argmax(act_values).item()
+    
+    def replay(self, batch_size):
+        if len(self.memory) < batch_size:
+            return
+        
+        minibatch = random.sample(self.memory, batch_size)
+        for state, action, reward, next_state, done in minibatch:
+            target = reward
+            if not done:
+                next_state_tensor = torch.FloatTensor(next_state).to(self.device)
+                with torch.no_grad():
+                    target = reward + self.gamma * torch.max(self.model(next_state_tensor)).item()
+            
+            state_tensor = torch.FloatTensor(state).to(self.device)
+            target_f = self.model(state_tensor)
+            target_f_clone = target_f.clone()
+            target_f_clone[0, action] = target
+            
+            self.optimizer.zero_grad()
+            loss = F.mse_loss(target_f, target_f_clone)
+            loss.backward()
+            self.optimizer.step()
+        
+        if self.epsilon > self.epsilon_min:
+            self.epsilon *= self.epsilon_decay
+
+
+class FullHistoryDQNAgent:
+    """
+    DQN агент с полным буфером истории (знает действия всех игроков и награды)
+    """
+    def __init__(self, state_size, action_size, history_size=5, memory_size=2000, gamma=0.95, 
+                 epsilon=1.0, epsilon_min=0.01, epsilon_decay=0.995, learning_rate=0.001):
+        self.state_size = state_size
+        self.action_size = action_size
+        self.history_size = history_size
+        self.memory = deque(maxlen=memory_size)
+        self.gamma = gamma
+        self.epsilon = epsilon
+        self.epsilon_min = epsilon_min
+        self.epsilon_decay = epsilon_decay
+        self.learning_rate = learning_rate
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        
+        # История: свои действия, действия оппонента, награды
+        self.my_action_history = deque(maxlen=history_size)
+        self.opp_action_history = deque(maxlen=history_size)
+        self.reward_history = deque(maxlen=history_size)
+        
+        # Размер входа: базовое состояние + история своих действий + история действий оппонента + история наград
+        input_size = state_size + history_size * 3
+        self.model = DQNModel(input_size, action_size).to(self.device)
+        self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
+    
+    def _get_state_with_history(self, state):
+        """Объединяет текущее состояние с полной историей"""
+        my_actions = list(self.my_action_history) + [0] * (self.history_size - len(self.my_action_history))
+        opp_actions = list(self.opp_action_history) + [0] * (self.history_size - len(self.opp_action_history))
+        rewards = list(self.reward_history) + [0.0] * (self.history_size - len(self.reward_history))
+        
+        full_state = np.concatenate([state.flatten(), my_actions, opp_actions, rewards])
+        return full_state.reshape(1, -1)
+    
+    def remember(self, state, action, reward, next_state, done, opp_action=None):
+        state_with_hist = self._get_state_with_history(state)
+        next_state_with_hist = self._get_state_with_history(next_state)
+        self.memory.append((state_with_hist, action, reward, next_state_with_hist, done))
+        
+        # Обновляем историю
+        self.my_action_history.append(action)
+        self.reward_history.append(reward)
+        if opp_action is not None:
+            self.opp_action_history.append(opp_action)
+    
+    def act(self, state):
+        if np.random.rand() <= self.epsilon:
+            return random.randrange(self.action_size)
+        
+        state_with_hist = self._get_state_with_history(state)
+        state_tensor = torch.FloatTensor(state_with_hist).to(self.device)
+        with torch.no_grad():
+            act_values = self.model(state_tensor)
+        return torch.argmax(act_values).item()
+    
+    def replay(self, batch_size):
+        if len(self.memory) < batch_size:
+            return
+        
+        minibatch = random.sample(self.memory, batch_size)
+        for state, action, reward, next_state, done in minibatch:
+            target = reward
+            if not done:
+                next_state_tensor = torch.FloatTensor(next_state).to(self.device)
+                with torch.no_grad():
+                    target = reward + self.gamma * torch.max(self.model(next_state_tensor)).item()
+            
+            state_tensor = torch.FloatTensor(state).to(self.device)
+            target_f = self.model(state_tensor)
+            target_f_clone = target_f.clone()
+            target_f_clone[0, action] = target
+            
+            self.optimizer.zero_grad()
+            loss = F.mse_loss(target_f, target_f_clone)
+            loss.backward()
+            self.optimizer.step()
+        
+        if self.epsilon > self.epsilon_min:
+            self.epsilon *= self.epsilon_decay
+
+
 class A2CAgent:
     """
     Агент Advantage Actor-Critic (A2C)
@@ -387,6 +550,122 @@ def train_dqn_agents(game, episodes=1000, batch_size=32, state_size=2, action_si
     return agent1, agent2, history, rewards_history
 
 
+def train_history_dqn_agents(game, episodes=1000, batch_size=32, state_size=2, action_size=2, history_size=5):
+    """
+    Обучение двух DQN агентов с буфером истории
+    """
+    agent1 = HistoryDQNAgent(state_size, action_size, history_size)
+    agent2 = HistoryDQNAgent(state_size, action_size, history_size)
+    
+    history = []
+    rewards_history = []
+    
+    for e in range(episodes):
+        game.reset()
+        state1 = np.zeros((1, state_size))
+        state2 = np.zeros((1, state_size))
+        
+        state1[0][0] = game.curr_state
+        state2[0][0] = game.curr_state
+        state1[0][1] = 0
+        state2[0][1] = 0
+        
+        done = False
+        
+        while not done:
+            action1 = agent1.act(state1)
+            action2 = agent2.act(state2)
+            
+            game.action()
+            
+            reward1, _ = game.reward_func(action1, action2, 0)
+            reward2, _ = game.reward_func(action2, action1, 1)
+            
+            next_state1 = np.zeros((1, state_size))
+            next_state2 = np.zeros((1, state_size))
+            
+            next_state1[0][0] = game.curr_state
+            next_state2[0][0] = game.curr_state
+            next_state1[0][1] = action2
+            next_state2[0][1] = action1
+            
+            done = game.curr_state >= game.steps_number - 1
+            
+            agent1.remember(state1, action1, reward1, next_state1, done)
+            agent2.remember(state2, action2, reward2, next_state2, done)
+            
+            state1 = next_state1
+            state2 = next_state2
+            
+            history.append([action1, action2])
+            rewards_history.append([reward1, reward2])
+            
+            if len(agent1.memory) > batch_size:
+                agent1.replay(batch_size)
+            if len(agent2.memory) > batch_size:
+                agent2.replay(batch_size)
+    
+    return agent1, agent2, history, rewards_history
+
+
+def train_full_history_dqn_agents(game, episodes=1000, batch_size=32, state_size=2, action_size=2, history_size=5):
+    """
+    Обучение двух DQN агентов с полным буфером истории
+    """
+    agent1 = FullHistoryDQNAgent(state_size, action_size, history_size)
+    agent2 = FullHistoryDQNAgent(state_size, action_size, history_size)
+    
+    history = []
+    rewards_history = []
+    
+    for e in range(episodes):
+        game.reset()
+        state1 = np.zeros((1, state_size))
+        state2 = np.zeros((1, state_size))
+        
+        state1[0][0] = game.curr_state
+        state2[0][0] = game.curr_state
+        state1[0][1] = 0
+        state2[0][1] = 0
+        
+        done = False
+        
+        while not done:
+            action1 = agent1.act(state1)
+            action2 = agent2.act(state2)
+            
+            game.action()
+            
+            reward1, _ = game.reward_func(action1, action2, 0)
+            reward2, _ = game.reward_func(action2, action1, 1)
+            
+            next_state1 = np.zeros((1, state_size))
+            next_state2 = np.zeros((1, state_size))
+            
+            next_state1[0][0] = game.curr_state
+            next_state2[0][0] = game.curr_state
+            next_state1[0][1] = action2
+            next_state2[0][1] = action1
+            
+            done = game.curr_state >= game.steps_number - 1
+            
+            agent1.remember(state1, action1, reward1, next_state1, done, action2)
+            agent2.remember(state2, action2, reward2, next_state2, done, action1)
+            
+            state1 = next_state1
+            state2 = next_state2
+            
+            history.append([action1, action2])
+            rewards_history.append([reward1, reward2])
+            
+            if len(agent1.memory) > batch_size:
+                agent1.replay(batch_size)
+            if len(agent2.memory) > batch_size:
+                agent2.replay(batch_size)
+    
+    return agent1, agent2, history, rewards_history
+
+
 def train_a2c_agents(game, episodes=1000, state_size=2, action_size=2):
     """
     Обучение двух A2C агентов для игры
@@ -505,34 +784,45 @@ def evaluate_neural_agents(game, agent1, agent2, episodes=100, state_size=2):
         done = False
         
         while not done:
-            # Для DQN агента
-            if isinstance(agent1, DQNAgent):
+            # Определяем действия агентов
+            if isinstance(agent1, (HistoryDQNAgent, FullHistoryDQNAgent)):
+                action1 = agent1.act(state1)
+                state_with_hist1 = agent1._get_state_with_history(state1)
+                state_tensor1 = torch.FloatTensor(state_with_hist1).to(agent1.device)
+                with torch.no_grad():
+                    act_values1 = agent1.model(state_tensor1)
+                    probs1 = F.softmax(act_values1, dim=1)[0]
+                cooperation_prob1 = probs1[1].item()
+            elif isinstance(agent1, DQNAgent):
                 state_tensor1 = torch.FloatTensor(state1).to(agent1.device)
                 with torch.no_grad():
                     act_values1 = agent1.model(state_tensor1)
+                    probs1 = F.softmax(act_values1, dim=1)[0]
                 action1 = torch.argmax(act_values1).item()
-                # Вероятность сотрудничества (действие 1)
-                act_values1_np = act_values1.cpu().numpy()[0]
-                cooperation_prob1 = act_values1_np[1] / np.sum(act_values1_np)
-            # Для A2C агента
-            else:
+                cooperation_prob1 = probs1[1].item()
+            else:  # A2C
                 state_tensor1 = torch.FloatTensor(state1).to(agent1.device)
                 with torch.no_grad():
                     policy1 = agent1.actor(state_tensor1).cpu().numpy()[0]
                 action1 = np.argmax(policy1)
                 cooperation_prob1 = policy1[1]
             
-            # Для DQN агента
-            if isinstance(agent2, DQNAgent):
+            if isinstance(agent2, (HistoryDQNAgent, FullHistoryDQNAgent)):
+                action2 = agent2.act(state2)
+                state_with_hist2 = agent2._get_state_with_history(state2)
+                state_tensor2 = torch.FloatTensor(state_with_hist2).to(agent2.device)
+                with torch.no_grad():
+                    act_values2 = agent2.model(state_tensor2)
+                    probs2 = F.softmax(act_values2, dim=1)[0]
+                cooperation_prob2 = probs2[1].item()
+            elif isinstance(agent2, DQNAgent):
                 state_tensor2 = torch.FloatTensor(state2).to(agent2.device)
                 with torch.no_grad():
                     act_values2 = agent2.model(state_tensor2)
+                    probs2 = F.softmax(act_values2, dim=1)[0]
                 action2 = torch.argmax(act_values2).item()
-                # Вероятность сотрудничества (действие 1)
-                act_values2_np = act_values2.cpu().numpy()[0]
-                cooperation_prob2 = act_values2_np[1] / np.sum(act_values2_np)
-            # Для A2C агента
-            else:
+                cooperation_prob2 = probs2[1].item()
+            else:  # A2C
                 state_tensor2 = torch.FloatTensor(state2).to(agent2.device)
                 with torch.no_grad():
                     policy2 = agent2.actor(state_tensor2).cpu().numpy()[0]
@@ -555,6 +845,23 @@ def evaluate_neural_agents(game, agent1, agent2, episodes=100, state_size=2):
             
             next_state1[0][1] = action2  # Действие оппонента
             next_state2[0][1] = action1  # Действие оппонента
+            
+            # Обновляем историю для агентов с буфером
+            if isinstance(agent1, HistoryDQNAgent):
+                agent1.action_history.append(action1)
+                agent1.reward_history.append(reward1)
+            elif isinstance(agent1, FullHistoryDQNAgent):
+                agent1.my_action_history.append(action1)
+                agent1.opp_action_history.append(action2)
+                agent1.reward_history.append(reward1)
+                
+            if isinstance(agent2, HistoryDQNAgent):
+                agent2.action_history.append(action2)
+                agent2.reward_history.append(reward2)
+            elif isinstance(agent2, FullHistoryDQNAgent):
+                agent2.my_action_history.append(action2)
+                agent2.opp_action_history.append(action1)
+                agent2.reward_history.append(reward2)
             
             # Обновляем состояния
             state1 = next_state1

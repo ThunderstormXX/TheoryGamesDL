@@ -5,7 +5,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from ..models import SocialDilemma
-from ..agents import sd_qlearning, train_dqn_agents, train_a2c_agents, evaluate_neural_agents
+from ..agents import sd_qlearning, train_dqn_agents, train_a2c_agents, train_history_dqn_agents, train_full_history_dqn_agents, evaluate_neural_agents
 
 
 def simulate(pd=[3, 1, 0, 4], time=100000, gamma=0.9, alpha=0.01, beta=1, show_q=False, show_plots=True):
@@ -83,55 +83,63 @@ def simulate(pd=[3, 1, 0, 4], time=100000, gamma=0.9, alpha=0.01, beta=1, show_q
     return pol1_y1, pol2_y1, q1c, q1d, q2c, q2d, history[0], h_rew[0]
 
 
-def simulate_neural(dilemma_type="pd", payoffs=None, agent_type="dqn", episodes=1000, 
-                   eval_episodes=100, show_plots=True):
-    """
-    Запускает симуляцию социальной дилеммы с нейросетевыми агентами
-    
-    Args:
-        dilemma_type (str): Тип дилеммы ('pd', 'sh', 'ch', 'bs', 'hs', 'sp', 'wmp')
-        payoffs (list): Выплаты для дилеммы (если None, используются значения по умолчанию)
-        agent_type (str): Тип агента ('dqn' или 'a2c')
-        episodes (int): Количество эпизодов обучения
-        eval_episodes (int): Количество эпизодов для оценки
-        show_plots (bool): Показывать ли графики
-        
-    Returns:
-        tuple: (вероятности сотрудничества игрока 1, вероятности сотрудничества игрока 2, история)
-    """
-    # Создаем игру с заданными параметрами
+def simulate_neural(
+    dilemma_type="pd",
+    payoffs=None,
+    agent_type="dqn",
+    episodes=1000,
+    eval_episodes=100,
+    show_plots=True,
+    return_train_data=False,
+    **kwargs
+):
     if payoffs is not None and dilemma_type == "pd":
         game = SocialDilemma(pd=payoffs, dilemma_type=dilemma_type, steps_number=1)
     else:
         game = SocialDilemma(dilemma_type=dilemma_type, steps_number=1)
-    
-    # Обучаем агентов
-    if agent_type.lower() == "dqn":
-        agent1, agent2, train_history, train_rewards = train_dqn_agents(
-            game, episodes=episodes, state_size=2, action_size=2
+
+    # Тренировка
+    if agent_type.lower() == "history_dqn":
+        agent1, agent2, train_history, train_rewards = train_history_dqn_agents(
+            game, episodes=episodes, state_size=2, action_size=2, **kwargs
         )
-    elif agent_type.lower() == "a2c":
-        agent1, agent2, train_history, train_rewards = train_a2c_agents(
-            game, episodes=episodes, state_size=2, action_size=2
+    elif agent_type.lower() == "full_history_dqn":
+        agent1, agent2, train_history, train_rewards = train_full_history_dqn_agents(
+            game, episodes=episodes, state_size=2, action_size=2, **kwargs
         )
     else:
-        raise ValueError("Неизвестный тип агента. Используйте 'dqn' или 'a2c'.")
-    
-    # Оцениваем обученных агентов
-    history, rewards, coop_probs1, coop_probs2 = evaluate_neural_agents(
+        raise ValueError("Неизвестный тип агента. Используйте 'history_dqn' или 'full_history_dqn'.")
+
+    # Оценка
+    history_eval, rewards_eval, coop_probs1_eval, coop_probs2_eval = evaluate_neural_agents(
         game, agent1, agent2, episodes=eval_episodes, state_size=2
     )
-    
-    # Визуализация результатов
+
+    # Получаем вероятности сотрудничества на обучении
+    coop_probs1_train = [prob[0] for prob in train_history]
+    coop_probs2_train = [prob[1] for prob in train_history]
+
     if show_plots:
-        plt.figure(figsize=(10, 6))
-        plt.plot(coop_probs1, label='Player 1')
-        plt.plot(coop_probs2, label='Player 2')
-        plt.title(f'Вероятность сотрудничества ({agent_type.upper()} агенты)')
+        # Сравниваем обучение и оценку
+        plt.figure(figsize=(12, 6))
+        plt.plot(coop_probs1_train, label='Игрок 1 (обучение)', linestyle='--')
+        plt.plot(coop_probs2_train, label='Игрок 2 (обучение)', linestyle='--')
+        plt.plot(coop_probs1_eval, label='Игрок 1 (валидация)', linewidth=2)
+        plt.plot(coop_probs2_eval, label='Игрок 2 (валидация)', linewidth=2)
+
+        agent_name = {
+            'history_dqn': 'DQN с историей',
+            'full_history_dqn': 'DQN с полной историей'
+        }.get(agent_type.lower(), agent_type.upper())
+        plt.title(f'Сотрудничество: {agent_name}')
         plt.xlabel('Шаг')
         plt.ylabel('Вероятность сотрудничества')
         plt.legend()
         plt.grid(True)
+        plt.tight_layout()
         plt.show()
-    
-    return coop_probs1, coop_probs2, history, rewards
+
+    if return_train_data:
+        return coop_probs1_train, coop_probs2_train, train_history, train_rewards
+    else:
+        return coop_probs1_eval, coop_probs2_eval, history_eval, rewards_eval
