@@ -1,0 +1,17 @@
+# Логи и результаты экспериментов
+logs/*.json
+logs/*.txt
+
+# Визуализации
+visualizations/*.png
+visualizations/*.jpg
+visualizations/*.pdf
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Временные файлы
+*.tmp
+*.temp
