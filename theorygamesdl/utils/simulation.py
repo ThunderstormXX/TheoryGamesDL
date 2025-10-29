@@ -4,6 +4,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+from tqdm import tqdm
 from ..models import SocialDilemma
 from ..agents import sd_qlearning, train_dqn_agents, train_a2c_agents, train_history_dqn_agents, train_full_history_dqn_agents, evaluate_neural_agents
 
@@ -101,11 +102,11 @@ def simulate_neural(
     # Тренировка
     if agent_type.lower() == "history_dqn":
         agent1, agent2, train_history, train_rewards = train_history_dqn_agents(
-            game, episodes=episodes, state_size=2, action_size=2, **kwargs
+            game, episodes=episodes, state_size=2, action_size=2, progress_bar=tqdm, **kwargs
         )
     elif agent_type.lower() == "full_history_dqn":
         agent1, agent2, train_history, train_rewards = train_full_history_dqn_agents(
-            game, episodes=episodes, state_size=2, action_size=2, **kwargs
+            game, episodes=episodes, state_size=2, action_size=2, progress_bar=tqdm, **kwargs
         )
     else:
         raise ValueError("Неизвестный тип агента. Используйте 'history_dqn' или 'full_history_dqn'.")

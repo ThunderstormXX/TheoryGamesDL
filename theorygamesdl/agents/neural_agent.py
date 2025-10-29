@@ -550,7 +550,7 @@ def train_dqn_agents(game, episodes=1000, batch_size=32, state_size=2, action_si
     return agent1, agent2, history, rewards_history
 
 
-def train_history_dqn_agents(game, episodes=1000, batch_size=32, state_size=2, action_size=2, history_size=5):
+def train_history_dqn_agents(game, episodes=1000, batch_size=32, state_size=2, action_size=2, history_size=5, progress_bar=None):
     """
     Обучение двух DQN агентов с буфером истории
     """
@@ -560,7 +560,8 @@ def train_history_dqn_agents(game, episodes=1000, batch_size=32, state_size=2, a
     history = []
     rewards_history = []
     
-    for e in range(episodes):
+    episode_range = progress_bar(range(episodes), desc="Обучение History DQN") if progress_bar else range(episodes)
+    for e in episode_range:
         game.reset()
         state1 = np.zeros((1, state_size))
         state2 = np.zeros((1, state_size))
@@ -608,7 +609,7 @@ def train_history_dqn_agents(game, episodes=1000, batch_size=32, state_size=2, a
     return agent1, agent2, history, rewards_history
 
 
-def train_full_history_dqn_agents(game, episodes=1000, batch_size=32, state_size=2, action_size=2, history_size=5):
+def train_full_history_dqn_agents(game, episodes=1000, batch_size=32, state_size=2, action_size=2, history_size=5, progress_bar=None):
     """
     Обучение двух DQN агентов с полным буфером истории
     """
@@ -618,7 +619,8 @@ def train_full_history_dqn_agents(game, episodes=1000, batch_size=32, state_size
     history = []
     rewards_history = []
     
-    for e in range(episodes):
+    episode_range = progress_bar(range(episodes), desc="Обучение Full History DQN") if progress_bar else range(episodes)
+    for e in episode_range:
         game.reset()
         state1 = np.zeros((1, state_size))
         state2 = np.zeros((1, state_size))
