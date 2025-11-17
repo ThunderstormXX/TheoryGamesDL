@@ -35,6 +35,24 @@ class Game:
     def get_payoff(self, choices: Sequence[int]) -> float:
         """Возвращает выигрыш для заданной комбинации выборов (игрок 0 по умолчанию)."""
         return float(self.payoff_tensor[tuple(choices)])
+    
+    def get_payoffs(self, choices: Sequence[int]) -> Tuple[float, ...]:
+        """
+        Возвращает кортеж выплат (длиной n_players) для данной комбинации choices.
+        Использует self.payoff_tensor, который по факту даёт выплату для 'игрока 0'.
+        Для получения выплат остальных игроков мы циклически сдвигаем профиль действий.
+        """
+        if len(choices) != self.n_players:
+            raise ValueError("Length of choices must be n_players")
+
+        payoffs = []
+        # для каждого игрока i: сделаем ротацию так, чтобы i стал позицией 0 и возьмём значение
+        for i in range(self.n_players):
+            # циклический сдвиг: new_choices[0] = choices[i], new_choices[1] = choices[i+1], ...
+            new_choices = tuple(choices[(i + j) % self.n_players] for j in range(self.n_players))
+            pay = float(self.payoff_tensor[new_choices])
+            payoffs.append(pay)
+        return tuple(payoffs)    
 
     def analyze(self) -> None:
         """Печатает базовую сводку по игре и средним выигрышам при выборе 0/1 каждым игроком."""
@@ -126,18 +144,21 @@ class GameFactory:
         Обобщенная дилемма заключенного для n игроков (возврат для игрока 0).
         """
         def prisoners_dilemma_payoff(choices: Sequence[int]) -> float:
-            cooperators = sum(choices)
-            defectors = n_players - cooperators
-            if choices[0] == 1:  # игрок 0 сотрудничает
-                if cooperators == n_players:
-                    return float(cooperation_reward)
+            player0 = choices[0]
+            others = choices[1:]
+
+            coop_others = sum(1 for c in others if c == 0)
+
+            if player0 == 0:  # cooperate
+                if coop_others == len(others):
+                    return cooperation_reward      # (C,C,...)
                 else:
-                    return float(sucker_payoff)
-            else:  # игрок 0 предает
-                if defectors == n_players:
-                    return float(mutual_defection_punishment)
+                    return sucker_payoff           # (C,D,...)
+            else:  # defect
+                if coop_others == 0:
+                    return mutual_defection_punishment  # (D,D,...)
                 else:
-                    return float(defection_temptation)
+                    return defection_temptation         # (D,C,...)
         return Game(n_players, prisoners_dilemma_payoff, name=f"Generalized Prisoner's Dilemma ({n_players} players)")
 
     @staticmethod
