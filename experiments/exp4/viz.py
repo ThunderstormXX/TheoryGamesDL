@@ -311,3 +311,183 @@ def plot_two_policies_cdf(policy_a: np.ndarray, policy_b: np.ndarray,
     plot_policy_cdf(pb, actions=actions, N=N, rng=rng, ax=axes[1], title=title_b)
     plt.tight_layout()
     plt.show()
+
+
+def plot_comprehensive_results(rewards_a: List[float], rewards_b: List[float],
+                               q_values_a: List[np.ndarray], q_values_b: List[np.ndarray],
+                               policies_a: List[np.ndarray], policies_b: List[np.ndarray],
+                               action_values: np.ndarray | None = None,
+                               window_size: int = 100, save_path: str | None = None) -> None:
+    """Комплексная визуализация результатов эксперимента для двух агентов.
+    
+    Args:
+        rewards_a, rewards_b: списки наград во времени
+        q_values_a, q_values_b: списки Q-функций (np.ndarray) во времени
+        policies_a, policies_b: списки распределений политик во времени
+        action_values: значения действий [0, 1] для подписей осей (если None, используются индексы)
+        window_size: размер окна для скользящего среднего наград
+        save_path: если указан, сохраняет график в файл вместо показа
+    """
+    if len(rewards_a) == 0:
+        raise ValueError("Empty rewards list")
+    
+    # Скользящее среднее для наград
+    def moving_average(data, window):
+        if len(data) < window:
+            window = len(data)
+        cumsum = np.cumsum(np.insert(data, 0, 0))
+        return (cumsum[window:] - cumsum[:-window]) / window
+    
+    rewards_a_smooth = moving_average(rewards_a, window_size)
+    rewards_b_smooth = moving_average(rewards_b, window_size)
+    
+    # Преобразуем списки в массивы для теплокарт
+    Q_a = np.stack(q_values_a, axis=0).T  # (A, T)
+    Q_b = np.stack(q_values_b, axis=0).T  # (A, T)
+    P_a = np.stack(policies_a, axis=0).T  # (A, T)
+    P_b = np.stack(policies_b, axis=0).T  # (A, T)
+    
+    # Создаем большую фигуру с несколькими подграфиками
+    fig = plt.figure(figsize=(20, 14))
+    gs = fig.add_gridspec(4, 2, hspace=0.35, wspace=0.3, height_ratios=[1, 1, 1, 0.8])
+    
+    # 1. Награды во времени
+    ax1 = fig.add_subplot(gs[0, :])
+    time_steps = np.arange(len(rewards_a))
+    ax1.plot(time_steps, rewards_a, alpha=0.3, color='steelblue', linewidth=0.5)
+    ax1.plot(time_steps, rewards_b, alpha=0.3, color='salmon', linewidth=0.5)
+    if len(rewards_a_smooth) > 0:
+        ax1.plot(time_steps[window_size-1:], rewards_a_smooth, 
+                label=f'Agent A (MA-{window_size})', color='darkblue', linewidth=2)
+        ax1.plot(time_steps[window_size-1:], rewards_b_smooth, 
+                label=f'Agent B (MA-{window_size})', color='darkred', linewidth=2)
+    ax1.set_xlabel('Время (шаги)')
+    ax1.set_ylabel('Награда')
+    ax1.set_title('Эволюция наград')
+    ax1.legend()
+    ax1.grid(True, alpha=0.3)
+    
+    # Настройка меток для оси Y (действия от 0 до 1)
+    num_actions = Q_a.shape[0]
+    if action_values is not None and len(action_values) == num_actions:
+        # Выбираем ~10 меток для читаемости
+        num_ticks = min(10, num_actions)
+        tick_indices = np.linspace(0, num_actions - 1, num_ticks, dtype=int)
+        tick_labels = [f"{action_values[i]:.2f}" for i in tick_indices]
+    else:
+        tick_indices = np.arange(0, num_actions, max(1, num_actions // 10))
+        tick_labels = [str(i) for i in tick_indices]
+    
+    # 2. Q-функции Agent A
+    ax2 = fig.add_subplot(gs[1, 0])
+    im2 = ax2.imshow(Q_a, aspect='auto', origin='lower', cmap='RdYlGn', extent=[0, Q_a.shape[1], 0, 1])
+    ax2.set_title('Q-функция Agent A')
+    ax2.set_xlabel('Время')
+    ax2.set_ylabel('Действие (непрерывное)')
+    ax2.set_yticks(np.linspace(0, 1, len(tick_indices)))
+    ax2.set_yticklabels(tick_labels)
+    plt.colorbar(im2, ax=ax2, label='Q-value')
+    
+    # 3. Q-функции Agent B
+    ax3 = fig.add_subplot(gs[1, 1])
+    im3 = ax3.imshow(Q_b, aspect='auto', origin='lower', cmap='RdYlGn', extent=[0, Q_b.shape[1], 0, 1])
+    ax3.set_title('Q-функция Agent B')
+    ax3.set_xlabel('Время')
+    ax3.set_ylabel('Действие (непрерывное)')
+    ax3.set_yticks(np.linspace(0, 1, len(tick_indices)))
+    ax3.set_yticklabels(tick_labels)
+    plt.colorbar(im3, ax=ax3, label='Q-value')
+    
+    # 4. Политики Agent A
+    ax4 = fig.add_subplot(gs[2, 0])
+    im4 = ax4.imshow(P_a, aspect='auto', origin='lower', cmap='viridis', extent=[0, P_a.shape[1], 0, 1])
+    ax4.set_title('Политика Agent A')
+    ax4.set_xlabel('Время')
+    ax4.set_ylabel('Действие (непрерывное)')
+    ax4.set_yticks(np.linspace(0, 1, len(tick_indices)))
+    ax4.set_yticklabels(tick_labels)
+    plt.colorbar(im4, ax=ax4, label='P(action)')
+    
+    # 5. Политики Agent B
+    ax5 = fig.add_subplot(gs[2, 1])
+    im5 = ax5.imshow(P_b, aspect='auto', origin='lower', cmap='viridis', extent=[0, P_b.shape[1], 0, 1])
+    ax5.set_title('Политика Agent B')
+    ax5.set_xlabel('Время')
+    ax5.set_ylabel('Действие (непрерывное)')
+    ax5.set_yticks(np.linspace(0, 1, len(tick_indices)))
+    ax5.set_yticklabels(tick_labels)
+    plt.colorbar(im5, ax=ax5, label='P(action)')
+    
+    # 6. Начальные распределения политик (гистограммы)
+    ax6 = fig.add_subplot(gs[3, 0])
+    initial_policy_a = policies_a[0]
+    initial_policy_b = policies_b[0]
+    
+    if action_values is not None:
+        x_vals = action_values
+        width = (action_values[1] - action_values[0]) * 0.35 if len(action_values) > 1 else 0.015
+    else:
+        x_vals = np.arange(num_actions)
+        width = 0.35
+    
+    ax6.bar(x_vals - width/2, initial_policy_a, width=width, label='Agent A', 
+            color='steelblue', alpha=0.8, edgecolor='black', linewidth=0.5)
+    ax6.bar(x_vals + width/2, initial_policy_b, width=width, label='Agent B', 
+            color='salmon', alpha=0.8, edgecolor='black', linewidth=0.5)
+    ax6.set_xlabel('Действие')
+    ax6.set_ylabel('Вероятность')
+    ax6.set_title('Начальные распределения политик')
+    ax6.legend()
+    ax6.grid(True, alpha=0.3, axis='y')
+    if action_values is not None:
+        ax6.set_xlim(-0.05, 1.05)
+    
+    # 7. Финальные распределения политик (гистограммы)
+    ax7 = fig.add_subplot(gs[3, 1])
+    final_policy_a = policies_a[-1]
+    final_policy_b = policies_b[-1]
+    
+    ax7.bar(x_vals - width/2, final_policy_a, width=width, label='Agent A', 
+            color='steelblue', alpha=0.8, edgecolor='black', linewidth=0.5)
+    ax7.bar(x_vals + width/2, final_policy_b, width=width, label='Agent B', 
+            color='salmon', alpha=0.8, edgecolor='black', linewidth=0.5)
+    ax7.set_xlabel('Действие')
+    ax7.set_ylabel('Вероятность')
+    ax7.set_title('Финальные распределения политик')
+    ax7.legend()
+    ax7.grid(True, alpha=0.3, axis='y')
+    if action_values is not None:
+        ax7.set_xlim(-0.05, 1.05)
+    
+    plt.suptitle('Комплексный анализ обучения агентов', fontsize=16, y=0.995)
+    
+    if save_path:
+        plt.savefig(save_path, dpi=150, bbox_inches='tight')
+        print(f"График сохранен в: {save_path}")
+    else:
+        plt.show()
+    
+    # Дополнительная статистика
+    print("\n" + "="*60)
+    print("СТАТИСТИКА ОБУЧЕНИЯ")
+    print("="*60)
+    print(f"Средняя награда Agent A: {np.mean(rewards_a):.4f} ± {np.std(rewards_a):.4f}")
+    print(f"Средняя награда Agent B: {np.mean(rewards_b):.4f} ± {np.std(rewards_b):.4f}")
+    print(f"\nПоследние 100 шагов:")
+    print(f"  Agent A: {np.mean(rewards_a[-100:]):.4f}")
+    print(f"  Agent B: {np.mean(rewards_b[-100:]):.4f}")
+    print(f"\nФинальные Q-значения:")
+    print(f"  Agent A: min={Q_a[:,-1].min():.3f}, max={Q_a[:,-1].max():.3f}, mean={Q_a[:,-1].mean():.3f}")
+    print(f"  Agent B: min={Q_b[:,-1].min():.3f}, max={Q_b[:,-1].max():.3f}, mean={Q_b[:,-1].mean():.3f}")
+    print(f"\nФинальное распределение политик:")
+    final_policy_a = policies_a[-1]
+    final_policy_b = policies_b[-1]
+    print(f"  Agent A: энтропия={-np.sum(final_policy_a * np.log(final_policy_a + 1e-10)):.3f}")
+    print(f"  Agent B: энтропия={-np.sum(final_policy_b * np.log(final_policy_b + 1e-10)):.3f}")
+    if action_values is not None:
+        print(f"  Agent A: макс. вероятность={final_policy_a.max():.3f} (действие {action_values[final_policy_a.argmax()]:.3f})")
+        print(f"  Agent B: макс. вероятность={final_policy_b.max():.3f} (действие {action_values[final_policy_b.argmax()]:.3f})")
+    else:
+        print(f"  Agent A: макс. вероятность={final_policy_a.max():.3f} (индекс {final_policy_a.argmax()})")
+        print(f"  Agent B: макс. вероятность={final_policy_b.max():.3f} (индекс {final_policy_b.argmax()})")
+    print("="*60 + "\n")
