@@ -121,3 +121,193 @@ def plot_joint_policy_heatmap(policy_a: np.ndarray, policy_b: np.ndarray, action
     plt.colorbar(im, ax=ax, label='P(a)*P(b)')
     plt.tight_layout()
     plt.show()
+
+
+# -----------------------------
+# PMF / CDF визуализации
+# -----------------------------
+
+def _default_width_from_actions(actions: np.ndarray) -> float:
+    actions = np.array(actions, dtype=float)
+    if actions.ndim != 1 or len(actions) == 0:
+        return 0.4
+    if len(actions) == 1:
+        return 0.4
+    # предполагаем равномерную сетку
+    return float((actions[1] - actions[0]) * 0.8)
+
+
+def plot_two_policies_bar(policy_a: np.ndarray, policy_b: np.ndarray,
+                          actions: np.ndarray | None = None,
+                          title_a: str = "Гистограмма политики — Agent A",
+                          title_b: str = "Гистограмма политики — Agent B",
+                          color_a: str = 'steelblue', color_b: str = 'salmon') -> None:
+    """Столбчатые диаграммы для двух политик (только теоретические PMF).
+
+    Если задан actions (значения на [0,1]), столбики ставятся по этим X; иначе по индексам.
+    """
+    pa = np.array(policy_a, dtype=float)
+    pb = np.array(policy_b, dtype=float)
+    A = len(pa)
+    assert pb.shape == pa.shape, "policy_a and policy_b must have same shape"
+
+    if actions is None:
+        xs = np.arange(A)
+        width = 0.8
+        xlim = (xs.min() - 0.5, xs.max() + 0.5)
+        xticks = xs
+        xticklabels = [str(i) for i in xs]
+    else:
+        xs = np.array(actions, dtype=float)
+        width = _default_width_from_actions(xs)
+        pad = (xs.max() - xs.min()) * 0.05 if A > 1 else 0.05
+        xlim = (xs.min() - pad, xs.max() + pad)
+        xticks = xs
+        xticklabels = [f"{x:.2f}" for x in xs]
+
+    fig, axes = plt.subplots(1, 2, figsize=(14, 4), sharey=True)
+
+    axes[0].bar(xs, pa, width=width, color=color_a, edgecolor='black')
+    axes[0].set_title(title_a)
+    axes[0].set_xlabel('Действие')
+    axes[0].set_ylabel('Вероятность')
+    axes[0].set_xlim(xlim)
+    axes[0].set_xticks(xticks)
+    axes[0].set_xticklabels(xticklabels, rotation=45)
+
+    axes[1].bar(xs, pb, width=width, color=color_b, edgecolor='black')
+    axes[1].set_title(title_b)
+    axes[1].set_xlabel('Действие')
+    axes[1].set_xlim(xlim)
+    axes[1].set_xticks(xticks)
+    axes[1].set_xticklabels(xticklabels, rotation=45)
+
+    plt.tight_layout()
+    plt.show()
+
+
+def plot_two_policies_pmf_vs_empirical(policy_a: np.ndarray, policy_b: np.ndarray,
+                                       actions: np.ndarray | None = None, N: int = 20000,
+                                       rng: np.random.Generator | None = None,
+                                       title_a: str = 'Распределение действия — Agent A',
+                                       title_b: str = 'Распределение действия — Agent B',
+                                       color_emp_a: str = 'steelblue', color_emp_b: str = 'salmon',
+                                       color_the: str = 'orange') -> None:
+    """Сравнение эмпирической PMF (по сэмплам) и теоретической PMF (политика) для двух агентов.
+
+    Bars = эмпирические частоты, Line = теоретические вероятности политики.
+    Если actions задан, ось X — значения действий; иначе индексы.
+    """
+    pa = np.array(policy_a, dtype=float)
+    pb = np.array(policy_b, dtype=float)
+    A = len(pa)
+    assert pb.shape == pa.shape, "policy_a and policy_b must have same shape"
+
+    if rng is None:
+        rng = np.random.default_rng(0)
+
+    idx_a = rng.choice(A, size=int(N), p=pa)
+    idx_b = rng.choice(A, size=int(N), p=pb)
+    emp_a = np.bincount(idx_a, minlength=A) / float(N)
+    emp_b = np.bincount(idx_b, minlength=A) / float(N)
+
+    if actions is None:
+        xs = np.arange(A)
+        width = 0.8
+        xlim = (xs.min() - 0.5, xs.max() + 0.5)
+        xticks = xs
+        xticklabels = [str(i) for i in xs]
+    else:
+        xs = np.array(actions, dtype=float)
+        width = _default_width_from_actions(xs)
+        pad = (xs.max() - xs.min()) * 0.05 if A > 1 else 0.05
+        xlim = (xs.min() - pad, xs.max() + pad)
+        xticks = xs
+        xticklabels = [f"{x:.2f}" for x in xs]
+
+    fig, axes = plt.subplots(1, 2, figsize=(14, 4), sharey=True)
+
+    axes[0].bar(xs, emp_a, width=width, color=color_emp_a, edgecolor='black', label='эмпирика')
+    axes[0].plot(xs, pa, 'o-', color=color_the, label='теория (политика)')
+    axes[0].set_title(title_a)
+    axes[0].set_xlabel('Действие')
+    axes[0].set_ylabel('Вероятность')
+    axes[0].set_xlim(xlim)
+    axes[0].set_xticks(xticks)
+    axes[0].set_xticklabels(xticklabels, rotation=45)
+    axes[0].legend()
+
+    axes[1].bar(xs, emp_b, width=width, color=color_emp_b, edgecolor='black', label='эмпирика')
+    axes[1].plot(xs, pb, 'o-', color=color_the, label='теория (политика)')
+    axes[1].set_title(title_b)
+    axes[1].set_xlabel('Действие')
+    axes[1].set_xlim(xlim)
+    axes[1].set_xticks(xticks)
+    axes[1].set_xticklabels(xticklabels, rotation=45)
+    axes[1].legend()
+
+    plt.tight_layout()
+    plt.show()
+
+
+def plot_policy_cdf(policy: np.ndarray, actions: np.ndarray | None = None,
+                    N: int | None = None, rng: np.random.Generator | None = None,
+                    ax: plt.Axes | None = None, title: str = 'Функция распределения F(x)',
+                    color_emp: str = 'steelblue', color_the: str = 'orange') -> plt.Axes:
+    """Строит CDF политики. Если задан N, добавляет эмпирическую CDF по сэмплам.
+
+    Возвращает Axes с нарисованным графиком.
+    """
+    p = np.array(policy, dtype=float)
+    A = len(p)
+    if actions is None:
+        xs = np.arange(A)
+    else:
+        xs = np.array(actions, dtype=float)
+
+    cdf_the = np.cumsum(p)
+
+    if ax is None:
+        fig, ax = plt.subplots(1, 1, figsize=(7, 4))
+
+    if N is not None and N > 0:
+        if rng is None:
+            rng = np.random.default_rng(0)
+        idx = rng.choice(A, size=int(N), p=p)
+        emp = np.bincount(idx, minlength=A) / float(N)
+        cdf_emp = np.cumsum(emp)
+        ax.step(xs, cdf_emp, where='post', color=color_emp, label='эмпирическая CDF')
+
+    ax.step(xs, cdf_the, where='post', color=color_the, linestyle='--', label='теоретическая CDF')
+    ax.set_title(title)
+    ax.set_xlabel('Действие')
+    ax.set_ylabel('F(x)')
+    # Автопределение границ по actions/индексам
+    if actions is not None:
+        pad = (xs.max() - xs.min()) * 0.05 if A > 1 else 0.5
+        ax.set_xlim(xs.min() - pad, xs.max() + pad)
+    else:
+        ax.set_xlim(-0.5, A - 0.5)
+    ax.set_ylim(-0.02, 1.02)
+    ax.grid(True, alpha=0.3)
+    ax.legend()
+    plt.tight_layout()
+    return ax
+
+
+def plot_two_policies_cdf(policy_a: np.ndarray, policy_b: np.ndarray,
+                          actions: np.ndarray | None = None,
+                          N: int | None = None, rng: np.random.Generator | None = None,
+                          title_a: str = 'Функция распределения F_A(x)',
+                          title_b: str = 'Функция распределения F_B(x)') -> None:
+    """Строит CDF для двух политик на соседних подграфиках. При N добавляет эмпирическую CDF.
+    """
+    pa = np.array(policy_a, dtype=float)
+    pb = np.array(policy_b, dtype=float)
+    assert pa.shape == pb.shape, "policy_a and policy_b must have same shape"
+
+    fig, axes = plt.subplots(1, 2, figsize=(14, 4), sharey=True)
+    plot_policy_cdf(pa, actions=actions, N=N, rng=rng, ax=axes[0], title=title_a)
+    plot_policy_cdf(pb, actions=actions, N=N, rng=rng, ax=axes[1], title=title_b)
+    plt.tight_layout()
+    plt.show()

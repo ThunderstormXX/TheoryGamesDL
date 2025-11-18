@@ -13,14 +13,17 @@ except Exception:
         return x
 
 
-def run(r: float, p: float, q: float, s: float, n: int, steps: int, alpha: float, gamma: float, beta: float, seed: int):
+def run(r: float, p: float, q: float, s: float, n: int, steps: int, alpha: float, gamma: float, beta: float, seed: int,
+    init_mode: str = "uniform", init_action: int | None = None, init_epsilon: float = 1e-3):
     params = PayoffParams(r=r, p=p, q=q, s=s)
     if not params.is_prisoners_dilemma():
         print("⚠️ Параметры не удовлетворяют T>R>P>S (PD). Продолжаем, но проверьте r,p,q,s.")
     game = ContinuousBimatrixGame(params, n=n)
 
-    agent_a = SoftmaxSARSAAgent(num_actions=game.num_actions(), alpha=alpha, gamma=gamma, beta=beta, seed=seed)
-    agent_b = SoftmaxSARSAAgent(num_actions=game.num_actions(), alpha=alpha, gamma=gamma, beta=beta, seed=seed + 1)
+    agent_a = SoftmaxSARSAAgent(num_actions=game.num_actions(), alpha=alpha, gamma=gamma, beta=beta, seed=seed,
+                                init_mode=init_mode, init_action=init_action, init_epsilon=init_epsilon)
+    agent_b = SoftmaxSARSAAgent(num_actions=game.num_actions(), alpha=alpha, gamma=gamma, beta=beta, seed=seed + 1,
+                                init_mode=init_mode, init_action=init_action, init_epsilon=init_epsilon)
 
     policies_a: List[np.ndarray] = []
     policies_b: List[np.ndarray] = []
@@ -60,12 +63,18 @@ def main():
     parser.add_argument("--gamma", type=float, default=0.95, help="discount")
     parser.add_argument("--beta", type=float, default=5.0, help="softmax beta")
     parser.add_argument("--seed", type=int, default=0, help="random seed")
+    parser.add_argument("--init-mode", type=str, default="uniform", choices=["uniform", "delta"],
+                        help="initial policy mode: uniform or near-delta")
+    parser.add_argument("--init-action", type=int, default=None, help="target action index for delta-like init")
+    parser.add_argument("--init-epsilon", type=float, default=1e-3,
+                        help="mass outside target for delta-like init (distributed over others)")
     args = parser.parse_args()
 
     np.random.seed(args.seed)
 
     run(r=args.r, p=args.p, q=args.q, s=args.s, n=args.n, steps=args.steps,
-        alpha=args.alpha, gamma=args.gamma, beta=args.beta, seed=args.seed)
+        alpha=args.alpha, gamma=args.gamma, beta=args.beta, seed=args.seed,
+        init_mode=args.init_mode, init_action=args.init_action, init_epsilon=args.init_epsilon)
 
 
 if __name__ == "__main__":

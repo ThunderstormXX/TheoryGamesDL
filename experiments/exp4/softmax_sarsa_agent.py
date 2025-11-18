@@ -12,7 +12,10 @@ class SoftmaxSARSAAgent:
     """
 
     def __init__(self, num_actions: int, alpha: float = 0.1, gamma: float = 0.95, beta: float = 5.0,
-                 seed: Optional[int] = None):
+                 seed: Optional[int] = None,
+                 init_mode: str = "uniform",
+                 init_action: Optional[int] = None,
+                 init_epsilon: float = 1e-3):
         self.num_actions = num_actions
         self.alpha = alpha
         self.gamma = gamma
@@ -21,6 +24,26 @@ class SoftmaxSARSAAgent:
         self.Q = np.zeros((1, num_actions), dtype=float)
         self.state = 0  # единственное состояние
         self.last_action = None  # type: Optional[int]
+
+        # Настройка стартовой политики близкой к дельта-мере (по желанию)
+        # Идея: задать такие логиты L, чтобы softmax(beta * L) ≈ p0.
+        # Для заданного распределения p0 можно взять L = (1/beta) * log(p0) (с поправкой на константу).
+        if init_mode.lower() == "delta":
+            A = self.num_actions
+            if A <= 0:
+                raise ValueError("num_actions must be >= 1")
+            if A == 1:
+                p0 = np.array([1.0], dtype=float)
+            else:
+                target = 0 if init_action is None else int(init_action)
+                target = max(0, min(A - 1, target))
+                eps = float(init_epsilon)
+                eps = max(0.0, min(0.5, eps))
+                p0 = np.full(A, eps / (A - 1), dtype=float)
+                p0[target] = 1.0 - eps
+            logits = (1.0 / max(self.beta, 1e-8)) * np.log(p0 + 1e-12)
+            # Добавление константы к логитам не меняет softmax, поэтому можно не центрировать
+            self.Q[self.state, :] = logits
 
     def policy(self) -> np.ndarray:
         logits = self.beta * self.Q[self.state]
