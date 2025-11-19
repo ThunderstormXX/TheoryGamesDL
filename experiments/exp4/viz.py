@@ -313,6 +313,386 @@ def plot_two_policies_cdf(policy_a: np.ndarray, policy_b: np.ndarray,
     plt.show()
 
 
+# -----------------------------
+# Анализ сходимости
+# -----------------------------
+
+def check_convergence(policies: List[np.ndarray],
+                      window: int = 1000,
+                      threshold_converged: float = 1e-3,
+                      actions: np.ndarray | None = None) -> dict:
+    """Проверяет, сошлась ли политика и куда.
+
+    Args:
+        policies: список массивов политик по времени (T, A)
+        window: окно для оценки стабильности (последние `window` шагов)
+        threshold_converged: порог вариации для признания сходимости (std по действиям)
+        actions: массив значений действий (для отображения в результатах)
+
+    Returns:
+        dict с ключами:
+            - 'converged': bool - сошлось ли (True) или нет (False)
+            - 'argmax_idx': int - индекс действия с максимальной вероятностью
+            - 'argmax_value': float - значение действия (из actions) или индекс
+            - 'max_prob': float - максимальная вероятность в финальной политике
+            - 'mean_policy': ndarray - средняя политика в окне
+            - 'max_std': float - максимальное std (мера нестабильности)
+    """
+    if len(policies) < window:
+        window = len(policies)
+
+    # Берём последнее окно политик
+    tail = np.array(policies[-window:], dtype=float)  # (window, A)
+    
+    # Средняя политика в хвосте
+    mean_policy = tail.mean(axis=0)  # (A,)
+    
+    # Стандартное отклонение по времени для каждого действия
+    std_over_time = tail.std(axis=0)  # (A,)
+    
+    # Максимальная вариация (признак нестабильности)
+    max_std = float(std_over_time.max())
+    
+    # Аргмакс конечной политики
+    argmax_idx = int(mean_policy.argmax())
+    max_prob = float(mean_policy[argmax_idx])
+    
+    # Определяем сходимость
+    converged = max_std <= threshold_converged
+    
+    # Значение действия
+    if actions is not None and len(actions) > argmax_idx:
+        argmax_value = float(actions[argmax_idx])
+    else:
+        argmax_value = float(argmax_idx)
+    
+    return {
+        'converged': converged,
+        'argmax_idx': argmax_idx,
+        'argmax_value': argmax_value,
+        'max_prob': max_prob,
+        'mean_policy': mean_policy,
+        'max_std': max_std
+    }
+
+
+def plot_convergence_heatmap(results_grid: dict | List[dict],
+                             beta_values: List[float] | None = None,
+                             gamma_values: List[float] | None = None,
+                             title: str = 'Карта сходимости: Beta vs Gamma') -> None:
+    """Строит heat-map сходимости по сетке beta × gamma.
+
+    Args:
+        results_grid: либо словарь вида {(beta, gamma): status}, 
+                      либо список dict с ключами 'beta', 'gamma', 'status'
+        beta_values: список значений beta (опционально, если results_grid — список)
+        gamma_values: список значений gamma (опционально)
+        title: заголовок графика
+
+    Цвета:
+        - Зелёный (2): converged_to_zero
+        - Синий (1): converged_elsewhere
+        - Красный (0): not_converged
+    """
+    # Преобразуем к единому виду: словарь (beta, gamma) -> status
+    if isinstance(results_grid, list):
+        grid_dict = {(r['beta'], r['gamma']): r['status'] for r in results_grid}
+    else:
+        grid_dict = results_grid
+
+    # Определяем все уникальные beta/gamma
+    if beta_values is None:
+        beta_values = sorted(set(k[0] for k in grid_dict.keys()))
+    if gamma_values is None:
+        gamma_values = sorted(set(k[1] for k in grid_dict.keys()))
+
+    # Создаём матрицу для отображения
+    n_beta = len(beta_values)
+    n_gamma = len(gamma_values)
+    matrix = np.full((n_beta, n_gamma), np.nan, dtype=float)
+
+    status_to_code = {
+        'not_converged': 0,
+        'converged_elsewhere': 1,
+        'converged_to_zero': 2
+    }
+
+    for i, beta in enumerate(beta_values):
+        for j, gamma in enumerate(gamma_values):
+            status = grid_dict.get((beta, gamma), 'not_converged')
+            matrix[i, j] = status_to_code.get(status, 0)
+
+    # Цветовая схема
+    from matplotlib.colors import ListedColormap
+    cmap = ListedColormap(['#d62728', '#1f77b4', '#2ca02c'])  # красный, синий, зелёный
+    bounds = [-0.5, 0.5, 1.5, 2.5]
+    from matplotlib.colors import BoundaryNorm
+    norm = BoundaryNorm(bounds, cmap.N)
+
+    fig, ax = plt.subplots(1, 1, figsize=(10, 8))
+    im = ax.imshow(matrix, aspect='auto', origin='lower', cmap=cmap, norm=norm)
+
+    # Подписи осей
+    ax.set_xticks(np.arange(n_gamma))
+    ax.set_yticks(np.arange(n_beta))
+    ax.set_xticklabels([f"{g:.2f}" for g in gamma_values])
+    ax.set_yticklabels([f"{b:.2f}" for b in beta_values])
+    ax.set_xlabel('Gamma (discount factor)', fontsize=12)
+    ax.set_ylabel('Beta (inverse temperature)', fontsize=12)
+    ax.set_title(title, fontsize=14)
+
+    # Colorbar с подписями
+    cbar = plt.colorbar(im, ax=ax, ticks=[0, 1, 2])
+    cbar.set_label('Статус сходимости', fontsize=12)
+    cbar.ax.set_yticklabels(['Не сошлось', 'Сошлось куда-то', 'Сошлось к 0'])
+
+    # Сетка
+    ax.set_xticks(np.arange(n_gamma) - 0.5, minor=True)
+    ax.set_yticks(np.arange(n_beta) - 0.5, minor=True)
+    ax.grid(which='minor', color='white', linestyle='-', linewidth=1.5)
+
+    plt.tight_layout()
+    plt.show()
+
+
+def plot_joint_convergence_heatmap(results: List[dict],
+                                   beta_values: List[float],
+                                   gamma_values: List[float],
+                                   actions: np.ndarray | None = None,
+                                   title: str = 'Совместная сходимость агентов A и B',
+                                   save_path: str | None = None) -> None:
+    """Строит heat-map показывающий, куда сходятся политики обоих агентов.
+    
+    Каждая ячейка содержит информацию о сходимости и значениях действий для обоих игроков.
+    Цвет показывает статус сходимости, текст - значения действий.
+    
+    Args:
+        results: список словарей с результатами экспериментов
+                 (должны содержать 'beta', 'gamma', 'conv_a', 'conv_b')
+        beta_values: список значений beta
+        gamma_values: список значений gamma  
+        actions: массив значений действий (опционально)
+        title: заголовок графика
+        save_path: путь для сохранения графика (если None, показывает интерактивно)
+    """
+    n_beta = len(beta_values)
+    n_gamma = len(gamma_values)
+    
+    # Создаём словарь для быстрого доступа
+    grid_dict = {(r['beta'], r['gamma']): r for r in results}
+    
+    # Матрицы для хранения статусов сходимости
+    # Кодируем: 0 - оба не сошлись, 1 - один сошёлся, 2 - оба сошлись
+    matrix = np.full((n_beta, n_gamma), 0, dtype=float)
+    
+    # Текстовые аннотации
+    annotations = [['' for _ in range(n_gamma)] for _ in range(n_beta)]
+    
+    for i, beta in enumerate(beta_values):
+        for j, gamma in enumerate(gamma_values):
+            r = grid_dict.get((beta, gamma))
+            if r is None:
+                continue
+            
+            conv_a = r.get('conv_a', {})
+            conv_b = r.get('conv_b', {})
+            
+            converged_a = conv_a.get('converged', False)
+            converged_b = conv_b.get('converged', False)
+            
+            # Статус сходимости
+            if converged_a and converged_b:
+                matrix[i, j] = 2  # оба сошлись
+            elif converged_a or converged_b:
+                matrix[i, j] = 1  # один сошёлся
+            else:
+                matrix[i, j] = 0  # оба не сошлись
+            
+            # Формируем текстовую аннотацию
+            val_a = conv_a.get('argmax_value', conv_a.get('argmax_idx', '?'))
+            val_b = conv_b.get('argmax_value', conv_b.get('argmax_idx', '?'))
+            
+            if isinstance(val_a, (int, float)) and isinstance(val_b, (int, float)):
+                # Если значения близки к 0 или 1, показываем как integer, иначе 2 знака
+                def fmt(v):
+                    if abs(v - round(v)) < 0.01:
+                        return f"{int(round(v))}"
+                    else:
+                        return f"{v:.2f}"
+                
+                text = f"A:{fmt(val_a)}\nB:{fmt(val_b)}"
+            else:
+                text = f"A:{val_a}\nB:{val_b}"
+            
+            annotations[i][j] = text
+    
+    # Цветовая схема
+    from matplotlib.colors import ListedColormap, BoundaryNorm
+    cmap = ListedColormap(['#d62728', '#ffcc00', '#2ca02c'])  # красный, жёлтый, зелёный
+    bounds = [-0.5, 0.5, 1.5, 2.5]
+    norm = BoundaryNorm(bounds, cmap.N)
+    
+    # Адаптивный размер графика и шрифта
+    cell_width = 1.0 if n_gamma <= 6 else 0.8 if n_gamma <= 10 else 0.6
+    cell_height = 0.7 if n_beta <= 7 else 0.5 if n_beta <= 12 else 0.4
+    figwidth = max(10, n_gamma * cell_width)
+    figheight = max(6, n_beta * cell_height)
+    
+    # Размер шрифта зависит от размера сетки
+    if n_gamma <= 6 and n_beta <= 7:
+        fontsize_annot = 9
+        fontsize_tick = 11
+        fontsize_label = 13
+        fontsize_title = 15
+    elif n_gamma <= 10 and n_beta <= 10:
+        fontsize_annot = 7
+        fontsize_tick = 9
+        fontsize_label = 11
+        fontsize_title = 13
+    else:
+        fontsize_annot = 5
+        fontsize_tick = 7
+        fontsize_label = 9
+        fontsize_title = 11
+    
+    fig, ax = plt.subplots(1, 1, figsize=(figwidth, figheight))
+    im = ax.imshow(matrix, aspect='auto', origin='lower', cmap=cmap, norm=norm)
+    
+    # Подписи осей
+    ax.set_xticks(np.arange(n_gamma))
+    ax.set_yticks(np.arange(n_beta))
+    ax.set_xticklabels([f"{g:.2f}" for g in gamma_values], fontsize=fontsize_tick)
+    ax.set_yticklabels([f"{b:.2f}" for b in beta_values], fontsize=fontsize_tick)
+    ax.set_xlabel('Gamma (discount factor)', fontsize=fontsize_label)
+    ax.set_ylabel('Beta (inverse temperature)', fontsize=fontsize_label)
+    ax.set_title(title, fontsize=fontsize_title)
+    
+    # Аннотации в ячейках (только если сетка не слишком большая)
+    show_annotations = n_gamma <= 15 and n_beta <= 15
+    if show_annotations:
+        for i in range(n_beta):
+            for j in range(n_gamma):
+                text = annotations[i][j]
+                # Цвет текста зависит от фона
+                color = 'white' if matrix[i, j] == 0 else 'black'
+                ax.text(j, i, text, ha='center', va='center',
+                       color=color, fontsize=fontsize_annot, fontweight='bold')
+    
+    # Colorbar
+    cbar = plt.colorbar(im, ax=ax, ticks=[0, 1, 2])
+    cbar.set_label('Статус сходимости', fontsize=12)
+    cbar.ax.set_yticklabels(['Оба не сошлись', 'Один сошёлся', 'Оба сошлись'], fontsize=10)
+    
+    # Сетка
+    ax.set_xticks(np.arange(n_gamma) - 0.5, minor=True)
+    ax.set_yticks(np.arange(n_beta) - 0.5, minor=True)
+    ax.grid(which='minor', color='white', linestyle='-', linewidth=1.5)
+    
+    plt.tight_layout()
+    
+    if save_path:
+        plt.savefig(save_path, dpi=150, bbox_inches='tight')
+        print(f"💾 График сохранён: {save_path}")
+    else:
+        plt.show()
+    
+    plt.close(fig)
+
+
+def plot_action_value_heatmaps(results: List[dict],
+                               beta_values: List[float],
+                               gamma_values: List[float],
+                               actions: np.ndarray | None = None,
+                               save_path: str | None = None) -> None:
+    """Строит две heat-map: куда сходится агент A и куда сходится агент B.
+    
+    Показывает значение действия (из actions), к которому сошлась политика.
+    
+    Args:
+        results: список словарей с результатами экспериментов
+        beta_values: список значений beta
+        gamma_values: список значений gamma
+        actions: массив значений действий
+        save_path: путь для сохранения графика (если None, показывает интерактивно)
+    """
+    n_beta = len(beta_values)
+    n_gamma = len(gamma_values)
+    
+    grid_dict = {(r['beta'], r['gamma']): r for r in results}
+    
+    matrix_a = np.full((n_beta, n_gamma), np.nan, dtype=float)
+    matrix_b = np.full((n_beta, n_gamma), np.nan, dtype=float)
+    
+    for i, beta in enumerate(beta_values):
+        for j, gamma in enumerate(gamma_values):
+            r = grid_dict.get((beta, gamma))
+            if r is None:
+                continue
+            
+            conv_a = r.get('conv_a', {})
+            conv_b = r.get('conv_b', {})
+            
+            if conv_a.get('converged', False):
+                matrix_a[i, j] = conv_a.get('argmax_value', conv_a.get('argmax_idx', np.nan))
+            
+            if conv_b.get('converged', False):
+                matrix_b[i, j] = conv_b.get('argmax_value', conv_b.get('argmax_idx', np.nan))
+    
+    # Адаптивный размер
+    cell_width = 1.3 if n_gamma <= 6 else 1.0 if n_gamma <= 10 else 0.7
+    cell_height = 0.6 if n_beta <= 7 else 0.45 if n_beta <= 12 else 0.35
+    figwidth = max(14, n_gamma * cell_width * 2)
+    figheight = max(5, n_beta * cell_height)
+    
+    # Размер шрифта
+    if n_gamma <= 6 and n_beta <= 7:
+        fontsize_tick = 10
+        fontsize_label = 12
+        fontsize_title = 13
+    elif n_gamma <= 10 and n_beta <= 10:
+        fontsize_tick = 8
+        fontsize_label = 10
+        fontsize_title = 11
+    else:
+        fontsize_tick = 6
+        fontsize_label = 8
+        fontsize_title = 9
+    
+    fig, axes = plt.subplots(1, 2, figsize=(figwidth, figheight))
+    
+    # Agent A
+    im0 = axes[0].imshow(matrix_a, aspect='auto', origin='lower', cmap='viridis')
+    axes[0].set_xticks(np.arange(n_gamma))
+    axes[0].set_yticks(np.arange(n_beta))
+    axes[0].set_xticklabels([f"{g:.2f}" for g in gamma_values], fontsize=fontsize_tick)
+    axes[0].set_yticklabels([f"{b:.2f}" for b in beta_values], fontsize=fontsize_tick)
+    axes[0].set_xlabel('Gamma', fontsize=fontsize_label)
+    axes[0].set_ylabel('Beta', fontsize=fontsize_label)
+    axes[0].set_title('Куда сходится Agent A (значение действия)', fontsize=fontsize_title)
+    plt.colorbar(im0, ax=axes[0], label='Значение действия')
+    
+    # Agent B
+    im1 = axes[1].imshow(matrix_b, aspect='auto', origin='lower', cmap='viridis')
+    axes[1].set_xticks(np.arange(n_gamma))
+    axes[1].set_yticks(np.arange(n_beta))
+    axes[1].set_xticklabels([f"{g:.2f}" for g in gamma_values], fontsize=fontsize_tick)
+    axes[1].set_yticklabels([f"{b:.2f}" for b in beta_values], fontsize=fontsize_tick)
+    axes[1].set_xlabel('Gamma', fontsize=fontsize_label)
+    axes[1].set_ylabel('Beta', fontsize=fontsize_label)
+    axes[1].set_title('Куда сходится Agent B (значение действия)', fontsize=fontsize_title)
+    plt.colorbar(im1, ax=axes[1], label='Значение действия')
+    
+    plt.tight_layout()
+    
+    if save_path:
+        plt.savefig(save_path, dpi=150, bbox_inches='tight')
+        print(f"💾 График сохранён: {save_path}")
+    else:
+        plt.show()
+    
+    plt.close(fig)
+
+
 def plot_comprehensive_results(rewards_a: List[float], rewards_b: List[float],
                                q_values_a: List[np.ndarray], q_values_b: List[np.ndarray],
                                policies_a: List[np.ndarray], policies_b: List[np.ndarray],
