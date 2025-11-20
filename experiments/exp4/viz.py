@@ -697,7 +697,14 @@ def plot_comprehensive_results(rewards_a: List[float], rewards_b: List[float],
                                q_values_a: List[np.ndarray], q_values_b: List[np.ndarray],
                                policies_a: List[np.ndarray], policies_b: List[np.ndarray],
                                action_values: np.ndarray | None = None,
-                               window_size: int = 100, save_path: str | None = None) -> None:
+                               window_size: int = 100, save_path: str | None = None,
+                               base_function = None,
+                               beta: float | None = None,
+                               gamma: float | None = None,
+                               steps: int | None = None,
+                               alpha: float | None = None,
+                               n: int | None = None,
+                               game_params: dict | None = None) -> None:
     """Комплексная визуализация результатов эксперимента для двух агентов.
     
     Args:
@@ -707,6 +714,13 @@ def plot_comprehensive_results(rewards_a: List[float], rewards_b: List[float],
         action_values: значения действий [0, 1] для подписей осей (если None, используются индексы)
         window_size: размер окна для скользящего среднего наград
         save_path: если указан, сохраняет график в файл вместо показа
+        base_function: функция base_function(x) для отображения на графике
+        beta: параметр inverse temperature
+        gamma: параметр discount factor
+        steps: количество шагов обучения
+        alpha: learning rate
+        n: размер дискретизации
+        game_params: параметры игры (r, p, q, s)
     """
     if len(rewards_a) == 0:
         raise ValueError("Empty rewards list")
@@ -728,8 +742,8 @@ def plot_comprehensive_results(rewards_a: List[float], rewards_b: List[float],
     P_b = np.stack(policies_b, axis=0).T  # (A, T)
     
     # Создаем большую фигуру с несколькими подграфиками
-    fig = plt.figure(figsize=(20, 14))
-    gs = fig.add_gridspec(4, 2, hspace=0.35, wspace=0.3, height_ratios=[1, 1, 1, 0.8])
+    fig = plt.figure(figsize=(20, 18))
+    gs = fig.add_gridspec(5, 2, hspace=0.35, wspace=0.3, height_ratios=[1, 1, 1, 1, 0.8])
     
     # 1. Награды во времени
     ax1 = fig.add_subplot(gs[0, :])
@@ -760,7 +774,7 @@ def plot_comprehensive_results(rewards_a: List[float], rewards_b: List[float],
     
     # 2. Q-функции Agent A
     ax2 = fig.add_subplot(gs[1, 0])
-    im2 = ax2.imshow(Q_a, aspect='auto', origin='lower', cmap='RdYlGn', extent=[0, Q_a.shape[1], 0, 1])
+    im2 = ax2.imshow(Q_a, aspect='auto', origin='lower', cmap='RdYlGn', extent=[0, Q_a.shape[1], 0, 1]) # type: ignore
     ax2.set_title('Q-функция Agent A')
     ax2.set_xlabel('Время')
     ax2.set_ylabel('Действие (непрерывное)')
@@ -770,7 +784,7 @@ def plot_comprehensive_results(rewards_a: List[float], rewards_b: List[float],
     
     # 3. Q-функции Agent B
     ax3 = fig.add_subplot(gs[1, 1])
-    im3 = ax3.imshow(Q_b, aspect='auto', origin='lower', cmap='RdYlGn', extent=[0, Q_b.shape[1], 0, 1])
+    im3 = ax3.imshow(Q_b, aspect='auto', origin='lower', cmap='RdYlGn', extent=[0, Q_b.shape[1], 0, 1]) # type: ignore
     ax3.set_title('Q-функция Agent B')
     ax3.set_xlabel('Время')
     ax3.set_ylabel('Действие (непрерывное)')
@@ -780,7 +794,7 @@ def plot_comprehensive_results(rewards_a: List[float], rewards_b: List[float],
     
     # 4. Политики Agent A
     ax4 = fig.add_subplot(gs[2, 0])
-    im4 = ax4.imshow(P_a, aspect='auto', origin='lower', cmap='viridis', extent=[0, P_a.shape[1], 0, 1])
+    im4 = ax4.imshow(P_a, aspect='auto', origin='lower', cmap='viridis', extent=[0, P_a.shape[1], 0, 1]) # type: ignore
     ax4.set_title('Политика Agent A')
     ax4.set_xlabel('Время')
     ax4.set_ylabel('Действие (непрерывное)')
@@ -790,7 +804,7 @@ def plot_comprehensive_results(rewards_a: List[float], rewards_b: List[float],
     
     # 5. Политики Agent B
     ax5 = fig.add_subplot(gs[2, 1])
-    im5 = ax5.imshow(P_b, aspect='auto', origin='lower', cmap='viridis', extent=[0, P_b.shape[1], 0, 1])
+    im5 = ax5.imshow(P_b, aspect='auto', origin='lower', cmap='viridis', extent=[0, P_b.shape[1], 0, 1]) # type: ignore
     ax5.set_title('Политика Agent B')
     ax5.set_xlabel('Время')
     ax5.set_ylabel('Действие (непрерывное)')
@@ -798,8 +812,46 @@ def plot_comprehensive_results(rewards_a: List[float], rewards_b: List[float],
     ax5.set_yticklabels(tick_labels)
     plt.colorbar(im5, ax=ax5, label='P(action)')
     
-    # 6. Начальные распределения политик (гистограммы)
+    # 6. Динамика Q-значений для ключевых действий - Agent A
     ax6 = fig.add_subplot(gs[3, 0])
+    if action_values is not None and len(action_values) > 0:
+        key_actions = np.arange(0.0, 1.01, 0.1)
+        colors = plt.cm.viridis(np.linspace(0, 1, len(key_actions)))
+        
+        for i, action in enumerate(key_actions):
+            # Находим ближайший индекс к этому действию
+            idx = np.argmin(np.abs(action_values - action))
+            q_trajectory = Q_a[idx, :]  # Q-значения этого действия во времени
+            ax6.plot(time_steps, q_trajectory, color=colors[i], 
+                    label=f'{action:.1f}', linewidth=1.5, alpha=0.8)
+        
+        ax6.set_xlabel('Время (шаги)')
+        ax6.set_ylabel('Q-значение')
+        ax6.set_title('Динамика Q-значений Agent A для ключевых действий')
+        ax6.legend(title='Действие', ncol=3, fontsize=8, loc='best')
+        ax6.grid(True, alpha=0.3)
+    
+    # 7. Динамика Q-значений для ключевых действий - Agent B
+    ax7 = fig.add_subplot(gs[3, 1])
+    if action_values is not None and len(action_values) > 0:
+        key_actions = np.arange(0.0, 1.01, 0.1)
+        colors = plt.cm.viridis(np.linspace(0, 1, len(key_actions)))
+        
+        for i, action in enumerate(key_actions):
+            # Находим ближайший индекс к этому действию
+            idx = np.argmin(np.abs(action_values - action))
+            q_trajectory = Q_b[idx, :]  # Q-значения этого действия во времени
+            ax7.plot(time_steps, q_trajectory, color=colors[i], 
+                    label=f'{action:.1f}', linewidth=1.5, alpha=0.8)
+        
+        ax7.set_xlabel('Время (шаги)')
+        ax7.set_ylabel('Q-значение')
+        ax7.set_title('Динамика Q-значений Agent B для ключевых действий')
+        ax7.legend(title='Действие', ncol=3, fontsize=8, loc='best')
+        ax7.grid(True, alpha=0.3)
+    
+    # 8. Начальные распределения политик (гистограммы)
+    ax8 = fig.add_subplot(gs[4, 0])
     initial_policy_a = policies_a[0]
     initial_policy_b = policies_b[0]
     
@@ -810,36 +862,72 @@ def plot_comprehensive_results(rewards_a: List[float], rewards_b: List[float],
         x_vals = np.arange(num_actions)
         width = 0.35
     
-    ax6.bar(x_vals - width/2, initial_policy_a, width=width, label='Agent A', 
+    ax8.bar(x_vals - width/2, initial_policy_a, width=width, label='Agent A', 
             color='steelblue', alpha=0.8, edgecolor='black', linewidth=0.5)
-    ax6.bar(x_vals + width/2, initial_policy_b, width=width, label='Agent B', 
+    ax8.bar(x_vals + width/2, initial_policy_b, width=width, label='Agent B', 
             color='salmon', alpha=0.8, edgecolor='black', linewidth=0.5)
-    ax6.set_xlabel('Действие')
-    ax6.set_ylabel('Вероятность')
-    ax6.set_title('Начальные распределения политик')
-    ax6.legend()
-    ax6.grid(True, alpha=0.3, axis='y')
+    ax8.set_xlabel('Действие')
+    ax8.set_ylabel('Вероятность')
+    ax8.set_title('Начальные распределения политик')
+    ax8.legend()
+    ax8.grid(True, alpha=0.3, axis='y')
     if action_values is not None:
-        ax6.set_xlim(-0.05, 1.05)
+        ax8.set_xlim(-0.05, 1.05)
     
-    # 7. Финальные распределения политик (гистограммы)
-    ax7 = fig.add_subplot(gs[3, 1])
+    # 9. Финальные распределения политик (гистограммы)
+    ax9 = fig.add_subplot(gs[4, 1])
     final_policy_a = policies_a[-1]
     final_policy_b = policies_b[-1]
     
-    ax7.bar(x_vals - width/2, final_policy_a, width=width, label='Agent A', 
+    ax9.bar(x_vals - width/2, final_policy_a, width=width, label='Agent A', 
             color='steelblue', alpha=0.8, edgecolor='black', linewidth=0.5)
-    ax7.bar(x_vals + width/2, final_policy_b, width=width, label='Agent B', 
+    ax9.bar(x_vals + width/2, final_policy_b, width=width, label='Agent B', 
             color='salmon', alpha=0.8, edgecolor='black', linewidth=0.5)
-    ax7.set_xlabel('Действие')
-    ax7.set_ylabel('Вероятность')
-    ax7.set_title('Финальные распределения политик')
-    ax7.legend()
-    ax7.grid(True, alpha=0.3, axis='y')
-    if action_values is not None:
-        ax7.set_xlim(-0.05, 1.05)
     
-    plt.suptitle('Комплексный анализ обучения агентов', fontsize=16, y=0.995)
+    # Добавляем base_function если предоставлена
+    if base_function is not None and action_values is not None:
+        base_values = np.array([base_function(a) for a in action_values])
+        # Нормализуем для сравнения с распределением вероятностей
+        base_values_norm = base_values / base_values.sum()
+        ax9.plot(action_values, base_values_norm, 'k--', linewidth=2, 
+                label='Base function (normalized)', alpha=0.7)
+    
+    ax9.set_xlabel('Действие')
+    ax9.set_ylabel('Вероятность')
+    ax9.set_title('Финальные распределения политик')
+    ax9.legend()
+    ax9.grid(True, alpha=0.3, axis='y')
+    if action_values is not None:
+        ax9.set_xlim(-0.05, 1.05)
+    
+    # Формируем заголовок с параметрами
+    title_parts = ['Комплексный анализ обучения агентов']
+    
+    # Строка 1: основные параметры обучения
+    if beta is not None or gamma is not None or steps is not None:
+        params_str = []
+        if beta is not None:
+            params_str.append(f'β={beta:.3f}')
+        if gamma is not None:
+            params_str.append(f'γ={gamma:.2f}')
+        if steps is not None:
+            params_str.append(f'steps={steps:,}')
+        title_parts.append(f"({', '.join(params_str)})")
+    
+    # Строка 2: дополнительные параметры (alpha, n, game_params)
+    extra_params = []
+    if alpha is not None:
+        extra_params.append(f'α={alpha:.3f}')
+    if n is not None:
+        extra_params.append(f'n={n}')
+    if game_params is not None:
+        game_str = ', '.join([f'{k}={v}' for k, v in game_params.items()])
+        extra_params.append(f'game: [{game_str}]')
+    
+    if extra_params:
+        title_parts.append(f"\n{', '.join(extra_params)}")
+    
+    plt.suptitle(' '.join(title_parts), fontsize=14, y=0.995)
     
     if save_path:
         plt.savefig(save_path, dpi=150, bbox_inches='tight')
@@ -870,4 +958,23 @@ def plot_comprehensive_results(rewards_a: List[float], rewards_b: List[float],
     else:
         print(f"  Agent A: макс. вероятность={final_policy_a.max():.3f} (индекс {final_policy_a.argmax()})")
         print(f"  Agent B: макс. вероятность={final_policy_b.max():.3f} (индекс {final_policy_b.argmax()})")
+    
+    # Финальные Q-значения для ключевых точек 0, 0.1, 0.2, ..., 1
+    if action_values is not None and len(action_values) > 0:
+        print(f"\nФинальные Q-значения для ключевых действий:")
+        key_actions = np.arange(0.0, 1.01, 0.1)
+        final_q_a = q_values_a[-1]
+        final_q_b = q_values_b[-1]
+        
+        print(f"  {'Действие':>10} | {'Q(A)':>8} | {'Q(B)':>8}")
+        print(f"  {'-'*10}-+-{'-'*8}-+-{'-'*8}")
+        
+        for action in key_actions:
+            # Находим ближайший индекс к этому действию
+            idx = np.argmin(np.abs(action_values - action))
+            actual_action = action_values[idx]
+            q_a_val = final_q_a[idx]
+            q_b_val = final_q_b[idx]
+            print(f"  {actual_action:>10.3f} | {q_a_val:>8.4f} | {q_b_val:>8.4f}")
+    
     print("="*60 + "\n")
