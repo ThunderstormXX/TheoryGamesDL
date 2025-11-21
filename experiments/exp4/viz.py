@@ -816,7 +816,7 @@ def plot_comprehensive_results(rewards_a: List[float], rewards_b: List[float],
     ax6 = fig.add_subplot(gs[3, 0])
     if action_values is not None and len(action_values) > 0:
         key_actions = np.arange(0.0, 1.01, 0.1)
-        colors = plt.cm.viridis(np.linspace(0, 1, len(key_actions)))
+        colors = plt.cm.viridis(np.linspace(0, 1, len(key_actions))) # type: ignore
         
         for i, action in enumerate(key_actions):
             # Находим ближайший индекс к этому действию
@@ -835,7 +835,7 @@ def plot_comprehensive_results(rewards_a: List[float], rewards_b: List[float],
     ax7 = fig.add_subplot(gs[3, 1])
     if action_values is not None and len(action_values) > 0:
         key_actions = np.arange(0.0, 1.01, 0.1)
-        colors = plt.cm.viridis(np.linspace(0, 1, len(key_actions)))
+        colors = plt.cm.viridis(np.linspace(0, 1, len(key_actions))) # type: ignore
         
         for i, action in enumerate(key_actions):
             # Находим ближайший индекс к этому действию
