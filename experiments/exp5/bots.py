@@ -90,31 +90,41 @@ class Actor(nn.Module):
 # Critic
 # -------------------------
 class Critic(nn.Module):
-    def __init__(self, state_dim=1, hidden=64):
+    def __init__(self, state_dim, action_dim=1, hidden_dim=64):
         super().__init__()
-        self.net = nn.Sequential(
-            nn.Linear(state_dim + 1, hidden),
+        self.fc = nn.Sequential(
+            nn.Linear(state_dim + action_dim, hidden_dim),
             nn.ReLU(),
-            nn.Linear(hidden, hidden),
+            nn.Linear(hidden_dim, hidden_dim),
             nn.ReLU(),
-            nn.Linear(hidden, 1)
+            nn.Linear(hidden_dim, 1)
         )
 
     def forward(self, state, action):
-        x = torch.cat([state, action], dim=1)
-        return self.net(x)
-
+        x = torch.cat([state, action], dim=-1)
+        return self.fc(x)
 # -------------------------
 # SACBot
 # -------------------------
 class SACBot:
-    def __init__(self, alpha=0.01, gamma=0.6, tau=0.005, batch_size=64, state_dim=1, device=torch.device("cpu")):
+    def __init__(self,
+                 alpha: float = 1.2,            # коэффициент энтропии (temperature)
+                 gamma: float = 0.6,
+                 tau: float = 0.005,
+                 batch_size: int = 64,
+                 device: torch.device = torch.device("cpu"),
+                 history_window: int = 20,
+                 actor_lr: float = 3e-4,
+                 critic_lr: float = 3e-4,
+                 clip_grad: float = 1.0):
         self.device = device
         self.alpha = alpha
         self.gamma = gamma
         self.tau = tau
         self.batch_size = batch_size
-
+        self.history_window = history_window
+        self.clip_grad = clip_grad
+        state_dim = self.history_window
         self.actor = Actor(state_dim).to(self.device)
         self.critic1 = Critic(state_dim).to(self.device)
         self.critic2 = Critic(state_dim).to(self.device)
@@ -124,20 +134,39 @@ class SACBot:
         self.target1.load_state_dict(self.critic1.state_dict())
         self.target2.load_state_dict(self.critic2.state_dict())
 
-        self.actor_opt = torch.optim.Adam(self.actor.parameters(), lr=0.0003)
-        self.critic1_opt = torch.optim.Adam(self.critic1.parameters(), lr=0.0003)
-        self.critic2_opt = torch.optim.Adam(self.critic2.parameters(), lr=0.0003)
+        self.actor_opt = torch.optim.Adam(self.actor.parameters(), lr=actor_lr)
+        self.critic1_opt = torch.optim.Adam(self.critic1.parameters(), lr=critic_lr)
+        self.critic2_opt = torch.optim.Adam(self.critic2.parameters(), lr=critic_lr)
 
         self.buffer = ReplayBuffer()
-        self.history = []
 
-    def choose_action(self, state):
-        state = state.to(self.device)
+        self.opponent_history: List[float] = []
+        self.history: List[float] = []
+
+    def get_state(self):
+        h = self.opponent_history[-self.history_window:]
+        if len(h) < self.history_window:
+            h = [0.0] * (self.history_window - len(h)) + h
+
+        h = torch.tensor(h, dtype=torch.float32, device=self.device).unsqueeze(0)
+        return h
+
+    def choose_action(self):
+        state = self.get_state()
+
         with torch.no_grad():
-            a, _ = self.actor.sample(state)
+            a, _ = self.actor.sample(state)  # (1, 1)
+        # Возвращаем тензор формы (1) для удобного .item()
         return a.squeeze(-1)
 
-    def store_transition(self, s, a, r, s2, d):
+    def update_history(self, a):
+        self.opponent_history.append(a)
+        if len(self.opponent_history) > self.history_window:
+            self.opponent_history.pop(0)
+
+    def store_transition(self, s, a, r, s2, d, opponent_action=None):
+        if opponent_action is not None:
+            self.opponent_history.append(float(opponent_action))
         if a.ndim == 1:
             a = a.unsqueeze(1)
         self.buffer.store(s.cpu(), a.cpu(), float(r), s2.cpu(), d)
@@ -169,10 +198,14 @@ class SACBot:
 
         self.critic1_opt.zero_grad()
         loss_c1.backward()
+        if self.clip_grad is not None:
+            nn.utils.clip_grad_norm_(self.critic1.parameters(), self.clip_grad)
         self.critic1_opt.step()
 
         self.critic2_opt.zero_grad()
         loss_c2.backward()
+        if self.clip_grad is not None:
+            nn.utils.clip_grad_norm_((self.critic2.parameters()), self.clip_grad)
         self.critic2_opt.step()
 
         # ---------------- Actor update ----------------
@@ -184,6 +217,8 @@ class SACBot:
 
         self.actor_opt.zero_grad()
         loss_actor.backward()
+        if self.clip_grad is not None:
+            nn.utils.clip_grad_norm_(self.actor.parameters(), self.clip_grad)
         self.actor_opt.step()
 
         # ---------------- Soft update targets ----------------
@@ -209,8 +244,8 @@ class SoftmaxSarsaAgent:
     def __init__(self,
                  num_actions: int = 11,
                  alpha: float = 0.1,
-                 gamma: float = 0.95,
-                 beta: float = 5.0,
+                 gamma: float = 0.6,
+                 beta: float = 2,
                  seed: Optional[int] = None,
                  init_mode: str = "uniform",
                  init_action: Optional[int] = None,
@@ -308,3 +343,146 @@ class SoftmaxSarsaAgent:
     def reset(self):
         self.last_action_idx = None
 
+    def get_current_action_value(self) -> float:
+        """Возвращает значение ТЕКУЩЕГО (уже выбранного ранее) действия без смены политики.
+
+        Используется для корректного порядка SARSA: (использовать действие -> получить награду -> выбрать следующее и обновить).
+        Если эпизод не стартовал, поднимает исключение, чтобы не вызвать скрытый выбор нового действия.
+        """
+        if self.last_action_idx is None:
+            raise RuntimeError("SARSA: действие ещё не выбрано. Вызовите start_episode() перед первым шагом.")
+        return self._idx_to_action_value(self.last_action_idx)
+
+
+
+class MASACSystem:
+    """Multi-Agent SAC System для управления несколькими SAC агентами."""
+    
+    def __init__(self,
+                 num_agents: int = 2,
+                 alpha: float = 0.2,
+                 gamma: float = 0.99,
+                 tau: float = 0.005,
+                 batch_size: int = 64,
+                 device: torch.device = torch.device("cpu"),
+                 history_window: int = 20,
+                 actor_lr: float = 3e-4,
+                 critic_lr: float = 3e-4,
+                 clip_grad: float = 1.0):
+        self.num_agents = num_agents
+        self.agents = [
+            SACBot(
+                alpha=alpha,
+                gamma=gamma,
+                tau=tau,
+                batch_size=batch_size,
+                device=device,
+                history_window=history_window,
+                actor_lr=actor_lr,
+                critic_lr=critic_lr,
+                clip_grad=clip_grad
+            )
+            for _ in range(num_agents)
+        ]
+        self.history: List[List[float]] = [[] for _ in range(num_agents)]
+    
+    def choose_actions(self) -> List[torch.Tensor]:
+        """Выбор действий для всех агентов."""
+        actions = []
+        for agent in self.agents:
+            action = agent.choose_action()
+            actions.append(action)
+        return actions
+    
+    def update_histories(self, actions: List[float]):
+        """Обновление истории действий для каждого агента."""
+        for i, agent in enumerate(self.agents):
+            # Каждый агент наблюдает действия других агентов
+            for j, action in enumerate(actions):
+                if i != j:
+                    agent.update_history(action)
+    
+    def store_transitions(self, states: List[torch.Tensor], 
+                         actions: List[torch.Tensor], 
+                         rewards: List[float], 
+                         next_states: List[torch.Tensor], 
+                         dones: List[bool],
+                         opponent_actions: Optional[List[float]] = None):
+        """Сохранение переходов для всех агентов."""
+        for i, agent in enumerate(self.agents):
+            opp_action = opponent_actions[i] if opponent_actions else None
+            agent.store_transition(
+                states[i], 
+                actions[i], 
+                rewards[i], 
+                next_states[i], 
+                dones[i],
+                opponent_action=opp_action
+            )
+    
+    def update_all(self):
+        """Обновление всех агентов."""
+        for agent in self.agents:
+            agent.update()
+    
+    def reset(self):
+        """Сброс историй всех агентов."""
+        for agent in self.agents:
+            agent.opponent_history = []
+            agent.history = []
+
+
+class MASACAgent:
+    """Обертка над SACBot для использования в многоагентной среде."""
+    
+    def __init__(self,
+                 agent_id: int = 0,
+                 alpha: float = 0.2,
+                 gamma: float = 0.99,
+                 tau: float = 0.005,
+                 batch_size: int = 64,
+                 device: torch.device = torch.device("cpu"),
+                 history_window: int = 20,
+                 actor_lr: float = 3e-4,
+                 critic_lr: float = 3e-4,
+                 clip_grad: float = 1.0):
+        self.agent_id = agent_id
+        self.bot = SACBot(
+            alpha=alpha,
+            gamma=gamma,
+            tau=tau,
+            batch_size=batch_size,
+            device=device,
+            history_window=history_window,
+            actor_lr=actor_lr,
+            critic_lr=critic_lr,
+            clip_grad=clip_grad
+        )
+        self.history: List[float] = []
+    
+    def choose_action(self) -> torch.Tensor:
+        """Выбор действия агентом."""
+        return self.bot.choose_action()
+    
+    def update_history(self, action: float):
+        """Обновление истории наблюдений."""
+        self.bot.update_history(action)
+        self.history.append(action)
+    
+    def store_transition(self, s, a, r, s2, d, opponent_action=None):
+        """Сохранение перехода в буфер."""
+        self.bot.store_transition(s, a, r, s2, d, opponent_action)
+    
+    def update(self):
+        """Обновление политики и критиков."""
+        self.bot.update()
+    
+    def get_state(self):
+        """Получение текущего состояния."""
+        return self.bot.get_state()
+    
+    def reset(self):
+        """Сброс истории агента."""
+        self.bot.opponent_history = []
+        self.bot.history = []
+        self.history = []

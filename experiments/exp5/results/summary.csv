@@ -1,0 +1,5 @@
+bot1,bot2,mean_reward1,mean_reward2,mean_coop1,mean_coop2,mean_avg_step_reward1,mean_avg_step_reward2
+Simple_cooperate,SAC,130.2550,356.5817,1.0000,0.4342,1.3025,3.5658
+Simple_cooperate,SARSA,47.5767,384.1411,1.0000,0.1586,0.4758,3.8414
+SAC,SARSA,133.2100,205.0371,0.4354,0.2558,1.3321,2.0504
+MASAC_Agent1,MASAC_Agent2,140.2531,140.4106,0.2019,0.2015,1.4025,1.4041
