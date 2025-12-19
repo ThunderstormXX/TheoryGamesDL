@@ -34,13 +34,12 @@ class Game:
         else:
             raise ValueError("Either payoff_func or payoff_tensor must be provided")
 
-    def enable_fast_pd(self, *, cooperation_reward: float, defection_temptation: float,
-                       mutual_defection_punishment: float, sucker_payoff: float):
+    def enable_fast_public_goods_pd(self, *, benefit: float, cost: float, reward_offset: float = 0.0):
         self._fast_pd_params = {
-            "R": float(cooperation_reward),
-            "T": float(defection_temptation),
-            "P": float(mutual_defection_punishment),
-            "S": float(sucker_payoff),
+            "b": float(benefit),
+            "c": float(cost),
+            "n": self.n_players,
+            "offset": float(reward_offset),
         }
 
     def _create_payoff_tensor(self, payoff_func: Callable[[Sequence[int]], float]) -> np.ndarray:
@@ -70,21 +69,18 @@ class Game:
                 payoffs.append(float(self.payoff_tensor[rolled]))
             return tuple(payoffs)
 
-        # 2) fast generalized PD path
+        # 2) fast public goods PD path
         if self._fast_pd_params is not None:
             params = self._fast_pd_params
-            R, T, P, S = params["R"], params["T"], params["P"], params["S"]
-            arr = list(choices)
-            total_coop = sum(1 for c in arr if c == 0)
-            n = self.n_players
+            b, c, n, offset = params["b"], params["c"], params["n"], params["offset"]
+            k = sum(1 for choice in choices if choice == 0)  # total cooperators
             payoffs = []
-            for act in arr:
-                coop_others = total_coop - (1 if act == 0 else 0)
-                if act == 0:
-                    pay = R if coop_others == n - 1 else S
-                else:
-                    pay = P if coop_others == 0 else T
-                payoffs.append(float(pay))
+            for action in choices:
+                if action == 0:  # Cooperate
+                    payoff = (b * k) / n - c + offset
+                else:  # Defect
+                    payoff = (b * k) / n + offset
+                payoffs.append(float(payoff))
             return tuple(payoffs)
 
         # 3) fallback: call payoff_func rotated for each player (cost O(n^2) for large n; fallback only)
@@ -159,24 +155,23 @@ class GameFactory:
     @staticmethod
     def create_generalized_prisoners_dilemma(
         n_players: int,
-        cooperation_reward: float = 3,
-        defection_temptation: float = 4,
-        mutual_defection_punishment: float = 1,
-        sucker_payoff: float = 0,
+        benefit: float = 3.0,
+        cost: float = 1.0,
+        reward_offset: float = 0.0,
         build_tensor: bool = False
     ) -> Game:
-        def prisoners_dilemma_payoff(choices: Sequence[int]) -> float:
-            player0 = choices[0]
-            others = choices[1:]
-            coop_others = sum(1 for c in others if c == 0)
-            if player0 == 0:
-                return cooperation_reward if coop_others == len(others) else sucker_payoff
-            else:
-                return mutual_defection_punishment if coop_others == 0 else defection_temptation
+        # Validate PD constraints: b/n < c < b
+        if not (benefit / n_players < cost < benefit):
+            raise ValueError(f"Invalid PD parameters: need b/n < c < b, got b={benefit}, c={cost}, n={n_players}")
+        
+        def public_goods_pd_payoff(choices: Sequence[int]) -> float:
+            k = sum(1 for choice in choices if choice == 0)  # total cooperators
+            player0_action = choices[0]
+            if player0_action == 0:  # Cooperate
+                return (benefit * k) / n_players - cost + reward_offset
+            else:  # Defect
+                return (benefit * k) / n_players + reward_offset
 
-        g = Game(n_players, payoff_func=prisoners_dilemma_payoff, name=f"Generalized PD ({n_players})", build_tensor=build_tensor)
-        g.enable_fast_pd(cooperation_reward=cooperation_reward,
-                         defection_temptation=defection_temptation,
-                         mutual_defection_punishment=mutual_defection_punishment,
-                         sucker_payoff=sucker_payoff)
+        g = Game(n_players, payoff_func=public_goods_pd_payoff, name=f"Public Goods PD ({n_players})", build_tensor=build_tensor)
+        g.enable_fast_public_goods_pd(benefit=benefit, cost=cost, reward_offset=reward_offset)
         return g
