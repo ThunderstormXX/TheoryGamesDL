@@ -8,12 +8,20 @@ class Game():
         # Strategies 0 or 1.
         self.strategies = np.random.randint(0, 2, size=len(learners))
         self.history = []
+        self.sum_adj = None
 
     def round(self):
         pass
 
     def result(self):
         return self.history
+    
+    def get_pairwise_cooperation(self):
+        adj = self.graph.get_adj_matrix()
+        if self.sum_adj is None:
+            self.sum_adj = np.sum(adj)
+        
+        return (self.strategies.T @ adj @ self.strategies) / self.sum_adj
     
     def _get_state(self, agent_id, adj, strategies):
         # State: number of cooperating neighbors
@@ -71,12 +79,15 @@ class MonteKarloPairGame(Game):
         n_agents = len(self.learners)
         
         # Select anchors
-        anchors = np.random.choice(n_agents, self.k, replace=False)
-        active_nodes = set(anchors)
-        for a in anchors:
-            active_nodes.update(np.nonzero(adj[a])[0])
-        active_nodes = list(active_nodes)
-        
+        # Fast path when all nodes are active
+        if self.k == n_agents:
+            active_nodes = list(range(n_agents))
+        else:
+            anchors = np.random.choice(n_agents, self.k, replace=False)
+            active_nodes = set(anchors)
+            for a in anchors:
+                active_nodes.update(np.nonzero(adj[a])[0])
+            active_nodes = list(active_nodes)
         # Induced Subgraph
         # Actions
         transitions = {} 
