@@ -134,11 +134,10 @@ class GameFactory:
     @staticmethod
     def create_generalized_prisoners_dilemma(
         n_players: int,
-        cooperation_reward: float = 8,
-        defection_temptation: float = 25,
-        mutual_defection_punishment: float = -10,
-        sucker_payoff: float = -15,
-        lone_cooperator_bonus: float = -5,
+        cooperation_reward: float = 3,
+        defection_temptation: float = 4,
+        mutual_defection_punishment: float = 1,
+        sucker_payoff: float = 0,
     ) -> Game:
         """
         Обобщенная дилемма заключенного для n игроков (возврат для игрока 0).

@@ -257,8 +257,8 @@ if __name__ == "__main__":
     
     if args.theory:
         print("Running theory collapse experiment...")
-        gammas = np.linspace(0.05, 0.4, 15)
-        depths = np.array([1.])
+        gammas = np.linspace(0.05, 0.4, 3)
+        depths = np.array([1.0, 1.2])
 
         X_vals = []
         Y_vals = []
