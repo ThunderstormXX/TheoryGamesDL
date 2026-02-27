@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import torch.multiprocessing as mp
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from tqdm import tqdm
+from scipy.optimize import fsolve
 
 # Оптимизации для A100 (Ampere)
 # Включаем TensorFloat-32 (TF32) для значительного ускорения матричных вычислений на A100
@@ -76,6 +77,61 @@ def run_batched_experiment(b, gamma, episodes, n_nodes, k_anchors, batch_size, s
 
 def run_batched_experiment_wrapper(args):
     return run_batched_experiment(*args)
+
+def calculate_theoretical_rho(b, c=1.0, k=4, T=1.0, alpha=0.2, gamma=0.99):
+    """
+    Решает уравнение для rho относительно b.
+    """
+    def equation(rho):
+        # Мгновенная потеря от кооперации
+        immediate_loss = -c * k
+        
+        # Выгода от влияния на соседей (Reciprocity mechanism)
+        if gamma >= 1.0: # avoid division by zero
+            return rho
+            
+        future_gain_factor = (gamma * k * alpha * b**2) / (4 * T)
+        
+        delta_Q = (immediate_loss + future_gain_factor * (1 - rho)) / (1 - gamma)
+        
+        # Вероятность кооперации по Больцману
+        # Clip delta_Q to avoid overflow in exp
+        delta_Q = np.clip(delta_Q, -100, 100)
+        prob_coop = 1 / (1 + np.exp(-delta_Q / T))
+        
+        return rho - prob_coop
+
+    # Численное решение уравнения rho = f(rho)
+    # Пытаемся найти решение, стартуя с 0.5
+    try:
+        rho_solution = fsolve(equation, 0.5)[0]
+    except:
+        rho_solution = 0.0
+        
+    return float(np.clip(rho_solution, 0, 1))
+
+def plot_theory_comparison(experimental_means, experimental_stds, theoretical_values, param_values, param_name, save_path):
+    """Строит график сравнения экспериментальных и теоретических данных"""
+    plt.figure(figsize=(10, 6))
+    
+    # Sort by parameter value
+    sorted_indices = np.argsort(param_values)
+    param_values = np.array(param_values)[sorted_indices]
+    experimental_means = np.array(experimental_means)[sorted_indices]
+    experimental_stds = np.array(experimental_stds)[sorted_indices]
+    theoretical_values = np.array(theoretical_values)[sorted_indices]
+    
+    plt.errorbar(param_values, experimental_means, yerr=experimental_stds, fmt='o-', label='Experiment', capsize=5)
+    plt.plot(param_values, theoretical_values, 'r--', label='Theory', linewidth=2)
+    
+    plt.xlabel(param_name)
+    plt.ylabel('Cooperation Rate (rho)')
+    plt.title(f'Comparison: Experiment vs Theory ({param_name})')
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    plt.ylim(-0.05, 1.05)
+    plt.savefig(save_path, dpi=300)
+    plt.close()
 
 def plot_dynamics_with_std(results_dict, param_name, save_path, title):
     """Отрисовывает графики динамики кооперации с усреднением и стандартным отклонением"""
@@ -170,19 +226,39 @@ def run_gamma_experiment(n_nodes=1000, episodes=10000, total_repeats=100, batch_
     os.makedirs("results/N_anchors/gamma_exp_stat", exist_ok=True)
     
     # Stats
+    gammas_list = []
+    means_list = []
+    stds_list = []
+    theories_list = []
+    
     for g, history_list in results.items():
         if not history_list: continue
         full_hist = np.vstack(history_list) # (Total_repeats, episodes)
         finals = full_hist[:, -1]
+        
+        mean_val = float(np.mean(finals))
+        std_val = float(np.std(finals))
+        theory_val = calculate_theoretical_rho(b=3.0, gamma=g, c=1.0, k=4, alpha=0.2, T=1.0)
+        
         final_stats[g] = {
-            "mean": float(np.mean(finals)),
-            "std": float(np.std(finals))
+            "mean": mean_val,
+            "std": std_val,
+            "theory": theory_val
         }
+        
+        gammas_list.append(g)
+        means_list.append(mean_val)
+        stds_list.append(std_val)
+        theories_list.append(theory_val)
         
     with open("results/N_anchors/gamma_exp_stat/gamma_stats.json", "w") as f:
         json.dump(final_stats, f, indent=4)
         
     plot_dynamics_with_std(results, 'gamma', "results/N_anchors/gamma_exp_stat/gamma_dynamics_std.png", f"Gamma Exp (N={n_nodes})")
+    
+    # Plot Theory Comparison
+    if gammas_list:
+        plot_theory_comparison(means_list, stds_list, theories_list, gammas_list, 'Gamma', "results/N_anchors/gamma_exp_stat/gamma_theory_comparison.png")
 
 def run_b_experiment(n_nodes=1000, episodes=10000, total_repeats=100, batch_size=20):
     print("\n" + "="*70)
@@ -224,19 +300,39 @@ def run_b_experiment(n_nodes=1000, episodes=10000, total_repeats=100, batch_size
     
     os.makedirs("results/N_anchors/b_exp_stat", exist_ok=True)
     
+    bs_list = []
+    means_list = []
+    stds_list = []
+    theories_list = []
+    
     for b_val, history_list in results.items():
         if not history_list: continue
         full_hist = np.vstack(history_list)
         finals = full_hist[:, -1]
+        
+        mean_val = float(np.mean(finals))
+        std_val = float(np.std(finals))
+        theory_val = calculate_theoretical_rho(b=b_val, gamma=0.9, c=1.0, k=4, alpha=0.2, T=1.0)
+        
         final_stats[b_val] = {
-            "mean": float(np.mean(finals)),
-            "std": float(np.std(finals))
+            "mean": mean_val,
+            "std": std_val,
+            "theory": theory_val
         }
         
+        bs_list.append(b_val)
+        means_list.append(mean_val)
+        stds_list.append(std_val)
+        theories_list.append(theory_val)
+
     with open("results/N_anchors/b_exp_stat/b_stats.json", "w") as f:
         json.dump(final_stats, f, indent=4)
         
     plot_dynamics_with_std(results, 'b', "results/N_anchors/b_exp_stat/b_dynamics_std.png", f"B Exp (N={n_nodes})")
+    
+    # Plot Theory Comparison
+    if bs_list:
+        plot_theory_comparison(means_list, stds_list, theories_list, bs_list, 'Benefit (b)', "results/N_anchors/b_exp_stat/b_theory_comparison.png")
 
 if __name__ == "__main__":
     mp.set_start_method('spawn', force=True)
