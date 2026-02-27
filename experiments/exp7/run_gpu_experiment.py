@@ -12,7 +12,7 @@ from graph_structure import SmallWorldGraph
 from gpu_version.gpu_learner import GPUQLearner
 from gpu_version.gpu_reward_model import GPUPPReward
 from gpu_version.gpu_game_launcher import GPUMonteKarloPairGame
-from gpu_version.gpu_utils import gpu_config
+from gpu_utils import gpu_config
 
 def run_single_simulation(b, gamma, episodes=10000, n_nodes=100, k_neighbors=1, p_rewiring=0.1, k_anchors=1):
     """Запускает одну симуляцию с заданными параметрами и возвращает финальную долю кооперации."""
