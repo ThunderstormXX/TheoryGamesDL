@@ -222,7 +222,7 @@ def run_experiment_small_world_diff_gamma(b = 3):
     TEMP_LIST = [1.0]
     C = 1.0
     K_ANCHORS = N_NODES
-    N_EPISODES = 50000
+    N_EPISODES = 5000
     N_EXPS = 100
     GAMMA_LIST = list(np.arange(0, 1, 0.2))  # Sweep gamma from 0 to 1
     
