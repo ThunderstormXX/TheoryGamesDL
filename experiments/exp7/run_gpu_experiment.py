@@ -24,7 +24,7 @@ from gpu_version.gpu_reward_model import GPUPPReward
 from gpu_version.gpu_game_launcher import GPUMonteKarloPairGame
 from gpu_utils import gpu_config
 
-def run_single_simulation(b, gamma, episodes=10000, n_nodes=1000, k_neighbors=1, p_rewiring=0.1, k_anchors=1):
+def run_single_simulation(b, gamma, episodes=10000, n_nodes=100, k_neighbors=1, p_rewiring=0.1, k_anchors=1):
     """Запускает одну симуляцию с заданными параметрами и возвращает историю доли кооперации."""
     # Устанавливаем seed для каждого процесса, чтобы избежать одинаковых случайных чисел
     torch.manual_seed(int(time.time() * 1000) % 100000)
@@ -107,7 +107,7 @@ def run_gamma_experiment(n_nodes=1000, episodes=10000):
     final_results = {}
     
     # Подготавливаем аргументы для параллельного запуска
-    tasks = [(3.0, g, episodes, n_nodes, 1, 0.1, 1) for g in gammas]
+    tasks = [(3.0, g, episodes, n_nodes, 4, 0.1, 1) for g in gammas]
     
     start_total = time.time()
     
@@ -155,7 +155,7 @@ def run_b_experiment(n_nodes=1000, episodes=10000):
     results = {}
     final_results = {}
     
-    tasks = [(b, 0.9, episodes, n_nodes, 1, 0.1, 1) for b in bs]
+    tasks = [(b, 0.9, episodes, n_nodes, 4, 0.1, 1) for b in bs]
     
     start_total = time.time()
     

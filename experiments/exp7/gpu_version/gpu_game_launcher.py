@@ -129,7 +129,7 @@ class GPUMonteKarloPairGame(GPUGame):
     def _get_state(self, agent_id, adj, strategies):
         """Get state for single agent"""
         neighbors = torch.nonzero(adj[agent_id]).squeeze()
-        if neighbors.dim() == 0:
+        if neighbors.numel() == 0:
             return 0
         return int(torch.sum(strategies[neighbors]))
 
@@ -174,7 +174,7 @@ class GPUPairGame(GPUGame):
     def _get_state(self, agent_id, adj, strategies):
         """Get state for single agent"""
         neighbors = torch.nonzero(adj[agent_id]).squeeze()
-        if neighbors.dim() == 0:
+        if neighbors.numel() == 0:
             return 0
         return int(torch.sum(strategies[neighbors]))
 
@@ -242,6 +242,6 @@ class GPUMonteKarloNotPairGame(GPUGame):
     def _get_state(self, agent_id, adj, strategies):
         """Get state for single agent"""
         neighbors = torch.nonzero(adj[agent_id]).squeeze()
-        if neighbors.dim() == 0:
+        if neighbors.numel() == 0:
             return 0
         return int(torch.sum(strategies[neighbors]))
