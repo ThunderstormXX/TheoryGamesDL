@@ -7,6 +7,7 @@ import json
 import matplotlib.pyplot as plt
 import torch.multiprocessing as mp
 from concurrent.futures import ProcessPoolExecutor, as_completed
+from tqdm import tqdm
 
 # Оптимизации для A100 (Ampere)
 # Включаем TensorFloat-32 (TF32) для значительного ускорения матричных вычислений на A100
@@ -24,11 +25,14 @@ from gpu_version.gpu_reward_model import GPUPPReward
 from gpu_version.gpu_game_launcher import GPUMonteKarloPairGame
 from gpu_utils import gpu_config
 
-def run_single_simulation(b, gamma, episodes=10000, n_nodes=100, k_neighbors=1, p_rewiring=0.1, k_anchors=1):
+def run_single_simulation(b, gamma, episodes=10000, n_nodes=100, k_neighbors=4, p_rewiring=0.1, k_anchors=1, seed=None):
     """Запускает одну симуляцию с заданными параметрами и возвращает историю доли кооперации."""
-    # Устанавливаем seed для каждого процесса, чтобы избежать одинаковых случайных чисел
-    torch.manual_seed(int(time.time() * 1000) % 100000)
-    np.random.seed(int(time.time() * 1000) % 100000)
+    # Устанавливаем seed для воспроизводимости или разнообразия
+    if seed is None:
+        seed = int(time.time() * 1000) % 100000
+    
+    torch.manual_seed(seed)
+    np.random.seed(seed)
     
     graph = SmallWorldGraph(n=n_nodes, k=k_neighbors, p=p_rewiring)
     
@@ -49,6 +53,8 @@ def run_single_simulation(b, gamma, episodes=10000, n_nodes=100, k_neighbors=1, 
     start_time = time.time()
     
     history = []
+    # Если запуск не в параллельном режиме (или для отладки), можно добавить tqdm тут
+    # Но так как мы запускаем много процессов, лучше tqdm снаружи
     for _ in range(episodes):
         game.round()
         # Сохраняем долю кооперации на каждом шаге
@@ -68,22 +74,41 @@ def run_single_simulation(b, gamma, episodes=10000, n_nodes=100, k_neighbors=1, 
 
 def run_single_simulation_wrapper(args):
     """Обертка для запуска в ProcessPoolExecutor"""
-    b, gamma, episodes, n_nodes, k_neighbors, p_rewiring, k_anchors = args
-    history, elapsed = run_single_simulation(b, gamma, episodes, n_nodes, k_neighbors, p_rewiring, k_anchors)
+    b, gamma, episodes, n_nodes, k_neighbors, p_rewiring, k_anchors, seed = args
+    history, elapsed = run_single_simulation(b, gamma, episodes, n_nodes, k_neighbors, p_rewiring, k_anchors, seed)
     return b, gamma, history, elapsed
 
-def plot_dynamics(results_dict, param_name, save_path, title):
-    """Отрисовывает графики динамики кооперации"""
+def plot_dynamics_with_std(results_dict, param_name, save_path, title):
+    """Отрисовывает графики динамики кооперации с усреднением и стандартным отклонением"""
     plt.figure(figsize=(12, 8))
     
-    for param_val, history in sorted(results_dict.items()):
-        # Для сглаживания графика можно использовать скользящее среднее, если эпизодов много
-        window = max(1, len(history) // 100)
+    sorted_items = sorted(results_dict.items(), key=lambda x: x[0])
+    
+    for param_val, histories in sorted_items:
+        # histories - список списков (N_repeats x episodes)
+        if not histories:
+            continue
+            
+        histories_arr = np.array(histories) # Shape: (100, 10000)
+        
+        mean_history = np.mean(histories_arr, axis=0)
+        std_history = np.std(histories_arr, axis=0)
+        
+        # Для сглаживания графика
+        window = max(1, len(mean_history) // 100)
         if window > 1:
-            smoothed = np.convolve(history, np.ones(window)/window, mode='valid')
-            plt.plot(smoothed, label=f'{param_name} = {param_val}')
+            # Сглаживаем среднее
+            smoothed_mean = np.convolve(mean_history, np.ones(window)/window, mode='valid')
+            smoothed_std = np.convolve(std_history, np.ones(window)/window, mode='valid')
+            
+            x_range = np.arange(len(smoothed_mean))
+            # Отрисовка
+            line, = plt.plot(x_range, smoothed_mean, label=f'{param_name} = {param_val}')
+            plt.fill_between(x_range, smoothed_mean - smoothed_std, smoothed_mean + smoothed_std, alpha=0.2, color=line.get_color())
         else:
-            plt.plot(history, label=f'{param_name} = {param_val}')
+            x_range = np.arange(len(mean_history))
+            line, = plt.plot(x_range, mean_history, label=f'{param_name} = {param_val}')
+            plt.fill_between(x_range, mean_history - std_history, mean_history + std_history, alpha=0.2, color=line.get_color())
             
     plt.title(title, fontsize=14)
     plt.xlabel('Эпизоды', fontsize=12)
@@ -96,101 +121,118 @@ def plot_dynamics(results_dict, param_name, save_path, title):
     plt.savefig(save_path, dpi=300)
     plt.close()
 
-def run_gamma_experiment(n_nodes=1000, episodes=10000):
+def run_gamma_experiment(n_nodes=1000, episodes=10000, n_repeats=100):
     print("\n" + "="*70)
-    print("ЭКСПЕРИМЕНТ 1: Зависимость от gamma (ПАРАЛЛЕЛЬНО НА A100)")
-    print(f"Параметры: Small World, n_nodes={n_nodes}, k_anchors=1, episodes={episodes}, b=3.0")
+    print(f"ЭКСПЕРИМЕНТ 1: Зависимость от gamma (Mean ± Std)")
+    print(f"Параметры: N={n_nodes}, episodes={episodes}, b=3.0, Repeats={n_repeats}")
     print("="*70)
     
     gammas = [0.0, 0.5, 0.8, 0.9, 0.95, 0.99]
-    results = {}
-    final_results = {}
+    results = {g: [] for g in gammas}
+    final_stats = {}
     
-    # Подготавливаем аргументы для параллельного запуска
-    tasks = [(3.0, g, episodes, n_nodes, 4, 0.1, 1) for g in gammas]
-    
+    # Формируем задачи: перебираем gamma, и для каждого делаем n_repeats повторений
+    tasks = []
+    for g in gammas:
+        for i in range(n_repeats):
+            # Уникальный seed для каждой задачи
+            seed = int(time.time()) + i * 1000 + int(g * 100)
+            tasks.append((3.0, g, episodes, n_nodes, 4, 0.1, 1, seed))
+            
     start_total = time.time()
     
-    # Запускаем параллельно (A100 40GB легко потянет 6-10 процессов с графами по 1000-5000 узлов)
-    max_workers = min(len(gammas), os.cpu_count() or 4)
+    # 40GB VRAM / ~4GB per task ~= 10 runs max. Safe with 8.
+    max_workers = 8 
+    
+    print(f"Запуск {len(tasks)} задач на {max_workers} процессах...")
+    
     with ProcessPoolExecutor(max_workers=max_workers) as executor:
         futures = {executor.submit(run_single_simulation_wrapper, task): task for task in tasks}
         
-        for future in as_completed(futures):
-            b, gamma, history, elapsed = future.result()
-            final_coop = history[-1]
-            print(f"  [Gamma={gamma}] -> Доля кооперации: {final_coop:.4f} (Время: {elapsed:.2f} сек)")
-            results[gamma] = history
-            final_results[gamma] = final_coop
+        # Используем tqdm для отображения прогресса
+        for future in tqdm(as_completed(futures), total=len(tasks), desc="Simulations (Gamma)"):
+            b_val, gamma_val, history, elapsed = future.result()
+            results[gamma_val].append(history)
             
     print(f"Общее время эксперимента 1: {time.time() - start_total:.2f} сек")
     
-    # Сохранение результатов
-    os.makedirs("results/N_anchors/gamma_exp", exist_ok=True)
+    # Сохранение результатов и статистики
+    os.makedirs("results/N_anchors/gamma_exp_stat", exist_ok=True)
     
-    # Сохраняем финальные значения
-    with open("results/N_anchors/gamma_exp/gamma_results.json", "w") as f:
-        json.dump(final_results, f, indent=4)
-        
-    # Сохраняем полную историю
-    with open("results/N_anchors/gamma_exp/gamma_history.json", "w") as f:
-        json.dump(results, f, indent=4)
+    # Вычисляем финальные средние значения кооперации (последний эпизод)
+    for g, histories in results.items():
+        if not histories:
+            continue
+        finals = [h[-1] for h in histories]
+        final_stats[g] = {
+            "mean": float(np.mean(finals)),
+            "std": float(np.std(finals))
+        }
+    
+    with open("results/N_anchors/gamma_exp_stat/gamma_stats.json", "w") as f:
+        json.dump(final_stats, f, indent=4)
         
     # Отрисовка графика
-    plot_dynamics(
+    plot_dynamics_with_std(
         results, 
         'gamma', 
-        "results/N_anchors/gamma_exp/gamma_dynamics.png",
-        f"Динамика кооперации при разных значениях gamma (b=3.0, N={n_nodes})"
+        "results/N_anchors/gamma_exp_stat/gamma_dynamics_std.png",
+        f"Динамика кооперации (mean ± std) при разных gamma (b=3.0, N={n_nodes}, {n_repeats} runs)"
     )
-    print("Результаты и графики сохранены в results/N_anchors/gamma_exp/")
+    print("Результаты сохранены в results/N_anchors/gamma_exp_stat/")
 
-def run_b_experiment(n_nodes=1000, episodes=10000):
+def run_b_experiment(n_nodes=1000, episodes=10000, n_repeats=100):
     print("\n" + "="*70)
-    print("ЭКСПЕРИМЕНТ 2: Зависимость от b (ПАРАЛЛЕЛЬНО НА A100)")
-    print(f"Параметры: Small World, n_nodes={n_nodes}, k_anchors=1, episodes={episodes}, gamma=0.9")
+    print(f"ЭКСПЕРИМЕНТ 2: Зависимость от b (Mean ± Std)")
+    print(f"Параметры: N={n_nodes}, episodes={episodes}, gamma=0.9, Repeats={n_repeats}")
     print("="*70)
     
     bs = [1.0, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0]
-    results = {}
-    final_results = {}
+    results = {b_: [] for b_ in bs}
+    final_stats = {}
     
-    tasks = [(b, 0.9, episodes, n_nodes, 4, 0.1, 1) for b in bs]
+    tasks = []
+    for b_val in bs:
+        for i in range(n_repeats):
+            seed = int(time.time()) + i * 2000 + int(b_val * 100)
+            tasks.append((b_val, 0.9, episodes, n_nodes, 4, 0.1, 1, seed))
     
     start_total = time.time()
     
-    max_workers = min(len(bs), os.cpu_count() or 4)
+    max_workers = 8
+    
+    print(f"Запуск {len(tasks)} задач на {max_workers} процессах...")
+    
     with ProcessPoolExecutor(max_workers=max_workers) as executor:
         futures = {executor.submit(run_single_simulation_wrapper, task): task for task in tasks}
         
-        for future in as_completed(futures):
-            b, gamma, history, elapsed = future.result()
-            final_coop = history[-1]
-            print(f"  [b={b}] -> Доля кооперации: {final_coop:.4f} (Время: {elapsed:.2f} сек)")
-            results[b] = history
-            final_results[b] = final_coop
+        for future in tqdm(as_completed(futures), total=len(tasks), desc="Simulations (b)"):
+            b_res, gamma_res, history, elapsed = future.result()
+            results[b_res].append(history)
             
     print(f"Общее время эксперимента 2: {time.time() - start_total:.2f} сек")
     
-    # Сохранение результатов
-    os.makedirs("results/N_anchors/b_exp", exist_ok=True)
+    os.makedirs("results/N_anchors/b_exp_stat", exist_ok=True)
     
-    # Сохраняем финальные значения
-    with open("results/N_anchors/b_exp/b_results.json", "w") as f:
-        json.dump(final_results, f, indent=4)
+    for b_val, histories in results.items():
+        if not histories:
+            continue
+        finals = [h[-1] for h in histories]
+        final_stats[b_val] = {
+            "mean": float(np.mean(finals)),
+            "std": float(np.std(finals))
+        }
         
-    # Сохраняем полную историю
-    with open("results/N_anchors/b_exp/b_history.json", "w") as f:
-        json.dump(results, f, indent=4)
+    with open("results/N_anchors/b_exp_stat/b_stats.json", "w") as f:
+        json.dump(final_stats, f, indent=4)
         
-    # Отрисовка графика
-    plot_dynamics(
+    plot_dynamics_with_std(
         results, 
         'b', 
-        "results/N_anchors/b_exp/b_dynamics.png",
-        f"Динамика кооперации при разных значениях b (gamma=0.9, N={n_nodes})"
+        "results/N_anchors/b_exp_stat/b_dynamics_std.png",
+        f"Динамика кооперации (mean ± std) при разных b (gamma=0.9, N={n_nodes}, {n_repeats} runs)"
     )
-    print("Результаты и графики сохранены в results/N_anchors/b_exp/")
+    print("Результаты сохранены в results/N_anchors/b_exp_stat/")
 
 if __name__ == "__main__":
     # Обязательно для PyTorch + Multiprocessing с CUDA
@@ -198,9 +240,10 @@ if __name__ == "__main__":
     
     gpu_config.print_info()
     
-    # Запуск обоих экспериментов (увеличили n_nodes до 1000, чтобы загрузить A100)
-    run_gamma_experiment(n_nodes=1000, episodes=10000)
-    run_b_experiment(n_nodes=1000, episodes=10000)
+    # Запуск экспериментов
+    # n_nodes=1000 для реального эксперимента
+    run_gamma_experiment(n_nodes=1000, episodes=10000, n_repeats=100)
+    run_b_experiment(n_nodes=1000, episodes=10000, n_repeats=100)
     
     # Очистка памяти GPU
     if torch.cuda.is_available():
