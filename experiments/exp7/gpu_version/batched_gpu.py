@@ -222,12 +222,8 @@ class BatchedGPUMonteKarloPairGame:
         # Based on NEW strategies
         n_coop_neighbors = torch.bmm(self.adj_tensor, next_strategies.unsqueeze(2)).squeeze(2) # (B, N)
         
-        # Avoid division by zero
-        safe_degrees = torch.where(self.degrees == 0, torch.ones_like(self.degrees), self.degrees)
-        coop_fractions = n_coop_neighbors / safe_degrees
-        
-        # Payoff: b * fraction - c * strategy
-        rewards = self.b * coop_fractions - self.c * next_strategies
+        # Payoff (GPUPPReward): b * sum(xj) - c * xi * ki
+        rewards = self.b * n_coop_neighbors - self.c * next_strategies * self.degrees
         
         # 6. Learn
         # We need next_state (state at t+1) based on strategies at t+1
