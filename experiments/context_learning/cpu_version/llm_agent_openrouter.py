@@ -44,6 +44,8 @@ class LLMAgentOpenRouter:
 
     VALID_MODES = ("history_only", "history_and_global", "neighbors_detail", "blind")
 
+    VALID_REASONING = (None, "low", "medium", "high")
+
     def __init__(
         self,
         agent_id=0,
@@ -56,19 +58,21 @@ class LLMAgentOpenRouter:
         neighbor_ids=None,
         verbose=False,
         api_delay=0.0,
+        reasoning_effort=None,
     ):
         """
         Args:
-            agent_id:      identifier (for logging)
-            degree:        number of neighbors (enriches prompt)
-            model:         OpenRouter model string
-            temperature:   LLM sampling temperature (0 = deterministic)
-            max_history:   how many past rounds to include in prompt
-            api_key:       OpenRouter API key; falls back to OPENROUTER_API_KEY env
-            prompt_mode:   one of VALID_MODES — controls what info goes into prompt
-            neighbor_ids:  list of neighbor node ids (needed for "neighbors_detail" mode)
-            verbose:       if True, print every prompt and response to stdout
-            api_delay:     seconds to sleep before each API call (for rate limiting)
+            agent_id:         identifier (for logging)
+            degree:           number of neighbors (enriches prompt)
+            model:            OpenRouter model string
+            temperature:      LLM sampling temperature (0 = deterministic)
+            max_history:      how many past rounds to include in prompt
+            api_key:          OpenRouter API key; falls back to OPENROUTER_API_KEY env
+            prompt_mode:      one of VALID_MODES — controls what info goes into prompt
+            neighbor_ids:     list of neighbor node ids (needed for "neighbors_detail" mode)
+            verbose:          if True, print every prompt and response to stdout
+            api_delay:        seconds to sleep before each API call (for rate limiting)
+            reasoning_effort: None (disabled) or "low"/"medium"/"high" for o-series models
         """
         if prompt_mode not in self.VALID_MODES:
             raise ValueError(
@@ -88,6 +92,8 @@ class LLMAgentOpenRouter:
         self.max_history = max_history
         self.prompt_mode = prompt_mode
         self.neighbor_ids = neighbor_ids or []
+
+        self.reasoning_effort = reasoning_effort
 
         self.history = []          # core of in-context learning
         self.action_space_size = 2
@@ -149,7 +155,8 @@ class LLMAgentOpenRouter:
         base += " Respond with ONLY the single digit 0 or 1. No explanation."
         return base
 
-    def _build_user_prompt(self, state, global_coop_rate=None, neighbor_actions=None):
+    def _build_user_prompt(self, state, global_coop_rate=None, neighbor_actions=None,
+                           is_first_round=False):
         lines = []
 
         # ── blind mode: minimal info ──
@@ -193,7 +200,9 @@ class LLMAgentOpenRouter:
         # ── current observation ──
         lines.append("=== Current round ===")
 
-        if self.prompt_mode == "history_only":
+        if is_first_round:
+            lines.append("This is the first round. No actions have been taken yet.")
+        elif self.prompt_mode == "history_only":
             if self.degree is not None:
                 lines.append(
                     f"{state} out of {self.degree} neighbors are cooperating."
@@ -235,54 +244,74 @@ class LLMAgentOpenRouter:
             "Content-Type": "application/json",
             "HTTP-Referer": "https://github.com/prisoner-dilemma-icl",
         }
-        payload = {
-            "model": self.model,
-            "messages": [
-                {"role": "system", "content": system_msg},
-                {"role": "user", "content": user_msg},
-            ],
-            "temperature": self.llm_temp,
-            "max_tokens": 5,
-        }
-        resp = requests.post(self._api_url, headers=headers, json=payload, timeout=30)
+        messages = [
+            {"role": "system", "content": system_msg},
+            {"role": "user", "content": user_msg},
+        ]
+        if self.reasoning_effort is not None:
+            # o-series models: no temperature, max_completion_tokens, reasoning_effort
+            payload = {
+                "model": self.model,
+                "messages": messages,
+                "max_completion_tokens": 500,
+                "reasoning_effort": self.reasoning_effort,
+            }
+        else:
+            payload = {
+                "model": self.model,
+                "messages": messages,
+                "temperature": self.llm_temp,
+                "max_tokens": 5,
+            }
+        resp = requests.post(self._api_url, headers=headers, json=payload, timeout=60)
         resp.raise_for_status()
         data = resp.json()
 
         # Safely extract content — can be None or missing
         try:
-            content = data["choices"][0]["message"]["content"]
+            msg = data["choices"][0]["message"]
+            content = msg["content"]
+            reasoning_content = msg.get("reasoning_content") or msg.get("reasoning")
         except (KeyError, IndexError, TypeError):
             raise ValueError(f"Unexpected API response: {data}")
         if content is None:
             raise ValueError(f"API returned null content: {data}")
-        return content.strip()
+        return content.strip(), reasoning_content
 
     # ── interface ───────────────────────────────────────────
 
-    def choose_action(self, state, global_coop_rate=None, neighbor_actions=None):
+    def choose_action(self, state, global_coop_rate=None, neighbor_actions=None,
+                      is_first_round=False):
         """
         Pick action 0 or 1.
 
         Extended kwargs are used by the LLM game launcher to pass
         extra context depending on prompt_mode.
         """
-        prompt = self._build_user_prompt(state, global_coop_rate, neighbor_actions)
+        prompt = self._build_user_prompt(state, global_coop_rate, neighbor_actions,
+                                         is_first_round=is_first_round)
 
         for attempt in range(3):
             try:
                 if self.api_delay > 0:
                     time.sleep(self.api_delay)
                 self.total_api_calls += 1
-                text = self._call_openrouter(self._system, prompt)
+                text, reasoning_content = self._call_openrouter(self._system, prompt)
                 action = self._parse(text)
 
                 sep = "─" * 60
+                reasoning_tag = f"  │  reasoning={self.reasoning_effort}" if self.reasoning_effort else ""
+                reasoning_block = (
+                    f"[REASONING]\n{reasoning_content}\n\n"
+                    if reasoning_content else ""
+                )
                 log_lines = (
                     f"\n{sep}\n"
-                    f"  Agent {self.agent_id}  │  mode={self.prompt_mode}  │  round {len(self.history)+1}\n"
+                    f"  Agent {self.agent_id}  │  mode={self.prompt_mode}{reasoning_tag}  │  round {len(self.history)+1}\n"
                     f"{sep}\n"
                     f"[SYSTEM]\n{self._system}\n\n"
                     f"[USER]\n{prompt}\n\n"
+                    f"{reasoning_block}"
                     f"[LLM RAW] \"{text}\"  →  action={action}\n"
                     f"{sep}\n"
                 )
@@ -336,6 +365,8 @@ class LLMAgentOpenRouter:
 
     def set_log_file(self, path):
         """Open a text file for logging all prompts and responses."""
+        if self._log_file is not None:
+            self._log_file.close()
         self._log_file = open(path, "a", encoding="utf-8")
 
     def reset(self):

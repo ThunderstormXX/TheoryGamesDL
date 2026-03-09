@@ -104,6 +104,12 @@ def parse_args():
                    help="Print every LLM prompt and response to stdout")
     p.add_argument("--api_delay", type=float, default=1.0,
                    help="Seconds to wait between API calls (default 1.0, for rate limiting)")
+    p.add_argument("--llm_n_runs", type=int, default=1,
+                   help="Number of independent LLM runs per mode (for variance estimation)")
+    p.add_argument("--reasoning_effort", type=str, default=None,
+                   choices=["low", "medium", "high"],
+                   help="Enable reasoning for o-series models (low/medium/high). "
+                        "Disables temperature and uses max_completion_tokens.")
     return p.parse_args()
 
 
@@ -126,8 +132,9 @@ def play(game, n_episodes, label="", verbose_every=20):
         r = game.history[-1]["rewards"]
         mean_rewards.append(float(np.mean(r)))
         if label and verbose_every and (ep + 1) % verbose_every == 0:
+            avg_rho = float(np.mean(rates))
             print(f"  [{label}] ep {ep+1:>4}/{n_episodes}  "
-                  f"ρ={rho:.3f}  avg_r={mean_rewards[-1]:.2f}")
+                  f"ρ={rho:.3f}  avg_ρ={avg_rho:.3f}  avg_r={mean_rewards[-1]:.2f}")
     return np.array(rates), np.array(mean_rewards)
 
 
@@ -158,44 +165,62 @@ def run_q_learning(graph, reward_model, config, init_strat, n_runs=10):
 
 def run_llm_experiment(graph, reward_model, config, init_strat, mode, api_key,
                       verbose=False, api_delay=1.0, log_path=None):
-    """Run a single LLM experiment with given prompt_mode."""
+    """Run LLM experiment n_runs times and return stacked rate/reward arrays."""
     degrees = graph.get_degree()
     neighbors_map = graph.get_neibhours()
+    n_runs = config.get("llm_n_runs", 1)
 
-    agents = []
-    for i in range(config["n_nodes"]):
-        agent = LLMAgentOpenRouter(
-            agent_id=i,
-            degree=degrees[i],
-            model=config["llm_model"],
-            temperature=config["llm_temperature"],
-            max_history=config["llm_max_history"],
-            api_key=api_key,
-            prompt_mode=mode,
-            neighbor_ids=neighbors_map.get(i, []),
-            verbose=verbose,
-            api_delay=api_delay,
-        )
-        if log_path is not None:
-            agent.set_log_file(log_path)
-        agents.append(agent)
-
-    game = LLMPairGame(graph, agents, reward_model)
-    game.strategies = init_strat.copy()
-
+    all_rates = []
+    all_rewards = []
+    all_agent_stats = []
     t0 = time.time()
-    rates, rewards = play(game, config["ep_llm"], label=f"LLM-{mode}")
+
+    for run in range(n_runs):
+        agents = []
+        for i in range(config["n_nodes"]):
+            agent = LLMAgentOpenRouter(
+                agent_id=i,
+                degree=degrees[i],
+                model=config["llm_model"],
+                temperature=config["llm_temperature"],
+                max_history=config["llm_max_history"],
+                api_key=api_key,
+                prompt_mode=mode,
+                neighbor_ids=neighbors_map.get(i, []),
+                verbose=verbose,
+                api_delay=api_delay,
+                reasoning_effort=config.get("llm_reasoning_effort"),
+            )
+            if log_path is not None:
+                # append run index to log path when multiple runs
+                if n_runs > 1:
+                    base, ext = os.path.splitext(log_path)
+                    agent.set_log_file(f"{base}_run{run+1}{ext}")
+                else:
+                    agent.set_log_file(log_path)
+            agents.append(agent)
+
+        game = LLMPairGame(graph, agents, reward_model)
+        game.strategies = init_strat.copy()
+
+        run_label = f"LLM-{mode}" if n_runs == 1 else f"LLM-{mode}-run{run+1}"
+        rates, rewards = play(game, config["ep_llm"], label=run_label)
+
+        agent_stats = [a.get_stats() for a in agents]
+        total_calls = sum(s["api_calls"] for s in agent_stats)
+        total_errors = sum(s["api_errors"] for s in agent_stats)
+        print(f"  [{mode} run {run+1}/{n_runs}]  "
+              f"avg_ρ={float(np.mean(rates)):.3f}  "
+              f"({total_calls} API calls, {total_errors} errors)")
+
+        all_rates.append(rates)
+        all_rewards.append(rewards)
+        all_agent_stats.extend(agent_stats)
+
     elapsed = time.time() - t0
+    print(f"  [{mode}] all runs done in {elapsed:.0f}s")
 
-    # Collect agent stats
-    agent_stats = [a.get_stats() for a in agents]
-    total_calls = sum(s["api_calls"] for s in agent_stats)
-    total_errors = sum(s["api_errors"] for s in agent_stats)
-
-    print(f"  [{mode}] done in {elapsed:.0f}s  "
-          f"({total_calls} API calls, {total_errors} errors)")
-
-    return rates, rewards, elapsed, agent_stats
+    return np.array(all_rates), np.array(all_rewards), elapsed, all_agent_stats
 
 
 def _build_info_text(config, results):
@@ -217,9 +242,12 @@ def _build_info_text(config, results):
 
     llm_modes = sorted(k.replace("llm_", "") for k in results if k.startswith("llm_"))
     if llm_modes:
+        reasoning = config.get("llm_reasoning_effort")
+        reasoning_str = f",  reasoning={reasoning}" if reasoning else ""
+        n_runs_str = f"x{config.get('llm_n_runs', 1)}"
         line3 = (f"LLM: {config['llm_model']},  T_llm={config.get('llm_temperature', '?')},  "
                  f"history={config.get('llm_max_history', '?')},  "
-                 f"episodes={config['ep_llm']},  "
+                 f"episodes={config['ep_llm']} ({n_runs_str} runs){reasoning_str},  "
                  f"modes: [{', '.join(llm_modes)}]")
     else:
         line3 = "LLM: not run"
@@ -296,12 +324,20 @@ def plot_results(results, config, output_dir):
         ax.fill_between(range(len(q_mean)), q_mean - q_std, q_mean + q_std,
                         alpha=0.2, color="steelblue")
 
+    reasoning = config.get("llm_reasoning_effort")
+    reasoning_str = f", reasoning={reasoning}" if reasoning else ""
     for mode, data in results.items():
         if mode.startswith("llm_"):
             mname = mode.replace("llm_", "")
             c = colors.get(mname, "gray")
-            ax.plot(data["rates"], label=f"LLM ({mname})", color=c,
+            r = data["rates"]  # shape (n_runs, ep_llm)
+            r_mean = np.mean(r, axis=0)
+            r_std = np.std(r, axis=0)
+            ax.plot(r_mean, label=f"LLM ({mname}{reasoning_str})", color=c,
                     linewidth=2, alpha=0.9)
+            if r.shape[0] > 1:
+                ax.fill_between(range(len(r_mean)), r_mean - r_std, r_mean + r_std,
+                                alpha=0.2, color=c)
 
     if "rho_theory" in results:
         ax.axhline(results["rho_theory"], color="red", ls="--", lw=1.5,
@@ -330,10 +366,12 @@ def plot_results(results, config, output_dir):
         key = f"llm_{mode}"
         if key in results:
             d = results[key]
-            final_val = float(np.mean(d["rates"][-50:]))
-            names.append(f"LLM\n{mode}")
-            vals.append(final_val)
-            errs.append(0)
+            # finals shape: (n_runs,) — mean over last 50 episodes per run
+            finals = np.mean(d["rates"][:, -50:], axis=1)
+            bar_label = f"LLM\n{mode}" + (f"\n[{reasoning}]" if reasoning else "")
+            names.append(bar_label)
+            vals.append(float(np.mean(finals)))
+            errs.append(float(np.std(finals)))
             bar_colors.append(colors.get(mode, "gray"))
 
     if "rho_theory" in results:
@@ -372,12 +410,21 @@ def plot_results(results, config, output_dir):
                 label=f"Q-learning (α={config['q_lr']}, γ={config['q_gamma']}, T={config['q_temp']})",
                 color="steelblue", linewidth=2)
 
+    reasoning_r = config.get("llm_reasoning_effort")
+    reasoning_str_r = f", reasoning={reasoning_r}" if reasoning_r else ""
     for mode in ["history_only", "history_and_global", "neighbors_detail", "blind"]:
         key = f"llm_{mode}"
         if key in results:
             d = results[key]
-            ax.plot(d["rewards"], label=f"LLM ({mode})",
-                    color=colors.get(mode, "gray"), linewidth=2)
+            c = colors.get(mode, "gray")
+            rw = d["rewards"]  # shape (n_runs, ep_llm)
+            rw_mean = np.mean(rw, axis=0)
+            rw_std = np.std(rw, axis=0)
+            ax.plot(rw_mean, label=f"LLM ({mode}{reasoning_str_r})",
+                    color=c, linewidth=2)
+            if rw.shape[0] > 1:
+                ax.fill_between(range(len(rw_mean)), rw_mean - rw_std, rw_mean + rw_std,
+                                alpha=0.2, color=c)
 
     ax.set_xlabel("Episode", fontsize=12)
     ax.set_ylabel("Mean Reward", fontsize=12)
@@ -412,6 +459,8 @@ def main():
         "llm_model": args.llm_model,
         "llm_temperature": args.llm_temperature,
         "llm_max_history": DEFAULT_CONFIG["llm_max_history"],
+        "llm_n_runs": args.llm_n_runs,
+        "llm_reasoning_effort": args.reasoning_effort,
         "seed": args.seed,
     }
 
@@ -526,7 +575,9 @@ def main():
         key = f"llm_{mode}"
         if key in results:
             d = results[key]
-            json_report[f"{key}_final_coop"] = float(np.mean(d["rates"][-50:]))
+            finals = np.mean(d["rates"][:, -50:], axis=1)
+            json_report[f"{key}_final_coop_mean"] = float(np.mean(finals))
+            json_report[f"{key}_final_coop_std"] = float(np.std(finals))
             json_report[f"{key}_elapsed_s"] = d["elapsed"]
             json_report[f"{key}_total_api_calls"] = sum(
                 s["api_calls"] for s in d["agent_stats"]

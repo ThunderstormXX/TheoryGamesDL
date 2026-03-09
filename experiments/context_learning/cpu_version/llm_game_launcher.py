@@ -31,13 +31,16 @@ class LLMPairGame(PairGame):
         adj = self.graph.get_adj_matrix()
         self.round_num += 1
 
-        # Global cooperation rate (from previous round strategies)
-        global_coop = float(np.mean(self.strategies))
+        # In round 1 no actions have been taken yet — use zero state for all agents
+        is_first_round = (self.round_num == 1)
+
+        # Global cooperation rate (from previous round strategies; undefined in round 1)
+        global_coop = 0.0 if is_first_round else float(np.mean(self.strategies))
 
         # ── 1. Choose actions ──
         transitions = {}
         for i, learner in enumerate(self.learners):
-            state = self._get_state(i, adj, self.strategies)
+            state = 0 if is_first_round else self._get_state(i, adj, self.strategies)
 
             if _is_llm_agent(learner):
                 # Build extra context
@@ -45,11 +48,15 @@ class LLMPairGame(PairGame):
                 if learner.prompt_mode == "history_and_global":
                     kwargs["global_coop_rate"] = global_coop
                 elif learner.prompt_mode == "neighbors_detail":
-                    nbs = self._neighbors.get(i, [])
-                    kwargs["neighbor_actions"] = {
-                        nb: int(self.strategies[nb]) for nb in nbs
-                    }
-                action = learner.choose_action(state, **kwargs)
+                    if is_first_round:
+                        nbs = self._neighbors.get(i, [])
+                        kwargs["neighbor_actions"] = {nb: 0 for nb in nbs}
+                    else:
+                        nbs = self._neighbors.get(i, [])
+                        kwargs["neighbor_actions"] = {
+                            nb: int(self.strategies[nb]) for nb in nbs
+                        }
+                action = learner.choose_action(state, is_first_round=is_first_round, **kwargs)
             else:
                 action = learner.choose_action(state)
 
@@ -78,9 +85,11 @@ class LLMPairGame(PairGame):
                     "global_coop": post_global_coop,
                 }
                 if learner.prompt_mode == "neighbors_detail":
+                    # Save the neighbor actions that were observed at choose_action time
+                    # (i.e., strategies before this round's updates — same as passed to choose_action)
                     nbs = self._neighbors.get(i, [])
                     extra["neighbor_actions"] = {
-                        nb: int(self.strategies[nb]) for nb in nbs
+                        nb: transitions[nb][1] for nb in nbs if nb in transitions
                     }
                 learner.step(s, a, r, next_state, **extra)
             elif learner.__class__.__name__ == "SARSALearner":

@@ -1,0 +1,1464 @@
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=blind  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=blind  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=blind  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Choose your next action (0 or 1):
+
+[LLM RAW] "1"  →  action=1
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=blind  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=blind  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Choose your next action (0 or 1):
+
+[LLM RAW] "1"  →  action=1
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=blind  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=blind  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Choose your next action (0 or 1):
+
+[LLM RAW] "1"  →  action=1
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=blind  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Choose your next action (0 or 1):
+
+[LLM RAW] "1"  →  action=1
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=blind  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=blind  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=blind  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=blind  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=blind  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=blind  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=blind  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "1"  →  action=1
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=blind  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=blind  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=blind  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "1"  →  action=1
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=blind  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=blind  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "1"  →  action=1
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=blind  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=blind  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "1"  →  action=1
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=blind  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=1, reward=-4.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=blind  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=blind  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "1"  →  action=1
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=blind  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=1, reward=-1.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=blind  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=0, reward=6.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=blind  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=1, reward=2.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=blind  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=6.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=blind  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=1, reward=-1.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=blind  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=1, reward=-4.00
+  Round 3: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=blind  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=6.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=blind  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=3.00
+  Round 4: action=1, reward=-4.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=blind  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=1, reward=-1.00
+  Round 4: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=blind  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=blind  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=1, reward=2.00
+  Round 4: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "1"  →  action=1
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=blind  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=blind  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=1, reward=-1.00
+  Round 4: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=blind  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=1, reward=-4.00
+  Round 3: action=0, reward=3.00
+  Round 4: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=blind  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=blind  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=3.00
+  Round 4: action=1, reward=-4.00
+  Round 5: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=blind  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=1, reward=-1.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=blind  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=blind  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=1, reward=2.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=1, reward=-4.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=blind  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=blind  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=1, reward=-1.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=blind  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=1, reward=-4.00
+  Round 3: action=0, reward=3.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=blind  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=blind  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=3.00
+  Round 4: action=1, reward=-4.00
+  Round 5: action=0, reward=0.00
+  Round 6: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=blind  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=1, reward=-1.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=blind  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=blind  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=1, reward=2.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=1, reward=-4.00
+  Round 6: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=blind  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=blind  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=1, reward=-1.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=blind  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=1, reward=-4.00
+  Round 3: action=0, reward=3.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=0.00
+  Round 6: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=blind  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=0.00
+  Round 6: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=blind  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=3.00
+  Round 4: action=1, reward=-4.00
+  Round 5: action=0, reward=0.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=blind  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=1, reward=-1.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=blind  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=blind  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=1, reward=2.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=1, reward=-4.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=blind  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=blind  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=1, reward=-1.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=blind  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=1, reward=-4.00
+  Round 3: action=0, reward=3.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=0.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=blind  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=0.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=blind  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=3.00
+  Round 4: action=1, reward=-4.00
+  Round 5: action=0, reward=0.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=blind  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=1, reward=-1.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=blind  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=blind  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=1, reward=2.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=1, reward=-4.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=blind  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "1"  →  action=1
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=blind  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=1, reward=-1.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=blind  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=1, reward=-4.00
+  Round 3: action=0, reward=3.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=0.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=blind  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=0.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=blind  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=3.00
+  Round 4: action=1, reward=-4.00
+  Round 5: action=0, reward=0.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+  Round 9: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=blind  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=1, reward=-1.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+  Round 9: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=blind  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+  Round 9: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=blind  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=6.00
+  Round 2: action=0, reward=0.00
+  Round 3: action=1, reward=2.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=1, reward=-4.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+  Round 9: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=blind  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+  Round 9: action=1, reward=-4.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=blind  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=0, reward=9.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=1, reward=-1.00
+  Round 4: action=0, reward=0.00
+  Round 5: action=0, reward=3.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+  Round 9: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=blind  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=2.00
+  Round 2: action=1, reward=-4.00
+  Round 3: action=0, reward=3.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=0.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+  Round 9: action=0, reward=3.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=blind  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are making repeated decisions. Each round you pick action 0 or action 1. After each round you receive a numerical reward. Your goal is to maximize your total reward over many rounds. You will see your past actions and the rewards you received. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+Your past rounds:
+  Round 1: action=1, reward=-1.00
+  Round 2: action=0, reward=3.00
+  Round 3: action=0, reward=6.00
+  Round 4: action=0, reward=3.00
+  Round 5: action=0, reward=0.00
+  Round 6: action=0, reward=0.00
+  Round 7: action=0, reward=0.00
+  Round 8: action=0, reward=0.00
+  Round 9: action=0, reward=0.00
+
+Choose your next action (0 or 1):
+
+[LLM RAW] "1"  →  action=1
+────────────────────────────────────────────────────────────

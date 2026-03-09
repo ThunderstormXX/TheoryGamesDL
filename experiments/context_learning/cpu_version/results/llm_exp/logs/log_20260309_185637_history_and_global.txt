@@ -1,0 +1,1784 @@
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=history_and_global  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Current round ===
+1 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 25.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=history_and_global  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 25.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=history_and_global  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Current round ===
+1 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 25.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=history_and_global  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Current round ===
+2 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 25.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=history_and_global  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Current round ===
+1 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 25.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=history_and_global  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 25.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=history_and_global  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Current round ===
+1 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 25.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=history_and_global  │  reasoning=low  │  round 1
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Current round ===
+2 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 25.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=history_and_global  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=history_and_global  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=history_and_global  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=history_and_global  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=history_and_global  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=history_and_global  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=history_and_global  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=history_and_global  │  reasoning=low  │  round 2
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=history_and_global  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=history_and_global  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=history_and_global  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=history_and_global  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=history_and_global  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=history_and_global  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=history_and_global  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=history_and_global  │  reasoning=low  │  round 3
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=history_and_global  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=history_and_global  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=history_and_global  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=history_and_global  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=history_and_global  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=history_and_global  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=history_and_global  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=history_and_global  │  reasoning=low  │  round 4
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=history_and_global  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=history_and_global  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=history_and_global  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=history_and_global  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=history_and_global  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=history_and_global  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=history_and_global  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=history_and_global  │  reasoning=low  │  round 5
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=history_and_global  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=history_and_global  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=history_and_global  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=history_and_global  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=history_and_global  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=history_and_global  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=history_and_global  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=history_and_global  │  reasoning=low  │  round 6
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=history_and_global  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=history_and_global  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=history_and_global  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=history_and_global  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=history_and_global  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=history_and_global  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=history_and_global  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=history_and_global  │  reasoning=low  │  round 7
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=history_and_global  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=history_and_global  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=history_and_global  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=history_and_global  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=history_and_global  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=history_and_global  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=history_and_global  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=history_and_global  │  reasoning=low  │  round 8
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=history_and_global  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=history_and_global  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=history_and_global  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=history_and_global  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=history_and_global  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=history_and_global  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=history_and_global  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=history_and_global  │  reasoning=low  │  round 9
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 0  │  mode=history_and_global  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 9: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 1  │  mode=history_and_global  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 9: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 2  │  mode=history_and_global  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 9: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 3  │  mode=history_and_global  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 9: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 4  │  mode=history_and_global  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 9: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 5  │  mode=history_and_global  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 9: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 6  │  mode=history_and_global  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=1/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 9: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────
+  Agent 7  │  mode=history_and_global  │  reasoning=low  │  round 10
+────────────────────────────────────────────────────────────
+[SYSTEM]
+You are a player in a repeated Prisoner's Dilemma game on a network. You have 4 neighbors. Each round you choose: 1 = Cooperate, 0 = Defect. If you cooperate, each of your neighbors receives benefit b, but you pay cost c for each neighbor. If you defect, you pay nothing and give nothing. Your goal is to maximize your own cumulative reward over many rounds. Each round you will see how many of your neighbors cooperated, what fraction of ALL players in the network cooperated, and your own past actions and rewards. Respond with ONLY the single digit 0 or 1. No explanation.
+
+[USER]
+=== Your history (most recent last) ===
+  Round 1: you=DEFECT, reward=0.00, neighbors_cooperating=2/4, network_cooperation=0.0%
+  Round 2: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 3: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 4: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 5: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 6: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 7: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 8: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+  Round 9: you=DEFECT, reward=0.00, neighbors_cooperating=0/4, network_cooperation=0.0%
+
+=== Current round ===
+0 out of 4 neighbors are cooperating.
+Overall network cooperation rate: 0.0%
+
+Your choice (0=Defect, 1=Cooperate):
+
+[LLM RAW] "0"  →  action=0
+────────────────────────────────────────────────────────────

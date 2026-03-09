@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-03-09T20:48:45.771187",
+  "config": {
+    "n_nodes": 8,
+    "b": 3.0,
+    "c": 1.0,
+    "reward_type": "pp",
+    "graph_type": "small_world",
+    "graph_k": 4,
+    "graph_p": 0.1,
+    "ep_q": 20,
+    "ep_llm": 5,
+    "q_lr": 0.2,
+    "q_gamma": 0.0,
+    "q_temp": 1.0,
+    "q_n_runs": 10,
+    "llm_model": "openai/o4-mini",
+    "llm_temperature": 0.2,
+    "llm_max_history": 30,
+    "llm_n_runs": 1,
+    "llm_reasoning_effort": "low",
+    "seed": 42
+  },
+  "rho_theory": 0.020254497984300124,
+  "modes_run": [
+    "blind"
+  ],
+  "q_final_coop": 0.309375,
+  "llm_blind_final_coop_mean": 0.45,
+  "llm_blind_final_coop_std": 0.0,
+  "llm_blind_elapsed_s": 139.76703357696533,
+  "llm_blind_total_api_calls": 40
+}
