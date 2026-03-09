@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
-OUT="all_project_text.txt"
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+OUT="$SCRIPT_DIR/all_project_text.txt"
+
+if ! git -C "$SCRIPT_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo "Ошибка: каталог $SCRIPT_DIR не находится внутри git-репозитория." >&2
+  exit 1
+fi
 
 echo "Создаю $OUT ..."
 
@@ -9,10 +17,10 @@ echo "Создаю $OUT ..."
   echo
 
   # список файлов
-  git ls-files | grep -E '\.(py|md|tex|ipynb)$'
+  git -C "$SCRIPT_DIR" ls-files | grep -E '\.(py|md|tex|ipynb)$'
 
   # обработка файлов
-  git ls-files | grep -E '\.(py|md|tex|ipynb)$' | while IFS= read -r file; do
+  git -C "$SCRIPT_DIR" ls-files | grep -E '\.(py|md|tex|ipynb)$' | while IFS= read -r file; do
     echo
     echo "--------------------"
     echo "FILE: $file"
@@ -22,13 +30,13 @@ echo "Создаю $OUT ..."
       *.ipynb)
         # извлекаем только текст ячеек
         if command -v jq >/dev/null 2>&1; then
-          jq -r '.cells[] | select(.cell_type=="code" or .cell_type=="markdown") | .source[]?' "$file" 2>/dev/null
+          jq -r '.cells[] | select(.cell_type=="code" or .cell_type=="markdown") | .source[]?' "$SCRIPT_DIR/$file" 2>/dev/null
         else
-          cat "$file"
+          cat "$SCRIPT_DIR/$file"
         fi
         ;;
       *)
-        cat "$file"
+        cat "$SCRIPT_DIR/$file"
         ;;
     esac
   done

@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-03-09T04:14:03.564920",
+  "config": {
+    "n_nodes": 8,
+    "b": 3.0,
+    "c": 1.0,
+    "reward_type": "pp",
+    "graph_type": "small_world",
+    "graph_k": 4,
+    "graph_p": 0.1,
+    "ep_q": 500,
+    "ep_llm": 100,
+    "q_lr": 0.2,
+    "q_gamma": 0.0,
+    "q_temp": 1.0,
+    "q_n_runs": 10,
+    "llm_model": "meta-llama/llama-3.2-3b-instruct",
+    "llm_temperature": 0.2,
+    "llm_max_history": 30,
+    "seed": 42
+  },
+  "rho_theory": 0.027814959210143132,
+  "modes_run": [
+    "blind",
+    "history_only",
+    "history_and_global",
+    "neighbors_detail"
+  ],
+  "q_final_coop": 0.0365,
+  "llm_blind_final_coop": 0.0,
+  "llm_blind_elapsed_s": 500.53678798675537,
+  "llm_blind_total_api_calls": 800,
+  "llm_history_only_final_coop": 0.0,
+  "llm_history_only_elapsed_s": 424.971652507782,
+  "llm_history_only_total_api_calls": 800,
+  "llm_history_and_global_final_coop": 0.0,
+  "llm_history_and_global_elapsed_s": 687.0759663581848,
+  "llm_history_and_global_total_api_calls": 801,
+  "llm_neighbors_detail_final_coop": 0.0,
+  "llm_neighbors_detail_elapsed_s": 478.95762968063354,
+  "llm_neighbors_detail_total_api_calls": 800
+}

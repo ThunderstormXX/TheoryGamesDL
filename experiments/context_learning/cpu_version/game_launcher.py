@@ -57,9 +57,10 @@ class PairGame(Game):
             next_state = self._get_state(i, adj, self.strategies)
             
             # For SARSA next action needed
-            next_action = learner.choose_action(next_state)
+            
             
             if learner.__class__.__name__ == 'SARSALearner':
+                 next_action = learner.choose_action(next_state)
                  learner.step(s, a, r, next_state, next_action)
             else:
                  learner.step(s, a, r, next_state)
@@ -125,9 +126,10 @@ class MonteKarloPairGame(Game):
             s, a = transitions[i]
             r = full_rewards[i]
             next_state = self._get_state(i, sub_adj, self.strategies)
-            next_action = self.learners[i].choose_action(next_state)
+            
             
             if self.learners[i].__class__.__name__ == 'SARSALearner':
+                 next_action = self.learners[i].choose_action(next_state)
                  self.learners[i].step(s, a, r, next_state, next_action)
             else:
                  self.learners[i].step(s, a, r, next_state)
@@ -175,9 +177,10 @@ class MonteKarloNotPairGame(Game):
             s, a = transitions[i]
             r = full_rewards[i]
             next_state = self._get_state(i, clique_adj, self.strategies)
-            next_action = self.learners[i].choose_action(next_state)
+            
             
             if self.learners[i].__class__.__name__ == 'SARSALearner':
+                 next_action = self.learners[i].choose_action(next_state)
                  self.learners[i].step(s, a, r, next_state, next_action)
             else:
                  self.learners[i].step(s, a, r, next_state)

@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-03-09T02:45:55.532437",
+  "config": {
+    "n_nodes": 4,
+    "b": 3.0,
+    "c": 1.0,
+    "reward_type": "pp",
+    "graph_type": "small_world",
+    "graph_k": 4,
+    "graph_p": 0.1,
+    "ep_q": 500,
+    "ep_llm": 20,
+    "q_lr": 0.2,
+    "q_gamma": 0.0,
+    "q_temp": 1.0,
+    "q_n_runs": 10,
+    "llm_model": "meta-llama/llama-3.2-3b-instruct",
+    "llm_temperature": 0.2,
+    "llm_max_history": 30,
+    "seed": 42
+  },
+  "rho_theory": 0.04742587317756678,
+  "modes_run": [
+    "blind"
+  ],
+  "q_final_coop": 0.052,
+  "llm_blind_final_coop": 0.6,
+  "llm_blind_elapsed_s": 192.42560338974,
+  "llm_blind_total_api_calls": 80
+}
