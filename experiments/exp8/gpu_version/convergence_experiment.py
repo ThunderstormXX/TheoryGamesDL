@@ -45,7 +45,7 @@ def run_convergence_experiment(graph_type = 'star_graph'):
     
     # Parameters
     batch_size = 1
-    num_iterations = 10000
+    num_iterations = 5000
     gamma = 0.9
     lr = 0.1
     b = 1.5
@@ -72,55 +72,71 @@ def run_convergence_experiment(graph_type = 'star_graph'):
     print(f"Graph: Star Graph with {num_nodes} nodes.")
     print(f"Degrees: {degrees}")
     
+
     # Reward types to test
     reward_types = ['pp', 'pf', 'ff', 'fp']
+    b_values = [1.5, 3.0, 5.0, 10.0]
+    colors = ['blue', 'green', 'orange', 'purple', 'brown']
     
     for r_type in reward_types:
         print(f"Running experiment for reward type: {r_type}")
         
-        # Setup Agent
-        # We use max_states=1 for pure stateless Q-learning
-        learner = BatchedGPUQLearner(
-            batch_size=batch_size, 
-            n_agents=num_nodes,
-            action_space_size=2,
-            learning_rate=lr,
-            discount_factor=gamma,
-            exploration_rate=epsilon,
-            max_states=1 
-        )
+        # Storage for all B values
+        all_b_results = {} # {b_val: delta_q_history}
         
-        reward_manager = RewardManager(reward_type=r_type, b=b, c=c)
-        
-        # Tracking
-        # We track Delta Q = Q(C) - Q(D)
-        delta_q_history = {i: [] for i in range(num_nodes)}
-        
-        # Determine Theoretical Delta Q
+        # Determine Theoretical Delta Q (Independent of b)
         th_delta_q = calculate_theoretical_q_diff(r_type, c, gamma, degrees)
         print(f"Theoretical Delta Q (Q(C)-Q(D)): {th_delta_q}")
         
-        # Initial State (all 0)
-        states = torch.zeros((batch_size, num_nodes), dtype=torch.long, device=gpu_config.device)
-        
-        # Run Simulation
-        for t in range(num_iterations):
-            # 1. Get Actions
-            actions = learner.get_actions(states)
+        for b_idx, b_val in enumerate(b_values):
+            print(f"  Running for b={b_val}")
             
-            # 2. Calculate Rewards
-            rewards = reward_manager.calculate_rewards(actions.float(), adj_matrix.unsqueeze(0), degrees.unsqueeze(0))
+            # Setup Agent
+            # We use max_states=1 for pure stateless Q-learning
+            player_lr = lr
+            if r_type == 'pf' or r_type == 'ff':
+               # For these linear rewards, Q-values can get large if b is large, but relative diff is constant.
+               pass
+
+            learner = BatchedGPUQLearner(
+                batch_size=batch_size, 
+                n_agents=num_nodes,
+                action_space_size=2,
+                learning_rate=player_lr,
+                discount_factor=gamma,
+                exploration_rate=epsilon,
+                max_states=1 
+            )
             
-            # 3. Update
-            next_states = torch.zeros_like(states)
-            learner.update(states, actions, rewards, next_states)
+            reward_manager = RewardManager(reward_type=r_type, b=b_val, c=c)
             
-            # Track Q(C) - Q(D) for State 0
-            for n in range(num_nodes):
-                q_c = learner.q_table[0, n, 0, 1].item() # Action 1 (Cooperate)
-                q_d = learner.q_table[0, n, 0, 0].item() # Action 0 (Defect)
-                delta_q = q_c - q_d
-                delta_q_history[n].append(delta_q)
+            # Tracking
+            # We track Delta Q = Q(C) - Q(D)
+            delta_q_history = {i: [] for i in range(num_nodes)}
+            
+            # Initial State (all 0)
+            states = torch.zeros((batch_size, num_nodes), dtype=torch.long, device=gpu_config.device)
+            
+            # Run Simulation
+            for t in range(num_iterations):
+                # 1. Get Actions
+                actions = learner.get_actions(states)
+                
+                # 2. Calculate Rewards
+                rewards = reward_manager.calculate_rewards(actions.float(), adj_matrix.unsqueeze(0), degrees.unsqueeze(0))
+                
+                # 3. Update
+                next_states = torch.zeros_like(states)
+                learner.update(states, actions, rewards, next_states)
+                
+                # Track Q(C) - Q(D) for State 0
+                for n in range(num_nodes):
+                    q_c = learner.q_table[0, n, 0, 1].item() # Action 1 (Cooperate)
+                    q_d = learner.q_table[0, n, 0, 0].item() # Action 0 (Defect)
+                    delta_q = q_c - q_d
+                    delta_q_history[n].append(delta_q)
+            
+            all_b_results[b_val] = delta_q_history
 
         # Plotting for this reward type
         # We create one plot per reward type, with subplots for agents? 
@@ -128,33 +144,43 @@ def run_convergence_experiment(graph_type = 'star_graph'):
         # User asked: "graphics for each agent".
         # Let's do subplots for clarity.
         
-        fig, axes = plt.subplots(min(num_nodes, 5), 1, figsize=(10, 3*min(num_nodes, 5)), sharex=True)
-        if num_nodes == 1: axes = [axes]
+        nodes_to_plot = min(num_nodes, 5)
+        fig, axes = plt.subplots(nodes_to_plot, 1, figsize=(10, 3*nodes_to_plot), sharex=True)
+        if nodes_to_plot == 1: axes = [axes]
         
         fig.suptitle(f"Delta Q (Q(C) - Q(D)) Convergence - {r_type.upper()}\n Graph type: {graph_type}", fontsize=16)
         
-        for n in range(min(num_nodes, 5)):
+        for n in range(nodes_to_plot):
             ax = axes[n]
-            # Plot actual Delta Q
-            ax.plot(delta_q_history[n], label=f'Agent {n} (deg={int(degrees[n].item())}) Simulated')
+            
+            # Plot actual Delta Q for each b
+            for b_idx, b_val in enumerate(b_values):
+                hist = all_b_results[b_val][n]
+                ax.plot(hist, label=f'b={b_val}', color=colors[b_idx % len(colors)], alpha=0.6, linewidth=1.5)
             
             # Plot Theoretical Delta Q
             th_val = th_delta_q[n].item()
-            ax.axhline(y=th_val, color='r', linestyle='--', label=f'Theoretical: {th_val:.2f}')
+            ax.axhline(y=th_val, color='r', linestyle='--', linewidth=2.0, label=f'Theoretical: {th_val:.2f}')
             
-            ax.set_ylabel("Delta Q")
-            ax.legend()
-            ax.grid(True)
+            ax.set_ylabel(f"Agent {n} (k={int(degrees[n].item())})\nDelta Q")
+            if n == 0:
+                ax.legend(loc='upper right')
+            ax.grid(True, alpha=0.3)
             
         plt.xlabel("Iterations")
         plt.tight_layout(rect=[0, 0.03, 1, 0.95])
-        output_path = os.path.join(output_dir, f"{graph_type}/delta_q_{r_type}.png")
+        
+        # Ensure subdirectory exists
+        param_dir = os.path.join(output_dir, graph_type)
+        os.makedirs(param_dir, exist_ok=True)
+        
+        output_path = os.path.join(param_dir, f"many_b_delta_q_{r_type}.png")
         plt.savefig(output_path)
         plt.close()
         print(f"Saved plot to {output_path}")
 
 if __name__ == "__main__":
-    # run_convergence_experiment('star_graph')
-    # run_convergence_experiment('wheel_graph')
+    run_convergence_experiment('star_graph')
+    run_convergence_experiment('wheel_graph')
     run_convergence_experiment('small_world_graph')
     
