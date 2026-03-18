@@ -45,7 +45,7 @@ def run_convergence_experiment(graph_type = 'star_graph'):
     
     # Parameters
     batch_size = 1
-    num_iterations = 10000
+    num_iterations = 50000
     gamma = 0.9
     lr = 0.1
     b = 1.5
