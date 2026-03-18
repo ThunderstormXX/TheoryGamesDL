@@ -45,7 +45,7 @@ def run_convergence_experiment(graph_type = 'star_graph'):
     
     # Parameters
     batch_size = 1
-    num_iterations = 5000
+    num_iterations = 10000
     gamma = 0.9
     lr = 0.1
     b = 1.5
@@ -92,7 +92,10 @@ def run_convergence_experiment(graph_type = 'star_graph'):
             print(f"  Running for b={b_val}")
             
             # Setup Agent
-            # We use max_states=1 for pure stateless Q-learning
+            # State space size depends on max degree (number of neighbors + 1)
+            max_degree = int(degrees.max().item())
+            state_space_size = max_degree + 1
+            
             player_lr = lr
             if r_type == 'pf' or r_type == 'ff':
                # For these linear rewards, Q-values can get large if b is large, but relative diff is constant.
@@ -105,14 +108,15 @@ def run_convergence_experiment(graph_type = 'star_graph'):
                 learning_rate=player_lr,
                 discount_factor=gamma,
                 exploration_rate=epsilon,
-                max_states=1 
+                max_states=state_space_size 
             )
             
             reward_manager = RewardManager(reward_type=r_type, b=b_val, c=c)
             
             # Tracking
-            # We track Delta Q = Q(C) - Q(D)
-            delta_q_history = {i: [] for i in range(num_nodes)}
+            # We track Delta Q = Q(C) - Q(D) for ALL states over time
+            # shape: (num_iterations, num_nodes, state_space_size)
+            history_delta_q = np.zeros((num_iterations, num_nodes, state_space_size))
             
             # Initial State (all 0)
             states = torch.zeros((batch_size, num_nodes), dtype=torch.long, device=gpu_config.device)
@@ -126,61 +130,85 @@ def run_convergence_experiment(graph_type = 'star_graph'):
                 rewards = reward_manager.calculate_rewards(actions.float(), adj_matrix.unsqueeze(0), degrees.unsqueeze(0))
                 
                 # 3. Update
-                next_states = torch.zeros_like(states)
+                # Calculate next states: number of cooperating neighbors
+                next_states = torch.matmul(actions.float(), adj_matrix).long()
+                
                 learner.update(states, actions, rewards, next_states)
                 
-                # Track Q(C) - Q(D) for State 0
-                for n in range(num_nodes):
-                    q_c = learner.q_table[0, n, 0, 1].item() # Action 1 (Cooperate)
-                    q_d = learner.q_table[0, n, 0, 0].item() # Action 0 (Defect)
-                    delta_q = q_c - q_d
-                    delta_q_history[n].append(delta_q)
-            
-            all_b_results[b_val] = delta_q_history
+                # Record the full Delta Q-Table at this timestep
+                # q_table is (B, N, S, A)
+                current_q = learner.q_table[0].detach() # (N, S, A)
+                # Compute Q(C) - Q(D) across all states
+                diff = current_q[:, :, 1] - current_q[:, :, 0] # (N, S)
+                
+                # Store in history. 
+                # Note: learner.q_table may cover up to max_states=max_degree+1.
+                # history_delta_q is initialized with max_states size.
+                history_delta_q[t] = diff.cpu().numpy()
 
-        # Plotting for this reward type
-        # We create one plot per reward type, with subplots for agents? 
-        # Or one plot with lines for all agents?
-        # User asked: "graphics for each agent".
-        # Let's do subplots for clarity.
-        
-        nodes_to_plot = min(num_nodes, 5)
-        fig, axes = plt.subplots(nodes_to_plot, 1, figsize=(10, 3*nodes_to_plot), sharex=True)
-        if nodes_to_plot == 1: axes = [axes]
-        
-        fig.suptitle(f"Delta Q (Q(C) - Q(D)) Convergence - {r_type.upper()}\n Graph type: {graph_type}", fontsize=16)
-        
-        for n in range(nodes_to_plot):
-            ax = axes[n]
+                states = next_states
             
-            # Plot actual Delta Q for each b
-            for b_idx, b_val in enumerate(b_values):
-                hist = all_b_results[b_val][n]
-                ax.plot(hist, label=f'b={b_val}', color=colors[b_idx % len(colors)], alpha=0.6, linewidth=1.5)
             
-            # Plot Theoretical Delta Q
-            th_val = th_delta_q[n].item()
-            ax.axhline(y=th_val, color='r', linestyle='--', linewidth=2.0, label=f'Theoretical: {th_val:.2f}')
+            # --- PLOTTING FOR THIS B_VAL AND AGENT ---
+            # We plot the Time Series of Delta Q for EACH STATE for EACH AGENT.
             
-            ax.set_ylabel(f"Agent {n} (k={int(degrees[n].item())})\nDelta Q")
-            if n == 0:
-                ax.legend(loc='upper right')
-            ax.grid(True, alpha=0.3)
+            nodes_to_plot_indices = range(min(num_nodes, 5)) 
             
-        plt.xlabel("Iterations")
-        plt.tight_layout(rect=[0, 0.03, 1, 0.95])
-        
-        # Ensure subdirectory exists
-        param_dir = os.path.join(output_dir, graph_type)
-        os.makedirs(param_dir, exist_ok=True)
-        
-        output_path = os.path.join(param_dir, f"many_b_delta_q_{r_type}.png")
-        plt.savefig(output_path)
-        plt.close()
-        print(f"Saved plot to {output_path}")
+            # Create a Figure for THIS B_VAL
+            # Subplots: One per agent
+            fig, axes = plt.subplots(len(nodes_to_plot_indices), 1, figsize=(12, 5*len(nodes_to_plot_indices)), sharex=True)
+            if len(nodes_to_plot_indices) == 1: axes = [axes] # Ensure iterable if only 1 node
+            
+            fig.suptitle(f"Delta Q Convergence by State - {r_type.upper()} b={b_val}\n{graph_type}", fontsize=16)
+
+            for idx, n in enumerate(nodes_to_plot_indices):
+                if isinstance(axes, np.ndarray):
+                    ax = axes[idx]
+                else:
+                    ax = axes[idx]
+                
+                agent_degree = int(degrees[n].item())
+                valid_states = range(agent_degree + 1) # 0 to k neighbors
+                
+                # Plot a line for each state
+                for s in valid_states:
+                    series = history_delta_q[:, n, s]
+                    # Check if this state was ever visited/updated? 
+                    # If it's always 0 (initial), it might clutter. 
+                    # But usually epsilon ensures visitation.
+                    # We plot all valid states.
+                    ax.plot(series, label=f'State {s} (k={s})', linewidth=1.5, alpha=0.8)
+                
+                ax.axhline(0, color='black', linewidth=1.0, linestyle='-')
+                
+                # Add theoretical horizontal line
+                th_val = th_delta_q[n].item()
+                ax.axhline(th_val, color='red', linestyle='--', alpha=0.8, linewidth=1.5, label=f'Theoretical (-Cost)')
+
+                ax.set_title(f"Agent {n} (Degree {agent_degree})")
+                ax.set_ylabel("Delta Q (Q(C) - Q(D))")
+                ax.grid(True, alpha=0.3)
+                
+                # Place legend outside or smartly
+                ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), fontsize='small', title="Num Coops")
+
+            plt.xlabel("Iterations")
+            plt.tight_layout(rect=[0, 0.03, 0.85, 0.95]) # Make room for legend on the right
+            
+            save_dir = os.path.join(output_dir, "states_convergence_plots", graph_type, r_type)
+            os.makedirs(save_dir, exist_ok=True)
+            
+            filename = f"b_{b_val}_convergence_by_state.png"
+            output_path = os.path.join(save_dir, filename)
+            plt.savefig(output_path)
+            plt.close()
+            print(f"    Saved convergence plot to {output_path}")
+
+        # (Original loop plotting code removed/commented out as requested - actually I will replace it)
+
 
 if __name__ == "__main__":
     run_convergence_experiment('star_graph')
     run_convergence_experiment('wheel_graph')
-    run_convergence_experiment('small_world_graph')
+    # run_convergence_experiment('small_world_graph')
     
