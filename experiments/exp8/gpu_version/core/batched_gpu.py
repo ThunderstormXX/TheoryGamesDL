@@ -124,11 +124,12 @@ class BatchedGPUQLearner:
 
 
 class BatchedGPUMonteKarloPairGame:
-    def __init__(self, batch_size, n_agents_per_sim, graph_params, learner_params, reward_params, graph_type='small_world', reward_type='pf'):
+    def __init__(self, batch_size, n_agents_per_sim, graph_params, learner_params, reward_params, graph_type='small_world', reward_type='pf', n_anchors=None):
         self.batch_size = batch_size
         self.n_agents = n_agents_per_sim
         self.graph_params = graph_params
         self.reward_params = reward_params
+        self.n_anchors = n_anchors
         self.device = gpu_config.device
         
         # Reward Manager
@@ -199,11 +200,35 @@ class BatchedGPUMonteKarloPairGame:
     def round(self):
         """
         Execute one round of the game.
+        Supports both full-update (n_anchors=None) and k-anchors update.
         """
-        # 1. Get actions from learner
+        # Define update mask: (B, N)
+        if self.n_anchors is not None:
+            # 1. Select anchors: (B, n_anchors)
+            anchors_idx = torch.randint(0, self.n_agents, (self.batch_size, self.n_anchors), device=self.device)
+            
+            # 2. Update mask: Anchors AND their neighbors
+            # Start with anchors
+            mask = torch.zeros((self.batch_size, self.n_agents), device=self.device, dtype=torch.bool)
+            mask.scatter_(1, anchors_idx, True) # Set anchors to True
+            
+            # Neighbors of anchors: (B, N, N) * (B, N, 1) -> (B, N, 1)
+            # A[i,j] is 1 if j is neighbor of i.
+            # We want all j such that A[anchor, j] == 1.
+            anchor_one_hot = torch.zeros((self.batch_size, self.n_agents, 1), device=self.device)
+            anchor_one_hot.scatter_(1, anchors_idx.unsqueeze(2), 1.0)
+            
+            # (B, N, N)^T * (B, N, 1) -> (B, N, 1)
+            # Actually, since adj is symmetric for these graphs:
+            neigh_signals = torch.bmm(self.adjacency_matrix, anchor_one_hot).squeeze(2)
+            mask = (mask | (neigh_signals > 0)) # Union of anchors and neighbors
+        else:
+            mask = None # Full update for all agents
+
+        # 1. Get actions from learner for all agents (required for state calculation)
         new_actions = self.learner.get_actions(self.current_states)
         
-        # 2. Calculate rewards
+        # 2. Calculate rewards for all agents
         cooperators = (1 - new_actions).float()
         rewards = self.reward_manager.calculate_rewards(
             cooperators, 
@@ -217,12 +242,19 @@ class BatchedGPUMonteKarloPairGame:
         next_states = neighbor_coops.long()
         next_states = torch.clamp(next_states, 0, self.learner.max_states - 1)
         
-        # 4. Update Learner
-        self.learner.update(self.current_states, new_actions, rewards, next_states)
+        # 4. Update Learner (only for agents in mask if mask is provided)
+        self.learner.update(self.current_states, new_actions, rewards, next_states, mask=mask)
         
         # 5. Internal state update
-        self.current_states = next_states
-        self.current_actions = new_actions
+        if mask is not None:
+             # If using k-anchors, only 'active' agents update their current state/action?
+             # Standard Monte Carlo Pair usually updates only active ones.
+             # However, actions for others are still what they were.
+             self.current_states = torch.where(mask, next_states, self.current_states)
+             self.current_actions = torch.where(mask, new_actions, self.current_actions)
+        else:
+             self.current_states = next_states
+             self.current_actions = new_actions
         
         # Log: (batch_size) vector of cooperación rates
         batch_coop_rates = cooperators.mean(dim=1) # (B)

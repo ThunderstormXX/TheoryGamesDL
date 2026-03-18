@@ -1,0 +1,246 @@
+\documentclass[a4paper, fontsize=14pt]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage[unicode, pdftex]{hyperref}
+\usepackage{lastpage}
+\usepackage{float}
+\usepackage{gensymb}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{geometry}
+\geometry{margin=1cm}
+
+\title{Q-learning динамика на графе: постановка, сходимость и сравнение с динамикой Константинова}
+\author{}
+\date{}
+
+% --- Работа с теоремами ---
+\usepackage{amsthm} 
+\usepackage[most]{tcolorbox} 
+
+% Определяем цвета
+\definecolor{theorembg}{RGB}{240, 248, 255} 
+\definecolor{theoremframe}{RGB}{0, 0, 139}   
+
+% 1. Определяем красивую теорему (заменяет стандартную theorem из amsthm)
+\newtcbtheorem[number within=section]{theorem}{Теорема}%
+{
+    colback=theorembg,
+    colframe=theoremframe,
+    fonttitle=\bfseries,
+    coltitle=white,
+    enhanced,
+    attach boxed title to top left={xshift=6mm,yshift=-3mm},
+    boxed title style={colback=theoremframe},
+    sharp corners,
+    top=6mm
+}{th}
+
+% 2. Остальные окружения (Лемма, Определение) можно оставить стандартными 
+% или тоже переделать в box. Здесь оставляем стандартными, но привязываем 
+% их нумерацию к счетчику tcb-теоремы (tcb@cnt@theorem).
+\theoremstyle{plain}
+\newtheorem{lemma}{Лемма}[section] % Или [theorem], если удастся связать счетчики
+\newtheorem{corollary}{Следствие}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+\newtheorem{example}{Пример}[section]
+
+\begin{document}
+\maketitle
+
+\section{Введение}
+% 0.5--1 страница: мотивация...
+
+\section{Формальная постановка модели}
+\subsection{Граф и агенты}
+% G=(V,E)...
+
+\subsection{Игра и выплаты}
+% A_i...
+
+\subsection{Базовая динамика (по Константинову)}
+% Строго...
+
+\section{Q-learning динамика}
+\subsection{Определение состояния и Q-функции}
+% ...
+
+\subsection{Политика выбора действий}
+% ...
+
+\subsection{Правило обновления}
+% ...
+
+\section{Сходимость}
+% Синтаксис: \begin{theorem}{Заголовок}{Метка для ссылки} Текст \end{theorem}
+\begin{theorem}{Предельная кооперация}{statless-coop}
+    Если игра stateless, то средняя кооперация не зависит от выплаты $b$. И имеет формулу:
+    \begin{enumerate}
+        \item \textbf{pp-reward}: $\frac{1}{n} \sum_{i=1}^n \sigma(e^{c \cdot k_i / T})$
+        \item \textbf{pf-reward}: $\frac{1}{n} \sum_{i=1}^n \sigma(e^{c / T})$
+        \item \textbf{fp-reward}: $\frac{1}{n} \sum_{i=1}^n \sigma(e^{c \cdot k_i / T})$
+        \item \textbf{ff-reward}: $\frac{1}{n} \sum_{i=1}^n \sigma(e^{c / T})$
+    \end{enumerate}
+\end{theorem}
+
+
+
+\begin{proof}
+    В начале покажем, что процесс обучения сходится к единственным значениям $Q^*$.
+    Правило обновления Q-значений для агента $i$ имеет вид:
+    $$ Q_{i, t+1}(a) = (1-\alpha_t) Q_{i, t}(a) + \alpha_t \left( r_{i, t} + \gamma \max_{a'} Q_{i, t}(a') \right) $$
+    Это уравнение можно переписать в виде итерации стохастической аппроксимации. Поскольку $\gamma < 1$, соответствующий оператор Беллмана является сжимающим. При выполнении стандартных условий Роббинса-Монро ($\sum \alpha_t = \infty, \sum \alpha_t^2 < \infty$), значения $Q_i(a)$ с вероятностью 1 сходятся к неподвижной точке $Q_i^*(a)$.
+
+    Рассмотрим уравнение Беллмана, определяющее значения Q-функции в стационарном состоянии:
+    $$ Q_i^*(a) = \mathbb{E}[R_i(a)] + \gamma \max_{a'} Q_i^*(a') $$
+    При больцмановской политике вероятность выбора действия определяется как:
+    $$ P_i(a) = \frac{e^{Q_i(a)/T}}{\sum_{a'} e^{Q_i(a')/T}} $$
+    Вычислим разность Q-значений для действий кооперации (C) и отказа (D). Заметим, что слагаемое с максимумом по будущим действиям сокращается:
+    $$ \Delta Q_i = Q_i(C) - Q_i(D) = \left[R_i(C) + \gamma \max_{a'} Q_i^*(a')\right] - \left[R_i(D) + \gamma \max_{a'} Q_i^*(a')\right] = R_i(C) - R_i(D)$$
+    В среднем:
+    $$ \Delta Q_i^* =  \mathbb{E}[R_i(C)] - \mathbb{E}[R_i(D)]$$
+    
+    Выразим вероятность кооперации через сигмоидную функцию:
+    $$ P_i(C) = \sigma\left(-\frac{\Delta Q_i}{T}\right)$$
+    $$ P_i^*(C) = \sigma\left(-\frac{\Delta Q_i^*}{T}\right)$$
+    
+    Тогда средний уровень кооперации в сети $\hat{\rho}$ равен:
+    $$\hat{\rho} = \frac{1}{N} \cdot \left( \sum_{i=0}^N\mathbb{E}x_i\right) = \frac{1}{N} \cdot \left( \sum_{i=0}^N P_i^*(C)\right) = \frac{1}{N} \cdot \left( \sum_{i=0}^N \sigma\left(-\frac{\Delta Q_i^*}{T}\right)\right)$$
+    
+    Теперь рассмотрим каждый тип функции выплат отдельно. Заметим, что выигрыш от действий соседей $b$ сокращается при вычислении разности Q-значений.
+    
+    1. В случае награды pp (pay-per-partner / pay-per-partner):
+    $$ \mathbb{E}[R_i(a)] = b \cdot \sum_{j \in N_i} \mathbb{E}[x_j] - c \cdot k_i \cdot a $$
+    Разность Q-значений:
+    $$ \Delta Q_i^* = (b \cdot \sum_{j \in N_i} \mathbb{E}[x_j] - c \cdot k_i \cdot 1)  - (b \cdot \sum_{j \in N_i} \mathbb{E}[x_j] - c \cdot k_i \cdot 0) = - c \cdot k_i $$
+    Итоговая формула для средней кооперации:
+    $$\hat{\rho} = \frac{1}{N} \cdot \left( \sum_{i=0}^N \sigma\left(\frac{c \cdot k_i}{T} \right)\right)$$ 
+    
+    
+    2. В случае награды pf (pay-per-partner / fixed-cost):
+    $$ \mathbb{E}[R_i(a)] = b \cdot \sum_{j \in N_i} \mathbb{E}[x_j] - c \cdot a $$
+    Разность Q-значений:
+    $$ \Delta Q_i^* = (b \cdot \sum_{j \in N_i} \mathbb{E}[x_j] - c \cdot 1)  - (b \cdot \sum_{j \in N_i} \mathbb{E}[x_j] - c \cdot 0) = - c $$
+    Итоговая формула:
+    $$\hat{\rho} = \frac{1}{N} \cdot \left( \sum_{i=0}^N \sigma\left(\frac{c}{T} \right)\right)$$
+    
+    
+    3. В случае награды fp (fixed-benefit / pay-per-partner):
+    $$ \mathbb{E}[R_i(a)] = b \cdot \sum_{j \in N_i} \frac{\mathbb{E}[x_j]}{k_j} - c \cdot k_i \cdot a $$
+    Разность Q-значений:
+    $$ \Delta Q_i^* = (b \cdot \sum_{j \in N_i} \frac{\mathbb{E}[x_j]}{k_j} - c \cdot k_i \cdot 1)  - (b \cdot \sum_{j \in N_i} \frac{\mathbb{E}[x_j]}{k_j} - c \cdot k_i \cdot 0) = - c \cdot k_i $$
+    Итоговая формула:
+    $$\hat{\rho} = \frac{1}{N} \cdot \left( \sum_{i=0}^N \sigma\left(\frac{c \cdot k_i}{T} \right)\right)$$
+    
+    
+    4. В случае награды ff (fixed-benefit / fixed-cost):
+    $$ \mathbb{E}[R_i(a)] = b \cdot \sum_{j \in N_i} \frac{\mathbb{E}[x_j]}{k_j} - c \cdot a $$
+    Разность Q-значений:
+    $$ \Delta Q_i^* = (b \cdot \sum_{j \in N_i} \frac{\mathbb{E}[x_j]}{k_j} - c \cdot 1)  - (b \cdot \sum_{j \in N_i} \frac{\mathbb{E}[x_j]}{k_j} - c \cdot 0) = - c $$
+    Итоговая формула:
+    $$\hat{\rho} = \frac{1}{N} \cdot \left( \sum_{i=0}^N \sigma\left(\frac{c}{T} \right)\right)$$
+\end{proof}
+
+
+\subsection{Обсуждение и сравнение с динамикой Константинова}
+% ...
+
+\section{Численные эксперименты}
+\subsection{Настройки эксперимента}
+% ...
+
+\subsection{Графики сходимости}
+В данном разделе представлены результаты симуляций для различных типов вознаграждения ($pp$, $pf$, $fp$, $ff$) и различных значений параметра $b$. Для каждого типа вознаграждения приведены графики сходимости при разных значениях коэффициента дисконтирования $\gamma$.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{pp_b1.5_gamma_comparison.png}
+        \caption{$b=1.5$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{pp_b2.5_gamma_comparison.png}
+        \caption{$b=2.5$}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{pp_b3.5_gamma_comparison.png}
+        \caption{$b=3.5$}
+    \end{subfigure}
+    \caption{Сходимость для PP-reward}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{pf_b1.5_gamma_comparison.png}
+        \caption{$b=1.5$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{pf_b2.5_gamma_comparison.png}
+        \caption{$b=2.5$}
+    \end{subfigure}
+    \vfill
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{pf_b3.5_gamma_comparison.png}
+        \caption{$b=3.5$}
+    \end{subfigure}
+    \caption{Сходимость для PF-reward}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{fp_b1.5_gamma_comparison.png}
+        \caption{$b=1.5$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{fp_b2.5_gamma_comparison.png}
+        \caption{$b=2.5$}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{fp_b3.5_gamma_comparison.png}
+        \caption{$b=3.5$}
+    \end{subfigure}
+    \caption{Сходимость для FP-reward}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{ff_b1.5_gamma_comparison.png}
+        \caption{$b=1.5$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{ff_b2.5_gamma_comparison.png}
+        \caption{$b=2.5$}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{ff_b3.5_gamma_comparison.png}
+        \caption{$b=3.5$}
+    \end{subfigure}
+    \caption{Сходимость для FF-reward}
+\end{figure}
+
+\section{Заключение}
+% ...
+
+% \bibliographystyle{plain}
+% \bibliography{refs}
+
+\end{document}

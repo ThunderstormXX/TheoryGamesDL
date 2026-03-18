@@ -11,7 +11,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../.
 from experiments.exp8.gpu_version.core.batched_gpu import BatchedGPUMonteKarloPairGame
 from experiments.exp8.gpu_version.visualization.plotting import plot_cooperation_with_std, plot_q_table
 
-def run_experiment_with_data(name, state_type, b, c, t, k, reward_type='pf', n_batches=100, n_rounds=1000):
+def run_experiment_with_data(name, state_type, b, c, t, k, reward_type='pf', n_batches=100, n_rounds=1000, n_anchors=None):
     print(f"\nRunning Experiment: {name} (Reward: {reward_type})")
     
     batch_size = n_batches
@@ -36,7 +36,8 @@ def run_experiment_with_data(name, state_type, b, c, t, k, reward_type='pf', n_b
     game = BatchedGPUMonteKarloPairGame(
         batch_size, n_agents, 
         graph_params, learner_params, reward_params,
-        reward_type=reward_type
+        reward_type=reward_type,
+        n_anchors=n_anchors
     )
     
     # Stateless simulation override
@@ -69,6 +70,7 @@ if __name__ == "__main__":
     k = 4
     n_rounds = 10000 
     n_batches = 200
+    n_anchors = None
     
     reward_types = ['pf']
     
@@ -80,7 +82,8 @@ if __name__ == "__main__":
             "N": 200,
             "K": k,
             "Batches": n_batches,
-            "Reward Type": r_type
+            "Reward Type": r_type,
+            "Anchors": n_anchors if n_anchors else "Full"
         }
         
         # pf/ff limit: 1 / (1 + exp(c/T))
@@ -96,7 +99,8 @@ if __name__ == "__main__":
             b, c, t, k, 
             reward_type=r_type, 
             n_batches=n_batches, 
-            n_rounds=n_rounds
+            n_rounds=n_rounds,
+            n_anchors=n_anchors
         )
         
         final_save_path = os.path.join(os.path.dirname(__file__), f"../results/stateless_{r_type}_experiment.png")
@@ -110,4 +114,4 @@ if __name__ == "__main__":
             experiment_info=experiment_info
         )
     
-    print(f"\nAll 4 experiments completed. Results are in experiments/exp8/results/")
+    print(f"\nAll {len(reward_types)} experiments completed. Results are in experiments/exp8/results/")
