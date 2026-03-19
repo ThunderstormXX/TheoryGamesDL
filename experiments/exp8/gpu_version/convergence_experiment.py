@@ -63,14 +63,13 @@ def run_batched_simulations(batch_reps, b_val, r_type, mode, num_nodes,
                             adj_matrix, degrees, gamma):
     """
     Run BATCH_SIZE replications simultaneously on GPU.
-    Single function call = massive GPU parallelization.
     """
     actual_batch = len(batch_reps)
     max_degree = int(degrees.max().item())
     max_states = max_degree + 1 if mode == 'state' else 1
     actual_gamma = gamma if mode == 'state' else 0.0
     
-    # Single learner with large batch
+    # УБРАТЬ .to(DEVICE) - learner сам использует gpu_config.device
     learner = BatchedGPUQLearner(
         batch_size=actual_batch,
         n_agents=num_nodes,
@@ -79,7 +78,8 @@ def run_batched_simulations(batch_reps, b_val, r_type, mode, num_nodes,
         discount_factor=actual_gamma,
         exploration_rate=0.05,
         max_states=max_states
-    ).to(DEVICE)
+    )
+    # .to(DEVICE) УДАЛЕНО!
     
     reward_manager = RewardManager(reward_type=r_type, b=b_val, c=1.0)
     
