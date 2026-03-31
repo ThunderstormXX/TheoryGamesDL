@@ -1,7 +1,7 @@
 """
-LLM agent for network Prisoner's Dilemma via OpenRouter API.
-In-context learning: history accumulates in prompt,
-LLM adapts strategy based on past (state, action, reward).
+LLM agent for network Prisoner's Dilemma via OpenAI API.
+Drop-in replacement for LLMAgentOpenRouter — identical interface,
+same prompt logic, different endpoint and auth header.
 
 Supports multiple prompt modes to study how information
 presentation affects LLM cooperation behavior:
@@ -32,9 +32,9 @@ import requests
 import json
 
 
-class LLMAgentOpenRouter:
+class LLMAgentOpenAI:
     """
-    Drop-in replacement for QLearner/SARSALearner in game_launcher.py.
+    Drop-in replacement for LLMAgentOpenRouter using the OpenAI API directly.
 
     Interface contract (used by Game classes):
       - choose_action(state) -> int
@@ -50,7 +50,7 @@ class LLMAgentOpenRouter:
         self,
         agent_id=0,
         degree=None,
-        model="mistralai/mistral-7b-instruct-v0.1",
+        model="gpt-4o-mini",
         temperature=0.0,
         max_history=30,
         api_key=None,
@@ -65,10 +65,10 @@ class LLMAgentOpenRouter:
         Args:
             agent_id:         identifier (for logging)
             degree:           number of neighbors (enriches prompt)
-            model:            OpenRouter model string
+            model:            OpenAI model string (e.g. "gpt-4o-mini", "gpt-4o", "o3-mini")
             temperature:      LLM sampling temperature (0 = deterministic)
             max_history:      how many past rounds to include in prompt
-            api_key:          OpenRouter API key; falls back to OPENROUTER_API_KEY env
+            api_key:          OpenAI API key; falls back to OPENAI_API_KEY env
             prompt_mode:      one of VALID_MODES — controls what info goes into prompt
             neighbor_ids:     list of neighbor node ids (needed for "neighbors_detail" mode)
             verbose:          if True, print every prompt and response to stdout
@@ -85,10 +85,10 @@ class LLMAgentOpenRouter:
                 "Cannot use both chain_of_thought and reasoning_effort simultaneously"
             )
 
-        self.api_key = api_key or os.environ.get("OPENROUTER_API_KEY", "")
+        self.api_key = api_key or os.environ.get("OPENAI_API_KEY", "")
         if not self.api_key:
             raise ValueError(
-                "Set OPENROUTER_API_KEY env var or pass api_key= to constructor"
+                "Set OPENAI_API_KEY env var or pass api_key= to constructor"
             )
 
         self.model = model
@@ -107,7 +107,7 @@ class LLMAgentOpenRouter:
         self.verbose = verbose
         self.api_delay = api_delay
 
-        self._api_url = "https://openrouter.ai/api/v1/chat/completions"
+        self._api_url = "https://api.openai.com/v1/chat/completions"
         self._system = self._build_system_prompt()
 
         # Stats
@@ -255,11 +255,10 @@ class LLMAgentOpenRouter:
 
     # ── API call ─────────────────────────────────────────────
 
-    def _call_openrouter(self, system_msg, user_msg):
+    def _call_api(self, system_msg, user_msg):
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json",
-            "HTTP-Referer": "https://github.com/prisoner-dilemma-icl",
         }
         # o-series models require "developer" role instead of "system"
         sys_role = "developer" if self.reasoning_effort is not None else "system"
@@ -315,7 +314,7 @@ class LLMAgentOpenRouter:
                 if self.api_delay > 0:
                     time.sleep(self.api_delay)
                 self.total_api_calls += 1
-                text, reasoning_content = self._call_openrouter(self._system, prompt)
+                text, reasoning_content = self._call_api(self._system, prompt)
 
                 if self.chain_of_thought:
                     cot_reasoning, action = self._parse_cot(text)

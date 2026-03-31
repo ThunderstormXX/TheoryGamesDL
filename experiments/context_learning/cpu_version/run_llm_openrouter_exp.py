@@ -1,5 +1,5 @@
 """
-Comparison experiment: Q-learning vs LLM (in-context learning via OpenRouter)
+Comparison experiment: Q-learning vs LLM (in-context learning via OpenRouter or OpenAI)
 on network Prisoner's Dilemma.
 
 Experiments:
@@ -8,9 +8,13 @@ Experiments:
   EXP 3: LLM with "history_and_global" (II + global cooperation fraction)
   EXP 4: LLM with "neighbors_detail" (ID-style: sees per-neighbor actions)
 
-Usage:
+Usage (OpenRouter):
     export OPENROUTER_API_KEY="sk-or-..."
     python run_llm_openrouter_exp.py [--modes history_only history_and_global] [--episodes 100]
+
+Usage (OpenAI):
+    export OPENAI_API_KEY="sk-proj-..."
+    python run_llm_openrouter_exp.py --provider openai --llm_model gpt-4o-mini [--episodes 100]
 """
 
 import numpy as np
@@ -32,6 +36,7 @@ sys.path.insert(0, _parent_dir)
 from graph_structure import SmallWorldGraph, StarGraph
 from learner import QLearner
 from llm_agent_openrouter import LLMAgentOpenRouter
+from llm_agent_openai import LLMAgentOpenAI
 from reward_model import PPReward, PFReward, FFReward, FPReward
 from game_launcher import PairGame
 from llm_game_launcher import LLMPairGame
@@ -57,6 +62,7 @@ DEFAULT_CONFIG = {
     "q_temp": 1.0,
     "q_n_runs": 10,          # average Q-learning over multiple runs
 
+    "llm_provider": "openrouter",
     "llm_model": "mistralai/mistral-7b-instruct-v0.1",
     "llm_temperature": 0.2,
     "llm_max_history": 30,
@@ -90,6 +96,9 @@ def parse_args():
                    help="Q-learning discount factor gamma")
     p.add_argument("--q_temp", type=float, default=DEFAULT_CONFIG["q_temp"],
                    help="Q-learning Boltzmann temperature")
+    p.add_argument("--provider", choices=["openrouter", "openai"],
+                   default=DEFAULT_CONFIG["llm_provider"],
+                   help="LLM API provider (default: openrouter)")
     p.add_argument("--llm_model", type=str, default=DEFAULT_CONFIG["llm_model"])
     p.add_argument("--llm_temperature", type=float,
                    default=DEFAULT_CONFIG["llm_temperature"])
@@ -99,7 +108,7 @@ def parse_args():
     p.add_argument("--seed", type=int, default=DEFAULT_CONFIG["seed"])
     p.add_argument("--output_dir", type=str, default="results/llm_exp")
     p.add_argument("--api_key", type=str, default=None,
-                   help="OpenRouter API key (or set OPENROUTER_API_KEY)")
+                   help="API key (or set OPENROUTER_API_KEY / OPENAI_API_KEY env var)")
     p.add_argument("--verbose_llm", action="store_true",
                    help="Print every LLM prompt and response to stdout")
     p.add_argument("--api_delay", type=float, default=1.0,
@@ -110,6 +119,9 @@ def parse_args():
                    choices=["low", "medium", "high"],
                    help="Enable reasoning for o-series models (low/medium/high). "
                         "Disables temperature and uses max_completion_tokens.")
+    p.add_argument("--chain_of_thought", action="store_true",
+                   help="Enable self-made chain-of-thought reasoning with <think> tags. "
+                        "Works with any model. Mutually exclusive with --reasoning_effort.")
     return p.parse_args()
 
 
@@ -170,6 +182,9 @@ def run_llm_experiment(graph, reward_model, config, init_strat, mode, api_key,
     neighbors_map = graph.get_neibhours()
     n_runs = config.get("llm_n_runs", 1)
 
+    provider = config.get("llm_provider", "openrouter")
+    AgentClass = LLMAgentOpenAI if provider == "openai" else LLMAgentOpenRouter
+
     all_rates = []
     all_rewards = []
     all_agent_stats = []
@@ -178,7 +193,7 @@ def run_llm_experiment(graph, reward_model, config, init_strat, mode, api_key,
     for run in range(n_runs):
         agents = []
         for i in range(config["n_nodes"]):
-            agent = LLMAgentOpenRouter(
+            agent = AgentClass(
                 agent_id=i,
                 degree=degrees[i],
                 model=config["llm_model"],
@@ -190,6 +205,7 @@ def run_llm_experiment(graph, reward_model, config, init_strat, mode, api_key,
                 verbose=verbose,
                 api_delay=api_delay,
                 reasoning_effort=config.get("llm_reasoning_effort"),
+                chain_of_thought=config.get("llm_chain_of_thought", False),
             )
             if log_path is not None:
                 # append run index to log path when multiple runs
@@ -243,7 +259,10 @@ def _build_info_text(config, results):
     llm_modes = sorted(k.replace("llm_", "") for k in results if k.startswith("llm_"))
     if llm_modes:
         reasoning = config.get("llm_reasoning_effort")
+        cot = config.get("llm_chain_of_thought", False)
         reasoning_str = f",  reasoning={reasoning}" if reasoning else ""
+        if cot:
+            reasoning_str += ",  chain_of_thought=on"
         n_runs_str = f"x{config.get('llm_n_runs', 1)}"
         line3 = (f"LLM: {config['llm_model']},  T_llm={config.get('llm_temperature', '?')},  "
                  f"history={config.get('llm_max_history', '?')},  "
@@ -456,11 +475,13 @@ def main():
         "q_gamma": args.q_gamma,
         "q_temp": args.q_temp,
         "q_n_runs": args.q_n_runs,
+        "llm_provider": args.provider,
         "llm_model": args.llm_model,
         "llm_temperature": args.llm_temperature,
         "llm_max_history": DEFAULT_CONFIG["llm_max_history"],
         "llm_n_runs": args.llm_n_runs,
         "llm_reasoning_effort": args.reasoning_effort,
+        "llm_chain_of_thought": args.chain_of_thought,
         "seed": args.seed,
     }
 
@@ -468,7 +489,12 @@ def main():
     os.makedirs(args.output_dir, exist_ok=True)
 
     run_ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-    api_key = args.api_key or os.environ.get("OPENROUTER_API_KEY", "")
+    if args.provider == "openai":
+        api_key = args.api_key or os.environ.get("OPENAI_API_KEY", "")
+        api_key_missing_msg = "  ⚠ No OPENAI_API_KEY set, skipping LLM experiments."
+    else:
+        api_key = args.api_key or os.environ.get("OPENROUTER_API_KEY", "")
+        api_key_missing_msg = "  ⚠ No OPENROUTER_API_KEY set, skipping LLM experiments."
 
     print("=" * 60)
     print("  Q-learning vs LLM on Prisoner's Dilemma Network")
@@ -478,8 +504,11 @@ def main():
     print(f"  Reward:      {config['reward_type']} (b={config['b']}, c={config['c']})")
     print(f"  Q episodes:  {config['ep_q']}  (x{config['q_n_runs']} runs)")
     print(f"  LLM episodes:{config['ep_llm']}")
+    print(f"  LLM provider:{config['llm_provider']}")
     print(f"  LLM model:   {config['llm_model']}")
     print(f"  LLM modes:   {args.modes}")
+    if config.get("llm_chain_of_thought"):
+        print(f"  LLM CoT:     self-made (think tags)")
     print("=" * 60)
 
     # ── Setup ──
@@ -521,7 +550,7 @@ def main():
         print(f"▶ LLM mode: {mode}")
 
         if not api_key:
-            print("  ⚠ No OPENROUTER_API_KEY set, skipping LLM experiments.")
+            print(api_key_missing_msg)
             break
 
         log_path = os.path.join(logs_dir, f"log_{run_ts}_{mode}.txt")
@@ -587,6 +616,56 @@ def main():
     os.makedirs(reports_dir, exist_ok=True)
     with open(os.path.join(reports_dir, f"report_{tag}.json"), "w") as f:
         json.dump(json_report, f, indent=2)
+
+    # ── Full experiment dump (config + results + logs in one file) ──
+    full_dir = os.path.join(args.output_dir, "full_logs")
+    os.makedirs(full_dir, exist_ok=True)
+
+    full_dump = {
+        "timestamp": datetime.now().isoformat(),
+        "config": config,
+        "rho_theory": rho_theory,
+        "init_strat": init_strat.tolist(),
+        "degrees": [int(d) for d in degrees],
+        "modes_run": args.modes,
+        "q_learning": {
+            "final_coop": q_final,
+            "rates": q_rates.tolist(),
+            "rewards": q_rewards.tolist(),
+        } if "q_learning" in results else None,
+        "llm_experiments": {},
+    }
+    for mode in args.modes:
+        key = f"llm_{mode}"
+        if key not in results:
+            continue
+        d = results[key]
+        mode_entry = {
+            "rates": d["rates"].tolist(),
+            "rewards": d["rewards"].tolist(),
+            "elapsed_s": d["elapsed"],
+            "agent_stats": d["agent_stats"],
+            "logs": {},
+        }
+        # Read text log files for this mode
+        n_runs = config.get("llm_n_runs", 1)
+        if n_runs > 1:
+            for run_idx in range(1, n_runs + 1):
+                lp = os.path.join(logs_dir, f"log_{run_ts}_{mode}_run{run_idx}.txt")
+                if os.path.exists(lp):
+                    with open(lp, "r", encoding="utf-8") as lf:
+                        mode_entry["logs"][f"run{run_idx}"] = lf.read()
+        else:
+            lp = os.path.join(logs_dir, f"log_{run_ts}_{mode}.txt")
+            if os.path.exists(lp):
+                with open(lp, "r", encoding="utf-8") as lf:
+                    mode_entry["logs"]["run1"] = lf.read()
+        full_dump["llm_experiments"][mode] = mode_entry
+
+    full_path = os.path.join(full_dir, f"full_{tag}.json")
+    with open(full_path, "w", encoding="utf-8") as f:
+        json.dump(full_dump, f, indent=2, ensure_ascii=False)
+    print(f"\nFull experiment dump → {full_path}")
 
     # ── Plot ──
     plot_results(results, config, args.output_dir)
