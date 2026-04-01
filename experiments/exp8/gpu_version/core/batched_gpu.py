@@ -26,6 +26,9 @@ class BatchedGPUQLearner:
         self.temp = temperature
         self.device = gpu_config.device
         self.max_states = max_states
+
+        # Cache indices used by advanced indexing in hot loops.
+        self._batch_agent_linear_idx = torch.arange(self.total_agents, device=self.device)
         
         # Q-table shape: (batch_size, n_agents, max_states, action_space_size)
         # We assume state is an integer index from 0 to max_states-1.
@@ -39,20 +42,14 @@ class BatchedGPUQLearner:
         states: (batch_size, n_agents) tensor of state indices
         Returns: (batch_size, n_agents) tensor of actions
         """
-        # Flatten for easier processing
-        flat_states = states.view(-1)
-        
-        # Create indices for batch and agent: 0, 1, ..., total_agents-1
-        batch_agent_linear_idx = torch.arange(self.total_agents, device=self.device)
-        
         # Select Q-values for current states: (B*N, A)
-        # q_table is (B, N, S, A) -> view (B*N, S, A)
-        # For each (batch*agent)_i, we want q_table[i, flat_states[i], :]
-        flat_q = self.q_table.view(-1, self.max_states, self.action_space_size)
-        
-        # Advanced indexing:
-        # flat_q[i, state[i]] gives (A) vector for each i
-        gathered_q = flat_q[batch_agent_linear_idx, flat_states] # (B*N, A)
+        # Fast path for stateless experiments (max_states=1): avoid advanced indexing.
+        if self.max_states == 1:
+            gathered_q = self.q_table[:, :, 0, :].reshape(-1, self.action_space_size)
+        else:
+            flat_states = states.view(-1)
+            flat_q = self.q_table.view(-1, self.max_states, self.action_space_size)
+            gathered_q = flat_q[self._batch_agent_linear_idx, flat_states]  # (B*N, A)
         
         if self.strategy == 'epsilon_greedy':
             # Create a uniform distribution mask for epsilon-greedy
@@ -70,7 +67,12 @@ class BatchedGPUQLearner:
             # Using higher temperature makes actions more random
             # Using lower temperature makes it more greedy
             probabilities = torch.softmax(gathered_q / self.temp, dim=1)
-            actions = torch.multinomial(probabilities, 1).squeeze()
+            # For 2 actions, Bernoulli sampling is faster than multinomial.
+            if self.action_space_size == 2:
+                p1 = probabilities[:, 1]
+                actions = (torch.rand_like(p1) < p1).long()
+            else:
+                actions = torch.multinomial(probabilities, 1).squeeze()
         else:
             actions = torch.argmax(gathered_q, dim=1)
             
@@ -80,36 +82,41 @@ class BatchedGPUQLearner:
         """
         Batch update Q-values.
         """
+        current_lr = self.lr
+
+        # Fast path for stateless experiments (max_states=1) with full update.
+        if self.max_states == 1 and mask is None:
+            flat_actions = actions.view(-1)
+            flat_rewards = rewards.view(-1)
+
+            q = self.q_table[:, :, 0, :]  # (B,N,A)
+            q_flat = q.view(-1, self.action_space_size)  # (B*N,A)
+            max_next_q = q_flat.max(dim=1).values
+            target = flat_rewards + self.gamma * max_next_q
+
+            row_idx = self._batch_agent_linear_idx
+            current_q = q_flat[row_idx, flat_actions]
+            new_q_val = (1.0 - current_lr) * current_q + current_lr * target
+            q_flat[row_idx, flat_actions] = new_q_val
+            return
+
         flat_states = states.view(-1)
         flat_actions = actions.view(-1)
-        
-        current_lr = self.lr
-            
         flat_rewards = rewards.view(-1)
         flat_next_states = next_states.view(-1)
-        
-        # Linear indices
-        batch_agent_idx = torch.arange(self.total_agents, device=self.device)
-        
-        # Current Q(S, A)
+
+        batch_agent_idx = self._batch_agent_linear_idx
+
         flat_q = self.q_table.view(-1, self.max_states, self.action_space_size)
-        
-        # Max Next Q(S', a')
-        next_q_values = flat_q[batch_agent_idx, flat_next_states] # (B*N, A)
+        next_q_values = flat_q[batch_agent_idx, flat_next_states]  # (B*N, A)
         max_next_q, _ = torch.max(next_q_values, dim=1)
-        
-        # Target: Q_target = R + gamma * max(Q(S', a'))
         target = flat_rewards + self.gamma * max_next_q
-        
-        # Update current Q value with scatter_
+
         flat_q_data = self.q_table.view(-1)
         indices = batch_agent_idx * (self.max_states * self.action_space_size) + \
                   flat_states * self.action_space_size + flat_actions
-        
-        # Current values
+
         current_q = flat_q_data[indices]
-        
-        # Incremental update: Q = (1-lr)*Q + lr*target
         new_q_val = (1.0 - current_lr) * current_q + current_lr * target
 
         if mask is not None:

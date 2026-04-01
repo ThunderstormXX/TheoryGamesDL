@@ -1,0 +1,85 @@
+{
+  "timestamp": "20260401_190116",
+  "reward_type": "pp",
+  "alpha": 0.01,
+  "beta_values": [
+    2.0
+  ],
+  "gamma_values": [
+    0.7
+  ],
+  "action_flip_probs": [
+    0.0
+  ],
+  "num_iterations": 200,
+  "record_every": 20,
+  "n_replications": 8,
+  "seed": 0,
+  "trap_eps": 0.02,
+  "trap_min_duration": 200,
+  "benefit": 3.0,
+  "cost": 1.0,
+  "save_qp_plot": true,
+  "run_extra_analysis": false,
+  "save_extra_plots": false,
+  "payoff_matrix": null,
+  "calibration": null,
+  "runs": [
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 2.0,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 10,
+      "deltaq_inc_stats": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": []
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 2.0,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 10,
+      "deltaq_inc_stats": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": []
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 2.0,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 10,
+      "deltaq_inc_stats": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": []
+    }
+  ]
+}

@@ -1,0 +1,3906 @@
+{
+  "timestamp": "20260401_193240",
+  "reward_type": "pp",
+  "alpha": 0.01,
+  "beta_values": [
+    0.5,
+    0.7,
+    0.8999999999999999,
+    1.0999999999999999,
+    1.2999999999999998,
+    1.4999999999999998,
+    1.6999999999999997,
+    1.8999999999999997
+  ],
+  "gamma_values": [
+    0.5,
+    0.6,
+    0.7,
+    0.7999999999999999,
+    0.8999999999999999
+  ],
+  "action_flip_probs": [
+    0.0
+  ],
+  "num_iterations": 100000,
+  "record_every": 10,
+  "n_replications": 32,
+  "seed": 0,
+  "trap_eps": 0.02,
+  "trap_min_duration": 200,
+  "benefit": 20.0,
+  "cost": 5.0,
+  "save_qp_plot": true,
+  "run_extra_analysis": false,
+  "save_extra_plots": false,
+  "payoff_matrix": null,
+  "calibration": null,
+  "runs": [
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.5_g0.5_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.5_g0.6_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.5_g0.7_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.5_g0.7999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.5_g0.8999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.7_g0.5_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.7_g0.6_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0625,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 7,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.7_g0.7_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          728,
+          750
+        ],
+        [
+          1360,
+          1390
+        ],
+        [
+          1513,
+          1547
+        ],
+        [
+          2081,
+          2108
+        ],
+        [
+          2136,
+          2176
+        ],
+        [
+          2936,
+          2962
+        ],
+        [
+          4795,
+          4824
+        ],
+        [
+          5958,
+          6008
+        ],
+        [
+          6152,
+          6203
+        ],
+        [
+          7567,
+          7604
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.7_g0.7999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          3079,
+          3292
+        ],
+        [
+          4767,
+          4831
+        ],
+        [
+          5412,
+          5490
+        ],
+        [
+          9943,
+          9987
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.7_g0.8999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          721,
+          742
+        ],
+        [
+          989,
+          1026
+        ],
+        [
+          1042,
+          1063
+        ],
+        [
+          1077,
+          1203
+        ],
+        [
+          1211,
+          1356
+        ],
+        [
+          1360,
+          7081
+        ],
+        [
+          7082,
+          7403
+        ],
+        [
+          7404,
+          7450
+        ],
+        [
+          7457,
+          7494
+        ],
+        [
+          7499,
+          7538
+        ],
+        [
+          7581,
+          7606
+        ],
+        [
+          7622,
+          7680
+        ],
+        [
+          7691,
+          7743
+        ],
+        [
+          7748,
+          7774
+        ],
+        [
+          7788,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.8999999999999999_g0.5_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          715,
+          747
+        ],
+        [
+          890,
+          910
+        ],
+        [
+          945,
+          978
+        ],
+        [
+          989,
+          1068
+        ],
+        [
+          1077,
+          7075
+        ],
+        [
+          7082,
+          7616
+        ],
+        [
+          7617,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.8999999999999999_g0.6_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          847,
+          933
+        ],
+        [
+          939,
+          971
+        ],
+        [
+          992,
+          1631
+        ],
+        [
+          1660,
+          2450
+        ],
+        [
+          2457,
+          4849
+        ],
+        [
+          4853,
+          5343
+        ],
+        [
+          5345,
+          5390
+        ],
+        [
+          5392,
+          5457
+        ],
+        [
+          5500,
+          7587
+        ],
+        [
+          7622,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.8999999999999999_g0.7_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          674,
+          756
+        ],
+        [
+          1169,
+          4868
+        ],
+        [
+          4879,
+          5342
+        ],
+        [
+          5363,
+          5387
+        ],
+        [
+          5392,
+          5427
+        ],
+        [
+          5507,
+          6865
+        ],
+        [
+          6866,
+          6994
+        ],
+        [
+          7004,
+          7376
+        ],
+        [
+          7404,
+          7453
+        ],
+        [
+          7466,
+          7617
+        ],
+        [
+          7618,
+          7763
+        ],
+        [
+          7781,
+          8574
+        ],
+        [
+          8580,
+          8617
+        ],
+        [
+          8630,
+          8805
+        ],
+        [
+          8903,
+          9073
+        ],
+        [
+          9126,
+          9146
+        ],
+        [
+          9150,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.8999999999999999_g0.7999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          431,
+          516
+        ],
+        [
+          1110,
+          1799
+        ],
+        [
+          1852,
+          1945
+        ],
+        [
+          2119,
+          5105
+        ],
+        [
+          5196,
+          7743
+        ],
+        [
+          7893,
+          8004
+        ],
+        [
+          8027,
+          8788
+        ],
+        [
+          8799,
+          8830
+        ],
+        [
+          9168,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta0.8999999999999999_g0.8999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          421,
+          441
+        ],
+        [
+          459,
+          517
+        ],
+        [
+          673,
+          709
+        ],
+        [
+          715,
+          753
+        ],
+        [
+          794,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.0999999999999999_g0.5_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          413,
+          445
+        ],
+        [
+          447,
+          523
+        ],
+        [
+          673,
+          712
+        ],
+        [
+          715,
+          755
+        ],
+        [
+          794,
+          830
+        ],
+        [
+          840,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.0999999999999999_g0.6_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          408,
+          473
+        ],
+        [
+          502,
+          536
+        ],
+        [
+          600,
+          638
+        ],
+        [
+          657,
+          710
+        ],
+        [
+          715,
+          766
+        ],
+        [
+          794,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.0999999999999999_g0.7_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          479,
+          575
+        ],
+        [
+          578,
+          704
+        ],
+        [
+          909,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.0999999999999999_g0.7999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          298,
+          430
+        ],
+        [
+          859,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.0999999999999999_g0.8999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          333,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.2999999999999998_g0.5_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          235,
+          304
+        ],
+        [
+          368,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.2999999999999998_g0.6_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          320,
+          355
+        ],
+        [
+          363,
+          417
+        ],
+        [
+          419,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.2999999999999998_g0.7_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          122,
+          146
+        ],
+        [
+          429,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.2999999999999998_g0.7999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          189,
+          334
+        ],
+        [
+          624,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.2999999999999998_g0.8999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          193,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.4999999999999998_g0.5_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          226,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.4999999999999998_g0.6_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          285,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.4999999999999998_g0.7_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          95,
+          141
+        ],
+        [
+          371,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.4999999999999998_g0.7999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          123,
+          314
+        ],
+        [
+          579,
+          599
+        ],
+        [
+          600,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.4999999999999998_g0.8999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          189,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.6999999999999997_g0.5_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          210,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.6999999999999997_g0.6_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          271,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.6999999999999997_g0.7_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          95,
+          143
+        ],
+        [
+          349,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.6999999999999997_g0.7999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          103,
+          314
+        ],
+        [
+          532,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.6999999999999997_g0.8999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          189,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.8999999999999997_g0.5_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          189,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.8999999999999997_g0.6_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          245,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.8999999999999997_g0.7_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          94,
+          140
+        ],
+        [
+          338,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.8999999999999997_g0.7999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "edge2",
+      "n_agents": 2,
+      "degrees": [
+        1.0,
+        1.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          86,
+          291
+        ],
+        [
+          485,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/edge2_rtpp_beta1.8999999999999997_g0.8999999999999999_flip0.0_T100000_R32/two_agent_qp.png",
+      "three_agent_qp_plot": null
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 1.0,
+      "trap_intervals_rep0": [
+        [
+          620,
+          689
+        ],
+        [
+          692,
+          782
+        ],
+        [
+          784,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [
+        [
+          595,
+          10001
+        ]
+      ],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.5_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 1.0,
+      "trap_intervals_rep0": [
+        [
+          614,
+          689
+        ],
+        [
+          692,
+          725
+        ],
+        [
+          756,
+          783
+        ],
+        [
+          784,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [
+        [
+          625,
+          10001
+        ]
+      ],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.5_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 1.0,
+      "trap_intervals_rep0": [
+        [
+          620,
+          725
+        ],
+        [
+          826,
+          879
+        ],
+        [
+          881,
+          1234
+        ],
+        [
+          1235,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [
+        [
+          657,
+          10001
+        ]
+      ],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.5_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 1.0,
+      "trap_intervals_rep0": [
+        [
+          930,
+          986
+        ],
+        [
+          1022,
+          1093
+        ],
+        [
+          1095,
+          1123
+        ],
+        [
+          1136,
+          1162
+        ],
+        [
+          1255,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [
+        [
+          573,
+          10001
+        ]
+      ],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.5_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 1.0,
+      "trap_intervals_rep0": [
+        [
+          826,
+          866
+        ],
+        [
+          1241,
+          1432
+        ],
+        [
+          1776,
+          2205
+        ],
+        [
+          2351,
+          2419
+        ],
+        [
+          2429,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [
+        [
+          139,
+          206
+        ],
+        [
+          740,
+          10001
+        ]
+      ],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.5_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          297,
+          401
+        ],
+        [
+          403,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.7_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          310,
+          334
+        ],
+        [
+          335,
+          394
+        ],
+        [
+          403,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.7_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          337,
+          394
+        ],
+        [
+          405,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.7_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          414,
+          512
+        ],
+        [
+          552,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.7_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          116,
+          199
+        ],
+        [
+          416,
+          443
+        ],
+        [
+          695,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.7_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          154,
+          203
+        ],
+        [
+          209,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.8999999999999999_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          163,
+          205
+        ],
+        [
+          208,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.8999999999999999_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          192,
+          229
+        ],
+        [
+          233,
+          333
+        ],
+        [
+          335,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.8999999999999999_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          299,
+          332
+        ],
+        [
+          335,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.8999999999999999_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          91,
+          204
+        ],
+        [
+          335,
+          503
+        ],
+        [
+          619,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta0.8999999999999999_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          137,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.0999999999999999_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          172,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.0999999999999999_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          178,
+          230
+        ],
+        [
+          231,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.0999999999999999_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          178,
+          202
+        ],
+        [
+          284,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.0999999999999999_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          81,
+          160
+        ],
+        [
+          161,
+          220
+        ],
+        [
+          252,
+          444
+        ],
+        [
+          468,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.0999999999999999_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          137,
+          207
+        ],
+        [
+          208,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.2999999999999998_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          144,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.2999999999999998_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          178,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.2999999999999998_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          44,
+          64
+        ],
+        [
+          172,
+          203
+        ],
+        [
+          281,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.2999999999999998_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          51,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.2999999999999998_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          137,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.4999999999999998_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          137,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.4999999999999998_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          172,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.4999999999999998_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          42,
+          96
+        ],
+        [
+          172,
+          203
+        ],
+        [
+          252,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.4999999999999998_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          45,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.4999999999999998_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.875,
+      "trap_intervals_rep0": [
+        [
+          137,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.6999999999999997_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.875,
+      "trap_intervals_rep0": [
+        [
+          144,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.6999999999999997_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.875,
+      "trap_intervals_rep0": [
+        [
+          144,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.6999999999999997_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.875,
+      "trap_intervals_rep0": [
+        [
+          42,
+          104
+        ],
+        [
+          144,
+          168
+        ],
+        [
+          172,
+          227
+        ],
+        [
+          252,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.6999999999999997_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.875,
+      "trap_intervals_rep0": [
+        [
+          44,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.6999999999999997_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.78125,
+      "trap_intervals_rep0": [
+        [
+          63,
+          86
+        ],
+        [
+          137,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.8999999999999997_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.78125,
+      "trap_intervals_rep0": [
+        [
+          70,
+          98
+        ],
+        [
+          154,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.8999999999999997_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.78125,
+      "trap_intervals_rep0": [
+        [
+          105,
+          132
+        ],
+        [
+          144,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.8999999999999997_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.78125,
+      "trap_intervals_rep0": [
+        [
+          42,
+          69
+        ],
+        [
+          75,
+          134
+        ],
+        [
+          144,
+          229
+        ],
+        [
+          251,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.8999999999999997_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "triangle3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.78125,
+      "trap_intervals_rep0": [
+        [
+          44,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/triangle3_rtpp_beta1.8999999999999997_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.5_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.5_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.5_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.5_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.5,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.5_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.7_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.0,
+      "trap_intervals_rep0": [],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.7_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.28125,
+      "trap_intervals_rep0": [
+        [
+          439,
+          474
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.7_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.96875,
+      "trap_intervals_rep0": [
+        [
+          639,
+          722
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.7_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.7,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.75,
+      "trap_intervals_rep0": [
+        [
+          1756,
+          1811
+        ],
+        [
+          2133,
+          2412
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.7_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          735,
+          758
+        ],
+        [
+          777,
+          863
+        ],
+        [
+          865,
+          903
+        ],
+        [
+          907,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.8999999999999999_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          696,
+          776
+        ],
+        [
+          777,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.8999999999999999_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.9375,
+      "trap_intervals_rep0": [
+        [
+          419,
+          479
+        ],
+        [
+          780,
+          813
+        ],
+        [
+          817,
+          906
+        ],
+        [
+          911,
+          1231
+        ],
+        [
+          1235,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.8999999999999999_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          411,
+          454
+        ],
+        [
+          638,
+          901
+        ],
+        [
+          969,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.8999999999999999_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 0.8999999999999999,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          640,
+          958
+        ],
+        [
+          1135,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta0.8999999999999999_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.875,
+      "trap_intervals_rep0": [
+        [
+          338,
+          376
+        ],
+        [
+          395,
+          514
+        ],
+        [
+          532,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.0999999999999999_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.875,
+      "trap_intervals_rep0": [
+        [
+          306,
+          333
+        ],
+        [
+          559,
+          584
+        ],
+        [
+          599,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.0999999999999999_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.875,
+      "trap_intervals_rep0": [
+        [
+          403,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.0999999999999999_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.875,
+      "trap_intervals_rep0": [
+        [
+          306,
+          462
+        ],
+        [
+          572,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.0999999999999999_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.0999999999999999,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.875,
+      "trap_intervals_rep0": [
+        [
+          421,
+          890
+        ],
+        [
+          915,
+          973
+        ],
+        [
+          982,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.0999999999999999_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          244,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.2999999999999998_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          156,
+          184
+        ],
+        [
+          299,
+          514
+        ],
+        [
+          541,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.2999999999999998_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          208,
+          228
+        ],
+        [
+          336,
+          514
+        ],
+        [
+          541,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.2999999999999998_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          283,
+          473
+        ],
+        [
+          548,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.2999999999999998_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.2999999999999998,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          45,
+          85
+        ],
+        [
+          403,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.2999999999999998_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          168,
+          227
+        ],
+        [
+          251,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.4999999999999998_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          208,
+          241
+        ],
+        [
+          242,
+          295
+        ],
+        [
+          335,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.4999999999999998_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          246,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.4999999999999998_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          280,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.4999999999999998_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.4999999999999998,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.90625,
+      "trap_intervals_rep0": [
+        [
+          44,
+          102
+        ],
+        [
+          362,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.4999999999999998_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.84375,
+      "trap_intervals_rep0": [
+        [
+          164,
+          233
+        ],
+        [
+          256,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.6999999999999997_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.84375,
+      "trap_intervals_rep0": [
+        [
+          208,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.6999999999999997_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.84375,
+      "trap_intervals_rep0": [
+        [
+          281,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.6999999999999997_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.84375,
+      "trap_intervals_rep0": [
+        [
+          246,
+          275
+        ],
+        [
+          398,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.6999999999999997_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.6999999999999997,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.84375,
+      "trap_intervals_rep0": [
+        [
+          283,
+          527
+        ],
+        [
+          669,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.6999999999999997_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.5,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.8125,
+      "trap_intervals_rep0": [
+        [
+          161,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.8999999999999997_g0.5_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.6,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.8125,
+      "trap_intervals_rep0": [
+        [
+          215,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.8999999999999997_g0.6_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.7,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.8125,
+      "trap_intervals_rep0": [
+        [
+          141,
+          198
+        ],
+        [
+          280,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.8999999999999997_g0.7_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.7999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.8125,
+      "trap_intervals_rep0": [
+        [
+          164,
+          278
+        ],
+        [
+          396,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.8999999999999997_g0.7999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    },
+    {
+      "graph": "star3",
+      "n_agents": 3,
+      "degrees": [
+        2.0,
+        1.0,
+        1.0
+      ],
+      "beta": 1.8999999999999997,
+      "gamma": 0.8999999999999999,
+      "action_flip_prob": 0.0,
+      "trap_min_duration_points": 20,
+      "deltaq_inc_stats": null,
+      "volatility_acf_summary": null,
+      "volatility_acf_abs_deltaq": null,
+      "trap_fraction_any_rep": 0.8125,
+      "trap_intervals_rep0": [
+        [
+          252,
+          614
+        ],
+        [
+          638,
+          10001
+        ]
+      ],
+      "trap_rep_idx_used_for_plot": 0,
+      "trap_intervals_on_mean_p": [],
+      "two_agent_qp_plot": null,
+      "three_agent_qp_plot": "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/results/trap_effect/bc_b20_c5/run_20260401_193240/star3_rtpp_beta1.8999999999999997_g0.8999999999999999_flip0.0_T100000_R32/three_agent_qp.png"
+    }
+  ]
+}

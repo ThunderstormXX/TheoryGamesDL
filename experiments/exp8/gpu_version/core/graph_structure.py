@@ -96,3 +96,26 @@ class WheelGraph(BaseGraph):
             
         return adj
 
+
+class EdgeGraph(BaseGraph):
+    def __init__(self, device=None):
+        """Two nodes connected by a single undirected edge."""
+        super().__init__(num_nodes=2, device=device)
+
+    def generate_adjacency_matrix(self):
+        adj = torch.zeros((2, 2), device=self.device, dtype=torch.float32)
+        adj[0, 1] = 1.0
+        adj[1, 0] = 1.0
+        return adj
+
+
+class TriangleGraph(BaseGraph):
+    def __init__(self, device=None):
+        """Three nodes in a triangle (complete graph K3)."""
+        super().__init__(num_nodes=3, device=device)
+
+    def generate_adjacency_matrix(self):
+        adj = torch.ones((3, 3), device=self.device, dtype=torch.float32)
+        adj.fill_diagonal_(0.0)
+        return adj
+
