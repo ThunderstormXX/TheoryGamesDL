@@ -3,6 +3,13 @@ import numpy as np
 import os
 
 
+def _is_star(title: str) -> bool:
+    """Check if the title indicates a star graph."""
+    if title is None:
+        return False
+    return "star" in title.lower()
+
+
 def _robust_ylim(
     ys: list[np.ndarray],
     *,
@@ -47,6 +54,11 @@ def _pc_ylim(ys: list[np.ndarray], *, pad: float = 0.05) -> tuple[float, float]:
     if hi <= lo:
         return (-0.05, 1.05)
     return (lo, hi)
+
+
+def _agent_colors(n_agents: int) -> list[str]:
+    base = ['red', 'blue', 'green', 'purple', 'orange', 'cyan', 'magenta']
+    return [base[i % len(base)] for i in range(max(0, int(n_agents)))]
 
 def plot_cooperation_with_std(history_data, labels, title="Cooperation Rate", save_path="results/plot.png", 
                                theory_values=None, experiment_info=None):
@@ -182,13 +194,16 @@ def plot_trap_q_and_p(
         ax_q = axes[i, 0]
         ax_p = axes[i, 1]
 
+        label_suffix = " (Center)" if (i == 0 and _is_star(title)) else ""
+        agent_label = f'Agent {i}{label_suffix}'
+
         if q_mean is not None:
             ax_q.plot(x, q_mean[:, i, 0], color='C0', alpha=0.35, linewidth=1.2, label='Q(D) mean')
             ax_q.plot(x, q_mean[:, i, 1], color='C1', alpha=0.35, linewidth=1.2, label='Q(C) mean')
 
         ax_q.plot(x, q_rep[:, i, 0], color='C0', linewidth=1.8, label=f'Q(D) rep{rep_idx}')
         ax_q.plot(x, q_rep[:, i, 1], color='C1', linewidth=1.8, label=f'Q(C) rep{rep_idx}')
-        ax_q.set_ylabel(f'Agent {i}')
+        ax_q.set_ylabel(agent_label)
         # Informative scaling for Q
         qlo, qhi = _robust_ylim(
             [q_rep[:, i, 0], q_rep[:, i, 1]] + ([] if q_mean is None else [q_mean[:, i, 0], q_mean[:, i, 1]]),
@@ -219,6 +234,137 @@ def plot_trap_q_and_p(
     abs_path = os.path.abspath(save_path)
     os.makedirs(os.path.dirname(abs_path), exist_ok=True)
     plt.savefig(abs_path, dpi=160, bbox_inches='tight')
+    plt.close()
+    return abs_path
+
+
+def plot_trap_delta_q(
+    *,
+    q_hist: np.ndarray,
+    record_every: int,
+    title: str,
+    rep_idx: int = 0,
+    trap_intervals: list[tuple[int, int]] | None = None,
+    save_path: str,
+) -> str:
+    """Plot Delta Q = Q(C) - Q(D) for all agents on a single combined plot.
+
+    q_hist: (T_out, B, N, 2) where index 1 is C, index 0 is D.
+    """
+    if q_hist.ndim != 4:
+        raise ValueError(f"q_hist must have shape (T_out,B,N,2), got {q_hist.shape}")
+
+    T_out, B, n_agents, _ = q_hist.shape
+    rep_idx = int(np.clip(rep_idx, 0, max(B - 1, 0)))
+
+    # Delta Q = Q(C) - Q(D)
+    dq_rep = q_hist[:, rep_idx, :, 1] - q_hist[:, rep_idx, :, 0]  # (T_out, N)
+
+    x = np.arange(T_out) * int(record_every)
+
+    fig, ax = plt.subplots(figsize=(11.5, 6))
+    fig.suptitle(title, fontsize=12)
+
+    # Use the same colors as in three_agent_qp
+    colors = _agent_colors(n_agents)
+    
+    all_dq = []
+    for i in range(n_agents):
+        label_suffix = " (Center)" if (i == 0 and _is_star(title)) else ""
+        agent_label = f'Agent {i}{label_suffix}'
+        
+        color = colors[i]
+        ax.plot(x, dq_rep[:, i], color=color, linewidth=1.8, label=agent_label)
+        all_dq.append(dq_rep[:, i])
+
+    if trap_intervals:
+        for t0, t1 in trap_intervals:
+            x0 = int(t0) * int(record_every)
+            x1 = int(t1) * int(record_every)
+            ax.axvspan(x0, x1, color='gray', alpha=0.12, linewidth=0)
+
+    ax.axhline(0, color='white', linestyle='--', alpha=0.6, linewidth=1.2)
+    ax.set_ylabel('ΔQ = Q(C) - Q(D)')
+    ax.set_xlabel('Iterations')
+    
+    dq_min, dq_max = _robust_ylim(all_dq, q_low=0.5, q_high=99.5, pad_frac=0.1)
+    ax.set_ylim(min(dq_min, -0.1), max(dq_max, 0.1))
+    
+    ax.grid(True, alpha=0.25)
+    ax.legend(loc='best', fontsize=9)
+
+    plt.tight_layout()
+
+    abs_path = os.path.abspath(save_path)
+    os.makedirs(os.path.dirname(abs_path), exist_ok=True)
+    plt.savefig(abs_path, dpi=160, bbox_inches='tight')
+    plt.close()
+    return abs_path
+
+
+def plot_trap_probabilities_combined(
+    *,
+    p_hist: np.ndarray,
+    record_every: int,
+    trap_neighbor_gap: float,
+    title: str,
+    rep_idx: int = 0,
+    trap_intervals: list[tuple[int, int]] | None = None,
+    save_path: str,
+) -> str:
+    """Plot p(C) for all agents on one axis with trap windows highlighted.
+
+    p_hist: (T_out, B, N) where p(C) corresponds to action=1.
+    trap_intervals: intervals in recorded-point indices [start, end).
+    """
+    if p_hist.ndim != 3:
+        raise ValueError(f"p_hist must have shape (T_out,B,N), got {p_hist.shape}")
+
+    T_out, B, n_agents = p_hist.shape
+    rep_idx = int(np.clip(rep_idx, 0, max(B - 1, 0)))
+    p_rep = p_hist[:, rep_idx, :]  # (T_out, N)
+    x = np.arange(T_out) * int(record_every)
+
+    fig, ax = plt.subplots(figsize=(11.5, 6))
+    fig.suptitle(title, fontsize=12)
+
+    colors = _agent_colors(n_agents)
+    all_p = []
+    for i in range(n_agents):
+        label_suffix = " (Center)" if (i == 0 and _is_star(title)) else ""
+        agent_label = f'Agent {i}{label_suffix}'
+        series = p_rep[:, i]
+        ax.plot(x, series, color=colors[i], linewidth=1.9, label=agent_label)
+        all_p.append(series)
+
+    if trap_intervals:
+        for t0, t1 in trap_intervals:
+            x0 = int(t0) * int(record_every)
+            x1 = int(t1) * int(record_every)
+            ax.axvspan(x0, x1, color='gray', alpha=0.12, linewidth=0)
+
+    ax.text(
+        0.01,
+        0.99,
+        f"trap rule: max_i [p_i(C) - mean_nbr(i)] >= {float(trap_neighbor_gap):.3g}",
+        transform=ax.transAxes,
+        ha='left',
+        va='top',
+        fontsize=9,
+        family='monospace',
+        bbox=dict(boxstyle='round,pad=0.25', facecolor='white', alpha=0.75, edgecolor='0.7'),
+    )
+    ax.set_ylabel('p(C)')
+    ax.set_xlabel('Iterations')
+    lo, hi = _pc_ylim(all_p)
+    ax.set_ylim(lo, hi)
+    ax.grid(True, alpha=0.25)
+    ax.legend(loc='best', fontsize=9)
+
+    plt.tight_layout()
+    abs_path = os.path.abspath(save_path)
+    os.makedirs(os.path.dirname(abs_path), exist_ok=True)
+    plt.savefig(abs_path, dpi=170, bbox_inches='tight')
     plt.close()
     return abs_path
 
@@ -291,12 +437,17 @@ def plot_two_agent_combined_series(
     p0 = _sma(p_rep[:, 0], smooth_window)
     p1 = _sma(p_rep[:, 1], smooth_window)
 
+    label0 = 'Agent 0'
+    label1 = 'Agent 1'
+    if _is_star(title_prefix):
+        label0 += " (Center)"
+
     fig, axes = plt.subplots(3, 1, figsize=(11.5, 9.2), sharex=True)
     fig.suptitle(title_prefix, fontsize=12)
 
     ax = axes[0]
-    ax.plot(x, q_c0, color='red', linewidth=lw, alpha=alpha, label='Agent 0')
-    ax.plot(x, q_c1, color='blue', linewidth=lw, alpha=alpha, label='Agent 1')
+    ax.plot(x, q_c0, color='red', linewidth=lw, alpha=alpha, label=label0)
+    ax.plot(x, q_c1, color='blue', linewidth=lw, alpha=alpha, label=label1)
     ax.set_ylabel('Q(C)')
     lo, hi = _robust_ylim([q_c0, q_c1], q_low=1.0, q_high=99.0, pad_frac=0.06)
     ax.set_ylim(lo, hi)
@@ -343,7 +494,7 @@ def plot_two_agent_combined_series(
             bbox=dict(boxstyle='round,pad=0.25', facecolor='white', alpha=0.75, edgecolor='0.7'),
         )
 
-    plt.tight_layout(rect=[0, 0, 1, 0.96])
+    plt.tight_layout(rect=(0, 0, 1, 0.96))
     combined_path = os.path.abspath(os.path.join(save_dir, 'two_agent_qp.png'))
     plt.savefig(combined_path, dpi=180, bbox_inches='tight')
     plt.close(fig)
@@ -414,6 +565,9 @@ def plot_three_agent_combined_series(
     colors = ['red', 'blue', 'green']
     labels = ['Agent 0', 'Agent 1', 'Agent 2']
 
+    if _is_star(title_prefix):
+        labels[0] += " (Center)"
+
     fig, axes = plt.subplots(3, 1, figsize=(11.8, 9.6), sharex=True)
     fig.suptitle(title_prefix, fontsize=12)
 
@@ -466,7 +620,7 @@ def plot_three_agent_combined_series(
             bbox=dict(boxstyle='round,pad=0.25', facecolor='white', alpha=0.75, edgecolor='0.7'),
         )
 
-    plt.tight_layout(rect=[0, 0, 1, 0.96])
+    plt.tight_layout(rect=(0, 0, 1, 0.96))
     combined_path = os.path.abspath(os.path.join(save_dir, 'three_agent_qp.png'))
     plt.savefig(combined_path, dpi=180, bbox_inches='tight')
     plt.close(fig)
@@ -543,7 +697,7 @@ def plot_volatility_clustering_timeseries(
     ax.set_xlabel('Iterations')
     ax.grid(True, alpha=0.25)
 
-    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.tight_layout(rect=(0, 0, 1, 0.95))
     abs_path = os.path.abspath(save_path)
     os.makedirs(os.path.dirname(abs_path), exist_ok=True)
     plt.savefig(abs_path, dpi=160, bbox_inches='tight')

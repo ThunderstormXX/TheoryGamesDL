@@ -53,6 +53,8 @@ from experiments.exp8.gpu_version.core.reward_models import RewardManager
 from experiments.exp8.gpu_version.core.graph_structure import EdgeGraph, TriangleGraph, StarGraph
 from experiments.exp8.gpu_version.visualization.plotting import (
     plot_trap_q_and_p,
+    plot_trap_delta_q,
+    plot_trap_probabilities_combined,
     plot_two_agent_combined_series,
     plot_three_agent_combined_series,
     plot_deltaq_increment_distribution,
@@ -76,11 +78,11 @@ PAYOFF_MATRIX: Optional[Dict[str, float]] = None
 REWARD_TYPE = 'pp'  # one of: pp,pf,ff,fp
 
 # Learning params
-ALPHA = 0.01
+ALPHA = 0.02
 # Keep defaults small (3 runs total: edge/triangle/star).
 # Expand these lists to reproduce phase diagrams / noise sweeps.
-BETA_VALUES = np.arange(0.5, 2.1, 0.2).tolist()  # inverse temperature (noise): higher beta = less noise
-GAMMA_VALUES = np.arange(0.5, 1.0, 0.1).tolist()  # discount factor: 0.0 = myopic, 1.0 = far-sighted
+BETA_VALUES = [1]  # inverse temperature (noise): higher beta = less noise
+GAMMA_VALUES = [0.97] # discount factor: 0.0 = myopic, 1.0 = far-sighted
 
 # Softmax sampling already provides stochasticity.
 # ACTION_FLIP_PROBS is an *extra* external noise knob: after sampling an action,
@@ -120,17 +122,16 @@ SEED = 0
 
 # Trap detection
 TRAP_EPS = 0.02
-# Pure-strategy threshold for the new trap definition.
-TRAP_PURE_EPS = TRAP_EPS
-# Mixed-equilibrium target p*(C). Used to declare that equilibrium response is mixed.
-TRAP_EQ_P_COOP = 0.5
+# Neighbor-gap threshold for trap detection:
+# trap at time t if exists agent i with p_i(C) - mean_{j in N(i)} p_j(C) >= threshold.
+TRAP_NEIGHBOR_GAP = 0.1
 # Interpreted in *iterations* (not recorded points). Internally converted using RECORD_EVERY.
 TRAP_MIN_DURATION = 500
 
 # Results
 OUTPUT_DIR = os.path.join('experiments', 'exp8', 'results', 'trap_effect')
 
-B = 3.0
+B = 2.0
 C = 1.0
 
 # =========================
@@ -179,31 +180,52 @@ def detect_trap_intervals(p_traj: np.ndarray, eps: float, min_duration: int) -> 
     return intervals
 
 
-def detect_pure_trap_intervals(
+def detect_neighbor_gap_trap_intervals(
     p_traj: np.ndarray,
-    pure_eps: float,
+    adjacency: np.ndarray,
+    gap_threshold: float,
     min_duration: int,
-    eq_p_star: float,
 ) -> List[Tuple[int, int]]:
-    """Trap = system sticks to a pure strategy while equilibrium response is mixed.
+    """Trap intervals based on neighbor-gap asymmetry.
 
-    We mark a trap when all agents' p(C) are near 0 or near 1 for a sustained window,
-    while the equilibrium target p*(C) is strictly mixed (inside (pure_eps, 1-pure_eps)).
+    Trap at time t if there exists an agent i such that:
+        p_i(C) - mean_{j in N(i)} p_j(C) >= gap_threshold
+
+    Example: [0.0, 0.0, 0.1] on a 3-node graph is a trap for gap_threshold<=0.1.
     """
-    p_star = float(eq_p_star)
-    if not (pure_eps < p_star < (1.0 - pure_eps)):
-        # Not a mixed equilibrium; no "pure-vs-mixed" trap by this definition.
-        return []
+    p_traj = np.asarray(p_traj, dtype=float)
+    adj = np.asarray(adjacency, dtype=float)
+    if p_traj.ndim != 2:
+        raise ValueError(f"p_traj must have shape (T_out, N), got {p_traj.shape}")
+    if adj.ndim != 2 or adj.shape[0] != adj.shape[1]:
+        raise ValueError(f"adjacency must be square, got {adj.shape}")
+    if int(adj.shape[0]) != int(p_traj.shape[1]):
+        raise ValueError(f"adjacency N={adj.shape[0]} doesn't match p_traj N={p_traj.shape[1]}")
+
+    neighbors = [np.where(adj[i] > 0)[0] for i in range(adj.shape[0])]
+    gap_threshold = float(gap_threshold)
 
     # p_traj: (T_out, N)
-    all_pure = np.all((p_traj < pure_eps) | (p_traj > (1.0 - pure_eps)), axis=1)
+    trap_mask = np.zeros(p_traj.shape[0], dtype=bool)
+    for t in range(p_traj.shape[0]):
+        p_t = p_traj[t]
+        is_trap_t = False
+        for i, nbr_idx in enumerate(neighbors):
+            if nbr_idx.size == 0:
+                continue
+            nbr_mean = float(np.mean(p_t[nbr_idx]))
+            if float(p_t[i]) - nbr_mean >= gap_threshold:
+                is_trap_t = True
+                break
+        trap_mask[t] = is_trap_t
+
     intervals: List[Tuple[int, int]] = []
     t = 0
-    T = len(all_pure)
+    T = len(trap_mask)
     while t < T:
-        if all_pure[t]:
+        if trap_mask[t]:
             t0 = t
-            while t < T and all_pure[t]:
+            while t < T and trap_mask[t]:
                 t += 1
             if t - t0 >= min_duration:
                 intervals.append((t0, t))
@@ -450,8 +472,7 @@ def main():
         'n_replications': N_REPLICATIONS,
         'seed': SEED,
         'trap_eps': TRAP_EPS,
-        'trap_pure_eps': TRAP_PURE_EPS,
-        'trap_eq_p_coop': TRAP_EQ_P_COOP,
+        'trap_neighbor_gap': TRAP_NEIGHBOR_GAP,
         'trap_min_duration': TRAP_MIN_DURATION,
         'benefit': benefit,
         'cost': cost,
@@ -572,11 +593,11 @@ def main():
         trap_rep0: List[Tuple[int, int]] = []
         first_trap_rep_idx: Optional[int] = None
         for b in range(p_hist.shape[1]):
-            ints_b = detect_pure_trap_intervals(
+            ints_b = detect_neighbor_gap_trap_intervals(
                 p_hist[:, b, :],
-                pure_eps=TRAP_PURE_EPS,
+                adjacency=adj_t,
+                gap_threshold=TRAP_NEIGHBOR_GAP,
                 min_duration=min_duration_points,
-                eq_p_star=TRAP_EQ_P_COOP,
             )
             if ints_b:
                 trap_any += 1
@@ -594,17 +615,24 @@ def main():
 
         # 2) Mean over reps (kept for backwards-compat / sanity)
         p_mean = p_hist.mean(axis=1)  # (T,N)
-        trap_int_mean = detect_pure_trap_intervals(
+        trap_int_mean = detect_neighbor_gap_trap_intervals(
             p_mean,
-            pure_eps=TRAP_PURE_EPS,
+            adjacency=adj_t,
+            gap_threshold=TRAP_NEIGHBOR_GAP,
             min_duration=min_duration_points,
-            eq_p_star=TRAP_EQ_P_COOP,
         )
 
         rep_idx_for_plot = 0 if first_trap_rep_idx is None else int(first_trap_rep_idx)
+        trap_intervals_for_plot = detect_neighbor_gap_trap_intervals(
+            p_hist[:, rep_idx_for_plot, :],
+            adjacency=adj_t,
+            gap_threshold=TRAP_NEIGHBOR_GAP,
+            min_duration=min_duration_points,
+        )
 
         plot_paths: Dict[str, Any] = {}
         plot_paths_three: Dict[str, Any] = {}
+        p_combined_plot_path: Optional[str] = None
 
         if SAVE_QP_PLOT:
             if int(adj_t.shape[0]) == 2:
@@ -633,6 +661,25 @@ def main():
                     rep_idx=rep_idx_for_plot,
                     overlay_mean=True,
                     save_path=os.path.join(run_dir, 'q_and_p.png'),
+                )
+
+                plot_trap_delta_q(
+                    q_hist=q_hist,
+                    record_every=RECORD_EVERY,
+                    title=f"Trap experiment (Delta Q) | {graph_name} | beta={beta} gamma={gamma} flip_p={flip_p}",
+                    rep_idx=rep_idx_for_plot,
+                    trap_intervals=trap_intervals_for_plot,
+                    save_path=os.path.join(run_dir, 'delta_q.png'),
+                )
+
+                p_combined_plot_path = plot_trap_probabilities_combined(
+                    p_hist=p_hist,
+                    record_every=RECORD_EVERY,
+                    trap_neighbor_gap=TRAP_NEIGHBOR_GAP,
+                    title=f"Trap experiment (p(C)) | {graph_name} | beta={beta} gamma={gamma} flip_p={flip_p}",
+                    rep_idx=rep_idx_for_plot,
+                    trap_intervals=trap_intervals_for_plot,
+                    save_path=os.path.join(run_dir, 'p_combined.png'),
                 )
 
                 # Additional combined plot for 3-agent runs (requested)
@@ -697,8 +744,7 @@ def main():
             'gamma': gamma,
             'action_flip_prob': flip_p,
             'trap_min_duration_points': int(min_duration_points),
-            'trap_pure_eps': TRAP_PURE_EPS,
-            'trap_eq_p_coop': TRAP_EQ_P_COOP,
+            'trap_neighbor_gap': TRAP_NEIGHBOR_GAP,
             'deltaq_inc_stats': stats,
             'volatility_acf_summary': acf_summary,
             'volatility_acf_abs_deltaq': None if acf_mean is None else acf_mean.tolist(),
@@ -707,9 +753,11 @@ def main():
             'trap_exit_fraction_given_trap': trap_exit_fraction_given_trap,
             'trap_intervals_rep0': trap_rep0,
             'trap_rep_idx_used_for_plot': rep_idx_for_plot,
+            'trap_intervals_rep_used_for_plot': trap_intervals_for_plot,
             'trap_intervals_on_mean_p': trap_int_mean,
             'two_agent_qp_plot': two_agent_plot_path,
             'three_agent_qp_plot': three_agent_plot_path,
+            'p_combined_plot': p_combined_plot_path,
         }
         summary['runs'].append(run_summary)
 
@@ -790,7 +838,7 @@ def main():
             handles, labels = axes[0].get_legend_handles_labels()
             if handles:
                 fig.legend(handles, labels, loc='upper center', ncol=min(len(labels), 5), fontsize=9, frameon=False)
-            _plt.tight_layout(rect=[0, 0, 1, 0.9])
+            _plt.tight_layout(rect=(0, 0, 1, 0.9))
             fig.savefig(os.path.join(session_dir, filename), dpi=160, bbox_inches='tight')
             _plt.close(fig)
 
