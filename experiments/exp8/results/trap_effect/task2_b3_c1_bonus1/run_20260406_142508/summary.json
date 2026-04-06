@@ -1,0 +1,60 @@
+{
+  "timestamp": "20260406_142508",
+  "benefit": 3.0,
+  "cost": 1.0,
+  "bonus": 1.0,
+  "num_iterations": 1000000,
+  "grid": {
+    "beta": [
+      0.5
+    ],
+    "gamma": [
+      0.95,
+      0.97
+    ]
+  },
+  "runs": [
+    {
+      "graph": "edge2",
+      "beta": 0.5,
+      "gamma": 0.95,
+      "trap_fraction": 1.0,
+      "num_reps_with_traps": 32
+    },
+    {
+      "graph": "edge2",
+      "beta": 0.5,
+      "gamma": 0.97,
+      "trap_fraction": 0.8125,
+      "num_reps_with_traps": 26
+    },
+    {
+      "graph": "triangle3",
+      "beta": 0.5,
+      "gamma": 0.95,
+      "trap_fraction": 1.0,
+      "num_reps_with_traps": 32
+    },
+    {
+      "graph": "triangle3",
+      "beta": 0.5,
+      "gamma": 0.97,
+      "trap_fraction": 0.0625,
+      "num_reps_with_traps": 2
+    },
+    {
+      "graph": "star3",
+      "beta": 0.5,
+      "gamma": 0.95,
+      "trap_fraction": 1.0,
+      "num_reps_with_traps": 32
+    },
+    {
+      "graph": "star3",
+      "beta": 0.5,
+      "gamma": 0.97,
+      "trap_fraction": 1.0,
+      "num_reps_with_traps": 32
+    }
+  ]
+}
