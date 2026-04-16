@@ -1,0 +1,12 @@
+Using device: mps
+Generating plots and rendering new report...
+Traceback (most recent call last):
+  File "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/gpu_version/generate_plots.py", line 128, in <module>
+    p_hist = run_sim_with_history(graph, 3, g)
+  File "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/gpu_version/generate_plots.py", line 77, in run_sim_with_history
+    learner.update(states, actions, rewards, states)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Documents/learning/rl-projects/TheoryGamesDL/experiments/exp8/gpu_version/core/batched_gpu.py", line 94, in update
+    max_next_q = q_flat.max(dim=1).values
+                 ~~~~~~~~~~^^^^^^^
+KeyboardInterrupt
