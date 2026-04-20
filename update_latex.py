@@ -1,11 +1,12 @@
 import re
 import os
 
-filepath = "experiments/exp8/papers/Q_Learning_on_graphs/main.tex"
+# Use absolute path based on the file location, assuming it's in TheoryGamesDL
+filepath = os.path.abspath(os.path.join(os.path.dirname(__file__), "experiments/exp8/papers/Q_Learning_on_graphs/main.tex"))
+
 with open(filepath, "r") as f:
     text = f.read()
 
-# We want to replace everything from \subsection{Граф с 3 вершинами} to \bibliographystyle{plain}
 start_str = r"\subsection{Граф с 3 вершинами}"
 end_str = r"\bibliographystyle{plain}"
 
@@ -16,7 +17,6 @@ if start_idx == -1 or end_idx == -1:
     print("Could not find boundaries")
     exit(1)
 
-# Generate new sections
 def gen_figure(graph_filename, gamma_val):
     if gamma_val == 0.0:
         g_str = "0.0"
@@ -45,7 +45,6 @@ graphs = [
     ])
 ]
 
-# We also need to fix 
 param_str = r"\textcolor{red}{ВЕЗДЕ ДАЛЕЕ НУЖНО УТОЧНИТЬ ПАРАМЕТР $\alpha$!!! (предлагаю выбрать $\alpha=0.01$)}"
 new_param_str = r"Параметры экспериментов: $\alpha=0.01$, $\beta = 0.5$, $T_{it}=10^6$ итераций."
 text = text.replace(param_str, new_param_str)
@@ -58,7 +57,6 @@ for sec_title, subsecs in graphs:
         for g in [0.0, 0.3, 0.5, 0.7, 0.9]:
             new_content += gen_figure(file_prefix, g)
 
-# Also there are some \clearpage before bibliography, let's keep it.
 new_text = text[:start_idx] + new_content + "\n" + text[end_idx:]
 
 with open(filepath, "w") as f:
