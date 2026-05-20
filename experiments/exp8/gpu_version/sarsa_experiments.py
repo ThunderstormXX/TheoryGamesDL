@@ -25,7 +25,19 @@ import matplotlib.pyplot as plt
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../')))
 import experiments.exp8.gpu_version.utils.gpu_utils as gpu_utils
-DEVICE = torch.device('cpu')
+
+# Auto-detect device, optimizing for WSL & 3080 Ti
+if torch.cuda.is_available():
+    DEVICE = torch.device('cuda')
+    torch.backends.cudnn.benchmark = True
+    print(f"CUDA detected. Optimizing for: {torch.cuda.get_device_name(0)}")
+elif torch.backends.mps.is_available():
+    DEVICE = torch.device('mps')
+    print("MPS detected. Using Apple Silicon GPU.")
+else:
+    DEVICE = torch.device('cpu')
+    print("No GPU detected. Falling back to CPU.")
+
 gpu_utils.gpu_config.device = DEVICE
 
 from experiments.exp8.gpu_version.core.batched_sarsa import BatchedGPUSARSALearner
@@ -142,7 +154,7 @@ BETAS = range(0.5, 1, 0.1)
 ALPHA = 0.01
 ITERS = 1_000_000
 RECORD_EVERY = 5_000
-REPS = 32
+REPS = 128  # Increased from 32 to 128 to better saturate the 3080 Ti's CUDA cores
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -543,7 +555,8 @@ def main():
     print(f'  Reps:          {REPS}')
     print()
 
-    num_workers = min(cpu_count(), 8)
+    # Use more workers to feed the 3080 Ti, which is very fast
+    num_workers = min(cpu_count(), 12)
     print(f'Using {num_workers} parallel workers...\n')
 
     results_kreg = {}
