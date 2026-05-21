@@ -150,10 +150,10 @@ RESULTS_ROOT = os.path.abspath(
     os.path.join(os.path.dirname(__file__), '../../../results/sarsa'))
 
 GAMMAS = [0.8, 0.9, 0.95, 0.99]
-BETAS = range(0.5, 1, 0.1)
+BETAS = [0.7, 0.8, 0.9, 1.0]
 ALPHA = 0.01
 ITERS = 1_000_000
-RECORD_EVERY = 5_000
+RECORD_EVERY = 10_000
 REPS = 128  # Increased from 32 to 128 to better saturate the 3080 Ti's CUDA cores
 
 
@@ -412,7 +412,7 @@ SEC4_CONFIGS = {
     'chain4':    ('Chain (4)',         lambda: ChainGraph(4, DEVICE)),
     'star4':     ('Star (4)',          lambda: StarGraph(4, DEVICE)),
     'ring4':     ('Ring (4)',          lambda: RingGraph(4, DEVICE)),
-    'wheel4':    ('Wheel (4)',        lambda: WheelGraph(4, DEVICE)),
+    'wheel4':    ('Wheel (4)',         lambda: WheelGraph(4, DEVICE)),
 }
 
 # Part 2 — Custom 6-node
