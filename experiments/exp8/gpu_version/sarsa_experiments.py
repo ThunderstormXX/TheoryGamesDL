@@ -563,8 +563,8 @@ def main():
 
     # Wrap all tasks into a single pool for simplicity
     all_tasks = (
-        [('sec4', t) for t in tasks_sec4] +
-        [('c6', t) for t in tasks_c6] +
+        #[('sec4', t) for t in tasks_sec4] +
+        #[('c6', t) for t in tasks_c6] +
         [('kreg', t) for t in tasks_kreg]
     )
 
