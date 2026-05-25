@@ -104,7 +104,7 @@ def save_json_artifacts(p_hist, qc_hist, qd_hist, out_path):
 ALPHA = 0.01
 RECORD_EVERY = 5_000
 
-def run_simulation(graph, gamma, beta, learner_type, iters=500_000, reps=100):
+def run_simulation(graph, gamma, beta, learner_type, iters=500_000, reps=50_000):
     TEMP = 1.0 / beta
     np.random.seed(42)
     torch.manual_seed(42)
@@ -235,7 +235,7 @@ def plot_dynamics(p_hist, qc_hist, qd_hist, title, out_path, degrees):
 BASE_OUT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 'supervisor_results'))
 os.makedirs(BASE_OUT_DIR, exist_ok=True)
 
-def run_experiment_bundle(task_name, gtype_cls, n_values, gammas, betas, learners, reps=100, iters=500_000, description=""):
+def run_experiment_bundle(task_name, gtype_cls, n_values, gammas, betas, learners, reps=50_000, iters=500_000, description=""):
     print(f"\n[{task_name}] Starting... {description}")
     out_dir = os.path.join(BASE_OUT_DIR, task_name)
     os.makedirs(out_dir, exist_ok=True)
