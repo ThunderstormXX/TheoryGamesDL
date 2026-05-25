@@ -2,3 +2,8 @@
 star3*/
 triangle*/
 edge*/
+experiments/exp8/gpu_version/test_k_regular.py
+experiments/exp8/papers/Q_Learning_on_graphs/figures/k_regular/
+experiments/exp8/papers/trap_analysis.tex
+results/
+*/.DS_Store

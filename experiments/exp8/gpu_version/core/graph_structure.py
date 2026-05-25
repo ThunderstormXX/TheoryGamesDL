@@ -119,3 +119,138 @@ class TriangleGraph(BaseGraph):
         adj.fill_diagonal_(0.0)
         return adj
 
+
+class RingGraph(BaseGraph):
+    """2-regular cycle graph on n nodes."""
+    def __init__(self, num_nodes, device=None):
+        super().__init__(num_nodes=num_nodes, device=device)
+
+    def generate_adjacency_matrix(self):
+        n = self.num_nodes
+        adj = torch.zeros((n, n), device=self.device, dtype=torch.float32)
+        for i in range(n):
+            adj[i, (i + 1) % n] = 1.0
+            adj[(i + 1) % n, i] = 1.0
+        return adj
+
+
+class CubicCirculantGraph(BaseGraph):
+    """
+    3-regular circulant graph C(n, {1, n/2}).
+    Each node connects to its two ring neighbours AND its antipodal node.
+    Requires n to be even and n >= 4.
+    """
+    def __init__(self, num_nodes, device=None):
+        assert num_nodes % 2 == 0 and num_nodes >= 4, \
+            f"CubicCirculant requires even n >= 4, got {num_nodes}"
+        super().__init__(num_nodes=num_nodes, device=device)
+
+    def generate_adjacency_matrix(self):
+        n = self.num_nodes
+        adj = torch.zeros((n, n), device=self.device, dtype=torch.float32)
+        half = n // 2
+        for i in range(n):
+            adj[i, (i + 1) % n] = 1.0
+            adj[(i + 1) % n, i] = 1.0
+            adj[i, (i + half) % n] = 1.0
+            adj[(i + half) % n, i] = 1.0
+        return adj
+
+
+class QuarticCirculantGraph(BaseGraph):
+    """
+    4-regular circulant graph C(n, {1, 2}).
+    Each node connects to 2 neighbors on each side.
+    Requires n >= 5.
+    """
+    def __init__(self, num_nodes, device=None):
+        assert num_nodes >= 5, f"QuarticCirculant requires n >= 5, got {num_nodes}"
+        super().__init__(num_nodes=num_nodes, device=device)
+
+    def generate_adjacency_matrix(self):
+        n = self.num_nodes
+        adj = torch.zeros((n, n), device=self.device, dtype=torch.float32)
+        for i in range(n):
+            adj[i, (i + 1) % n] = 1.0
+            adj[(i + 1) % n, i] = 1.0
+            adj[i, (i + 2) % n] = 1.0
+            adj[(i + 2) % n, i] = 1.0
+        return adj
+
+
+class QuinticCirculantGraph(BaseGraph):
+    """
+    5-regular circulant graph C(n, {1, 2, n/2}).
+    4-regular + antipodal edges.
+    Requires n to be even and n >= 6.
+    """
+    def __init__(self, num_nodes, device=None):
+        assert num_nodes % 2 == 0 and num_nodes >= 6, \
+            f"QuinticCirculant requires even n >= 6, got {num_nodes}"
+        super().__init__(num_nodes=num_nodes, device=device)
+
+    def generate_adjacency_matrix(self):
+        n = self.num_nodes
+        adj = torch.zeros((n, n), device=self.device, dtype=torch.float32)
+        half = n // 2
+        for i in range(n):
+            adj[i, (i + 1) % n] = 1.0
+            adj[(i + 1) % n, i] = 1.0
+            adj[i, (i + 2) % n] = 1.0
+            adj[(i + 2) % n, i] = 1.0
+            adj[i, (i + half) % n] = 1.0
+            adj[(i + half) % n, i] = 1.0
+        return adj
+
+
+class Mixed23Graph(BaseGraph):
+    """
+    Almost-2-regular graph: ring + one antipodal chord.
+    Exactly 2 nodes have degree 3, the rest have degree 2.
+    """
+    def __init__(self, num_nodes, device=None):
+        assert num_nodes >= 4, f"Mixed23Graph requires n >= 4, got {num_nodes}"
+        super().__init__(num_nodes=num_nodes, device=device)
+
+    def generate_adjacency_matrix(self):
+        n = self.num_nodes
+        adj = torch.zeros((n, n), device=self.device, dtype=torch.float32)
+        # Ring
+        for i in range(n):
+            adj[i, (i + 1) % n] = 1.0
+            adj[(i + 1) % n, i] = 1.0
+        # One antipodal chord: 0 <-> n//2
+        half = n // 2
+        adj[0, half] = 1.0
+        adj[half, 0] = 1.0
+        return adj
+
+
+class Mixed34Graph(BaseGraph):
+    """
+    Almost-3-regular graph: 3-regular + one additional chord.
+    Exactly 2 nodes have degree 4, the rest have degree 3.
+    """
+    def __init__(self, num_nodes, device=None):
+        assert num_nodes % 2 == 0 and num_nodes >= 6, \
+            f"Mixed34Graph requires even n >= 6, got {num_nodes}"
+        super().__init__(num_nodes=num_nodes, device=device)
+
+    def generate_adjacency_matrix(self):
+        n = self.num_nodes
+        # Start with 3-regular
+        adj = torch.zeros((n, n), device=self.device, dtype=torch.float32)
+        half = n // 2
+        for i in range(n):
+            adj[i, (i + 1) % n] = 1.0
+            adj[(i + 1) % n, i] = 1.0
+            adj[i, (i + half) % n] = 1.0
+            adj[(i + half) % n, i] = 1.0
+        
+        # Add one chord, e.g. 0 <-> n//4 (ensure it's not already connected by ring or antipodal)
+        quarter = max(2, n // 4)
+        if quarter == half: # Fallback if n is too small to avoid antipodal
+            quarter = half - 1 
+        adj[0, quarter] = 1.0
+        adj[quarter, 0] = 1.0
+        return adj
