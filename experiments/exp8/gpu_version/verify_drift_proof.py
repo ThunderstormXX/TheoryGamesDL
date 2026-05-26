@@ -36,7 +36,7 @@ import matplotlib.pyplot as plt
 
 # ── Path setup ──
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, '..', '..', '..', '..'))
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, '..', '..', '..'))
 sys.path.insert(0, PROJECT_ROOT)
 
 from experiments.exp8.gpu_version.core.graph_structure import (
