@@ -281,6 +281,52 @@ def run_experiment_bundle(task_name, gtype_cls, n_values, gammas, betas, learner
 
 def main():
     print_gpu_info()
+
+    # Task 0: Figure-style k-regular comparison (Q-learning, gamma=0)
+    # Params match the figure: T=1_000_000, alpha=0.01, beta=1.0, gamma=0.0
+    kreg_n_values = [20, 50, 100]
+    kreg_gammas = [0.0]
+    kreg_betas = [1.0]
+    kreg_reps = 512
+    kreg_iters = 1_000_000
+
+    run_experiment_bundle(
+        task_name="task0_kreg_gamma0_ring",
+        gtype_cls=RingGraph,
+        n_values=kreg_n_values,
+        gammas=kreg_gammas,
+        betas=kreg_betas,
+        learners=['q_learning'],
+        reps=kreg_reps,
+        iters=kreg_iters,
+        description="Figure-style params for 2-regular ring graphs."
+    )
+    run_experiment_bundle(
+        task_name="task0_kreg_gamma0_mixed23",
+        gtype_cls=Mixed23Graph,
+        n_values=kreg_n_values,
+        gammas=kreg_gammas,
+        betas=kreg_betas,
+        learners=['q_learning'],
+        reps=kreg_reps,
+        iters=kreg_iters,
+        description="Figure-style params for mixed 2/3-regular graphs."
+    )
+    run_experiment_bundle(
+        task_name="task0_kreg_gamma0_cubic",
+        gtype_cls=CubicCirculantGraph,
+        n_values=kreg_n_values,
+        gammas=kreg_gammas,
+        betas=kreg_betas,
+        learners=['q_learning'],
+        reps=kreg_reps,
+        iters=kreg_iters,
+        description="Figure-style params for 3-regular cubic graphs."
+    )
+
+    # Allow running only Task 0 to avoid long full-suite runs.
+    if os.environ.get("ONLY_TASK0", "0") == "1":
+        return
     
     # Task 1: Gamma = 0 on some standard graphs
     run_experiment_bundle(
