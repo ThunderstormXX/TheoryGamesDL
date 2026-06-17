@@ -160,16 +160,20 @@ def plot_q_curves_by_cluster(
     cluster_ids: np.ndarray,
     save_path: str,
     *,
+    p_hist: Optional[np.ndarray] = None,
     record_every: int = 5_000,
-    title: str = "Q-value convergence by cluster",
+    title: str = "Convergence by cluster",
     degrees: Optional[np.ndarray] = None,
     dpi: int = 130,
 ) -> str:
-    """Plot per-vertex Q(C)/Q(D) trajectories coloured by convergence cluster.
+    """Plot per-vertex trajectories coloured by convergence cluster.
 
-    Q(C) is drawn solid, Q(D) dashed.  Each line is the replicate-mean trajectory
-    of one vertex; vertices sharing a cluster share a colour, making the limiting
-    Q(C) levels (and their separation) directly visible.
+    Left panel: the **cooperation probability p(C)** per vertex when ``p_hist``
+    is given (this is the most interpretable view); it falls back to Q(C) only
+    if ``p_hist`` is omitted.  Right panel: Q(C) (solid) vs Q(D) (dashed).
+    Each line is one vertex's replicate-mean trajectory; vertices sharing a
+    cluster share a colour, so the limiting levels and their separation are
+    directly visible.
 
     Accepts either the full ``(T_out, reps, N)`` histories from a simulation, or
     the already replicate-averaged ``(T_out, N)`` histories restored from saved
@@ -179,9 +183,11 @@ def plot_q_curves_by_cluster(
         qc_hist, qd_hist: ``(T_out, reps, N)`` or ``(T_out, N)`` Q-value histories.
         cluster_ids: ``(N,)`` cluster id per vertex.
         save_path: output PNG path.
+        p_hist: optional ``(T_out, reps, N)`` or ``(T_out, N)`` P(C) history; when
+            given, the left panel shows the cooperation probability.
         record_every: snapshot stride (for the x-axis in learning steps).
         title: figure title.
-        degrees: optional ``(N,)`` degrees, appended to per-cluster legend text.
+        degrees: optional ``(N,)`` degrees (currently used only for context).
 
     Returns:
         Absolute path of the written PNG.
@@ -191,10 +197,14 @@ def plot_q_curves_by_cluster(
     except Exception:
         pass
 
-    qc = np.asarray(qc_hist)
-    qd = np.asarray(qd_hist)
-    qc_mean = qc.mean(axis=1) if qc.ndim == 3 else qc  # (T_out, N)
-    qd_mean = qd.mean(axis=1) if qd.ndim == 3 else qd
+    def _to_mean(arr):
+        a = np.asarray(arr)
+        return a.mean(axis=1) if a.ndim == 3 else a  # (T_out, N)
+
+    qc_mean = _to_mean(qc_hist)
+    qd_mean = _to_mean(qd_hist)
+    p_mean = _to_mean(p_hist) if p_hist is not None else None
+    show_p = p_mean is not None
 
     t_out, n = qc_mean.shape
     x = np.arange(t_out) * int(record_every)
@@ -204,6 +214,7 @@ def plot_q_curves_by_cluster(
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
     legended: set[int] = set()
 
+    left = p_mean if show_p else qc_mean
     for i in range(n):
         cid = int(cluster_ids[i])
         col = cmap[cid]
@@ -211,13 +222,18 @@ def plot_q_curves_by_cluster(
         if cid not in legended:
             label = "noise" if cid < 0 else f"cluster {cid}"
             legended.add(cid)
-        ax1.plot(x, _smooth(qc_mean[:, i]), color=col, linewidth=1.4, alpha=0.8, label=label)
+        ax1.plot(x, _smooth(left[:, i]), color=col, linewidth=1.4, alpha=0.8, label=label)
         ax2.plot(x, _smooth(qc_mean[:, i]), color=col, linestyle="-", linewidth=1.2, alpha=0.8)
         ax2.plot(x, _smooth(qd_mean[:, i]), color=col, linestyle="--", linewidth=1.0, alpha=0.6)
 
-    ax1.set_title("Q(C) by cluster", fontsize=12)
+    if show_p:
+        ax1.set_title("P(C) — cooperation probability — by cluster", fontsize=12)
+        ax1.set_ylabel("P(C)")
+        ax1.set_ylim(-0.02, 1.02)
+    else:
+        ax1.set_title("Q(C) by cluster", fontsize=12)
+        ax1.set_ylabel("Q(C)")
     ax1.set_xlabel("Iterations")
-    ax1.set_ylabel("Q(C)")
     ax1.legend(loc="best", fontsize=9)
 
     ax2.set_title("Q(C) [solid] vs Q(D) [dashed]", fontsize=12)

@@ -264,6 +264,40 @@ def _run_hdbscan(x: np.ndarray, *, min_cluster_size: int) -> Optional[ClusterRes
         params={"min_cluster_size": min_cluster_size, "backend": backend})
 
 
+def is_homogeneous(
+    features: np.ndarray,
+    *,
+    noise_scale: Optional[float] = None,
+    sigma: float = 3.0,
+    rel_tol: float = 0.03,
+    abs_tol: float = 1e-4,
+) -> bool:
+    """Decide whether all vertices share a single convergence class.
+
+    On a vertex-transitive graph (Ring, circulants, …) every vertex is
+    structurally identical, so the only across-vertex variation in the final
+    Q-values is finite-sample Monte-Carlo noise.  Feeding that to DBSCAN with the
+    ``"shared"`` scaling would amplify the noise to unit scale and split it into
+    spurious clusters.  This guard catches the case first.
+
+    The across-vertex spread (max per-column std) is compared to a noise scale:
+
+    * If ``noise_scale`` is given (the Monte-Carlo standard error of the
+      per-vertex mean, which the pipeline derives from the replicate std and the
+      batch size), the data is homogeneous when the spread is within
+      ``sigma`` standard errors — i.e. the variation is not statistically
+      significant.
+    * Otherwise a relative fallback is used: spread below ``rel_tol`` of the
+      Q-value magnitude (plus ``abs_tol``) counts as homogeneous.
+    """
+    x = np.asarray(features, dtype=np.float64)
+    spread = float(np.max(x.std(axis=0))) if x.size else 0.0
+    if noise_scale is not None and noise_scale > 0:
+        return spread <= sigma * float(noise_scale)
+    magnitude = float(np.max(np.abs(x))) if x.size else 0.0
+    return spread <= rel_tol * magnitude + abs_tol
+
+
 def cluster_vertices_by_convergence(
     features: np.ndarray,
     *,
@@ -275,6 +309,8 @@ def cluster_vertices_by_convergence(
     kmeans_k_min: int = 2,
     kmeans_k_max: int = 10,
     random_state: int = 42,
+    noise_scale: Optional[float] = None,
+    homogeneity_sigma: float = 3.0,
 ) -> ClusterResult:
     """Cluster vertices by their convergence features.
 
@@ -299,6 +335,11 @@ def cluster_vertices_by_convergence(
         hdbscan_min_cluster_size: HDBSCAN parameter.
         kmeans_k_min, kmeans_k_max: KMeans search range.
         random_state: seed for KMeans reproducibility.
+        noise_scale: Monte-Carlo standard error of the per-vertex final Q (passed
+            by the pipeline). When the across-vertex spread is within
+            ``homogeneity_sigma`` of it, all vertices are deemed one class — this
+            prevents spurious clusters on vertex-transitive graphs.
+        homogeneity_sigma: significance threshold for the homogeneity guard.
 
     Returns:
         A :class:`ClusterResult`.
@@ -313,6 +354,15 @@ def cluster_vertices_by_convergence(
             labels=np.zeros(n, dtype=int), method_used="trivial",
             n_clusters=int(n), silhouette=float("nan"),
             params={"reason": "n<=1"})
+
+    # Guard: don't cluster pure Monte-Carlo noise on (near-)homogeneous graphs.
+    if is_homogeneous(x, noise_scale=noise_scale, sigma=homogeneity_sigma):
+        return ClusterResult(
+            labels=np.zeros(n, dtype=int), method_used="homogeneous",
+            n_clusters=1, silhouette=float("nan"),
+            params={"reason": "spread_within_noise",
+                    "noise_scale": (None if noise_scale is None else float(noise_scale)),
+                    "spread": float(np.max(x.std(axis=0)))})
 
     x_proc = _scale_features(x, scaling)
 

@@ -250,7 +250,59 @@ class Mixed34Graph(BaseGraph):
         # Add one chord, e.g. 0 <-> n//4 (ensure it's not already connected by ring or antipodal)
         quarter = max(2, n // 4)
         if quarter == half: # Fallback if n is too small to avoid antipodal
-            quarter = half - 1 
+            quarter = half - 1
         adj[0, quarter] = 1.0
         adj[quarter, 0] = 1.0
+        return adj
+
+
+class Mixed45Graph(BaseGraph):
+    """
+    Almost-4-regular graph: 4-regular circulant C(n, {1, 2}) + one antipodal chord.
+    Exactly 2 nodes (0 and n/2) have degree 5, the rest have degree 4.
+    Requires even n >= 6 (so the antipodal chord is a genuine new edge).
+    """
+    def __init__(self, num_nodes, device=None):
+        assert num_nodes % 2 == 0 and num_nodes >= 6, \
+            f"Mixed45Graph requires even n >= 6, got {num_nodes}"
+        super().__init__(num_nodes=num_nodes, device=device)
+
+    def generate_adjacency_matrix(self):
+        n = self.num_nodes
+        adj = torch.zeros((n, n), device=self.device, dtype=torch.float32)
+        # 4-regular base: connect to +-1 and +-2
+        for i in range(n):
+            for off in (1, 2):
+                adj[i, (i + off) % n] = 1.0
+                adj[(i + off) % n, i] = 1.0
+        # One antipodal chord 0 <-> n/2 (not in {1, 2, n-1, n-2} for n >= 6)
+        half = n // 2
+        adj[0, half] = 1.0
+        adj[half, 0] = 1.0
+        return adj
+
+
+class Mixed56Graph(BaseGraph):
+    """
+    Almost-5-regular graph: 5-regular circulant C(n, {1, 2, n/2}) + one chord.
+    Exactly 2 nodes (0 and 3) have degree 6, the rest have degree 5.
+    Requires even n >= 8 (so node 3 is not already adjacent to node 0).
+    """
+    def __init__(self, num_nodes, device=None):
+        assert num_nodes % 2 == 0 and num_nodes >= 8, \
+            f"Mixed56Graph requires even n >= 8, got {num_nodes}"
+        super().__init__(num_nodes=num_nodes, device=device)
+
+    def generate_adjacency_matrix(self):
+        n = self.num_nodes
+        adj = torch.zeros((n, n), device=self.device, dtype=torch.float32)
+        half = n // 2
+        # 5-regular base: connect to +-1, +-2 and antipodal n/2
+        for i in range(n):
+            for off in (1, 2, half):
+                adj[i, (i + off) % n] = 1.0
+                adj[(i + off) % n, i] = 1.0
+        # One chord 0 <-> 3 (3 is not a neighbour of 0 for n >= 8)
+        adj[0, 3] = 1.0
+        adj[3, 0] = 1.0
         return adj

@@ -28,7 +28,7 @@ TheoryGamesDL/
 |------|-----------|
 | [`core/batched_gpu.py`](experiments/exp8/gpu_version/core/batched_gpu.py) | Главный класс `BatchedGPUQLearner` — Q-таблица для `batch_size × n_agents` агентов на GPU; методы выбора действия (ε-greedy / Boltzmann) и обновления Q-значений |
 | [`core/batched_sarsa.py`](experiments/exp8/gpu_version/core/batched_sarsa.py) | Аналог выше, но SARSA (on-policy): обновление идёт по реально выбранному следующему действию, а не по `max Q` |
-| [`core/graph_structure.py`](experiments/exp8/gpu_version/core/graph_structure.py) | Топологии сети агентов: `SmallWorldGraph` (Watts-Strogatz), `StarGraph`, `WheelGraph`, `RingGraph`, циркулянтные графы. Возвращает тензор матрицы смежности |
+| [`core/graph_structure.py`](experiments/exp8/gpu_version/core/graph_structure.py) | Топологии сети агентов: `SmallWorldGraph` (Watts-Strogatz), `StarGraph`, `WheelGraph`, `RingGraph`, циркулянтные графы, смешанные `Mixed23/34/45/56Graph` (k-регулярный + 1 хорда → 2 вершины степени k+1). Возвращает тензор матрицы смежности |
 | [`core/reward_models.py`](experiments/exp8/gpu_version/core/reward_models.py) | `RewardManager` — две модели вознаграждения: `'pf'` (парная игра) и `'pp'` (пул); принимает тензоры кооператоров и матрицу смежности |
 | [`core/bonus_reward_manager.py`](experiments/exp8/gpu_version/core/bonus_reward_manager.py) | Расширение RewardManager с бонусными наградами для задачи 2 |
 
@@ -51,7 +51,7 @@ TheoryGamesDL/
 
 | Файл | Что делает |
 |------|-----------|
-| [`analysis/simulation.py`](experiments/exp8/gpu_version/analysis/simulation.py) | `run_convergence_simulation(adjacency, *, gamma, beta, learner_type, iters, reps, seed, ...)` → `SimulationResult` с историями `p_hist/qc_hist/qd_hist` формы `(T_out, reps, N)`. Seedable обёртка над `BatchedGPUQLearner`/`BatchedGPUSARSALearner` + `BonusRewardManager`; принимает матрицу смежности напрямую |
+| [`analysis/simulation.py`](experiments/exp8/gpu_version/analysis/simulation.py) | `run_convergence_simulation(adjacency, *, gamma, beta, learner_type, iters, reps, seed, ...)` → `SimulationResult`. Seedable обёртка над `BatchedGPUQLearner`/`BatchedGPUSARSALearner`; принимает матрицу смежности напрямую. **A100-оптимизации:** награда через один общий matmul `(reps,N)@(N,N)` вместо `bmm` по `(reps,N,N)` (память ∝ `reps·N`, не `reps·N²`); запись только усреднённых mean/std `(T_out,N)` (память не растёт с `reps`); TF32 + `inference_mode`; `suggest_reps()` подбирает `reps` под объём VRAM; флаг `progress` — внутренний tqdm по шагам (steps/s) |
 | [`analysis/convergence_clustering.py`](experiments/exp8/gpu_version/analysis/convergence_clustering.py) | **Задача 1.** `compute_convergence_features` (признаки `[Q_C_final, Q_D_final, Q_C−Q_D]` по последним N шагам), `cluster_vertices_by_convergence` (auto: DBSCAN → HDBSCAN → KMeans+silhouette; масштаб `shared`), `save_cluster_table` (CSV) |
 | [`analysis/topology_features.py`](experiments/exp8/gpu_version/analysis/topology_features.py) | Структурные признаки вершин: `degree, clustering_coefficient, betweenness_centrality, eigenvector_centrality` (NetworkX) — для корреляции «тип сходимости ↔ положение в графе» |
 | [`analysis/interpolation.py`](experiments/exp8/gpu_version/analysis/interpolation.py) | **Задача 3.** `generate_interpolated_regular_graph(n, k, temperature, seed=None, *, mode)` — непрерывное семейство `t=0` (k-регулярный) ↔ `t=1` ((k+1)-регулярный) через паросочетание `E_add`; режимы `deterministic` (доля `t·\|E_add\|`) и `stochastic` (каждое ребро с вероятностью `t`) |
@@ -83,9 +83,10 @@ TheoryGamesDL/
 
 | Файл | Что запускает |
 |------|--------------|
-| [`run_all_convergence_topology_experiments.py`](experiments/exp8/gpu_version/run_all_convergence_topology_experiments.py) | **Задача 2.** Массовый прогон по всем k-регулярным семействам, размерам и сценариям supervisor; на каждый запуск → `results/convergence_topology/<topology_name>/{q_curves.png, convergence_clusters.png, cluster_table.csv, summary.json}` + общий `index_summary.json` |
-| [`run_topology_phase_transition.py`](experiments/exp8/gpu_version/run_topology_phase_transition.py) | **Задача 4.** Свип `temperature∈{0.00..1.00}` (усреднение по реализациям); → `phase_*.png`, серия `temp_0.00.png … temp_1.00.png`, `phase_summary.json/.csv` |
-| [`run_server_all.sh`](experiments/exp8/gpu_version/run_server_all.sh) | Запуск всего на сервере одной командой (Задачи 2+4); настройка через env-переменные (`STAGE, SMOKE, ITERS, REPS, GRAPHS, SIZES, PHASE_PAIRS, …`); логи в `results/logs/` |
+| [`run_all_convergence_topology_experiments.py`](experiments/exp8/gpu_version/run_all_convergence_topology_experiments.py) | **Задача 2.** Массовый прогон по всем k-регулярным семействам (вкл. `mixed45/56`), размерам и богатой сетке gamma×beta; параллелизм `--workers` (ProcessPoolExecutor/spawn), `--auto-reps` под VRAM A100, вложенный tqdm; на каждый запуск → `results/convergence_topology/<topology_name>/{q_curves.png, convergence_clusters.png, cluster_table.csv, summary.json, artifacts.npz, run_params.json}` + общий `index_summary.json` |
+| [`run_topology_phase_transition.py`](experiments/exp8/gpu_version/run_topology_phase_transition.py) | **Задача 4.** Свип `temperature∈{0.00..1.00}` (усреднение по реализациям); параллелизм `--workers` по (temperature, realization), `--auto-reps`; → `phase_*.png`, серия `temp_0.00.png … temp_1.00.png`, `phase_summary.json/.csv` |
+| [`replot_from_artifacts.py`](experiments/exp8/gpu_version/replot_from_artifacts.py) | Перерисовка `q_curves.png`/`convergence_clusters.png` из `artifacts.npz` **без пересчёта симуляции**; опции `--recluster`, `--cluster-method`, `--n-final-steps`, `--layout`, `--recursive` |
+| [`run_server_all.sh`](experiments/exp8/gpu_version/run_server_all.sh) | Запуск всего на сервере одной командой (Задачи 2+4), A100-настройки по умолчанию; env-переменные (`STAGE, SMOKE, ITERS, AUTO_REPS, VRAM_FRACTION, WORKERS, GRAPHS, SIZES, GAMMAS, BETAS, PHASE_PAIRS, …`); логи в `results/logs/` |
 | [`replot_from_artifacts.py`](experiments/exp8/gpu_version/replot_from_artifacts.py) | Перерисовка `q_curves.png` / `convergence_clusters.png` из сохранённых `artifacts.npz` **без пересчёта симуляции**; флаги `--recursive`, `--recluster`, `--cluster-method`, `--n-final-steps`, `--layout` |
 
 #### Верификация теории
@@ -167,8 +168,12 @@ python experiments/exp8/gpu_version/supervisor_k_regular_tasks.py
 # Всё на сервере одной командой (Задачи 2 + 4)
 bash experiments/exp8/gpu_version/run_server_all.sh
 
-# Полноразмерные параметры
-ITERS=1000000 REPS=512 SIZES="10 20 50 100" \
+# A100: заполнить VRAM авто-батчем + параллельные процессы
+AUTO_REPS=1 VRAM_FRACTION=0.85 WORKERS=4 ITERS=1000000 \
+  bash experiments/exp8/gpu_version/run_server_all.sh
+
+# Фиксированный батч вместо авто
+AUTO_REPS=0 REPS=8192 SIZES="10 20 50 100" \
   bash experiments/exp8/gpu_version/run_server_all.sh
 
 # Только фазовые переходы k=2→3 и k=3→4
@@ -178,11 +183,13 @@ STAGE=phase PHASE_PAIRS="2:20 3:20" \
 # Быстрый sanity-check (секунды)
 SMOKE=1 bash experiments/exp8/gpu_version/run_server_all.sh
 
-# Скрипты по отдельности
+# Скрипты по отдельности (A100: --auto-reps заполняет VRAM, --workers — параллелизм)
 python -m experiments.exp8.gpu_version.run_all_convergence_topology_experiments \
-    --graphs cubic mixed23 --sizes 10 20 --iters 500000 --reps 256
+    --graphs cubic mixed45 mixed56 --sizes 10 20 50 100 \
+    --gammas 0.0 0.8 0.9 0.95 --betas 0.5 1.0 2.0 \
+    --iters 500000 --auto-reps --workers 4
 python -m experiments.exp8.gpu_version.run_topology_phase_transition \
-    --n 20 --k 3 --realizations 5 --step 0.05
+    --n 20 --k 3 --realizations 5 --step 0.05 --auto-reps --workers 4
 
 # Перерисовка графиков из артефактов (БЕЗ пересчёта симуляции)
 python -m experiments.exp8.gpu_version.replot_from_artifacts \

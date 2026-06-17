@@ -43,10 +43,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import multiprocessing as mp
 import os
 import sys
 import time
 import traceback
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
 import numpy as np
 import torch
@@ -68,15 +70,16 @@ from experiments.exp8.gpu_version.analysis.interpolation import (  # noqa: E402
     generate_interpolated_regular_graph,
 )
 from experiments.exp8.gpu_version.analysis.pipeline import analyze_topology  # noqa: E402
+from experiments.exp8.gpu_version.analysis.simulation import suggest_reps  # noqa: E402
 from experiments.exp8.gpu_version.visualization.cluster_plotting import (  # noqa: E402
     plot_convergence_clusters,
 )
 
 try:
-    from tqdm import tqdm
+    from tqdm.auto import tqdm
 except ImportError:
-    def tqdm(x, **kwargs):
-        return x
+    def tqdm(x=None, **kwargs):
+        return x if x is not None else iter(())
 
 
 def temperature_grid(step: float = 0.05) -> list[float]:
@@ -98,6 +101,71 @@ def _phase_plot(xs, ys, ylabel, title, save_path, *, color="#2980b9"):
     plt.close()
 
 
+def _run_phase_task(payload: dict) -> dict:
+    """Run one (temperature, realization) simulation; return its metrics.
+
+    Module-scope so it is picklable by ``ProcessPoolExecutor``.  The
+    representative realization (``r == 0``) additionally writes its full artifact
+    bundle and the ``temp_<t>.png`` cluster drawing, and returns the extra
+    summary fields the phase record needs.
+    """
+    temp = payload["temp"]
+    r = payload["r"]
+    is_rep = (r == 0)
+    n, k = payload["n"], payload["k"]
+    real_seed = payload["seed"] + r + int(round(temp * 1000))
+    base_dir = payload["base_dir"]
+    run_tag = payload["run_tag"]
+
+    adj = generate_interpolated_regular_graph(
+        n, k, temp, seed=real_seed, mode=payload["mode"], device=DEVICE)
+
+    rep_out_dir = os.path.join(base_dir, "runs", f"t{temp:.2f}")
+    result = analyze_topology(
+        adj, rep_out_dir if is_rep else base_dir,
+        topology_name=f"{run_tag}_t{temp:.2f}_r{r}",
+        title=f"{run_tag} | t={temp:.2f}",
+        gamma=payload["gamma"], beta=payload["beta"], learner_type=payload["learner"],
+        iters=payload["iters"], reps=payload["reps"], seed=real_seed,
+        record_every=payload["record_every"], n_final_steps=payload["n_final_steps"],
+        cluster_method=payload["cluster_method"], device=DEVICE,
+        store_reps=payload["store_reps"],
+        save_artifacts=is_rep, save_data_artifacts=payload["save_data_artifacts"],
+        save_full_histories=payload["save_full_histories"],
+        return_details=is_rep, layout=payload["layout"],
+        progress=payload["progress"], progress_desc=f"t{temp:.2f} r{r}",
+        graph_descriptor={"family": "interpolated", "n": n, "k": k,
+                          "temperature": temp, "mode": payload["mode"],
+                          "realization": r, "realization_seed": real_seed},
+    )
+    summary = result[0] if is_rep else result
+
+    out: dict = {
+        "temp": temp, "r": r, "is_rep": is_rep,
+        "number_of_clusters": summary["number_of_clusters"],
+        "mean_cooperation": summary["mean_cooperation"],
+        "mean_Q_C": summary["mean_Q_C"],
+        "mean_Q_D": summary["mean_Q_D"],
+        "largest_cluster_fraction": summary["largest_cluster_fraction"],
+    }
+    if is_rep:
+        details = result[1]
+        # Draw the representative graph image right here (worker has Agg backend).
+        img_path = os.path.join(base_dir, f"temp_{temp:.2f}.png")
+        plot_convergence_clusters(
+            adj, details["labels"], details["sim"].degrees, img_path,
+            title=f"{run_tag} | t={temp:.2f} | "
+                  f"{summary['number_of_clusters']} clusters",
+            layout=payload["layout"])
+        out.update({
+            "cluster_sizes": summary["cluster_sizes"],
+            "degree_distribution": summary["degree_distribution"],
+            "cluster_topology_correlation_eta": summary["cluster_topology_correlation_eta"],
+            "image_path": img_path,
+        })
+    return out
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -112,13 +180,26 @@ def main() -> None:
     parser.add_argument("--beta", type=float, default=1.0)
     parser.add_argument("--learner", default="q_learning",
                         choices=["q_learning", "sarsa"])
-    parser.add_argument("--iters", type=int, default=200_000)
-    parser.add_argument("--reps", type=int, default=256)
+    parser.add_argument("--iters", type=int, default=500_000)
+    parser.add_argument("--reps", type=int, default=4096,
+                        help="batch size (overridden when --auto-reps)")
+    parser.add_argument("--auto-reps", action="store_true",
+                        help="size reps to fill VRAM (A100); see --vram-fraction/--max-reps")
+    parser.add_argument("--vram-fraction", type=float, default=0.85)
+    parser.add_argument("--max-reps", type=int, default=131_072)
     parser.add_argument("--record-every", type=int, default=5_000)
     parser.add_argument("--n-final-steps", type=int, default=10_000)
     parser.add_argument("--cluster-method", default="auto",
                         choices=["auto", "dbscan", "hdbscan", "kmeans"])
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--workers", type=int, default=1,
+                        help="parallel worker processes over (temperature, realization)")
+    parser.add_argument("--store-reps", default="reduced",
+                        choices=["reduced", "full"])
+    parser.add_argument("--progress", dest="progress", action="store_true", default=None,
+                        help="force inner per-step tqdm bar")
+    parser.add_argument("--no-progress", dest="progress", action="store_false",
+                        help="disable inner per-step tqdm bar")
     parser.add_argument("--layout", default="circular",
                         choices=["circular", "spring", "kamada_kawai"])
     parser.add_argument("--save-full-histories", action="store_true",
@@ -138,6 +219,11 @@ def main() -> None:
         args.realizations = 2
         args.step = 0.25
 
+    workers = max(1, args.workers)
+    inner_progress = (workers == 1) if args.progress is None else bool(args.progress)
+    if args.progress and workers > 1:
+        inner_progress = False  # avoid interleaved bars across processes
+
     run_tag = f"{args.mode}_n{args.n}_k{args.k}_g{args.gamma}_b{args.beta}_{args.learner}"
     base_dir = args.out_dir or os.path.join(
         os.path.dirname(__file__), "results", "phase_transition", run_tag)
@@ -145,91 +231,81 @@ def main() -> None:
     os.makedirs(base_dir, exist_ok=True)
 
     temps = temperature_grid(args.step)
+    reps = (suggest_reps(args.n, device=DEVICE,
+                         vram_fraction=args.vram_fraction / workers,
+                         max_reps=args.max_reps)
+            if args.auto_reps else args.reps)
 
     print("=" * 64)
     print(f"  Phase transition: {args.k}-regular -> {args.k + 1}-regular")
     print(f"  n={args.n} mode={args.mode} realizations={args.realizations}")
     print(f"  temperatures={temps}")
+    print(f"  reps={'auto->' if args.auto_reps else ''}{reps} workers={workers}")
     print(f"  device={DEVICE}  output={base_dir}")
     print("=" * 64)
 
-    records: list[dict] = []
-    t0 = time.time()
-
-    for temp in tqdm(temps, desc="temperature"):
-        per_real_clusters: list[int] = []
-        per_real_coop: list[float] = []
-        per_real_qc: list[float] = []
-        per_real_qd: list[float] = []
-        per_real_largest: list[float] = []
-
-        rep_summary = None
-        rep_labels = None
-        rep_adj = None
-        rep_degrees = None
-
+    # One picklable payload per (temperature, realization).
+    payloads: list[dict] = []
+    for temp in temps:
         for r in range(args.realizations):
-            # Distinct, reproducible seed per (temperature, realization).
-            real_seed = args.seed + r + int(round(temp * 1000))
-            adj = generate_interpolated_regular_graph(
-                args.n, args.k, temp, seed=real_seed,
-                mode=args.mode, device=DEVICE)
+            payloads.append({
+                "temp": temp, "r": r, "n": args.n, "k": args.k, "mode": args.mode,
+                "run_tag": run_tag, "base_dir": base_dir,
+                "gamma": args.gamma, "beta": args.beta, "learner": args.learner,
+                "iters": args.iters, "reps": reps, "seed": args.seed,
+                "record_every": args.record_every, "n_final_steps": args.n_final_steps,
+                "cluster_method": args.cluster_method, "layout": args.layout,
+                "store_reps": args.store_reps,
+                "save_data_artifacts": not args.no_data_artifacts,
+                "save_full_histories": args.save_full_histories,
+                "progress": inner_progress,
+            })
 
-            is_rep = (r == 0)
-            # The representative realization (r=0) gets a full, reusable artifact
-            # bundle in runs/t<temp>/ so its figures can be regenerated later.
-            rep_out_dir = os.path.join(base_dir, "runs", f"t{temp:.2f}")
-            result = analyze_topology(
-                adj, rep_out_dir if is_rep else base_dir,
-                topology_name=f"{run_tag}_t{temp:.2f}_r{r}",
-                title=f"{run_tag} | t={temp:.2f}",
-                gamma=args.gamma, beta=args.beta, learner_type=args.learner,
-                iters=args.iters, reps=args.reps, seed=real_seed,
-                record_every=args.record_every, n_final_steps=args.n_final_steps,
-                cluster_method=args.cluster_method, device=DEVICE,
-                save_artifacts=is_rep,
-                save_data_artifacts=not args.no_data_artifacts,
-                save_full_histories=args.save_full_histories,
-                return_details=is_rep, layout=args.layout,
-                graph_descriptor={"family": "interpolated", "n": args.n, "k": args.k,
-                                  "temperature": temp, "mode": args.mode,
-                                  "realization": r, "realization_seed": real_seed},
-            )
-            summary = result[0] if is_rep else result
+    t0 = time.time()
+    # Collect per-temperature buckets of realization results.
+    buckets: dict[float, dict] = {
+        temp: {"clusters": [], "coop": [], "qc": [], "qd": [], "largest": [], "rep": None}
+        for temp in temps}
 
-            per_real_clusters.append(summary["number_of_clusters"])
-            per_real_coop.append(summary["mean_cooperation"])
-            per_real_qc.append(summary["mean_Q_C"])
-            per_real_qd.append(summary["mean_Q_D"])
-            per_real_largest.append(summary["largest_cluster_fraction"])
+    def _ingest(res: dict) -> None:
+        b = buckets[res["temp"]]
+        b["clusters"].append(res["number_of_clusters"])
+        b["coop"].append(res["mean_cooperation"])
+        b["qc"].append(res["mean_Q_C"])
+        b["qd"].append(res["mean_Q_D"])
+        b["largest"].append(res["largest_cluster_fraction"])
+        if res["is_rep"]:
+            b["rep"] = res
 
-            if is_rep:
-                rep_summary = summary
-                rep_labels = result[1]["labels"]
-                rep_adj = adj
-                rep_degrees = result[1]["sim"].degrees
+    if workers == 1:
+        for payload in tqdm(payloads, desc="temp x realization", position=0):
+            _ingest(_run_phase_task(payload))
+    else:
+        ctx = mp.get_context("spawn")
+        with ProcessPoolExecutor(max_workers=workers, mp_context=ctx) as ex:
+            futures = [ex.submit(_run_phase_task, p) for p in payloads]
+            for fut in tqdm(as_completed(futures), total=len(futures),
+                            desc="temp x realization", position=0):
+                _ingest(fut.result())
 
-        # Representative-realization graph image: temp_<value>.png
-        img_path = os.path.join(base_dir, f"temp_{temp:.2f}.png")
-        plot_convergence_clusters(
-            rep_adj, rep_labels, rep_degrees, img_path,
-            title=f"{run_tag} | t={temp:.2f} | "
-                  f"{rep_summary['number_of_clusters']} clusters",
-            layout=args.layout)
-
+    # Aggregate per temperature (representative realization backs the per-temp image).
+    records: list[dict] = []
+    for temp in temps:
+        b = buckets[temp]
+        rep = b["rep"] or {}
         records.append({
             "temperature": temp,
-            "number_of_clusters_mean": float(np.mean(per_real_clusters)),
-            "number_of_clusters_rep": int(rep_summary["number_of_clusters"]),
-            "largest_cluster_fraction_mean": float(np.mean(per_real_largest)),
-            "mean_cooperation_mean": float(np.mean(per_real_coop)),
-            "mean_cooperation_std": float(np.std(per_real_coop)),
-            "mean_Q_C": float(np.mean(per_real_qc)),
-            "mean_Q_D": float(np.mean(per_real_qd)),
-            "cluster_sizes_rep": rep_summary["cluster_sizes"],
-            "degree_distribution_rep": rep_summary["degree_distribution"],
+            "number_of_clusters_mean": float(np.mean(b["clusters"])),
+            "number_of_clusters_rep": int(rep.get("number_of_clusters", 0)),
+            "largest_cluster_fraction_mean": float(np.mean(b["largest"])),
+            "mean_cooperation_mean": float(np.mean(b["coop"])),
+            "mean_cooperation_std": float(np.std(b["coop"])),
+            "mean_Q_C": float(np.mean(b["qc"])),
+            "mean_Q_D": float(np.mean(b["qd"])),
+            "cluster_sizes_rep": rep.get("cluster_sizes", {}),
+            "degree_distribution_rep": rep.get("degree_distribution", {}),
             "cluster_topology_correlation_eta_rep":
-                rep_summary["cluster_topology_correlation_eta"],
+                rep.get("cluster_topology_correlation_eta", {}),
             "n_realizations": args.realizations,
         })
 

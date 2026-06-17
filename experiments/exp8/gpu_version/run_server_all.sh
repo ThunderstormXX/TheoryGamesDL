@@ -2,27 +2,26 @@
 #
 # run_server_all.sh — launch the full convergence-topology study on a server.
 #
+# Tuned for a 40 GB A100: large VRAM-filling batches (--auto-reps), the fast
+# shared-adjacency matmul reward (default in the simulation), and a process pool
+# (--workers) so the many independent runs proceed in parallel.
+#
 # Runs, in order:
-#   1. Task 2: mass convergence-cluster analysis over every k-regular family,
-#      every project size, and the supervisor scenarios.
-#   2. Task 4: topological phase-transition sweeps (temperature 0..1) for a few
-#      (k, n) combinations.
+#   1. Task 2: mass convergence-cluster analysis over every k-regular family
+#      (incl. the larger mixed graphs), every size, and a rich gamma/beta grid.
+#   2. Task 4: topological phase-transition sweeps (temperature 0..1).
 #
 # Nothing here re-implements the learning core — it only drives the two Python
 # entry points. All output lands under results/ (mirrors supervisor_results/).
 #
 # Usage:
-#   bash experiments/exp8/gpu_version/run_server_all.sh
+#   bash experiments/exp8/gpu_version/run_server_all.sh                 # A100 defaults
 #
 # Override any parameter via environment variables, e.g.:
-#   ITERS=1000000 REPS=512 SIZES="10 20 50 100" \
-#       bash experiments/exp8/gpu_version/run_server_all.sh
-#
-#   # only the phase-transition part:
+#   ITERS=1000000 WORKERS=4 bash experiments/exp8/gpu_version/run_server_all.sh
+#   AUTO_REPS=0 REPS=8192 bash experiments/exp8/gpu_version/run_server_all.sh
 #   STAGE=phase bash experiments/exp8/gpu_version/run_server_all.sh
-#
-#   # quick end-to-end check (tiny, seconds):
-#   SMOKE=1 bash experiments/exp8/gpu_version/run_server_all.sh
+#   SMOKE=1     bash experiments/exp8/gpu_version/run_server_all.sh      # tiny check
 
 set -euo pipefail
 
@@ -39,23 +38,30 @@ STAGE="${STAGE:-all}"            # all | mass | phase
 SMOKE="${SMOKE:-0}"             # 1 -> pass --smoke to both runners
 
 ITERS="${ITERS:-500000}"
-REPS="${REPS:-256}"
 RECORD_EVERY="${RECORD_EVERY:-5000}"
 N_FINAL_STEPS="${N_FINAL_STEPS:-10000}"
 CLUSTER_METHOD="${CLUSTER_METHOD:-auto}"
 SEED="${SEED:-42}"
 
-# Task 2 — graph families / sizes / scenarios
-GRAPHS="${GRAPHS:-ring cubic quartic quintic mixed23 mixed34}"
-SIZES="${SIZES:-10 20 50}"
-GAMMAS="${GAMMAS:-0.0 0.9}"
-BETAS="${BETAS:-1.0}"
+# A100 batch / parallelism controls
+AUTO_REPS="${AUTO_REPS:-1}"          # 1 -> size reps to fill VRAM
+VRAM_FRACTION="${VRAM_FRACTION:-0.85}"
+MAX_REPS="${MAX_REPS:-131072}"
+REPS="${REPS:-8192}"                  # used only when AUTO_REPS=0
+WORKERS="${WORKERS:-1}"              # parallel processes sharing the GPU
+STORE_REPS="${STORE_REPS:-reduced}"  # reduced | full
+
+# Task 2 — graph families / sizes / scenarios (rich grid by default)
+GRAPHS="${GRAPHS:-ring cubic quartic quintic mixed23 mixed34 mixed45 mixed56}"
+SIZES="${SIZES:-10 20 50 100}"
+GAMMAS="${GAMMAS:-0.0 0.5 0.8 0.9 0.95 0.99}"
+BETAS="${BETAS:-0.5 1.0 2.0 4.0}"
 LEARNERS="${LEARNERS:-q_learning}"
 
 # Task 4 — phase transitions: space-separated "k:n" pairs
-PHASE_PAIRS="${PHASE_PAIRS:-2:20 3:20 4:20}"
+PHASE_PAIRS="${PHASE_PAIRS:-2:20 3:20 4:20 5:20}"
 PHASE_STEP="${PHASE_STEP:-0.05}"
-PHASE_REALIZATIONS="${PHASE_REALIZATIONS:-3}"
+PHASE_REALIZATIONS="${PHASE_REALIZATIONS:-5}"
 PHASE_MODE="${PHASE_MODE:-stochastic}"
 PHASE_GAMMA="${PHASE_GAMMA:-0.9}"
 PHASE_BETA="${PHASE_BETA:-1.0}"
@@ -66,15 +72,15 @@ mkdir -p "${LOG_DIR}"
 STAMP="$(date +%Y%m%d_%H%M%S)"
 
 SMOKE_FLAG=""
-if [[ "${SMOKE}" == "1" ]]; then
-  SMOKE_FLAG="--smoke"
-fi
+[[ "${SMOKE}" == "1" ]] && SMOKE_FLAG="--smoke"
+
+REPS_FLAG=("--reps" "${REPS}")
+[[ "${AUTO_REPS}" == "1" ]] && REPS_FLAG=("--auto-reps" "--vram-fraction" "${VRAM_FRACTION}" "--max-reps" "${MAX_REPS}")
 
 echo "=================================================================="
-echo "  Convergence-topology server run"
+echo "  Convergence-topology server run (A100-tuned)"
 echo "  repo_root : ${REPO_ROOT}"
-echo "  python    : ${PY}"
-echo "  stage     : ${STAGE}   smoke=${SMOKE}"
+echo "  stage=${STAGE} smoke=${SMOKE} workers=${WORKERS} auto_reps=${AUTO_REPS}"
 echo "  logs      : ${LOG_DIR}"
 echo "=================================================================="
 
@@ -88,7 +94,9 @@ run_mass() {
     --betas ${BETAS} \
     --learners ${LEARNERS} \
     --iters "${ITERS}" \
-    --reps "${REPS}" \
+    "${REPS_FLAG[@]}" \
+    --workers "${WORKERS}" \
+    --store-reps "${STORE_REPS}" \
     --record-every "${RECORD_EVERY}" \
     --n-final-steps "${N_FINAL_STEPS}" \
     --cluster-method "${CLUSTER_METHOD}" \
@@ -112,7 +120,9 @@ run_phase() {
       --beta "${PHASE_BETA}" \
       --learner "${PHASE_LEARNER}" \
       --iters "${ITERS}" \
-      --reps "${REPS}" \
+      "${REPS_FLAG[@]}" \
+      --workers "${WORKERS}" \
+      --store-reps "${STORE_REPS}" \
       --record-every "${RECORD_EVERY}" \
       --n-final-steps "${N_FINAL_STEPS}" \
       --cluster-method "${CLUSTER_METHOD}" \

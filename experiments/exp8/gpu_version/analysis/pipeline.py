@@ -123,6 +123,11 @@ def analyze_topology(
     c: float = 1.0,
     bonus: float = 1.0,
     device=None,
+    store_reps: str = "reduced",
+    fast_reward: bool = True,
+    progress: bool = False,
+    progress_desc: str = "steps",
+    progress_position: int = 1,
     # feature / clustering parameters
     n_final_steps: int = 10_000,
     cluster_method: str = "auto",
@@ -175,24 +180,39 @@ def analyze_topology(
     if save_artifacts:
         os.makedirs(out_dir, exist_ok=True)
 
-    # 1. simulate
+    # 1. simulate.  Full per-replicate histories are only produced by the
+    # simulation when store_reps="full", so couple it to save_full_histories.
+    effective_store_reps = "full" if save_full_histories else store_reps
     sim = run_convergence_simulation(
         adjacency, gamma=gamma, beta=beta, learner_type=learner_type,
         iters=iters, reps=reps, seed=seed, alpha=alpha, record_every=record_every,
         reward_type=reward_type, b=b, c=c, bonus=bonus, device=device,
+        store_reps=effective_store_reps, fast_reward=fast_reward,
+        progress=progress, progress_desc=progress_desc,
+        progress_position=progress_position,
     )
 
-    # 2. convergence features
+    # 2. convergence features (from replicate-mean trajectories)
     feats = compute_convergence_features(
-        sim.qc_hist, sim.qd_hist,
+        sim.qc_mean, sim.qd_mean,
         n_final_steps=n_final_steps, record_every=record_every)
+
+    # Monte-Carlo standard error of the per-vertex final Q-values, used to tell
+    # real convergence classes apart from finite-sample noise on homogeneous
+    # (vertex-transitive) graphs.  Take the noisiest of the three features
+    # (Q_C - Q_D), worst vertex.
+    k_rec = feats.n_records_used
+    reps_eff = max(1, int(sim.meta.get("reps", 1)))
+    qc_se = sim.qc_std[-k_rec:].mean(axis=0) / np.sqrt(reps_eff)
+    qd_se = sim.qd_std[-k_rec:].mean(axis=0) / np.sqrt(reps_eff)
+    noise_scale = float(np.sqrt(qc_se ** 2 + qd_se ** 2).max())
 
     # 3. clustering
     clust = cluster_vertices_by_convergence(
         feats.features, method=cluster_method, scaling=cluster_scaling,
         dbscan_eps=dbscan_eps, dbscan_min_samples=dbscan_min_samples,
         hdbscan_min_cluster_size=hdbscan_min_cluster_size,
-        random_state=seed)
+        random_state=seed, noise_scale=noise_scale)
 
     # 4. structural features
     topo = compute_topology_features(adjacency)
@@ -205,10 +225,10 @@ def analyze_topology(
             qc_final=feats.qc_final, qd_final=feats.qd_final,
             topology_features=topo)
         plot_q_curves_by_cluster(
-            sim.qc_hist, sim.qd_hist, clust.labels,
+            sim.qc_mean, sim.qd_mean, clust.labels,
             os.path.join(out_dir, "q_curves.png"),
-            record_every=record_every,
-            title=f"{title} | Q-curves by cluster", degrees=sim.degrees)
+            p_hist=sim.p_mean, record_every=record_every,
+            title=f"{title} | p(C) & Q by cluster", degrees=sim.degrees)
         plot_convergence_clusters(
             adjacency, clust.labels, sim.degrees,
             os.path.join(out_dir, "convergence_clusters.png"),
@@ -222,7 +242,7 @@ def analyze_topology(
                     "method": cluster_method, "scaling": cluster_scaling,
                     "dbscan_eps": dbscan_eps, "dbscan_min_samples": dbscan_min_samples,
                     "hdbscan_min_cluster_size": hdbscan_min_cluster_size,
-                    "random_state": seed,
+                    "random_state": seed, "noise_scale": noise_scale,
                 },
                 clustering_result={
                     "method_used": clust.method_used,
@@ -237,12 +257,15 @@ def analyze_topology(
             save_run_artifacts(
                 out_dir,
                 adjacency=adjacency, degrees=sim.degrees,
-                p_hist=sim.p_hist, qc_hist=sim.qc_hist, qd_hist=sim.qd_hist,
+                p_mean=sim.p_mean, qc_mean=sim.qc_mean, qd_mean=sim.qd_mean,
+                p_std=sim.p_std, qc_std=sim.qc_std, qd_std=sim.qd_std,
                 cluster_labels=clust.labels,
                 qc_final=feats.qc_final, qd_final=feats.qd_final,
                 conv_features=feats.features, topology_features=topo,
                 record_every=record_every, run_params=run_params,
-                save_full_histories=save_full_histories)
+                p_hist_full=sim.p_hist if save_full_histories else None,
+                qc_hist_full=sim.qc_hist if save_full_histories else None,
+                qd_hist_full=sim.qd_hist if save_full_histories else None)
 
     # 8. summary + correlations
     summary = {

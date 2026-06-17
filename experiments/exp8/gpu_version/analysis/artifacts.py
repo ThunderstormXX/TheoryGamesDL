@@ -65,8 +65,21 @@ class RunArtifacts:
     p_hist_full: Optional[np.ndarray] = None
 
 
-def _edge_list(adjacency: np.ndarray) -> list[list[int]]:
-    rows, cols = np.where(np.triu(np.asarray(adjacency), k=1) > 0)
+def _as_cpu_numpy(adjacency) -> np.ndarray:
+    """Coerce a torch tensor (possibly on CUDA/MPS) or array to a CPU ndarray.
+
+    Using ``.detach().cpu().numpy()`` avoids both the ``can't convert cuda
+    tensor to numpy`` error and the numpy>=2 ``copy`` ``FutureWarning`` that
+    ``np.asarray(tensor)`` triggers.
+    """
+    if hasattr(adjacency, "detach"):
+        return adjacency.detach().cpu().numpy()
+    return np.asarray(adjacency)
+
+
+def _edge_list(adjacency) -> list[list[int]]:
+    adj = _as_cpu_numpy(adjacency)
+    rows, cols = np.where(np.triu(adj, k=1) > 0)
     return [[int(i), int(j)] for i, j in zip(rows, cols)]
 
 
@@ -89,7 +102,7 @@ def build_run_params(
     "n": 20, "k": 2, "temperature": 0.5, "mode": "stochastic", "seed": 71}``).
     The full ``edge_list`` is always stored so the topology is fully recoverable.
     """
-    adj = np.asarray(adjacency)
+    adj = _as_cpu_numpy(adjacency)
     params = {
         "artifact_version": ARTIFACT_VERSION,
         "created_utc": datetime.now(timezone.utc).isoformat(),
@@ -116,9 +129,12 @@ def save_run_artifacts(
     *,
     adjacency,
     degrees: np.ndarray,
-    p_hist: np.ndarray,
-    qc_hist: np.ndarray,
-    qd_hist: np.ndarray,
+    p_mean: np.ndarray,
+    qc_mean: np.ndarray,
+    qd_mean: np.ndarray,
+    p_std: np.ndarray,
+    qc_std: np.ndarray,
+    qd_std: np.ndarray,
     cluster_labels: np.ndarray,
     qc_final: np.ndarray,
     qd_final: np.ndarray,
@@ -126,13 +142,16 @@ def save_run_artifacts(
     topology_features: dict[str, np.ndarray],
     record_every: int,
     run_params: dict,
-    save_full_histories: bool = False,
+    p_hist_full: Optional[np.ndarray] = None,
+    qc_hist_full: Optional[np.ndarray] = None,
+    qd_hist_full: Optional[np.ndarray] = None,
 ) -> dict[str, str]:
     """Write ``artifacts.npz`` and ``run_params.json`` into ``out_dir``.
 
-    Histories are reduced to replicate mean/std by default (compact and enough
-    to redraw every figure in this project); pass ``save_full_histories=True``
-    to also store the raw ``(T_out, reps, N)`` arrays.
+    Trajectories are stored as replicate mean/std ``(T_out, N)`` — compact,
+    independent of batch size, and enough to redraw every figure in this
+    project.  Pass the full ``(T_out, reps, N)`` arrays via ``*_hist_full`` to
+    additionally persist the raw per-replicate histories.
 
     Returns:
         Dict with absolute paths of the two written files.
@@ -143,12 +162,12 @@ def save_run_artifacts(
     arrays = {
         "adjacency": adj.astype(np.float32),
         "degrees": np.asarray(degrees, dtype=np.float32),
-        "qc_mean": qc_hist.mean(axis=1).astype(np.float32),
-        "qd_mean": qd_hist.mean(axis=1).astype(np.float32),
-        "p_mean": p_hist.mean(axis=1).astype(np.float32),
-        "qc_std": qc_hist.std(axis=1).astype(np.float32),
-        "qd_std": qd_hist.std(axis=1).astype(np.float32),
-        "p_std": p_hist.std(axis=1).astype(np.float32),
+        "qc_mean": np.asarray(qc_mean, dtype=np.float32),
+        "qd_mean": np.asarray(qd_mean, dtype=np.float32),
+        "p_mean": np.asarray(p_mean, dtype=np.float32),
+        "qc_std": np.asarray(qc_std, dtype=np.float32),
+        "qd_std": np.asarray(qd_std, dtype=np.float32),
+        "p_std": np.asarray(p_std, dtype=np.float32),
         "cluster_labels": np.asarray(cluster_labels, dtype=np.int64),
         "qc_final": np.asarray(qc_final, dtype=np.float32),
         "qd_final": np.asarray(qd_final, dtype=np.float32),
@@ -158,10 +177,10 @@ def save_run_artifacts(
     for name, values in topology_features.items():
         arrays[f"topo__{name}"] = np.asarray(values, dtype=np.float32)
 
-    if save_full_histories:
-        arrays["qc_hist_full"] = np.asarray(qc_hist, dtype=np.float32)
-        arrays["qd_hist_full"] = np.asarray(qd_hist, dtype=np.float32)
-        arrays["p_hist_full"] = np.asarray(p_hist, dtype=np.float32)
+    if qc_hist_full is not None:
+        arrays["qc_hist_full"] = np.asarray(qc_hist_full, dtype=np.float32)
+        arrays["qd_hist_full"] = np.asarray(qd_hist_full, dtype=np.float32)
+        arrays["p_hist_full"] = np.asarray(p_hist_full, dtype=np.float32)
 
     npz_path = os.path.abspath(os.path.join(out_dir, ARTIFACTS_NPZ))
     json_path = os.path.abspath(os.path.join(out_dir, RUN_PARAMS_JSON))
@@ -257,14 +276,21 @@ def replot_from_artifacts(
         feats = compute_convergence_features(
             art.qc_mean, art.qd_mean,
             n_final_steps=window, record_every=art.record_every)
+        # Reconstruct the Monte-Carlo noise scale from the saved std arrays so the
+        # homogeneity guard behaves exactly as during the original run.
+        reps_eff = max(1, int(art.run_params.get("simulation", {}).get("reps", 1)))
+        k_rec = feats.n_records_used
+        qc_se = art.qc_std[-k_rec:].mean(axis=0) / np.sqrt(reps_eff)
+        qd_se = art.qd_std[-k_rec:].mean(axis=0) / np.sqrt(reps_eff)
+        noise_scale = float(np.sqrt(qc_se ** 2 + qd_se ** 2).max())
         labels = cluster_vertices_by_convergence(
-            feats.features, method=cluster_method).labels
+            feats.features, method=cluster_method, noise_scale=noise_scale).labels
 
     q_path = plot_q_curves_by_cluster(
         art.qc_mean, art.qd_mean, labels,
         os.path.join(base, "q_curves.png"),
-        record_every=art.record_every,
-        title=f"{title} | Q-curves by cluster", degrees=art.degrees, dpi=dpi_curves)
+        p_hist=art.p_mean, record_every=art.record_every,
+        title=f"{title} | p(C) & Q by cluster", degrees=art.degrees, dpi=dpi_curves)
     g_path = plot_convergence_clusters(
         art.adjacency, labels, art.degrees,
         os.path.join(base, "convergence_clusters.png"),
