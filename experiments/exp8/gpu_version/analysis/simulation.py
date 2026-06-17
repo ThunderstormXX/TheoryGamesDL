@@ -152,6 +152,30 @@ class SimulationResult:
     qc_hist: Optional[np.ndarray] = None
     qd_hist: Optional[np.ndarray] = None
 
+    def slice_nodes(self, sl) -> "SimulationResult":
+        """Return a view restricted to a contiguous node block ``sl``.
+
+        Used by the graph-fusion path: one simulation runs on a block-diagonal
+        super-graph, then each original graph's results are recovered by slicing
+        its node range out of every per-vertex array.
+        """
+        def s2(a):
+            return None if a is None else a[:, sl]
+
+        def s3(a):
+            return None if a is None else a[:, :, sl]
+
+        degrees = self.degrees[sl]
+        meta = {**self.meta, "num_nodes": int(np.asarray(degrees).shape[0]),
+                "fused_total_nodes": int(self.meta.get("num_nodes", 0)), "fused": True}
+        return SimulationResult(
+            p_mean=s2(self.p_mean), qc_mean=s2(self.qc_mean), qd_mean=s2(self.qd_mean),
+            p_std=s2(self.p_std), qc_std=s2(self.qc_std), qd_std=s2(self.qd_std),
+            degrees=degrees, record_every=self.record_every,
+            final_pc=float(self.p_mean[-1, sl].mean()), meta=meta,
+            p_hist=s3(self.p_hist), qc_hist=s3(self.qc_hist), qd_hist=s3(self.qd_hist),
+        )
+
 
 def compute_pool(cooperators: torch.Tensor, adjacency: torch.Tensor,
                  degrees: torch.Tensor, reward_type: str) -> torch.Tensor:

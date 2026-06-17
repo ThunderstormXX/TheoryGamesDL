@@ -103,39 +103,20 @@ def _mean_q_per_cluster(
     return out
 
 
-def analyze_topology(
+def analyze_from_sim(
     adjacency,
+    sim,
     out_dir: str,
     *,
     topology_name: str,
     title: Optional[str] = None,
-    # simulation parameters
-    gamma: float = 0.0,
-    beta: float = 1.0,
-    learner_type: str = "q_learning",
-    iters: int = 200_000,
-    reps: int = 256,
     seed: int = 42,
-    alpha: float = 0.01,
-    record_every: int = 5_000,
-    reward_type: str = "pp",
-    b: float = 2.0,
-    c: float = 1.0,
-    bonus: float = 1.0,
-    device=None,
-    store_reps: str = "reduced",
-    fast_reward: bool = True,
-    progress: bool = False,
-    progress_desc: str = "steps",
-    progress_position: int = 1,
-    # feature / clustering parameters
     n_final_steps: int = 10_000,
     cluster_method: str = "auto",
     cluster_scaling: str = "shared",
     dbscan_eps: float = 0.3,
     dbscan_min_samples: int = 2,
     hdbscan_min_cluster_size: int = 2,
-    # output control
     save_artifacts: bool = True,
     save_data_artifacts: bool = True,
     save_full_histories: bool = False,
@@ -144,53 +125,23 @@ def analyze_topology(
     extra_summary: Optional[dict] = None,
     return_details: bool = False,
 ):
-    """Run the full convergence-cluster + topology analysis for one graph.
+    """Run the convergence-cluster + topology analysis on an existing simulation.
+
+    This is the post-simulation half of :func:`analyze_topology`, split out so the
+    graph-fusion path can run one simulation on a block-diagonal super-graph and
+    then analyse each original graph from a node-slice of that result
+    (``sim.slice_nodes(...)``) without re-simulating.
 
     Args:
-        adjacency: ``(N, N)`` adjacency matrix.
-        out_dir: directory to write artifacts into.
-        topology_name: identifier stored in the summary.
-        title: figure title (defaults to ``topology_name``).
-        gamma..device: simulation parameters (see
-            :func:`analysis.simulation.run_convergence_simulation`).
-        n_final_steps: averaging window for the final Q-values.
-        cluster_method: ``"auto" | "dbscan" | "hdbscan" | "kmeans"``.
-        cluster_scaling: feature scaling mode (``"shared" | "standard" | "none"``).
-        dbscan_eps, dbscan_min_samples, hdbscan_min_cluster_size: clustering params.
-        save_artifacts: if ``False`` only computes and returns the summary
-            (no PNG/CSV/JSON/NPZ written) — used by the phase-transition sweep for
-            non-representative realizations.
-        save_data_artifacts: also write ``artifacts.npz`` + ``run_params.json``
-            (the reusable data bundle that lets figures be regenerated without
-            re-simulating). Ignored when ``save_artifacts`` is ``False``.
-        save_full_histories: store the full ``(T_out, reps, N)`` histories in
-            the npz in addition to the replicate mean/std.
-        layout: NetworkX layout for the cluster drawing.
-        graph_descriptor: how the graph was produced (family/n/k/temperature/…);
-            stored verbatim in ``run_params.json`` alongside the full edge list.
-        extra_summary: extra key/values merged into the summary JSON.
-        return_details: when ``True`` return ``(summary, details)`` where
-            ``details`` holds the raw arrays (``labels``, ``sim``, ``features``,
-            ``cluster``) for callers that want to render their own figures.
-
-    Returns:
-        The ``summary`` dict, or ``(summary, details)`` if ``return_details``.
+        adjacency: ``(N, N)`` adjacency of *this* graph (the block, when fused).
+        sim: a :class:`analysis.simulation.SimulationResult` for this graph.
+        seed: random_state for KMeans reproducibility.
+        (other args mirror :func:`analyze_topology`).
     """
     title = title or topology_name
+    record_every = sim.record_every
     if save_artifacts:
         os.makedirs(out_dir, exist_ok=True)
-
-    # 1. simulate.  Full per-replicate histories are only produced by the
-    # simulation when store_reps="full", so couple it to save_full_histories.
-    effective_store_reps = "full" if save_full_histories else store_reps
-    sim = run_convergence_simulation(
-        adjacency, gamma=gamma, beta=beta, learner_type=learner_type,
-        iters=iters, reps=reps, seed=seed, alpha=alpha, record_every=record_every,
-        reward_type=reward_type, b=b, c=c, bonus=bonus, device=device,
-        store_reps=effective_store_reps, fast_reward=fast_reward,
-        progress=progress, progress_desc=progress_desc,
-        progress_position=progress_position,
-    )
 
     # 2. convergence features (from replicate-mean trajectories)
     feats = compute_convergence_features(
@@ -199,8 +150,7 @@ def analyze_topology(
 
     # Monte-Carlo standard error of the per-vertex final Q-values, used to tell
     # real convergence classes apart from finite-sample noise on homogeneous
-    # (vertex-transitive) graphs.  Take the noisiest of the three features
-    # (Q_C - Q_D), worst vertex.
+    # (vertex-transitive) graphs.  Take the noisiest feature (Q_C - Q_D).
     k_rec = feats.n_records_used
     reps_eff = max(1, int(sim.meta.get("reps", 1)))
     qc_se = sim.qc_std[-k_rec:].mean(axis=0) / np.sqrt(reps_eff)
@@ -304,3 +254,105 @@ def analyze_topology(
         }
         return summary, details
     return summary
+
+
+def analyze_topology(
+    adjacency,
+    out_dir: str,
+    *,
+    topology_name: str,
+    title: Optional[str] = None,
+    # simulation parameters
+    gamma: float = 0.0,
+    beta: float = 1.0,
+    learner_type: str = "q_learning",
+    iters: int = 200_000,
+    reps: int = 256,
+    seed: int = 42,
+    alpha: float = 0.01,
+    record_every: int = 5_000,
+    reward_type: str = "pp",
+    b: float = 2.0,
+    c: float = 1.0,
+    bonus: float = 1.0,
+    device=None,
+    store_reps: str = "reduced",
+    fast_reward: bool = True,
+    progress: bool = False,
+    progress_desc: str = "steps",
+    progress_position: int = 1,
+    # feature / clustering parameters
+    n_final_steps: int = 10_000,
+    cluster_method: str = "auto",
+    cluster_scaling: str = "shared",
+    dbscan_eps: float = 0.3,
+    dbscan_min_samples: int = 2,
+    hdbscan_min_cluster_size: int = 2,
+    # output control
+    save_artifacts: bool = True,
+    save_data_artifacts: bool = True,
+    save_full_histories: bool = False,
+    layout: str = "circular",
+    graph_descriptor: Optional[dict] = None,
+    extra_summary: Optional[dict] = None,
+    return_details: bool = False,
+):
+    """Run the full convergence-cluster + topology analysis for one graph.
+
+    Args:
+        adjacency: ``(N, N)`` adjacency matrix.
+        out_dir: directory to write artifacts into.
+        topology_name: identifier stored in the summary.
+        title: figure title (defaults to ``topology_name``).
+        gamma..device: simulation parameters (see
+            :func:`analysis.simulation.run_convergence_simulation`).
+        n_final_steps: averaging window for the final Q-values.
+        cluster_method: ``"auto" | "dbscan" | "hdbscan" | "kmeans"``.
+        cluster_scaling: feature scaling mode (``"shared" | "standard" | "none"``).
+        dbscan_eps, dbscan_min_samples, hdbscan_min_cluster_size: clustering params.
+        save_artifacts: if ``False`` only computes and returns the summary
+            (no PNG/CSV/JSON/NPZ written) — used by the phase-transition sweep for
+            non-representative realizations.
+        save_data_artifacts: also write ``artifacts.npz`` + ``run_params.json``
+            (the reusable data bundle that lets figures be regenerated without
+            re-simulating). Ignored when ``save_artifacts`` is ``False``.
+        save_full_histories: store the full ``(T_out, reps, N)`` histories in
+            the npz in addition to the replicate mean/std.
+        layout: NetworkX layout for the cluster drawing.
+        graph_descriptor: how the graph was produced (family/n/k/temperature/…);
+            stored verbatim in ``run_params.json`` alongside the full edge list.
+        extra_summary: extra key/values merged into the summary JSON.
+        return_details: when ``True`` return ``(summary, details)`` where
+            ``details`` holds the raw arrays (``labels``, ``sim``, ``features``,
+            ``cluster``) for callers that want to render their own figures.
+
+    Returns:
+        The ``summary`` dict, or ``(summary, details)`` if ``return_details``.
+    """
+    title = title or topology_name
+
+    # 1. simulate.  Full per-replicate histories are only produced by the
+    # simulation when store_reps="full", so couple it to save_full_histories.
+    effective_store_reps = "full" if save_full_histories else store_reps
+    sim = run_convergence_simulation(
+        adjacency, gamma=gamma, beta=beta, learner_type=learner_type,
+        iters=iters, reps=reps, seed=seed, alpha=alpha, record_every=record_every,
+        reward_type=reward_type, b=b, c=c, bonus=bonus, device=device,
+        store_reps=effective_store_reps, fast_reward=fast_reward,
+        progress=progress, progress_desc=progress_desc,
+        progress_position=progress_position,
+    )
+
+    # 2-8. analyse the simulation result (shared with the fusion path).
+    return analyze_from_sim(
+        adjacency, sim, out_dir,
+        topology_name=topology_name, title=title, seed=seed,
+        n_final_steps=n_final_steps, cluster_method=cluster_method,
+        cluster_scaling=cluster_scaling, dbscan_eps=dbscan_eps,
+        dbscan_min_samples=dbscan_min_samples,
+        hdbscan_min_cluster_size=hdbscan_min_cluster_size,
+        save_artifacts=save_artifacts, save_data_artifacts=save_data_artifacts,
+        save_full_histories=save_full_histories, layout=layout,
+        graph_descriptor=graph_descriptor, extra_summary=extra_summary,
+        return_details=return_details,
+    )

@@ -50,6 +50,9 @@ MAX_REPS="${MAX_REPS:-131072}"
 REPS="${REPS:-8192}"                  # used only when AUTO_REPS=0
 WORKERS="${WORKERS:-1}"              # parallel processes sharing the GPU
 STORE_REPS="${STORE_REPS:-reduced}"  # reduced | full
+FUSE="${FUSE:-0}"                    # 1 -> fuse all graphs of a scenario into one sim
+                                     #      (block-diagonal): fills the GPU, ~Gx fewer
+                                     #      Python loops. Big speedup on the A100.
 
 # Task 2 — graph families / sizes / scenarios (rich grid by default)
 GRAPHS="${GRAPHS:-ring cubic quartic quintic mixed23 mixed34 mixed45 mixed56}"
@@ -77,6 +80,9 @@ SMOKE_FLAG=""
 REPS_FLAG=("--reps" "${REPS}")
 [[ "${AUTO_REPS}" == "1" ]] && REPS_FLAG=("--auto-reps" "--vram-fraction" "${VRAM_FRACTION}" "--max-reps" "${MAX_REPS}")
 
+FUSE_FLAG=""
+[[ "${FUSE}" == "1" ]] && FUSE_FLAG="--fuse-graphs"
+
 echo "=================================================================="
 echo "  Convergence-topology server run (A100-tuned)"
 echo "  repo_root : ${REPO_ROOT}"
@@ -88,6 +94,7 @@ run_mass() {
   echo ">>> [Task 2] mass convergence-topology experiments"
   ${PY} -m "${PKG}.run_all_convergence_topology_experiments" \
     ${SMOKE_FLAG} \
+    ${FUSE_FLAG} \
     --graphs ${GRAPHS} \
     --sizes ${SIZES} \
     --gammas ${GAMMAS} \
