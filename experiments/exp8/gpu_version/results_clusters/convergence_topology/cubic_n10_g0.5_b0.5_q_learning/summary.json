@@ -1,0 +1,60 @@
+{
+  "topology_name": "cubic_n10_g0.5_b0.5_q_learning",
+  "title": "Cubic (3-reg) | n=10, \u03b3=0.5, \u03b2=0.5, q_learning",
+  "num_nodes": 10,
+  "method_used": "homogeneous",
+  "cluster_params": {
+    "reason": "spread_within_noise",
+    "noise_scale": 0.024824933581877075,
+    "spread": 0.012159980929557473
+  },
+  "number_of_clusters": 1,
+  "silhouette": NaN,
+  "cluster_sizes": {
+    "0": 10
+  },
+  "largest_cluster_fraction": 1.0,
+  "mean_cooperation": 0.18229860067367554,
+  "mean_Q_C": 1.1856087446212769,
+  "mean_Q_D": 4.192016124725342,
+  "per_cluster_mean_Q": {
+    "0": {
+      "mean_Q_C": 1.1856087446212769,
+      "mean_Q_D": 4.192016124725342,
+      "size": 10
+    }
+  },
+  "degree_distribution": {
+    "3": 10
+  },
+  "cluster_topology_correlation_eta": {
+    "degree": 0.0,
+    "clustering_coefficient": 0.0,
+    "betweenness_centrality": 0.0,
+    "eigenvector_centrality": 0.0
+  },
+  "n_final_records_averaged": 2,
+  "simulation": {
+    "gamma": 0.5,
+    "beta": 0.5,
+    "learner_type": "q_learning",
+    "iters": 1000000,
+    "reps": 64,
+    "seed": 42,
+    "alpha": 0.01,
+    "record_every": 5000,
+    "reward_type": "pp",
+    "b": 2.0,
+    "c": 1.0,
+    "bonus": 1.0,
+    "num_nodes": 10,
+    "device": "cuda",
+    "store_reps": "reduced",
+    "fast_reward": true
+  },
+  "graph_family": "cubic",
+  "n": 10,
+  "gamma": 0.5,
+  "beta": 0.5,
+  "learner": "q_learning"
+}

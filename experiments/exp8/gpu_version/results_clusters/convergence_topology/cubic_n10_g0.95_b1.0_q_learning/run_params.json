@@ -1,0 +1,122 @@
+{
+  "artifact_version": 1,
+  "created_utc": "2026-06-17T20:06:02.714101+00:00",
+  "topology_name": "cubic_n10_g0.95_b1.0_q_learning",
+  "title": "Cubic (3-reg) | n=10, \u03b3=0.95, \u03b2=1.0, q_learning",
+  "n_final_steps": 10000,
+  "graph": {
+    "family": "cubic",
+    "graph_class": "CubicCirculantGraph",
+    "n": 10,
+    "num_nodes": 10,
+    "num_edges": 15,
+    "adjacency_shape": [
+      10,
+      10
+    ],
+    "edge_list": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        9
+      ]
+    ]
+  },
+  "simulation": {
+    "gamma": 0.95,
+    "beta": 1.0,
+    "learner_type": "q_learning",
+    "iters": 1000000,
+    "reps": 64,
+    "seed": 42,
+    "alpha": 0.01,
+    "record_every": 5000,
+    "reward_type": "pp",
+    "b": 2.0,
+    "c": 1.0,
+    "bonus": 1.0,
+    "num_nodes": 10,
+    "device": "cuda",
+    "store_reps": "reduced",
+    "fast_reward": true
+  },
+  "clustering": {
+    "method": "auto",
+    "scaling": "shared",
+    "dbscan_eps": 0.3,
+    "dbscan_min_samples": 2,
+    "hdbscan_min_cluster_size": 2,
+    "random_state": 42,
+    "noise_scale": 0.021900353397012032,
+    "method_used": "homogeneous",
+    "n_clusters": 1,
+    "silhouette": NaN,
+    "chosen_params": {
+      "reason": "spread_within_noise",
+      "noise_scale": 0.021900353397012032,
+      "spread": 0.009715727440020541
+    }
+  },
+  "extra": {
+    "graph_family": "cubic",
+    "n": 10,
+    "gamma": 0.95,
+    "beta": 1.0,
+    "learner": "q_learning"
+  }
+}

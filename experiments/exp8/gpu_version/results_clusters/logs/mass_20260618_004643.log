@@ -1,0 +1,8 @@
+Using device: cuda
+================================================================
+  FUSED mass run on device: cuda
+  12 graphs/scenario fused -> 680 nodes/sim
+  |scenarios|=18  iters=1000000 reps=2048 workers=8
+  output: /home/n3ke27/prisoners_dilema/TheoryGamesDL/experiments/exp8/gpu_version/results/convergence_topology
+================================================================
+scenarios:   0%|          | 0/18 [00:00<?, ?it/s]

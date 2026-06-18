@@ -1,0 +1,18 @@
+Using device: cuda
+================================================================
+  FUSED mass run on device: cuda
+  12 graphs/scenario fused -> 680 nodes/sim
+  |scenarios|=30  iters=1000000 reps=2048 workers=8
+  output: /home/n3ke27/prisoners_dilema/TheoryGamesDL/experiments/exp8/gpu_version/results/convergence_topology
+================================================================
+scenarios:   0%|          | 0/30 [00:00<?, ?it/s]scenarios:   3%|▎         | 1/30 [57:01<27:33:34, 3421.20s/it]scenarios:   7%|▋         | 2/30 [58:20<11:19:04, 1455.14s/it]scenarios:  10%|█         | 3/30 [1:00:21<6:20:44, 846.11s/it]scenarios:  13%|█▎        | 4/30 [1:02:12<4:00:51, 555.83s/it]scenarios:  17%|█▋        | 5/30 [1:02:17<2:28:48, 357.13s/it]scenarios:  20%|██        | 6/30 [1:02:24<1:35:13, 238.07s/it]scenarios:  23%|██▎       | 7/30 [1:02:27<1:01:51, 161.35s/it]scenarios:  27%|██▋       | 8/30 [1:02:48<42:47, 116.71s/it]  scenarios:  30%|███       | 9/30 [1:52:23<5:53:32, 1010.13s/it]scenarios:  33%|███▎      | 10/30 [1:55:11<4:10:06, 750.33s/it]scenarios:  37%|███▋      | 11/30 [1:58:02<3:01:23, 572.81s/it]scenarios:  40%|████      | 12/30 [2:02:10<2:22:15, 474.21s/it]scenarios:  43%|████▎     | 13/30 [2:02:11<1:33:42, 330.74s/it]scenarios:  47%|████▋     | 14/30 [2:02:13<1:01:41, 231.35s/it]scenarios:  50%|█████     | 15/30 [2:02:47<43:01, 172.13s/it]  scenarios:  53%|█████▎    | 16/30 [2:03:31<31:07, 133.42s/it]scenarios:  57%|█████▋    | 17/30 [2:48:06<3:14:31, 897.81s/it]scenarios:  60%|██████    | 18/30 [2:52:18<2:20:45, 703.76s/it]scenarios:  63%|██████▎   | 19/30 [2:56:17<1:43:25, 564.12s/it]scenarios:  67%|██████▋   | 20/30 [3:02:30<1:24:26, 506.66s/it]scenarios:  70%|███████   | 21/30 [3:02:39<53:34, 357.14s/it]  scenarios:  73%|███████▎  | 22/30 [3:02:47<33:39, 252.50s/it]scenarios:  77%|███████▋  | 23/30 [3:03:38<22:23, 191.90s/it]scenarios:  80%|████████  | 24/30 [3:04:43<15:22, 153.83s/it]scenarios:  83%|████████▎ | 25/30 [3:34:20<53:25, 641.07s/it]scenarios:  87%|████████▋ | 26/30 [3:39:24<35:58, 539.71s/it]scenarios:  90%|█████████ | 27/30 [3:41:56<21:10, 423.47s/it]scenarios:  93%|█████████▎| 28/30 [3:44:46<11:34, 347.37s/it]scenarios:  97%|█████████▋| 29/30 [3:44:48<04:03, 243.75s/it]scenarios: 100%|██████████| 30/30 [3:44:49<00:00, 170.92s/it]scenarios: 100%|██████████| 30/30 [3:44:49<00:00, 449.64s/it]
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+
+Done (fused): 30 scenarios x 12 graphs in 13495s. Index: /home/n3ke27/prisoners_dilema/TheoryGamesDL/experiments/exp8/gpu_version/results/convergence_topology/index_summary.json

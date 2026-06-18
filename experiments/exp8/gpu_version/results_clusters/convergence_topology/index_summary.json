@@ -1,0 +1,5042 @@
+{
+  "mixed23_n20_g0.0_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 0.11205408722162247,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758308
+    }
+  },
+  "mixed23_n50_g0.0_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 0.11636342853307724,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970667
+    }
+  },
+  "mixed23_n100_g0.0_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 0.11779386550188065,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462599
+    }
+  },
+  "mixed34_n20_g0.0_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.044513363391160965,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9363972740107002,
+      "eigenvector_centrality": 0.8966562851162742
+    }
+  },
+  "mixed34_n50_g0.0_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 0.04623143747448921,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9127317493508901,
+      "eigenvector_centrality": 0.8285100240874795
+    }
+  },
+  "mixed34_n100_g0.0_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 0.04685572162270546,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.796624170630529,
+      "eigenvector_centrality": 0.7215077463931081
+    }
+  },
+  "mixed45_n20_g0.0_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.01685524731874466,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9581920947940049,
+      "eigenvector_centrality": 0.8819414861158678
+    }
+  },
+  "mixed45_n50_g0.0_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.017542388290166855,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.8544876857410894,
+      "eigenvector_centrality": 0.5716353236982229
+    }
+  },
+  "mixed45_n100_g0.0_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.017762664705514908,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7345453128586724,
+      "eigenvector_centrality": 0.4273179238139199
+    }
+  },
+  "mixed56_n20_g0.0_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.006269217934459448,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2182178902359921,
+      "betweenness_centrality": 0.8640832251480508,
+      "eigenvector_centrality": 0.867697350864979
+    }
+  },
+  "mixed56_n50_g0.0_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.006528705358505249,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2802242691589019,
+      "betweenness_centrality": 0.7664796878801287,
+      "eigenvector_centrality": 0.5325254671041162
+    }
+  },
+  "mixed56_n100_g0.0_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.006608273833990097,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.2987012987012989,
+      "betweenness_centrality": 0.6444846232789511,
+      "eigenvector_centrality": 0.39017928181979833
+    }
+  },
+  "mixed23_n20_g0.0_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 0.07055607438087463,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758308
+    }
+  },
+  "mixed23_n50_g0.0_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 0.07377280294895172,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970672
+    }
+  },
+  "mixed23_n100_g0.0_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 0.07480816543102264,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462599
+    }
+  },
+  "mixed34_n20_g0.0_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.021353360265493393,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9363972740107002,
+      "eigenvector_centrality": 0.8966562851162746
+    }
+  },
+  "mixed34_n50_g0.0_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.022332342341542244,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.8322234364039526,
+      "eigenvector_centrality": 0.6134875285593264
+    }
+  },
+  "mixed34_n100_g0.0_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 0.02265620231628418,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.796624170630529,
+      "eigenvector_centrality": 0.7215077463931134
+    }
+  },
+  "mixed45_n20_g0.0_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.006216580048203468,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9581920947940049,
+      "eigenvector_centrality": 0.8819414861158679
+    }
+  },
+  "mixed45_n50_g0.0_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.006501752883195877,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.8544876857410894,
+      "eigenvector_centrality": 0.5716353236982306
+    }
+  },
+  "mixed45_n100_g0.0_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.0065972330048680305,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7345453128586724,
+      "eigenvector_centrality": 0.42731792381391553
+    }
+  },
+  "mixed56_n20_g0.0_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.0017894984921440482,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2182178902359921,
+      "betweenness_centrality": 0.8640832251480508,
+      "eigenvector_centrality": 0.8676973508649791
+    }
+  },
+  "mixed56_n50_g0.0_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.0018723852699622512,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2802242691589019,
+      "betweenness_centrality": 0.7664796878801287,
+      "eigenvector_centrality": 0.5325254671041145
+    }
+  },
+  "mixed56_n100_g0.0_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.001899283961392939,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.2987012987012989,
+      "betweenness_centrality": 0.6444846232789511,
+      "eigenvector_centrality": 0.3901792818197996
+    }
+  },
+  "mixed23_n20_g0.0_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.02689964696764946,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.8224439378461049,
+      "eigenvector_centrality": 0.7806171777210187
+    }
+  },
+  "mixed23_n50_g0.0_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 0.028351567685604095,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970671
+    }
+  },
+  "mixed23_n100_g0.0_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 0.02883228287100792,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462598
+    }
+  },
+  "mixed34_n20_g0.0_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.004789505619555712,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9363972740107002,
+      "eigenvector_centrality": 0.8966562851162745
+    }
+  },
+  "mixed34_n50_g0.0_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.005046701990067959,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.8322234364039526,
+      "eigenvector_centrality": 0.6134875285593271
+    }
+  },
+  "mixed34_n100_g0.0_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.005133948754519224,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7222527170402497,
+      "eigenvector_centrality": 0.48689428960713194
+    }
+  },
+  "mixed45_n20_g0.0_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.0008377130143344402,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9581920947940049,
+      "eigenvector_centrality": 0.8819414861158684
+    }
+  },
+  "mixed45_n50_g0.0_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.0008818685892038047,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.8544876857410894,
+      "eigenvector_centrality": 0.5716353236982302
+    }
+  },
+  "mixed45_n100_g0.0_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.0008966026362031698,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7345453128586724,
+      "eigenvector_centrality": 0.4273179238139197
+    }
+  },
+  "mixed56_n20_g0.0_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.00016917221364565194,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2182178902359921,
+      "betweenness_centrality": 0.8640832251480508,
+      "eigenvector_centrality": 0.867697350864978
+    }
+  },
+  "mixed56_n50_g0.0_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.00017609958013053983,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2802242691589019,
+      "betweenness_centrality": 0.7664796878801287,
+      "eigenvector_centrality": 0.5325254671041025
+    }
+  },
+  "mixed56_n100_g0.0_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.0001783990446710959,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.2987012987012989,
+      "betweenness_centrality": 0.6444846232789511,
+      "eigenvector_centrality": 0.3901792818197959
+    }
+  },
+  "mixed23_n20_g0.0_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 0.04376013204455376,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758307
+    }
+  },
+  "mixed23_n50_g0.0_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 0.04598742350935936,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970671
+    }
+  },
+  "mixed23_n100_g0.0_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 0.046704910695552826,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462599
+    }
+  },
+  "mixed34_n20_g0.0_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.01013358123600483,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9363972740107002,
+      "eigenvector_centrality": 0.8966562851162748
+    }
+  },
+  "mixed34_n50_g0.0_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.01064782403409481,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.8322234364039526,
+      "eigenvector_centrality": 0.6134875285593275
+    }
+  },
+  "mixed34_n100_g0.0_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.010817520320415497,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7222527170402497,
+      "eigenvector_centrality": 0.48689428960713
+    }
+  },
+  "mixed45_n20_g0.0_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.0022797444835305214,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9581920947940049,
+      "eigenvector_centrality": 0.8819414861158685
+    }
+  },
+  "mixed45_n50_g0.0_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.0023955353535711765,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.8544876857410894,
+      "eigenvector_centrality": 0.5716353236982301
+    }
+  },
+  "mixed45_n100_g0.0_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.002434257185086608,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7345453128586724,
+      "eigenvector_centrality": 0.4273179238139212
+    }
+  },
+  "mixed56_n20_g0.0_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.0005136743420735002,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2182178902359921,
+      "betweenness_centrality": 0.8640832251480508,
+      "eigenvector_centrality": 0.8676973508649791
+    }
+  },
+  "mixed56_n50_g0.0_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.0005380635848268867,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2802242691589019,
+      "betweenness_centrality": 0.7664796878801287,
+      "eigenvector_centrality": 0.5325254671041351
+    }
+  },
+  "mixed56_n100_g0.0_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.0005460070678964257,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.2987012987012989,
+      "betweenness_centrality": 0.6444846232789511,
+      "eigenvector_centrality": 0.3901792818197993
+    }
+  },
+  "mixed23_n20_g0.8_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 0.04262571781873703,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758308
+    }
+  },
+  "mixed23_n50_g0.8_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 0.04445681720972061,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970679
+    }
+  },
+  "mixed23_n100_g0.8_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 0.04503541439771652,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462595
+    }
+  },
+  "mixed34_n20_g0.8_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 0.010104781948029995,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920028
+    }
+  },
+  "mixed34_n50_g0.8_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 0.010611857287585735,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9127317493508901,
+      "eigenvector_centrality": 0.828510024087482
+    }
+  },
+  "mixed34_n100_g0.8_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 0.01077976357191801,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.796624170630529,
+      "eigenvector_centrality": 0.7215077463931091
+    }
+  },
+  "mixed45_n20_g0.8_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.002276207320392132,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9581920947940049,
+      "eigenvector_centrality": 0.8819414861158689
+    }
+  },
+  "mixed45_n50_g0.8_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.0023927900474518538,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.8544876857410894,
+      "eigenvector_centrality": 0.5716353236982326
+    }
+  },
+  "mixed45_n100_g0.8_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.002431873232126236,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7345453128586724,
+      "eigenvector_centrality": 0.42731792381391964
+    }
+  },
+  "mixed56_n20_g0.8_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.0005104587762616575,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2182178902359921,
+      "betweenness_centrality": 0.8640832251480508,
+      "eigenvector_centrality": 0.8676973508649787
+    }
+  },
+  "mixed56_n50_g0.8_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.0005351147847250104,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2802242691589019,
+      "betweenness_centrality": 0.7664796878801287,
+      "eigenvector_centrality": 0.5325254671041161
+    }
+  },
+  "mixed56_n100_g0.8_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.0005430903402157128,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.2987012987012989,
+      "betweenness_centrality": 0.6444846232789511,
+      "eigenvector_centrality": 0.39017928181978445
+    }
+  },
+  "mixed23_n20_g0.8_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 0.10492825508117676,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758307
+    }
+  },
+  "mixed23_n50_g0.8_b1.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 0.10553473234176636,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.8223879482116929,
+      "eigenvector_centrality": 0.9650851452045117
+    }
+  },
+  "mixed23_n100_g0.8_b1.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.10591043531894684,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6615979701056459,
+      "eigenvector_centrality": 0.9602174319735619
+    }
+  },
+  "mixed34_n20_g0.8_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 0.04368958622217178,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920031
+    }
+  },
+  "mixed34_n50_g0.8_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 0.045045267790555954,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9127317493508901,
+      "eigenvector_centrality": 0.8285100240874821
+    }
+  },
+  "mixed34_n100_g0.8_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 0.0455181784927845,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.796624170630529,
+      "eigenvector_centrality": 0.7215077463931103
+    }
+  },
+  "mixed45_n20_g0.8_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 0.016805674880743027,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952035847480727,
+      "eigenvector_centrality": 0.9926179293753586
+    }
+  },
+  "mixed45_n50_g0.8_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 0.0174996480345726,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9080267367873555,
+      "eigenvector_centrality": 0.8603675517222763
+    }
+  },
+  "mixed45_n100_g0.8_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.017717458307743073,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7812328045828907,
+      "eigenvector_centrality": 0.7294809798164292
+    }
+  },
+  "mixed56_n20_g0.8_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.006258727516978979,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2182178902359921,
+      "betweenness_centrality": 0.8640832251480508,
+      "eigenvector_centrality": 0.8676973508649802
+    }
+  },
+  "mixed56_n50_g0.8_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.0065233842469751835,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2802242691589019,
+      "betweenness_centrality": 0.7664796878801287,
+      "eigenvector_centrality": 0.5325254671041103
+    }
+  },
+  "mixed56_n100_g0.8_b1.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.006598772946745157,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 1.0000000000000009,
+      "betweenness_centrality": 0.7477538881760821,
+      "eigenvector_centrality": 0.6814601805158582
+    }
+  },
+  "mixed23_n20_g0.0_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.016424007713794708,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.8224439378461049,
+      "eigenvector_centrality": 0.7806171777210189
+    }
+  },
+  "mixed23_n50_g0.0_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.01736430637538433,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6592480957437147,
+      "eigenvector_centrality": 0.6878871579873806
+    }
+  },
+  "mixed23_n100_g0.0_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.017679130658507347,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5229746939727332,
+      "eigenvector_centrality": 0.6748185872069895
+    }
+  },
+  "mixed34_n20_g0.0_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.00225968100130558,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9363972740107002,
+      "eigenvector_centrality": 0.8966562851162737
+    }
+  },
+  "mixed34_n50_g0.0_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.0023869331926107407,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.8322234364039526,
+      "eigenvector_centrality": 0.6134875285593246
+    }
+  },
+  "mixed34_n100_g0.0_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.0024297561030834913,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7222527170402497,
+      "eigenvector_centrality": 0.48689428960712894
+    }
+  },
+  "mixed45_n20_g0.0_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.00031631620367988944,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9581920947940049,
+      "eigenvector_centrality": 0.8819414861158683
+    }
+  },
+  "mixed45_n50_g0.0_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.00033186617656610906,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.8544876857410894,
+      "eigenvector_centrality": 0.5716353236982302
+    }
+  },
+  "mixed45_n100_g0.0_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.0003371117636561394,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7345453128586724,
+      "eigenvector_centrality": 0.42731792381391126
+    }
+  },
+  "mixed56_n20_g0.0_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 7.83568320912309e-05,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2182178902359921,
+      "betweenness_centrality": 0.8640832251480508,
+      "eigenvector_centrality": 0.867697350864977
+    }
+  },
+  "mixed56_n50_g0.0_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 8.10052442830056e-05,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2802242691589019,
+      "betweenness_centrality": 0.7664796878801287,
+      "eigenvector_centrality": 0.5325254671041288
+    }
+  },
+  "mixed56_n100_g0.0_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 8.189495565602556e-05,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.2987012987012989,
+      "betweenness_centrality": 0.6444846232789511,
+      "eigenvector_centrality": 0.3901792818197979
+    }
+  },
+  "mixed23_n20_g0.8_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 0.06552889198064804,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758306
+    }
+  },
+  "mixed23_n50_g0.8_b1.25_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 0.0666189044713974,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.8223879482116929,
+      "eigenvector_centrality": 0.9650851452045119
+    }
+  },
+  "mixed23_n100_g0.8_b1.25_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.06699001044034958,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6615979701056459,
+      "eigenvector_centrality": 0.960217431973562
+    }
+  },
+  "mixed34_n20_g0.8_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 0.02125006541609764,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920031
+    }
+  },
+  "mixed34_n50_g0.8_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 0.02218913845717907,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9127317493508901,
+      "eigenvector_centrality": 0.8285100240874803
+    }
+  },
+  "mixed34_n100_g0.8_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 0.022508911788463593,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.796624170630529,
+      "eigenvector_centrality": 0.7215077463931096
+    }
+  },
+  "mixed45_n20_g0.8_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.006204602308571339,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9581920947940049,
+      "eigenvector_centrality": 0.8819414861158675
+    }
+  },
+  "mixed45_n50_g0.8_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 0.006492797285318375,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9080267367873555,
+      "eigenvector_centrality": 0.8603675517222772
+    }
+  },
+  "mixed45_n100_g0.8_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.006586138159036636,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7812328045828907,
+      "eigenvector_centrality": 0.7294809798164282
+    }
+  },
+  "mixed56_n20_g0.8_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.0017880809027701616,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2182178902359921,
+      "betweenness_centrality": 0.8640832251480508,
+      "eigenvector_centrality": 0.867697350864981
+    }
+  },
+  "mixed56_n50_g0.8_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.001871851272881031,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2802242691589019,
+      "betweenness_centrality": 0.7664796878801287,
+      "eigenvector_centrality": 0.5325254671041053
+    }
+  },
+  "mixed56_n100_g0.8_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.0018981079338118434,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.2987012987012989,
+      "betweenness_centrality": 0.6444846232789511,
+      "eigenvector_centrality": 0.3901792818197952
+    }
+  },
+  "mixed23_n20_g0.8_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 0.026590431109070778,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758306
+    }
+  },
+  "mixed23_n50_g0.8_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 0.028005650267004967,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970674
+    }
+  },
+  "mixed23_n100_g0.8_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 0.028455615043640137,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462596
+    }
+  },
+  "mixed34_n20_g0.8_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.004781235940754414,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9363972740107002,
+      "eigenvector_centrality": 0.8966562851162745
+    }
+  },
+  "mixed34_n50_g0.8_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 0.005036818794906139,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9127317493508901,
+      "eigenvector_centrality": 0.8285100240874789
+    }
+  },
+  "mixed34_n100_g0.8_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 0.0051231710240244865,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.796624170630529,
+      "eigenvector_centrality": 0.7215077463931081
+    }
+  },
+  "mixed45_n20_g0.8_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.0008233907865360379,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9581920947940049,
+      "eigenvector_centrality": 0.8819414861158685
+    }
+  },
+  "mixed45_n50_g0.8_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.0008692258852533996,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.8544876857410894,
+      "eigenvector_centrality": 0.5716353236982352
+    }
+  },
+  "mixed45_n100_g0.8_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.0008846345008350909,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7345453128586724,
+      "eigenvector_centrality": 0.42731792381392053
+    }
+  },
+  "mixed56_n20_g0.8_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.00013465482334140688,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2182178902359921,
+      "betweenness_centrality": 0.8640832251480508,
+      "eigenvector_centrality": 0.8676973508649788
+    }
+  },
+  "mixed56_n50_g0.8_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.00014034047489985824,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2802242691589019,
+      "betweenness_centrality": 0.7664796878801287,
+      "eigenvector_centrality": 0.5325254671041133
+    }
+  },
+  "mixed56_n100_g0.8_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.0001422205095877871,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.2987012987012989,
+      "betweenness_centrality": 0.6444846232789511,
+      "eigenvector_centrality": 0.3901792818197989
+    }
+  },
+  "mixed23_n20_g0.8_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 0.016246534883975983,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758307
+    }
+  },
+  "mixed23_n50_g0.8_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 0.017218226566910744,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970667
+    }
+  },
+  "mixed23_n100_g0.8_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 0.01753295212984085,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462598
+    }
+  },
+  "mixed34_n20_g0.8_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.0020454400219023228,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9363972740107002,
+      "eigenvector_centrality": 0.8966562851162746
+    }
+  },
+  "mixed34_n50_g0.8_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.0021754943300038576,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.8322234364039526,
+      "eigenvector_centrality": 0.6134875285593279
+    }
+  },
+  "mixed34_n100_g0.8_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.0022230977192521095,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7222527170402497,
+      "eigenvector_centrality": 0.4868942896071298
+    }
+  },
+  "mixed45_n20_g0.8_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.00010118625505128875,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9581920947940049,
+      "eigenvector_centrality": 0.8819414861158684
+    }
+  },
+  "mixed45_n50_g0.8_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 0.00010640770778991282,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.8544876857410894,
+      "eigenvector_centrality": 0.5716353236982314
+    }
+  },
+  "mixed45_n100_g0.8_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.98,
+    "mean_cooperation": 0.0001082496892195195,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7345453128586724,
+      "eigenvector_centrality": 0.42731792381392186
+    }
+  },
+  "mixed56_n20_g0.8_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 3.4396078262943774e-05,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2182178902359921,
+      "betweenness_centrality": 0.8640832251480508,
+      "eigenvector_centrality": 0.867697350864978
+    }
+  },
+  "mixed56_n50_g0.8_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 3.543307684594765e-05,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2802242691589019,
+      "betweenness_centrality": 0.7664796878801287,
+      "eigenvector_centrality": 0.5325254671041094
+    }
+  },
+  "mixed56_n100_g0.8_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.96,
+    "mean_cooperation": 3.57625431206543e-05,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 1.0000000000000009,
+      "betweenness_centrality": 0.7450596957174985,
+      "eigenvector_centrality": 0.5064231882525544
+    }
+  },
+  "mixed23_n20_g0.9_b1.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 0.06984809786081314,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9782801373093032,
+      "eigenvector_centrality": 0.9943843351261193
+    }
+  },
+  "mixed23_n50_g0.9_b1.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 0.06989216059446335,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.8223879482116929,
+      "eigenvector_centrality": 0.9650851452045119
+    }
+  },
+  "mixed23_n100_g0.9_b1.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.07009220868349075,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6615979701056459,
+      "eigenvector_centrality": 0.9602174319735624
+    }
+  },
+  "mixed34_n20_g0.9_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 0.031400155276060104,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.985885497592003
+    }
+  },
+  "mixed34_n50_g0.9_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 0.03178458660840988,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6760170312511073,
+      "eigenvector_centrality": 0.7051145044129151
+    }
+  },
+  "mixed34_n100_g0.9_b1.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 0.03196679428219795,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7972100705615638,
+      "eigenvector_centrality": 0.8154488087466241
+    }
+  },
+  "mixed45_n20_g0.9_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 0.016362924128770828,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952035847480727,
+      "eigenvector_centrality": 0.9926179293753588
+    }
+  },
+  "mixed45_n50_g0.9_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 0.017090480774641037,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9080267367873555,
+      "eigenvector_centrality": 0.8603675517222767
+    }
+  },
+  "mixed45_n100_g0.9_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.017321433871984482,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7812328045828907,
+      "eigenvector_centrality": 0.7294809798164307
+    }
+  },
+  "mixed56_n20_g0.9_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.005944837350398302,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.2182178902359921,
+      "betweenness_centrality": 0.8640832251480508,
+      "eigenvector_centrality": 0.8676973508649806
+    }
+  },
+  "mixed56_n50_g0.9_b1.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 0.006257650442421436,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.9999999999999999,
+      "betweenness_centrality": 0.8890784868540152,
+      "eigenvector_centrality": 0.8099211460555862
+    }
+  },
+  "mixed56_n100_g0.9_b1.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.0063424305990338326,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 1.0000000000000009,
+      "betweenness_centrality": 0.7477538881760821,
+      "eigenvector_centrality": 0.6814601805158335
+    }
+  },
+  "mixed23_n20_g0.9_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 0.0009707043063826859,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758312
+    }
+  },
+  "mixed23_n50_g0.9_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 0.0011731378035619855,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970672
+    }
+  },
+  "mixed23_n100_g0.9_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 0.001161961699835956,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.589015115655037,
+      "eigenvector_centrality": 0.8813283538702188
+    }
+  },
+  "mixed34_n20_g0.9_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 8.379654900636524e-06,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920025
+    }
+  },
+  "mixed34_n50_g0.9_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 8.629564945294987e-06,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6760170312511073,
+      "eigenvector_centrality": 0.7051145044129121
+    }
+  },
+  "mixed34_n100_g0.9_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 8.676210200064816e-06,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.796624170630529,
+      "eigenvector_centrality": 0.7215077463931101
+    }
+  },
+  "mixed45_n20_g0.9_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 5.299491931509692e-06,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952035847480727,
+      "eigenvector_centrality": 0.992617929375359
+    }
+  },
+  "mixed45_n50_g0.9_b1.25_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 5.401303042162908e-06,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9097458250674839,
+      "eigenvector_centrality": 0.8604410819848631
+    }
+  },
+  "mixed45_n100_g0.9_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 5.42647103429772e-06,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7812328045828907,
+      "eigenvector_centrality": 0.7294809798164285
+    }
+  },
+  "mixed56_n20_g0.9_b1.25_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 4.034150151710492e-06,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.000000000000001,
+      "betweenness_centrality": 0.9927490428502721,
+      "eigenvector_centrality": 0.9879649487952391
+    }
+  },
+  "mixed56_n50_g0.9_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.74,
+    "mean_cooperation": 4.080135113326833e-06,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.16480245478143432,
+      "eigenvector_centrality": 0.6760985827832322
+    }
+  },
+  "mixed56_n100_g0.9_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 4.09567746828543e-06,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 1.0000000000000016,
+      "betweenness_centrality": 0.7177449980065176,
+      "eigenvector_centrality": 0.6183389195960156
+    }
+  },
+  "mixed23_n20_g0.9_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 3.8942143731901524e-08,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758307
+    }
+  },
+  "mixed23_n50_g0.9_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 3.9693823339348455e-08,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970667
+    }
+  },
+  "mixed23_n100_g0.9_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 3.9917090077778994e-08,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462595
+    }
+  },
+  "mixed34_n20_g0.9_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 2.813384369915184e-08,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920024
+    }
+  },
+  "mixed34_n50_g0.9_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 2.8417208142172967e-08,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9111743692941932,
+      "eigenvector_centrality": 0.8214706532797549
+    }
+  },
+  "mixed34_n100_g0.9_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 2.8534321572237786e-08,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.42731306058673546,
+      "eigenvector_centrality": 0.5784409761365432
+    }
+  },
+  "mixed45_n20_g0.9_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.45,
+    "mean_cooperation": 2.2898614560062924e-08,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9954773960143134,
+      "eigenvector_centrality": 0.9924795513557242
+    }
+  },
+  "mixed45_n50_g0.9_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 2.3105995339278707e-08,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5913434946347337,
+      "eigenvector_centrality": 0.7836765651292081
+    }
+  },
+  "mixed45_n100_g0.9_b1.75_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 2.319161040986728e-08,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n20_g0.9_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.45,
+    "mean_cooperation": 1.988250097895161e-08,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.4944132324730438,
+      "clustering_coefficient": 0.9580576162920817,
+      "betweenness_centrality": 0.7380868367654524,
+      "eigenvector_centrality": 0.7103776772718094
+    }
+  },
+  "mixed56_n50_g0.9_b1.75_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 2.0031766467809575e-08,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n100_g0.9_b1.75_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 2.006142807431388e-08,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.9_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 5.443897066470527e-07,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758306
+    }
+  },
+  "mixed23_n50_g0.9_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 5.562101250689011e-07,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970674
+    }
+  },
+  "mixed23_n100_g0.9_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 5.591353442468971e-07,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462594
+    }
+  },
+  "mixed34_n20_g0.9_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 3.7450422496476676e-07,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920035
+    }
+  },
+  "mixed34_n50_g0.9_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 3.7913935102551477e-07,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6760170312511073,
+      "eigenvector_centrality": 0.7051145044129149
+    }
+  },
+  "mixed34_n100_g0.9_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 3.806452468779753e-07,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.796624170630529,
+      "eigenvector_centrality": 0.7215077463931097
+    }
+  },
+  "mixed45_n20_g0.9_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.45,
+    "mean_cooperation": 2.976299242618552e-07,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9954975399409268,
+      "eigenvector_centrality": 0.9928426845892999
+    }
+  },
+  "mixed45_n50_g0.9_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 3.0060058975323045e-07,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5913434946347335,
+      "eigenvector_centrality": 0.7836765651292052
+    }
+  },
+  "mixed45_n100_g0.9_b1.5_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.87,
+    "mean_cooperation": 3.015296385910915e-07,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999998,
+      "betweenness_centrality": 0.7836749727310199,
+      "eigenvector_centrality": 0.7298212418989759
+    }
+  },
+  "mixed56_n20_g0.9_b1.5_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.4,
+    "mean_cooperation": 2.5405512360521243e-07,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.6614378277661477,
+      "clustering_coefficient": 0.9691177375268648,
+      "betweenness_centrality": 0.8202613507851718,
+      "eigenvector_centrality": 0.7672267391096997
+    }
+  },
+  "mixed56_n50_g0.9_b1.5_q_learning": {
+    "number_of_clusters": 5,
+    "largest_cluster_fraction": 0.66,
+    "mean_cooperation": 2.5622068733355263e-07,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.6110100926607792,
+      "clustering_coefficient": 0.6110100926607801,
+      "betweenness_centrality": 0.5939132471650714,
+      "eigenvector_centrality": 0.7605567574253113
+    }
+  },
+  "mixed56_n100_g0.9_b1.5_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 2.566022203609464e-07,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.9_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 3.0194846623032845e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758307
+    }
+  },
+  "mixed23_n50_g0.9_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 3.075586230139038e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970674
+    }
+  },
+  "mixed23_n100_g0.9_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 3.0894824476490612e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462599
+    }
+  },
+  "mixed34_n20_g0.9_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 2.220196915203587e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920028
+    }
+  },
+  "mixed34_n50_g0.9_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 2.239633367651095e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.634880643760682,
+      "eigenvector_centrality": 0.6782413521700723
+    }
+  },
+  "mixed34_n100_g0.9_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 2.2492721019062856e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.42731306058673546,
+      "eigenvector_centrality": 0.5784409761365447
+    }
+  },
+  "mixed45_n20_g0.9_b2.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 1.8240056132157179e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952035847480727,
+      "eigenvector_centrality": 0.9926179293753599
+    }
+  },
+  "mixed45_n50_g0.9_b2.0_q_learning": {
+    "number_of_clusters": 5,
+    "largest_cluster_fraction": 0.64,
+    "mean_cooperation": 1.840314678425159e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6056850055211025,
+      "eigenvector_centrality": 0.8622740937153166
+    }
+  },
+  "mixed45_n100_g0.9_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 1.8472490204146652e-09,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n20_g0.9_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.45,
+    "mean_cooperation": 1.5953276477631562e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.5656854249492386,
+      "clustering_coefficient": 0.5656854249492395,
+      "betweenness_centrality": 0.602652926849993,
+      "eigenvector_centrality": 0.730479463774504
+    }
+  },
+  "mixed56_n50_g0.9_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 1.6078852693723888e-09,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n100_g0.9_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 1.6100863975410107e-09,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.95_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 4.66553462530328e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.8224439378461049,
+      "eigenvector_centrality": 0.7806171777210182
+    }
+  },
+  "mixed23_n50_g0.95_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 4.777243045595014e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970675
+    }
+  },
+  "mixed23_n100_g0.95_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 4.8084869419540155e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462597
+    }
+  },
+  "mixed34_n20_g0.95_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 3.05806091560612e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920027
+    }
+  },
+  "mixed34_n50_g0.95_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 3.1007625356238577e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9127317493508901,
+      "eigenvector_centrality": 0.8285100240874791
+    }
+  },
+  "mixed34_n100_g0.95_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 3.1131504041326252e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.796624170630529,
+      "eigenvector_centrality": 0.7215077463931097
+    }
+  },
+  "mixed45_n20_g0.95_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 2.3669046722574194e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952035847480727,
+      "eigenvector_centrality": 0.9926179293753592
+    }
+  },
+  "mixed45_n50_g0.95_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 2.3897979151144e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5913434946347337,
+      "eigenvector_centrality": 0.7836765651292094
+    }
+  },
+  "mixed45_n100_g0.95_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 2.398454990171217e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999999,
+      "betweenness_centrality": 0.7879572175932223,
+      "eigenvector_centrality": 0.7155271509528239
+    }
+  },
+  "mixed56_n20_g0.95_b1.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 1.9789880845166863e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.0000000000000002,
+      "betweenness_centrality": 0.995256076884595,
+      "eigenvector_centrality": 0.9894779626836632
+    }
+  },
+  "mixed56_n50_g0.95_b1.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.78,
+    "mean_cooperation": 1.998246901280254e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999973,
+      "betweenness_centrality": 0.8708300689040847,
+      "eigenvector_centrality": 0.7677806956811654
+    }
+  },
+  "mixed56_n100_g0.95_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 2.0023589453188606e-09,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.459010088961651,
+      "eigenvector_centrality": 0.47289758615486827
+    }
+  },
+  "mixed23_n20_g0.95_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 2.6101117794885553e-11,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758305
+    }
+  },
+  "mixed23_n50_g0.95_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 2.6653795490161336e-11,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970674
+    }
+  },
+  "mixed23_n100_g0.95_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 2.6800022270845325e-11,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462593
+    }
+  },
+  "mixed34_n20_g0.95_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 1.8064837820075397e-11,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920027
+    }
+  },
+  "mixed34_n50_g0.95_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 1.8292270476116812e-11,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9127317493508901,
+      "eigenvector_centrality": 0.8285100240874799
+    }
+  },
+  "mixed34_n100_g0.95_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 1.8366691847959693e-11,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.796624170630529,
+      "eigenvector_centrality": 0.7215077463931103
+    }
+  },
+  "mixed45_n20_g0.95_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 1.4389286637217502e-11,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952035847480727,
+      "eigenvector_centrality": 0.9926179293753589
+    }
+  },
+  "mixed45_n50_g0.95_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 1.4523375557740081e-11,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5913434946347337,
+      "eigenvector_centrality": 0.7836765651292031
+    }
+  },
+  "mixed45_n100_g0.95_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 1.45758856373579e-11,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7812328045828907,
+      "eigenvector_centrality": 0.7294809798164295
+    }
+  },
+  "mixed56_n20_g0.95_b1.25_q_learning": {
+    "number_of_clusters": 5,
+    "largest_cluster_fraction": 0.4,
+    "mean_cooperation": 1.2282440689515006e-11,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952633697753912,
+      "eigenvector_centrality": 0.9899674767984926
+    }
+  },
+  "mixed56_n50_g0.95_b1.25_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.74,
+    "mean_cooperation": 1.2382478722927637e-11,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.9999999999999969,
+      "betweenness_centrality": 0.8779067130830949,
+      "eigenvector_centrality": 0.7868993626431631
+    }
+  },
+  "mixed56_n100_g0.95_b1.25_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 1.240889595938155e-11,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.95_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 1.5785776277723457e-13,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758306
+    }
+  },
+  "mixed23_n50_g0.95_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 1.6093636839853431e-13,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970672
+    }
+  },
+  "mixed23_n100_g0.95_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 1.6175645892180235e-13,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462597
+    }
+  },
+  "mixed34_n20_g0.95_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 1.1272414073134826e-13,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920028
+    }
+  },
+  "mixed34_n50_g0.95_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 1.1391702739536186e-13,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6760170312511073,
+      "eigenvector_centrality": 0.7051145044129142
+    }
+  },
+  "mixed34_n100_g0.95_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 1.143870696947158e-13,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.4859494253108498,
+      "eigenvector_centrality": 0.6095912332279916
+    }
+  },
+  "mixed45_n20_g0.95_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.45,
+    "mean_cooperation": 9.125068322485275e-14,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9954975399409268,
+      "eigenvector_centrality": 0.9928426845892999
+    }
+  },
+  "mixed45_n50_g0.95_b1.5_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.76,
+    "mean_cooperation": 9.203879656029604e-14,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6042884649226145,
+      "eigenvector_centrality": 0.8307893733789838
+    }
+  },
+  "mixed45_n100_g0.95_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 9.237839578577281e-14,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.42182160645801114,
+      "eigenvector_centrality": 0.6286103934622499
+    }
+  },
+  "mixed56_n20_g0.95_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.45,
+    "mean_cooperation": 7.880783699232285e-14,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.443202630213959,
+      "clustering_coefficient": 0.9555770053362593,
+      "betweenness_centrality": 0.7177383948108707,
+      "eigenvector_centrality": 0.6793972471037566
+    }
+  },
+  "mixed56_n50_g0.95_b1.5_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 7.94480719277027e-14,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n100_g0.95_b1.5_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 7.955458123862225e-14,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.95_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 9.91750220358592e-16,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758308
+    }
+  },
+  "mixed23_n50_g0.95_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 1.00966168494035e-15,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970674
+    }
+  },
+  "mixed23_n100_g0.95_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 1.0149818988820542e-15,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462599
+    }
+  },
+  "mixed34_n20_g0.95_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 7.224715113441943e-16,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920031
+    }
+  },
+  "mixed34_n50_g0.95_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 7.293479365682416e-16,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9127317493508901,
+      "eigenvector_centrality": 0.8285100240874806
+    }
+  },
+  "mixed34_n100_g0.95_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 7.3238709078299e-16,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.42731306058673546,
+      "eigenvector_centrality": 0.578440976136541
+    }
+  },
+  "mixed45_n20_g0.95_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.45,
+    "mean_cooperation": 5.909404236462839e-16,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9954975399409268,
+      "eigenvector_centrality": 0.9928426845892996
+    }
+  },
+  "mixed45_n50_g0.95_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 5.959437943261559e-16,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5913434946347335,
+      "eigenvector_centrality": 0.7836765651292048
+    }
+  },
+  "mixed45_n100_g0.95_b1.75_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 5.98281922897933e-16,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n20_g0.95_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.45,
+    "mean_cooperation": 5.146310666094664e-16,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.443202630213959,
+      "clustering_coefficient": 0.9555770053362593,
+      "betweenness_centrality": 0.7177383948108707,
+      "eigenvector_centrality": 0.6793972471037564
+    }
+  },
+  "mixed56_n50_g0.95_b1.75_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 5.184931662720316e-16,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n100_g0.95_b1.75_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 5.191588812290143e-16,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.97_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 7.539380124171272e-15,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.8224439378461049,
+      "eigenvector_centrality": 0.780617177721019
+    }
+  },
+  "mixed23_n50_g0.97_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 7.714931937654462e-15,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970666
+    }
+  },
+  "mixed23_n100_g0.97_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 7.763376293006777e-15,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462599
+    }
+  },
+  "mixed34_n20_g0.97_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 5.002831119884548e-15,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920027
+    }
+  },
+  "mixed34_n50_g0.97_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 5.069694206674908e-15,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9127317493508901,
+      "eigenvector_centrality": 0.8285100240874831
+    }
+  },
+  "mixed34_n100_g0.97_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 5.089260667756482e-15,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.796624170630529,
+      "eigenvector_centrality": 0.7215077463931098
+    }
+  },
+  "mixed45_n20_g0.97_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 3.893685097651825e-15,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952035847480727,
+      "eigenvector_centrality": 0.9926179293753589
+    }
+  },
+  "mixed45_n50_g0.97_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 3.92935323154423e-15,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5913434946347337,
+      "eigenvector_centrality": 0.7836765651292037
+    }
+  },
+  "mixed45_n100_g0.97_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 3.944371972731996e-15,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7812328045828907,
+      "eigenvector_centrality": 0.7294809798164261
+    }
+  },
+  "mixed56_n20_g0.97_b1.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 3.2668536116293306e-15,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.0000000000000002,
+      "betweenness_centrality": 0.9952384644392732,
+      "eigenvector_centrality": 0.9891793998967848
+    }
+  },
+  "mixed56_n50_g0.97_b1.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.78,
+    "mean_cooperation": 3.298403471332185e-15,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999973,
+      "betweenness_centrality": 0.8708300689040847,
+      "eigenvector_centrality": 0.767780695681164
+    }
+  },
+  "mixed56_n100_g0.97_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 3.304670456350683e-15,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.06854737584084972,
+      "eigenvector_centrality": 0.461393985173655
+    }
+  },
+  "mixed23_n20_g0.95_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 6.367061464907483e-18,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758307
+    }
+  },
+  "mixed23_n50_g0.95_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 6.483830829668837e-18,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970674
+    }
+  },
+  "mixed23_n100_g0.95_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 6.511869770892547e-18,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462597
+    }
+  },
+  "mixed34_n20_g0.95_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 4.702882019520729e-18,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920031
+    }
+  },
+  "mixed34_n50_g0.95_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 4.741516730800937e-18,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6760170312511073,
+      "eigenvector_centrality": 0.7051145044129143
+    }
+  },
+  "mixed34_n100_g0.95_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 4.7626797331828e-18,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.42731306058673546,
+      "eigenvector_centrality": 0.5784409761365417
+    }
+  },
+  "mixed45_n20_g0.95_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 3.87291463548401e-18,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952240396564934,
+      "eigenvector_centrality": 0.9929658829242952
+    }
+  },
+  "mixed45_n50_g0.95_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 3.905687117763055e-18,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed45_n100_g0.95_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 3.921742279862403e-18,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n20_g0.95_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.45,
+    "mean_cooperation": 3.393014842968255e-18,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.5606119105813886,
+      "clustering_coefficient": 0.5606119105813895,
+      "betweenness_centrality": 0.6022646113206122,
+      "eigenvector_centrality": 0.7302199279844432
+    }
+  },
+  "mixed56_n50_g0.95_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 3.419544593164362e-18,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n100_g0.95_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 3.423457364256891e-18,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.97_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 1.5293659627431673e-18,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758307
+    }
+  },
+  "mixed23_n50_g0.97_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 1.5610395355784353e-18,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970672
+    }
+  },
+  "mixed23_n100_g0.97_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 1.5696703380898136e-18,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462601
+    }
+  },
+  "mixed34_n20_g0.97_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 1.0644769134058352e-18,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.985885497592003
+    }
+  },
+  "mixed34_n50_g0.97_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 1.0773771052513294e-18,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9127317493508901,
+      "eigenvector_centrality": 0.8285100240874805
+    }
+  },
+  "mixed34_n100_g0.97_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 1.081707292360468e-18,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.796624170630529,
+      "eigenvector_centrality": 0.7215077463931081
+    }
+  },
+  "mixed45_n20_g0.97_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 8.498821708742392e-19,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952035847480727,
+      "eigenvector_centrality": 0.9926179293753586
+    }
+  },
+  "mixed45_n50_g0.97_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 8.575374172506878e-19,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5913434946347337,
+      "eigenvector_centrality": 0.7836765651292065
+    }
+  },
+  "mixed45_n100_g0.97_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 8.609359404961502e-19,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999997,
+      "betweenness_centrality": 0.7812328045828907,
+      "eigenvector_centrality": 0.7294809798164289
+    }
+  },
+  "mixed56_n20_g0.97_b1.25_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 7.265894013083502e-19,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.0000000000000002,
+      "betweenness_centrality": 0.995256076884595,
+      "eigenvector_centrality": 0.9894779626836626
+    }
+  },
+  "mixed56_n50_g0.97_b1.25_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.74,
+    "mean_cooperation": 7.325725020765228e-19,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.807164884961649,
+      "clustering_coefficient": 0.863119774408942,
+      "betweenness_centrality": 0.4818507255050904,
+      "eigenvector_centrality": 0.8002565066191099
+    }
+  },
+  "mixed56_n100_g0.97_b1.25_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 7.340335098334446e-19,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.97_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 3.325201186542326e-22,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758307
+    }
+  },
+  "mixed23_n50_g0.97_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 3.3899031793353188e-22,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.899249916997067
+    }
+  },
+  "mixed23_n100_g0.97_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 3.4064629474577182e-22,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462598
+    }
+  },
+  "mixed34_n20_g0.97_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 2.381690474848849e-22,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920032
+    }
+  },
+  "mixed34_n50_g0.97_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 2.405696080174576e-22,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6760170312511073,
+      "eigenvector_centrality": 0.7051145044129147
+    }
+  },
+  "mixed34_n100_g0.97_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 2.4158765510375067e-22,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.796624170630529,
+      "eigenvector_centrality": 0.7215077463931094
+    }
+  },
+  "mixed45_n20_g0.97_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.45,
+    "mean_cooperation": 1.9301292008692993e-22,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9954975399409268,
+      "eigenvector_centrality": 0.9928426845892999
+    }
+  },
+  "mixed45_n50_g0.97_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 1.945971294894565e-22,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5913434946347335,
+      "eigenvector_centrality": 0.7836765651292055
+    }
+  },
+  "mixed45_n100_g0.97_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 1.9539528002069738e-22,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.3359208639433205,
+      "eigenvector_centrality": 0.6328211492680696
+    }
+  },
+  "mixed56_n20_g0.97_b1.5_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.45,
+    "mean_cooperation": 1.667929380240367e-22,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.7905694150420952,
+      "clustering_coefficient": 0.97952001483352,
+      "betweenness_centrality": 0.879099664396987,
+      "eigenvector_centrality": 0.8481367058162108
+    }
+  },
+  "mixed56_n50_g0.97_b1.5_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 1.681778748510172e-22,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n100_g0.97_b1.5_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 1.683638566980321e-22,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.97_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 7.493511149318085e-26,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758308
+    }
+  },
+  "mixed23_n50_g0.97_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 7.62734140188883e-26,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970675
+    }
+  },
+  "mixed23_n100_g0.97_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 7.665921630534795e-26,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462598
+    }
+  },
+  "mixed34_n20_g0.97_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 5.46785994204718e-26,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920032
+    }
+  },
+  "mixed34_n50_g0.97_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 5.517378836479683e-26,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6760170312511073,
+      "eigenvector_centrality": 0.7051145044129152
+    }
+  },
+  "mixed34_n100_g0.97_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.91,
+    "mean_cooperation": 5.541059454778286e-26,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7985254897759856,
+      "eigenvector_centrality": 0.7220354222931441
+    }
+  },
+  "mixed45_n20_g0.97_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 4.4733201958245094e-26,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952240396564934,
+      "eigenvector_centrality": 0.9929658829242934
+    }
+  },
+  "mixed45_n50_g0.97_b1.75_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.72,
+    "mean_cooperation": 4.510085736239675e-26,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6330619836105364,
+      "eigenvector_centrality": 0.8411309851588891
+    }
+  },
+  "mixed45_n100_g0.97_b1.75_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 4.5295662865155586e-26,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n20_g0.97_b1.75_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.35,
+    "mean_cooperation": 3.8965867613565476e-26,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.44320263021395895,
+      "clustering_coefficient": 0.9555770053362593,
+      "betweenness_centrality": 0.7187078619974084,
+      "eigenvector_centrality": 0.6794235014186281
+    }
+  },
+  "mixed56_n50_g0.97_b1.75_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 3.9264294310308167e-26,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n100_g0.97_b1.75_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 3.9304991521149e-26,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.97_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 1.7242737944641244e-29,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758307
+    }
+  },
+  "mixed23_n50_g0.97_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 1.7555117763089777e-29,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970668
+    }
+  },
+  "mixed23_n100_g0.97_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 1.7629837826400926e-29,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.589015115655037,
+      "eigenvector_centrality": 0.8813283538702188
+    }
+  },
+  "mixed34_n20_g0.97_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 1.2748935512747125e-29,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.985885497592003
+    }
+  },
+  "mixed34_n50_g0.97_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 1.2843408395050395e-29,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7012465919233635,
+      "eigenvector_centrality": 0.705680879369187
+    }
+  },
+  "mixed34_n100_g0.97_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.91,
+    "mean_cooperation": 1.2902972292478878e-29,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.42809027109879433,
+      "eigenvector_centrality": 0.5788619050477489
+    }
+  },
+  "mixed45_n20_g0.97_b2.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 1.0493575251372453e-29,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952455734658021,
+      "eigenvector_centrality": 0.9933352676852909
+    }
+  },
+  "mixed45_n50_g0.97_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 1.0579096321016245e-29,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed45_n100_g0.97_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 1.0628248159682884e-29,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n20_g0.97_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.45,
+    "mean_cooperation": 9.191739896198362e-30,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.5606119105813886,
+      "clustering_coefficient": 0.5606119105813895,
+      "betweenness_centrality": 0.6022646113206122,
+      "eigenvector_centrality": 0.7302199279844397
+    }
+  },
+  "mixed56_n50_g0.97_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 9.265335998831029e-30,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n100_g0.97_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 9.273094637704648e-30,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.99_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 9.10844001811131e-44,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.8224439378461049,
+      "eigenvector_centrality": 0.7806171777210188
+    }
+  },
+  "mixed23_n50_g0.99_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 9.388699710976274e-44,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970677
+    }
+  },
+  "mixed23_n100_g0.99_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 9.388699710976274e-44,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462597
+    }
+  },
+  "mixed34_n20_g0.99_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 6.165713243029195e-44,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920024
+    }
+  },
+  "mixed34_n50_g0.99_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 6.165713243029195e-44,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9127317493508901,
+      "eigenvector_centrality": 0.828510024087482
+    }
+  },
+  "mixed34_n100_g0.99_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.91,
+    "mean_cooperation": 6.165713243029195e-44,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7985254897759856,
+      "eigenvector_centrality": 0.7220354222931407
+    }
+  },
+  "mixed45_n20_g0.99_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 4.764414778704378e-44,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9397374735510508,
+      "eigenvector_centrality": 0.9663300568093031
+    }
+  },
+  "mixed45_n50_g0.99_b1.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.78,
+    "mean_cooperation": 4.764414778704378e-44,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.0000000000000002,
+      "betweenness_centrality": 0.9091464707918837,
+      "eigenvector_centrality": 0.8734173289889597
+    }
+  },
+  "mixed45_n100_g0.99_b1.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 4.90454462513686e-44,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.32964200614814343,
+      "eigenvector_centrality": 0.6328073946749913
+    }
+  },
+  "mixed56_n20_g0.99_b1.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 4.0637655465419695e-44,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.0000000000000002,
+      "betweenness_centrality": 0.9952384644392732,
+      "eigenvector_centrality": 0.9891793998967849
+    }
+  },
+  "mixed56_n50_g0.99_b1.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 4.0637655465419695e-44,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n100_g0.99_b1.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 4.0637655465419695e-44,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.99_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758306
+    }
+  },
+  "mixed23_n50_g0.99_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970678
+    }
+  },
+  "mixed23_n100_g0.99_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462598
+    }
+  },
+  "mixed34_n20_g0.99_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920024
+    }
+  },
+  "mixed34_n50_g0.99_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9127317493508901,
+      "eigenvector_centrality": 0.8285100240874808
+    }
+  },
+  "mixed34_n100_g0.99_b1.25_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.4859494253108498,
+      "eigenvector_centrality": 0.6095912332279914
+    }
+  },
+  "mixed45_n20_g0.99_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952035847480727,
+      "eigenvector_centrality": 0.9926179293753593
+    }
+  },
+  "mixed45_n50_g0.99_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6010551341514743,
+      "eigenvector_centrality": 0.7837964689942812
+    }
+  },
+  "mixed45_n100_g0.99_b1.25_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.9999999999999999,
+      "betweenness_centrality": 0.7879572175932223,
+      "eigenvector_centrality": 0.7155271509528242
+    }
+  },
+  "mixed56_n20_g0.99_b1.25_q_learning": {
+    "number_of_clusters": 5,
+    "largest_cluster_fraction": 0.4,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952633697753912,
+      "eigenvector_centrality": 0.9899674767984926
+    }
+  },
+  "mixed56_n50_g0.99_b1.25_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.76,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.6992058987801012,
+      "clustering_coefficient": 0.8903891243679871,
+      "betweenness_centrality": 0.28666582633109505,
+      "eigenvector_centrality": 0.7536019248563941
+    }
+  },
+  "mixed56_n100_g0.99_b1.25_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 0.0,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.99_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758306
+    }
+  },
+  "mixed23_n50_g0.99_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970671
+    }
+  },
+  "mixed23_n100_g0.99_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462598
+    }
+  },
+  "mixed34_n20_g0.99_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.985885497592003
+    }
+  },
+  "mixed34_n50_g0.99_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6760170312511073,
+      "eigenvector_centrality": 0.7051145044129141
+    }
+  },
+  "mixed34_n100_g0.99_b1.5_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.4859494253108498,
+      "eigenvector_centrality": 0.6095912332279918
+    }
+  },
+  "mixed45_n20_g0.99_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952035847480727,
+      "eigenvector_centrality": 0.9926179293753595
+    }
+  },
+  "mixed45_n50_g0.99_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5913434946347335,
+      "eigenvector_centrality": 0.7836765651292055
+    }
+  },
+  "mixed45_n100_g0.99_b1.5_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.9,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.42182160645801114,
+      "eigenvector_centrality": 0.6286103934622532
+    }
+  },
+  "mixed56_n20_g0.99_b1.5_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.4,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.6614378277661477,
+      "clustering_coefficient": 0.9691177375268648,
+      "betweenness_centrality": 0.8202613507851718,
+      "eigenvector_centrality": 0.767226739109699
+    }
+  },
+  "mixed56_n50_g0.99_b1.5_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 0.0,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n100_g0.99_b1.5_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 0.0,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.99_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758306
+    }
+  },
+  "mixed23_n50_g0.99_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970674
+    }
+  },
+  "mixed23_n100_g0.99_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.8909681362462597
+    }
+  },
+  "mixed34_n20_g0.99_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920027
+    }
+  },
+  "mixed34_n50_g0.99_b2.0_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.634880643760682,
+      "eigenvector_centrality": 0.6782413521700734
+    }
+  },
+  "mixed34_n100_g0.99_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.490892501916112,
+      "eigenvector_centrality": 0.609616019639455
+    }
+  },
+  "mixed45_n20_g0.99_b2.0_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.5,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9952035847480727,
+      "eigenvector_centrality": 0.9926179293753583
+    }
+  },
+  "mixed45_n50_g0.99_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 0.0,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed45_n100_g0.99_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 0.0,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n20_g0.99_b2.0_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.45,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.5606119105813886,
+      "clustering_coefficient": 0.5606119105813895,
+      "betweenness_centrality": 0.6022646113206122,
+      "eigenvector_centrality": 0.7302199279844424
+    }
+  },
+  "mixed56_n50_g0.99_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 0.0,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n100_g0.99_b2.0_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 0.0,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed23_n20_g0.99_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.7,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9265411495473589,
+      "eigenvector_centrality": 0.9581108577758306
+    }
+  },
+  "mixed23_n50_g0.99_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.88,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999998,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.7526889276411215,
+      "eigenvector_centrality": 0.8992499169970674
+    }
+  },
+  "mixed23_n100_g0.99_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.94,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0000000000000002,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.5992530206823647,
+      "eigenvector_centrality": 0.89096813624626
+    }
+  },
+  "mixed34_n20_g0.99_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.6,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.983041987583163,
+      "eigenvector_centrality": 0.9858854975920032
+    }
+  },
+  "mixed34_n50_g0.99_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.84,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.9999999999999999,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.9111743692941932,
+      "eigenvector_centrality": 0.8214706532797558
+    }
+  },
+  "mixed34_n100_g0.99_b1.75_q_learning": {
+    "number_of_clusters": 2,
+    "largest_cluster_fraction": 0.92,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.4859494253108498,
+      "eigenvector_centrality": 0.6095912332279928
+    }
+  },
+  "mixed45_n20_g0.99_b1.75_q_learning": {
+    "number_of_clusters": 3,
+    "largest_cluster_fraction": 0.45,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 1.0,
+      "clustering_coefficient": 1.0,
+      "betweenness_centrality": 0.9954985592504372,
+      "eigenvector_centrality": 0.9928074509009835
+    }
+  },
+  "mixed45_n50_g0.99_b1.75_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.8,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.6034586238513817,
+      "eigenvector_centrality": 0.7838264420946148
+    }
+  },
+  "mixed45_n100_g0.99_b1.75_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 0.0,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n20_g0.99_b1.75_q_learning": {
+    "number_of_clusters": 4,
+    "largest_cluster_fraction": 0.4,
+    "mean_cooperation": 0.0,
+    "method_used": "dbscan",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.49999999999999956,
+      "clustering_coefficient": 0.9586025865388216,
+      "betweenness_centrality": 0.7377368659670978,
+      "eigenvector_centrality": 0.7000971478742475
+    }
+  },
+  "mixed56_n50_g0.99_b1.75_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 0.0,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  },
+  "mixed56_n100_g0.99_b1.75_q_learning": {
+    "number_of_clusters": 1,
+    "largest_cluster_fraction": 1.0,
+    "mean_cooperation": 0.0,
+    "method_used": "homogeneous",
+    "reps": 2048,
+    "fused": true,
+    "cluster_topology_correlation_eta": {
+      "degree": 0.0,
+      "clustering_coefficient": 0.0,
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 0.0
+    }
+  }
+}

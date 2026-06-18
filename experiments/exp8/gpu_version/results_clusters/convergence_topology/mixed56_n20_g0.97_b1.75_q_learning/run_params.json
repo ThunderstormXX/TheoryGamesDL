@@ -1,0 +1,267 @@
+{
+  "artifact_version": 1,
+  "created_utc": "2026-06-18T01:08:40.458135+00:00",
+  "topology_name": "mixed56_n20_g0.97_b1.75_q_learning",
+  "title": "Mixed (5/6) | n=20, \u03b3=0.97, \u03b2=1.75, q_learning",
+  "n_final_steps": 10000,
+  "graph": {
+    "family": "mixed56",
+    "n": 20,
+    "fused_scenario": "g0.97_b1.75_q_learning",
+    "num_nodes": 20,
+    "num_edges": 51,
+    "adjacency_shape": [
+      20,
+      20
+    ],
+    "edge_list": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        0,
+        18
+      ],
+      [
+        0,
+        19
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        11
+      ],
+      [
+        1,
+        19
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        12
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        13
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        4,
+        14
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        6,
+        16
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        7,
+        17
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        8,
+        18
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        11,
+        13
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        13,
+        14
+      ],
+      [
+        13,
+        15
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        15,
+        16
+      ],
+      [
+        15,
+        17
+      ],
+      [
+        16,
+        17
+      ],
+      [
+        16,
+        18
+      ],
+      [
+        17,
+        18
+      ],
+      [
+        17,
+        19
+      ],
+      [
+        18,
+        19
+      ]
+    ]
+  },
+  "simulation": {
+    "gamma": 0.97,
+    "beta": 1.75,
+    "learner_type": "q_learning",
+    "iters": 1000000,
+    "reps": 2048,
+    "seed": 42,
+    "alpha": 0.01,
+    "record_every": 5000,
+    "reward_type": "pp",
+    "b": 2.0,
+    "c": 1.0,
+    "bonus": 1.0,
+    "num_nodes": 20,
+    "device": "cuda",
+    "store_reps": "reduced",
+    "fast_reward": true,
+    "fused_total_nodes": 680,
+    "fused": true
+  },
+  "clustering": {
+    "method": "auto",
+    "scaling": "shared",
+    "dbscan_eps": 0.3,
+    "dbscan_min_samples": 2,
+    "hdbscan_min_cluster_size": 2,
+    "random_state": 42,
+    "noise_scale": 0.0028534303839843063,
+    "method_used": "dbscan",
+    "n_clusters": 4,
+    "silhouette": 0.7644466897596572,
+    "chosen_params": {
+      "eps": 0.3,
+      "min_samples": 2
+    }
+  },
+  "extra": {
+    "graph_family": "mixed56",
+    "n": 20,
+    "gamma": 0.97,
+    "beta": 1.75,
+    "learner": "q_learning"
+  }
+}

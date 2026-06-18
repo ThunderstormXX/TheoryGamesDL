@@ -1,0 +1,86 @@
+{
+  "topology_name": "mixed56_n50_g0.97_b1.25_q_learning",
+  "title": "Mixed (5/6) | n=50, \u03b3=0.97, \u03b2=1.25, q_learning",
+  "num_nodes": 50,
+  "method_used": "dbscan",
+  "cluster_params": {
+    "eps": 0.3,
+    "min_samples": 2
+  },
+  "number_of_clusters": 4,
+  "silhouette": 0.6742329974467199,
+  "cluster_sizes": {
+    "noise": 4,
+    "0": 3,
+    "1": 4,
+    "2": 37,
+    "3": 2
+  },
+  "largest_cluster_fraction": 0.74,
+  "mean_cooperation": 7.325725020765228e-19,
+  "mean_Q_C": -0.09313540160655975,
+  "mean_Q_D": 33.32474899291992,
+  "per_cluster_mean_Q": {
+    "noise": {
+      "mean_Q_C": -0.10710455477237701,
+      "mean_Q_D": 33.324649810791016,
+      "size": 4
+    },
+    "0": {
+      "mean_Q_C": -0.11702565103769302,
+      "mean_Q_D": 33.32505416870117,
+      "size": 3
+    },
+    "1": {
+      "mean_Q_C": -0.10882796347141266,
+      "mean_Q_D": 33.32459259033203,
+      "size": 4
+    },
+    "2": {
+      "mean_Q_C": -0.08862066268920898,
+      "mean_Q_D": 33.32474899291992,
+      "size": 37
+    },
+    "3": {
+      "mean_Q_C": -0.08149953186511993,
+      "mean_Q_D": 33.324764251708984,
+      "size": 2
+    }
+  },
+  "degree_distribution": {
+    "5": 48,
+    "6": 2
+  },
+  "cluster_topology_correlation_eta": {
+    "degree": 0.807164884961649,
+    "clustering_coefficient": 0.863119774408942,
+    "betweenness_centrality": 0.4818507255050904,
+    "eigenvector_centrality": 0.8002565066191099
+  },
+  "n_final_records_averaged": 2,
+  "simulation": {
+    "gamma": 0.97,
+    "beta": 1.25,
+    "learner_type": "q_learning",
+    "iters": 1000000,
+    "reps": 2048,
+    "seed": 42,
+    "alpha": 0.01,
+    "record_every": 5000,
+    "reward_type": "pp",
+    "b": 2.0,
+    "c": 1.0,
+    "bonus": 1.0,
+    "num_nodes": 50,
+    "device": "cuda",
+    "store_reps": "reduced",
+    "fast_reward": true,
+    "fused_total_nodes": 680,
+    "fused": true
+  },
+  "graph_family": "mixed56",
+  "n": 50,
+  "gamma": 0.97,
+  "beta": 1.25,
+  "learner": "q_learning"
+}

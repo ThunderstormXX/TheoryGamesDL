@@ -1,0 +1,92 @@
+{
+  "topology_name": "mixed56_n50_g0.9_b1.5_q_learning",
+  "title": "Mixed (5/6) | n=50, \u03b3=0.9, \u03b2=1.5, q_learning",
+  "num_nodes": 50,
+  "method_used": "dbscan",
+  "cluster_params": {
+    "eps": 0.3,
+    "min_samples": 2
+  },
+  "number_of_clusters": 5,
+  "silhouette": 0.6907812304131234,
+  "cluster_sizes": {
+    "noise": 3,
+    "0": 5,
+    "1": 2,
+    "2": 33,
+    "3": 2,
+    "4": 5
+  },
+  "largest_cluster_fraction": 0.66,
+  "mean_cooperation": 2.5622068733355263e-07,
+  "mean_Q_C": -0.12952475249767303,
+  "mean_Q_D": 10.00060749053955,
+  "per_cluster_mean_Q": {
+    "noise": {
+      "mean_Q_C": -0.150290384888649,
+      "mean_Q_D": 10.000582695007324,
+      "size": 3
+    },
+    "0": {
+      "mean_Q_C": -0.14459601044654846,
+      "mean_Q_D": 10.000632286071777,
+      "size": 5
+    },
+    "1": {
+      "mean_Q_C": -0.14010754227638245,
+      "mean_Q_D": 10.000589370727539,
+      "size": 2
+    },
+    "2": {
+      "mean_Q_C": -0.12518751621246338,
+      "mean_Q_D": 10.000604629516602,
+      "size": 33
+    },
+    "3": {
+      "mean_Q_C": -0.11843942105770111,
+      "mean_Q_D": 10.000624656677246,
+      "size": 2
+    },
+    "4": {
+      "mean_Q_C": -0.13082098960876465,
+      "mean_Q_D": 10.000608444213867,
+      "size": 5
+    }
+  },
+  "degree_distribution": {
+    "5": 48,
+    "6": 2
+  },
+  "cluster_topology_correlation_eta": {
+    "degree": 0.6110100926607792,
+    "clustering_coefficient": 0.6110100926607801,
+    "betweenness_centrality": 0.5939132471650714,
+    "eigenvector_centrality": 0.7605567574253113
+  },
+  "n_final_records_averaged": 2,
+  "simulation": {
+    "gamma": 0.9,
+    "beta": 1.5,
+    "learner_type": "q_learning",
+    "iters": 1000000,
+    "reps": 2048,
+    "seed": 42,
+    "alpha": 0.01,
+    "record_every": 5000,
+    "reward_type": "pp",
+    "b": 2.0,
+    "c": 1.0,
+    "bonus": 1.0,
+    "num_nodes": 50,
+    "device": "cuda",
+    "store_reps": "reduced",
+    "fast_reward": true,
+    "fused_total_nodes": 680,
+    "fused": true
+  },
+  "graph_family": "mixed56",
+  "n": 50,
+  "gamma": 0.9,
+  "beta": 1.5,
+  "learner": "q_learning"
+}

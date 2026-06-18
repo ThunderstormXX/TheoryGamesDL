@@ -1,0 +1,92 @@
+{
+  "topology_name": "mixed45_n50_g0.9_b2.0_q_learning",
+  "title": "Mixed (4/5) | n=50, \u03b3=0.9, \u03b2=2.0, q_learning",
+  "num_nodes": 50,
+  "method_used": "dbscan",
+  "cluster_params": {
+    "eps": 0.3,
+    "min_samples": 2
+  },
+  "number_of_clusters": 5,
+  "silhouette": 0.7055189345299014,
+  "cluster_sizes": {
+    "noise": 3,
+    "0": 5,
+    "1": 4,
+    "2": 32,
+    "3": 4,
+    "4": 2
+  },
+  "largest_cluster_fraction": 0.64,
+  "mean_cooperation": 1.840314678425159e-09,
+  "mean_Q_C": -0.06652236729860306,
+  "mean_Q_D": 9.999361991882324,
+  "per_cluster_mean_Q": {
+    "noise": {
+      "mean_Q_C": -0.08261027932167053,
+      "mean_Q_D": 9.99938678741455,
+      "size": 3
+    },
+    "0": {
+      "mean_Q_C": -0.07647880166769028,
+      "mean_Q_D": 9.999353408813477,
+      "size": 5
+    },
+    "1": {
+      "mean_Q_C": -0.05867883563041687,
+      "mean_Q_D": 9.999368667602539,
+      "size": 4
+    },
+    "2": {
+      "mean_Q_C": -0.06338533014059067,
+      "mean_Q_D": 9.999361038208008,
+      "size": 32
+    },
+    "3": {
+      "mean_Q_C": -0.06795384734869003,
+      "mean_Q_D": 9.99935531616211,
+      "size": 4
+    },
+    "4": {
+      "mean_Q_C": -0.08051601052284241,
+      "mean_Q_D": 9.999357223510742,
+      "size": 2
+    }
+  },
+  "degree_distribution": {
+    "4": 48,
+    "5": 2
+  },
+  "cluster_topology_correlation_eta": {
+    "degree": 0.0,
+    "clustering_coefficient": 0.0,
+    "betweenness_centrality": 0.6056850055211025,
+    "eigenvector_centrality": 0.8622740937153166
+  },
+  "n_final_records_averaged": 2,
+  "simulation": {
+    "gamma": 0.9,
+    "beta": 2.0,
+    "learner_type": "q_learning",
+    "iters": 1000000,
+    "reps": 2048,
+    "seed": 42,
+    "alpha": 0.01,
+    "record_every": 5000,
+    "reward_type": "pp",
+    "b": 2.0,
+    "c": 1.0,
+    "bonus": 1.0,
+    "num_nodes": 50,
+    "device": "cuda",
+    "store_reps": "reduced",
+    "fast_reward": true,
+    "fused_total_nodes": 680,
+    "fused": true
+  },
+  "graph_family": "mixed45",
+  "n": 50,
+  "gamma": 0.9,
+  "beta": 2.0,
+  "learner": "q_learning"
+}

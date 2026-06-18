@@ -1,0 +1,262 @@
+{
+  "artifact_version": 1,
+  "created_utc": "2026-06-17T18:15:22.884492+00:00",
+  "topology_name": "ring_n50_g0.0_b4.0_q_learning",
+  "title": "Ring (2-reg) | n=50, \u03b3=0.0, \u03b2=4.0, q_learning",
+  "n_final_steps": 10000,
+  "graph": {
+    "family": "ring",
+    "graph_class": "RingGraph",
+    "n": 50,
+    "num_nodes": 50,
+    "num_edges": 50,
+    "adjacency_shape": [
+      50,
+      50
+    ],
+    "edge_list": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        49
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        13,
+        14
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        15,
+        16
+      ],
+      [
+        16,
+        17
+      ],
+      [
+        17,
+        18
+      ],
+      [
+        18,
+        19
+      ],
+      [
+        19,
+        20
+      ],
+      [
+        20,
+        21
+      ],
+      [
+        21,
+        22
+      ],
+      [
+        22,
+        23
+      ],
+      [
+        23,
+        24
+      ],
+      [
+        24,
+        25
+      ],
+      [
+        25,
+        26
+      ],
+      [
+        26,
+        27
+      ],
+      [
+        27,
+        28
+      ],
+      [
+        28,
+        29
+      ],
+      [
+        29,
+        30
+      ],
+      [
+        30,
+        31
+      ],
+      [
+        31,
+        32
+      ],
+      [
+        32,
+        33
+      ],
+      [
+        33,
+        34
+      ],
+      [
+        34,
+        35
+      ],
+      [
+        35,
+        36
+      ],
+      [
+        36,
+        37
+      ],
+      [
+        37,
+        38
+      ],
+      [
+        38,
+        39
+      ],
+      [
+        39,
+        40
+      ],
+      [
+        40,
+        41
+      ],
+      [
+        41,
+        42
+      ],
+      [
+        42,
+        43
+      ],
+      [
+        43,
+        44
+      ],
+      [
+        44,
+        45
+      ],
+      [
+        45,
+        46
+      ],
+      [
+        46,
+        47
+      ],
+      [
+        47,
+        48
+      ],
+      [
+        48,
+        49
+      ]
+    ]
+  },
+  "simulation": {
+    "gamma": 0.0,
+    "beta": 4.0,
+    "learner_type": "q_learning",
+    "iters": 1000000,
+    "reps": 64,
+    "seed": 42,
+    "alpha": 0.01,
+    "record_every": 5000,
+    "reward_type": "pp",
+    "b": 2.0,
+    "c": 1.0,
+    "bonus": 1.0,
+    "num_nodes": 50,
+    "device": "cuda",
+    "store_reps": "reduced",
+    "fast_reward": true
+  },
+  "clustering": {
+    "method": "auto",
+    "scaling": "shared",
+    "dbscan_eps": 0.3,
+    "dbscan_min_samples": 2,
+    "hdbscan_min_cluster_size": 2,
+    "random_state": 42,
+    "noise_scale": 0.0008445762153480123,
+    "method_used": "homogeneous",
+    "n_clusters": 1,
+    "silhouette": NaN,
+    "chosen_params": {
+      "reason": "spread_within_noise",
+      "noise_scale": 0.0008445762153480123,
+      "spread": 0.0005277342528346347
+    }
+  },
+  "extra": {
+    "graph_family": "ring",
+    "n": 50,
+    "gamma": 0.0,
+    "beta": 4.0,
+    "learner": "q_learning"
+  }
+}

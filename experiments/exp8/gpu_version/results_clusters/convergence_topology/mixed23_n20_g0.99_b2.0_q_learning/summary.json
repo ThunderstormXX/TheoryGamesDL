@@ -1,0 +1,74 @@
+{
+  "topology_name": "mixed23_n20_g0.99_b2.0_q_learning",
+  "title": "Mixed (2/3) | n=20, \u03b3=0.99, \u03b2=2.0, q_learning",
+  "num_nodes": 20,
+  "method_used": "dbscan",
+  "cluster_params": {
+    "eps": 0.3,
+    "min_samples": 2
+  },
+  "number_of_clusters": 3,
+  "silhouette": 0.9214139252351308,
+  "cluster_sizes": {
+    "0": 2,
+    "1": 4,
+    "2": 14
+  },
+  "largest_cluster_fraction": 0.7,
+  "mean_cooperation": 0.0,
+  "mean_Q_C": 0.18693134188652039,
+  "mean_Q_D": 99.93408966064453,
+  "per_cluster_mean_Q": {
+    "0": {
+      "mean_Q_C": 0.09427440166473389,
+      "mean_Q_D": 99.93408966064453,
+      "size": 2
+    },
+    "1": {
+      "mean_Q_C": 0.17444640398025513,
+      "mean_Q_D": 99.93408966064453,
+      "size": 4
+    },
+    "2": {
+      "mean_Q_C": 0.20373518764972687,
+      "mean_Q_D": 99.93408966064453,
+      "size": 14
+    }
+  },
+  "degree_distribution": {
+    "2": 18,
+    "3": 2
+  },
+  "cluster_topology_correlation_eta": {
+    "degree": 1.0,
+    "clustering_coefficient": 0.0,
+    "betweenness_centrality": 0.9265411495473589,
+    "eigenvector_centrality": 0.9581108577758306
+  },
+  "n_final_records_averaged": 2,
+  "simulation": {
+    "gamma": 0.99,
+    "beta": 2.0,
+    "learner_type": "q_learning",
+    "iters": 1000000,
+    "reps": 2048,
+    "seed": 42,
+    "alpha": 0.01,
+    "record_every": 5000,
+    "reward_type": "pp",
+    "b": 2.0,
+    "c": 1.0,
+    "bonus": 1.0,
+    "num_nodes": 20,
+    "device": "cuda",
+    "store_reps": "reduced",
+    "fast_reward": true,
+    "fused_total_nodes": 680,
+    "fused": true
+  },
+  "graph_family": "mixed23",
+  "n": 20,
+  "gamma": 0.99,
+  "beta": 2.0,
+  "learner": "q_learning"
+}

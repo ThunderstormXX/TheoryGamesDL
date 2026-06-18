@@ -1,0 +1,86 @@
+{
+  "topology_name": "mixed56_n20_g0.97_b1.5_q_learning",
+  "title": "Mixed (5/6) | n=20, \u03b3=0.97, \u03b2=1.5, q_learning",
+  "num_nodes": 20,
+  "method_used": "dbscan",
+  "cluster_params": {
+    "eps": 0.3,
+    "min_samples": 2
+  },
+  "number_of_clusters": 4,
+  "silhouette": 0.7677276865864268,
+  "cluster_sizes": {
+    "noise": 2,
+    "0": 3,
+    "1": 2,
+    "2": 4,
+    "3": 9
+  },
+  "largest_cluster_fraction": 0.45,
+  "mean_cooperation": 1.667929380240367e-22,
+  "mean_Q_C": -0.11812393367290497,
+  "mean_Q_D": 33.3247184753418,
+  "per_cluster_mean_Q": {
+    "noise": {
+      "mean_Q_C": -0.12239575386047363,
+      "mean_Q_D": 33.32463073730469,
+      "size": 2
+    },
+    "0": {
+      "mean_Q_C": -0.12740261852741241,
+      "mean_Q_D": 33.32495880126953,
+      "size": 3
+    },
+    "1": {
+      "mean_Q_C": -0.1396847367286682,
+      "mean_Q_D": 33.32463455200195,
+      "size": 2
+    },
+    "2": {
+      "mean_Q_C": -0.12215779721736908,
+      "mean_Q_D": 33.32471466064453,
+      "size": 4
+    },
+    "3": {
+      "mean_Q_C": -0.10749762505292892,
+      "mean_Q_D": 33.324684143066406,
+      "size": 9
+    }
+  },
+  "degree_distribution": {
+    "5": 18,
+    "6": 2
+  },
+  "cluster_topology_correlation_eta": {
+    "degree": 0.7905694150420952,
+    "clustering_coefficient": 0.97952001483352,
+    "betweenness_centrality": 0.879099664396987,
+    "eigenvector_centrality": 0.8481367058162108
+  },
+  "n_final_records_averaged": 2,
+  "simulation": {
+    "gamma": 0.97,
+    "beta": 1.5,
+    "learner_type": "q_learning",
+    "iters": 1000000,
+    "reps": 2048,
+    "seed": 42,
+    "alpha": 0.01,
+    "record_every": 5000,
+    "reward_type": "pp",
+    "b": 2.0,
+    "c": 1.0,
+    "bonus": 1.0,
+    "num_nodes": 20,
+    "device": "cuda",
+    "store_reps": "reduced",
+    "fast_reward": true,
+    "fused_total_nodes": 680,
+    "fused": true
+  },
+  "graph_family": "mixed56",
+  "n": 20,
+  "gamma": 0.97,
+  "beta": 1.5,
+  "learner": "q_learning"
+}

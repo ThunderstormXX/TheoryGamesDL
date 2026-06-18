@@ -1,0 +1,60 @@
+{
+  "topology_name": "ring_n50_g0.0_b2.0_q_learning",
+  "title": "Ring (2-reg) | n=50, \u03b3=0.0, \u03b2=2.0, q_learning",
+  "num_nodes": 50,
+  "method_used": "homogeneous",
+  "cluster_params": {
+    "reason": "spread_within_noise",
+    "noise_scale": 0.005190906478821396,
+    "spread": 0.0037482799670016586
+  },
+  "number_of_clusters": 1,
+  "silhouette": NaN,
+  "cluster_sizes": {
+    "0": 50
+  },
+  "largest_cluster_fraction": 1.0,
+  "mean_cooperation": 0.017970029264688492,
+  "mean_Q_C": -0.9300874471664429,
+  "mean_Q_D": 1.0713553428649902,
+  "per_cluster_mean_Q": {
+    "0": {
+      "mean_Q_C": -0.9300874471664429,
+      "mean_Q_D": 1.0713553428649902,
+      "size": 50
+    }
+  },
+  "degree_distribution": {
+    "2": 50
+  },
+  "cluster_topology_correlation_eta": {
+    "degree": 0.0,
+    "clustering_coefficient": 0.0,
+    "betweenness_centrality": 0.0,
+    "eigenvector_centrality": 0.0
+  },
+  "n_final_records_averaged": 2,
+  "simulation": {
+    "gamma": 0.0,
+    "beta": 2.0,
+    "learner_type": "q_learning",
+    "iters": 1000000,
+    "reps": 64,
+    "seed": 42,
+    "alpha": 0.01,
+    "record_every": 5000,
+    "reward_type": "pp",
+    "b": 2.0,
+    "c": 1.0,
+    "bonus": 1.0,
+    "num_nodes": 50,
+    "device": "cuda",
+    "store_reps": "reduced",
+    "fast_reward": true
+  },
+  "graph_family": "ring",
+  "n": 50,
+  "gamma": 0.0,
+  "beta": 2.0,
+  "learner": "q_learning"
+}

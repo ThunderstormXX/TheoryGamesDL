@@ -1,0 +1,86 @@
+{
+  "topology_name": "mixed56_n20_g0.9_b1.5_q_learning",
+  "title": "Mixed (5/6) | n=20, \u03b3=0.9, \u03b2=1.5, q_learning",
+  "num_nodes": 20,
+  "method_used": "dbscan",
+  "cluster_params": {
+    "eps": 0.3,
+    "min_samples": 2
+  },
+  "number_of_clusters": 4,
+  "silhouette": 0.8206902028260679,
+  "cluster_sizes": {
+    "noise": 2,
+    "0": 4,
+    "1": 2,
+    "2": 4,
+    "3": 8
+  },
+  "largest_cluster_fraction": 0.4,
+  "mean_cooperation": 2.5405512360521243e-07,
+  "mean_Q_C": -0.13517794013023376,
+  "mean_Q_D": 10.000606536865234,
+  "per_cluster_mean_Q": {
+    "noise": {
+      "mean_Q_C": -0.12470956891775131,
+      "mean_Q_D": 10.000595092773438,
+      "size": 2
+    },
+    "0": {
+      "mean_Q_C": -0.1467578411102295,
+      "mean_Q_D": 10.00064468383789,
+      "size": 4
+    },
+    "1": {
+      "mean_Q_C": -0.1578761637210846,
+      "mean_Q_D": 10.000593185424805,
+      "size": 2
+    },
+    "2": {
+      "mean_Q_C": -0.13926151394844055,
+      "mean_Q_D": 10.000604629516602,
+      "size": 4
+    },
+    "3": {
+      "mean_Q_C": -0.12428873777389526,
+      "mean_Q_D": 10.00059700012207,
+      "size": 8
+    }
+  },
+  "degree_distribution": {
+    "5": 18,
+    "6": 2
+  },
+  "cluster_topology_correlation_eta": {
+    "degree": 0.6614378277661477,
+    "clustering_coefficient": 0.9691177375268648,
+    "betweenness_centrality": 0.8202613507851718,
+    "eigenvector_centrality": 0.7672267391096997
+  },
+  "n_final_records_averaged": 2,
+  "simulation": {
+    "gamma": 0.9,
+    "beta": 1.5,
+    "learner_type": "q_learning",
+    "iters": 1000000,
+    "reps": 2048,
+    "seed": 42,
+    "alpha": 0.01,
+    "record_every": 5000,
+    "reward_type": "pp",
+    "b": 2.0,
+    "c": 1.0,
+    "bonus": 1.0,
+    "num_nodes": 20,
+    "device": "cuda",
+    "store_reps": "reduced",
+    "fast_reward": true,
+    "fused_total_nodes": 680,
+    "fused": true
+  },
+  "graph_family": "mixed56",
+  "n": 20,
+  "gamma": 0.9,
+  "beta": 1.5,
+  "learner": "q_learning"
+}

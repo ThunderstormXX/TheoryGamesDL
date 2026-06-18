@@ -1,0 +1,9 @@
+Using device: cuda
+================================================================
+  Mass convergence-topology run on device: cuda
+  graphs=['mixed23', 'mixed34', 'mixed45', 'mixed56'] sizes=[20, 50, 100]
+  |scenarios|=8 (gamma x beta x learner)
+  iters=300000 reps=1024 workers=12 -> 96 runs
+  output: /home/n3ke27/prisoners_dilema/TheoryGamesDL/experiments/exp8/gpu_version/results/convergence_topology
+================================================================
+topologies:   0%|          | 0/96 [00:00<?, ?it/s]
